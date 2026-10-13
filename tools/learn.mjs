@@ -115,7 +115,7 @@ async function valueFixes() {
     for (const m of html.matchAll(/<(\/?)(\w+)([^>]*)>/g)) {
       const [, close, tag, attrs] = m;
       if (close) { while (stack.length && stack.pop().tag !== tag); continue; }
-      const lang = attrs.match(/\blang="(\w+)"/)?.[1];
+      const lang = attrs.match(/\blang="([^"\s]+)"/)?.[1];
       const val = attrs.match(/\bdata-val="([^"#]+)#([^"]+)"/);
       if (val) {
         const end = html.indexOf(`</${tag}>`, m.index), inner = html.slice(m.index + m[0].length, end);
@@ -148,7 +148,7 @@ export function describe(p) {
   if (p.stale.length) {
     const bySlide = new Map();
     for (const s of p.stale) for (const slide of s.slides) bySlide.set(slide, [...(bySlide.get(slide) ?? []), s.key + (s.isNew ? ' (new)' : '')]);
-    lines.push('Game code that the kids\' guide explains has changed. Review these slides (both languages)',
+    lines.push('Game code that the kids\' guide explains has changed. Review these slides (all languages)',
       'and update what no longer matches, then run "npm run learn -- --stamp" (or name the slides',
       'you reviewed: "--stamp page.html#slide ..."). To leave it for later, "--defer" notes the slides',
       'as outdated instead:',
@@ -213,7 +213,7 @@ async function stamp(defer, slides) {
 export function backlog(stamps = loadStamps()) {
   const notes = Object.entries(stamps.outdated ?? {});
   if (!notes.length) return '';
-  return [`${notes.length} slide(s) noted as outdated. Review them (both languages), then "npm run learn -- --stamp <slide>":`,
+  return [`${notes.length} slide(s) noted as outdated. Review them (all languages), then "npm run learn -- --stamp <slide>":`,
     ...notes.map(([slide, why]) => `  learn/${slide}: ${why}`)].join('\n');
 }
 

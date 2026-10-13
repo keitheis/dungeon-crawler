@@ -13,29 +13,29 @@ function steps(bag, price) {
   const c = formatCoins;
   const out = [
     { re: /function spendCopper\(/, say: tr(`The machine starts. <b>inv</b> is your bag (${c(bag)}), <b>amount</b> is the price: ${price}.`,
-      `Die Maschine startet. <b>inv</b> ist deine Tasche (${c(bag)}), <b>amount</b> ist der Preis: ${price}.`), vars: { amount: price } },
+      `Die Maschine startet. <b>inv</b> ist deine Tasche (${c(bag)}), <b>amount</b> ist der Preis: ${price}.`, `開始執行函式。<b>inv</b> 是你的背包（${c(bag)}），<b>amount</b> 是價格：${price}。`), vars: { amount: price } },
     { re: /^\s*whole\(amount\)/, say: tr('A check: is the price a whole number, and not below zero? Yes, so go on. (Otherwise the game would stop with an error.)',
-      'Eine Prüfung: Ist der Preis eine ganze Zahl und nicht unter null? Ja, also weiter. (Sonst würde das Spiel mit einem Fehler anhalten.)') },
+      'Eine Prüfung: Ist der Preis eine ganze Zahl und nicht unter null? Ja, also weiter. (Sonst würde das Spiel mit einem Fehler anhalten.)', '先檢查價格是不是大於或等於零的整數。答案是是，所以繼續。（否則遊戲會出現錯誤並停止。）') },
     { re: /const total = copperTotal\(/, say: tr(`Count everything in the bag in copper and call it <b>total</b>: ${bag}.`,
-      `Zähl alles in der Tasche in Kupfer zusammen und nenn es <b>total</b>: ${bag}.`), vars: { total: bag } },
+      `Zähl alles in der Tasche in Kupfer zusammen und nenn es <b>total</b>: ${bag}.`, `把背包裡的東西都換算成銅幣，並把總數存進 <b>total</b>：${bag}。`), vars: { total: bag } },
     { re: /if \(total < amount\)/, say: bag < price
       ? tr(`Is ${bag} less than ${price}? <b>Yes!</b> So <b>return false</b>: "no, you can't pay". The machine stops right here, the lines below never run.`,
-        `Ist ${bag} kleiner als ${price}? <b>Ja!</b> Also <b>return false</b>: "Nein, das kannst du nicht bezahlen." Die Maschine hört genau hier auf, die Zeilen darunter laufen nie.`)
-      : tr(`Is ${bag} less than ${price}? No. So the rest of this line is skipped.`, `Ist ${bag} kleiner als ${price}? Nein. Also wird der Rest dieser Zeile übersprungen.`) },
+        `Ist ${bag} kleiner als ${price}? <b>Ja!</b> Also <b>return false</b>: "Nein, das kannst du nicht bezahlen." Die Maschine hört genau hier auf, die Zeilen darunter laufen nie.`, `${bag} 比 ${price} 少嗎？<b>是！</b>所以執行 <b>return false</b>，也就是「你付不起」。函式在這裡停止，下面的程式碼不會執行。`)
+      : tr(`Is ${bag} less than ${price}? No. So the rest of this line is skipped.`, `Ist ${bag} kleiner als ${price}? Nein. Also wird der Rest dieser Zeile übersprungen.`, `${bag} 比 ${price} 少嗎？不是，所以跳過這一行後面的部分。`) },
   ];
   if (bag >= price) out.push(
     { re: /if \(amount\)/, say: price
       ? tr(`Is there a price at all? Yes: put ${bag} \u2212 ${price} = ${bag - price} copper back in the bag (${c(bag - price)}).`,
-        `Gibt es überhaupt einen Preis? Ja: ${bag} \u2212 ${price} = ${bag - price} Kupfer zurück in die Tasche legen (${c(bag - price)}).`)
-      : tr('Is there a price at all? No, it\'s free: nothing to take.', 'Gibt es überhaupt einen Preis? Nein, es ist umsonst: nichts wegnehmen.') },
-    { re: /return true/, say: tr('<b>return true</b>: "yes, paid!" The machine is done.', '<b>return true</b>: "Ja, bezahlt!" Die Maschine ist fertig.') });
+        `Gibt es überhaupt einen Preis? Ja: ${bag} \u2212 ${price} = ${bag - price} Kupfer zurück in die Tasche legen (${c(bag - price)}).`, `有價格嗎？有：把 ${bag} \u2212 ${price} = ${bag - price} 枚銅幣放回背包（${c(bag - price)}）。`)
+      : tr('Is there a price at all? No, it\'s free: nothing to take.', 'Gibt es überhaupt einen Preis? Nein, es ist umsonst: nichts wegnehmen.', '有價格嗎？沒有，這是免費的：不用拿走任何錢。') },
+    { re: /return true/, say: tr('<b>return true</b>: "yes, paid!" The machine is done.', '<b>return true</b>: "Ja, bezahlt!" Die Maschine ist fertig.', '<b>return true</b>：「付好了！」函式執行完成。') });
   return out;
 }
 
 export default async function mount(el) {
-  const row = html(el, `<div class="row"><label>${tr('copper in your bag', 'Kupfer in deiner Tasche')} <input type="number" class="bag" min="0" max="99999" value="250"></label>
-    <label>${tr('the price', 'der Preis')} <input type="number" class="price" min="0" max="99999" value="120"></label>
-    <button class="step">${tr('Next line \u25B8', 'Nächste Zeile \u25B8')}</button><button class="again">${tr('Start over', 'Von vorn')}</button></div>`);
+  const row = html(el, `<div class="row"><label>${tr('copper in your bag', 'Kupfer in deiner Tasche', '背包裡的銅幣')} <input type="number" class="bag" min="0" max="99999" value="250"></label>
+    <label>${tr('the price', 'der Preis', '價格')} <input type="number" class="price" min="0" max="99999" value="120"></label>
+    <button class="step">${tr('Next line \u25B8', 'Nächste Zeile \u25B8', '下一行 \\u25B8')}</button><button class="again">${tr('Start over', 'Von vorn', '重新開始')}</button></div>`);
   const pre = html(el, '<pre class="stepper"></pre>');
   const out = html(el, '<div class="out"></div>');
   const $ = s => row.querySelector(s);
@@ -50,7 +50,7 @@ export default async function mount(el) {
     lines = e.text.split('\n');
     pre.innerHTML = `<span class="file">${PATH} \u00B7 ${NAME} <span class="live">LIVE</span></span>` + tmp.innerHTML.split('\n').map(l => `<span class="ln">${l || ' '}</span>`).join('');
   } catch (err) {
-    out.textContent = tr('The game\'s code could not be read: ', 'Der Code des Spiels ließ sich nicht lesen: ') + err.message;
+    out.textContent = tr('The game\'s code could not be read: ', 'Der Code des Spiels ließ sich nicht lesen: ', '無法讀取遊戲的程式碼：') + err.message;
     return;
   }
   const rows = [...pre.querySelectorAll('.ln')];
@@ -61,13 +61,13 @@ export default async function mount(el) {
     plan.bag = bag; plan.price = price;
     at = -1;
     if (plan.some(s => s.line < 0)) {
-      out.innerHTML = tr('The game\'s code for this changed, so this demo can\'t follow it line by line any more.', 'Der Code dafür hat sich geändert, darum kann diese Demo ihm nicht mehr Zeile für Zeile folgen.');
+      out.innerHTML = tr('The game\'s code for this changed, so this demo can\'t follow it line by line any more.', 'Der Code dafür hat sich geändert, darum kann diese Demo ihm nicht mehr Zeile für Zeile folgen.', '遊戲這部分的程式碼改過了，所以這個示範無法再逐行跟著執行。');
       $('.step').disabled = true;
       return;
     }
     $('.step').disabled = false;
     rows.forEach(r => r.classList.remove('on', 'ran'));
-    out.innerHTML = tr('Press <b>Next line</b> to run the function one line at a time.', 'Drück <b>Nächste Zeile</b>, um die Funktion Zeile für Zeile laufen zu lassen.');
+    out.innerHTML = tr('Press <b>Next line</b> to run the function one line at a time.', 'Drück <b>Nächste Zeile</b>, um die Funktion Zeile für Zeile laufen zu lassen.', '按下<b>下一行</b>，就能讓函式一次執行一行。');
   }
   function step() {
     if (at >= plan.length - 1) return;
@@ -81,7 +81,7 @@ export default async function mount(el) {
       addCopper(inv, plan.bag);
       const paid = spendCopper(inv, plan.price);
       text += '\n\n' + tr(`The real function, called just now, says <b>${paid}</b>. Your bag: ${formatCoins(copperTotal(inv))}.`,
-        `Die echte Funktion, gerade eben aufgerufen, sagt <b>${paid}</b>. Deine Tasche: ${formatCoins(copperTotal(inv))}.`);
+        `Die echte Funktion, gerade eben aufgerufen, sagt <b>${paid}</b>. Deine Tasche: ${formatCoins(copperTotal(inv))}.`, `剛才執行的真正函式回傳 <b>${paid}</b>。你的背包裡有：${formatCoins(copperTotal(inv))}。`);
       $('.step').disabled = true;
     }
     out.innerHTML = text;

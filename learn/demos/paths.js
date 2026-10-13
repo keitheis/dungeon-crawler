@@ -12,10 +12,10 @@ export default function mount(el) {
   const sight = el.dataset.mode === 'sight';
   const W = C * S, H = R * S, { g, c, at } = canvas(el, W, H);
   const row = html(el, sight
-    ? `<div class="row"><span class="muted small">${tr('drag the two dots, draw walls with the mouse', 'zieh die zwei Punkte, mal Wände mit der Maus')}</span><button class="rnd">${tr('Random walls', 'Zufällige Wände')}</button><button class="clr">${tr('Clear walls', 'Wände weg')}</button></div>`
-    : `<div class="row"><button class="bfs">${tr('Flood (BFS)', 'Flut (BFS)')}</button><button class="astar">${tr('A* search', 'A*-Suche')}</button>
-       <button class="rnd">${tr('Random walls', 'Zufällige Wände')}</button><button class="clr">${tr('Clear walls', 'Wände weg')}</button>
-       <span class="muted small">${tr('draw walls with the mouse, drag the dots', 'mal Wände mit der Maus, zieh die Punkte')}</span></div>`);
+    ? `<div class="row"><span class="muted small">${tr('drag the two dots, draw walls with the mouse', 'zieh die zwei Punkte, mal Wände mit der Maus', '拖曳兩個點，再用滑鼠畫牆')}</span><button class="rnd">${tr('Random walls', 'Zufällige Wände', '隨機放置牆壁')}</button><button class="clr">${tr('Clear walls', 'Wände weg', '清除牆壁')}</button></div>`
+    : `<div class="row"><button class="bfs">${tr('Flood (BFS)', 'Flut (BFS)', '廣度優先搜尋（BFS）')}</button><button class="astar">${tr('A* search', 'A*-Suche', 'A* 尋路')}</button>
+       <button class="rnd">${tr('Random walls', 'Zufällige Wände', '隨機放置牆壁')}</button><button class="clr">${tr('Clear walls', 'Wände weg', '清除牆壁')}</button>
+       <span class="muted small">${tr('draw walls with the mouse, drag the dots', 'mal Wände mit der Maus, zieh die Punkte', '用滑鼠畫牆，並拖曳這些點')}</span></div>`);
   const out = html(el, '<div class="out"></div>');
   const wall = new Uint8Array(C * R);
   const A = sight ? [3.5, 7.5] : [2, 7], B = sight ? [22.5, 6.5] : [23, 7];
@@ -88,7 +88,7 @@ export default function mount(el) {
       g.stroke();
     }
     if (sight) drawSight();
-    for (const [p, col, label] of [[A, '#61dc6b', sight ? tr('eye', 'Auge') : 'S'], [B, '#ff6a5a', sight ? tr('you', 'du') : tr('G', 'Z')]]) {
+    for (const [p, col, label] of [[A, '#61dc6b', sight ? tr('eye', 'Auge', '眼睛') : 'S'], [B, '#ff6a5a', sight ? tr('you', 'du', '你') : tr('G', 'Z', '你')]]) {
       const [x, y] = sight ? p : [p[0] + 0.5, p[1] + 0.5];
       g.fillStyle = col; g.beginPath(); g.arc(x * S, y * S, S * 0.38, 0, 7); g.fill();
       g.fillStyle = '#0b0d12'; g.font = `bold ${label.length > 1 ? 9 : 12}px ui-monospace, monospace`; g.textAlign = 'center'; g.fillText(label, x * S, y * S + 4); g.textAlign = 'left';
@@ -96,9 +96,9 @@ export default function mount(el) {
     if (!sight) {
       const looked = Math.min(shown, order.length);
       out.innerHTML = algo
-        ? tr(`${algo === 'bfs' ? 'Flood (BFS)' : 'A*'} looked at <b>${looked}</b> squares`, `${algo === 'bfs' ? 'Flut (BFS)' : 'A*'} hat <b>${looked}</b> Felder angeschaut`)
-          + (shown >= order.length ? (path.length ? tr(`, the path is <b>${path.length - 1}</b> steps long.`, `, der Weg ist <b>${path.length - 1}</b> Schritte lang.`) : tr(', and found <b>no way</b>!', ' und <b>keinen Weg</b> gefunden!')) : '\u2026')
-        : tr('Press a button to search. Then draw some walls and compare the two.', 'Drück einen Knopf zum Suchen. Dann mal ein paar Wände und vergleiche die beiden.');
+        ? tr(`${algo === 'bfs' ? 'Flood (BFS)' : 'A*'} looked at <b>${looked}</b> squares`, `${algo === 'bfs' ? 'Flut (BFS)' : 'A*'} hat <b>${looked}</b> Felder angeschaut`, `${algo === 'bfs' ? '廣度優先搜尋（BFS）' : 'A* 尋路'}檢查了 <b>${looked}</b> 個格子`)
+          + (shown >= order.length ? (path.length ? tr(`, the path is <b>${path.length - 1}</b> steps long.`, `, der Weg ist <b>${path.length - 1}</b> Schritte lang.`, `，路徑長 <b>${path.length - 1}</b> 步。`) : tr(', and found <b>no way</b>!', ' und <b>keinen Weg</b> gefunden!', '，而且找不到<b>路</b>！')) : '\u2026')
+        : tr('Press a button to search. Then draw some walls and compare the two.', 'Drück einen Knopf zum Suchen. Dann mal ein paar Wände und vergleiche die beiden.', '按下按鈕開始尋路。接著畫幾道牆，比較兩種方法。');
     }
   }
   // the line of sight, checked every 0.15 cells like clearLine
@@ -114,8 +114,8 @@ export default function mount(el) {
     g.fillStyle = '#ffffffaa';
     for (let i = 1; i < steps; i++) { const t = i / n; g.fillRect((A[0] + (B[0] - A[0]) * t) * S - 1, (A[1] + (B[1] - A[1]) * t) * S - 1, 2, 2); }
     if (blocked) { g.strokeStyle = '#ff6a5a'; g.lineWidth = 3; g.beginPath(); g.arc(end[0] * S, end[1] * S, 7, 0, 7); g.stroke(); }
-    out.innerHTML = blocked ? tr(`Blocked after <b>${steps}</b> little steps: the eye cannot see you.`, `Blockiert nach <b>${steps}</b> kleinen Schritten: das Auge kann dich nicht sehen.`)
-      : tr(`All <b>${n}</b> little steps are free: <b>it sees you!</b>`, `Alle <b>${n}</b> kleinen Schritte sind frei: <b>es sieht dich!</b>`);
+    out.innerHTML = blocked ? tr(`Blocked after <b>${steps}</b> little steps: the eye cannot see you.`, `Blockiert nach <b>${steps}</b> kleinen Schritten: das Auge kann dich nicht sehen.`, `走了 <b>${steps}</b> 小步後被擋住了：視線看不到你。`)
+      : tr(`All <b>${n}</b> little steps are free: <b>it sees you!</b>`, `Alle <b>${n}</b> kleinen Schritte sind frei: <b>es sieht dich!</b>`, `<b>${n}</b> 小步都暢通無阻：<b>它看見你了！</b>`);
   }
 
   c.onpointerdown = e => {

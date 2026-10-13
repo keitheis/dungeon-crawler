@@ -51,9 +51,10 @@ export default function mount(el) {
       g.fillStyle = '#5fd3ff33'; g.fillRect(px(cx), px(cz), S, S);
       g.setLineDash([3, 3]); g.strokeStyle = '#5fd3ff88'; g.lineWidth = 1.5;
       g.beginPath(); g.moveTo(px(hero.x), M); g.lineTo(px(hero.x), px(hero.z)); g.moveTo(M, px(hero.z)); g.lineTo(px(hero.x), px(hero.z)); g.stroke(); g.setLineDash([]);
-      token(hero, '#5fd3ff', tr('hero', 'Held'));
+      token(hero, '#5fd3ff', tr('hero', 'Held', '英雄'));
       out.innerHTML = tr(`The hero stands at <b>x = ${num(hero.x)}</b>, <b>z = ${num(hero.z)}</b>.\nIts cell: Math.floor(${num(hero.x)}) = <b>${cx}</b>, Math.floor(${num(hero.z)}) = <b>${cz}</b>. The middle of that cell is ${num(cx + 0.5, 1)}, ${num(cz + 0.5, 1)}.`,
-        `Der Held steht bei <b>x = ${num(hero.x)}</b>, <b>z = ${num(hero.z)}</b>.\nSeine Zelle: Math.floor(${num(hero.x)}) = <b>${cx}</b>, Math.floor(${num(hero.z)}) = <b>${cz}</b>. Die Mitte dieser Zelle ist ${num(cx + 0.5, 1)}, ${num(cz + 0.5, 1)}.`);
+        `Der Held steht bei <b>x = ${num(hero.x)}</b>, <b>z = ${num(hero.z)}</b>.\nSeine Zelle: Math.floor(${num(hero.x)}) = <b>${cx}</b>, Math.floor(${num(hero.z)}) = <b>${cz}</b>. Die Mitte dieser Zelle ist ${num(cx + 0.5, 1)}, ${num(cz + 0.5, 1)}.`,
+        `英雄的位置是 <b>x = ${num(hero.x)}</b>、<b>z = ${num(hero.z)}</b>。\n所在格子：Math.floor(${num(hero.x)}) = <b>${cx}</b>，Math.floor(${num(hero.z)}) = <b>${cz}</b>。這個格子的中心是 ${num(cx + 0.5, 1)}、${num(cz + 0.5, 1)}。`);
       return;
     }
     if (show === 'far') {
@@ -74,24 +75,28 @@ export default function mount(el) {
       g.arc(px(hero.x), px(hero.z), 34, Math.PI / 2, Math.PI / 2 - yaw, yaw > 0); g.stroke();
       label(`${num(yaw * 180 / Math.PI, 0)}\u00B0`, px(hero.x) + Math.sin(yaw / 2) * 52, px(hero.z) + Math.cos(yaw / 2) * 52, '#ffcf7a');
       out.innerHTML = tr(`Math.atan2(dx, dz) = Math.atan2(${num(dx, 1)}, ${num(dz, 1)}) = <b>${num(yaw)}</b> (in radians) = <b>${num(yaw * 180 / Math.PI, 0)}\u00B0</b>.\nThat's how far the hero turns from facing south (down) to face the spider. Plus turns to the right in this picture, minus to the left.`,
-        `Math.atan2(dx, dz) = Math.atan2(${num(dx, 1)}, ${num(dz, 1)}) = <b>${num(yaw)}</b> (im Bogenmaß) = <b>${num(yaw * 180 / Math.PI, 0)}\u00B0</b>.\nSo weit dreht sich der Held von Süden (unten) weg, um die Spinne anzuschauen. Plus dreht in diesem Bild nach rechts, minus nach links.`);
+        `Math.atan2(dx, dz) = Math.atan2(${num(dx, 1)}, ${num(dz, 1)}) = <b>${num(yaw)}</b> (im Bogenmaß) = <b>${num(yaw * 180 / Math.PI, 0)}\u00B0</b>.\nSo weit dreht sich der Held von Süden (unten) weg, um die Spinne anzuschauen. Plus dreht in diesem Bild nach rechts, minus nach links.`,
+        `Math.atan2(dx, dz) = Math.atan2(${num(dx, 1)}, ${num(dz, 1)}) = <b>${num(yaw)}</b>（弧度）= <b>${num(yaw * 180 / Math.PI, 0)}\u00B0</b>。\n這是英雄從朝南（下方）轉向蜘蛛的角度。圖上正值會往右轉，負值會往左轉。`);
     }
     if (show === 'unit') {
       g.strokeStyle = '#ffffff33'; g.lineWidth = 1.5; g.beginPath(); g.arc(px(hero.x), px(hero.z), S, 0, 7); g.stroke();
       arrow(hero.x, hero.z, spider.x, spider.z, '#ffffff44', 2);
       arrow(hero.x, hero.z, hero.x + dx / (d || 1), hero.z + dz / (d || 1), '#70d6aa', 4);
       out.innerHTML = tr(`The arrow is ${num(d)} long. Divide both of its numbers by that:\n${num(dx)} / ${num(d)} = <b>${num(dx / (d || 1))}</b>, ${num(dz)} / ${num(d)} = <b>${num(dz / (d || 1))}</b>\nThe green arrow points the same way, but it is exactly 1 long (it ends on the circle). Now it says only <i>which way</i>, not how far.`,
-        `Der Pfeil ist ${num(d)} lang. Teile seine beiden Zahlen dadurch:\n${num(dx)} / ${num(d)} = <b>${num(dx / (d || 1))}</b>, ${num(dz)} / ${num(d)} = <b>${num(dz / (d || 1))}</b>\nDer grüne Pfeil zeigt in dieselbe Richtung, ist aber genau 1 lang (er endet auf dem Kreis). Jetzt sagt er nur noch, <i>in welche Richtung</i>, nicht wie weit.`);
+        `Der Pfeil ist ${num(d)} lang. Teile seine beiden Zahlen dadurch:\n${num(dx)} / ${num(d)} = <b>${num(dx / (d || 1))}</b>, ${num(dz)} / ${num(d)} = <b>${num(dz / (d || 1))}</b>\nDer grüne Pfeil zeigt in dieselbe Richtung, ist aber genau 1 lang (er endet auf dem Kreis). Jetzt sagt er nur noch, <i>in welche Richtung</i>, nicht wie weit.`,
+        `箭頭長度是 ${num(d)}。把它的兩個數值都除以這個長度：\n${num(dx)} / ${num(d)} = <b>${num(dx / (d || 1))}</b>，${num(dz)} / ${num(d)} = <b>${num(dz / (d || 1))}</b>\n綠色箭頭指向相同方向，但長度剛好是 1（終點落在圓上）。現在它只表示<i>方向</i>，不表示距離。`);
     }
     if (show !== 'unit') arrow(hero.x, hero.z, spider.x, spider.z, show === 'arrow' ? '#ffcf7a' : '#ffffffaa');
-    token(hero, '#5fd3ff', tr('hero', 'Held'));
-    token(spider, '#ff6a5a', tr('spider', 'Spinne'));
+    token(hero, '#5fd3ff', tr('hero', 'Held', '英雄'));
+    token(spider, '#ff6a5a', tr('spider', 'Spinne', '蜘蛛'));
     if (show === 'arrow') out.innerHTML = tr(`hero (${num(hero.x, 1)}, ${num(hero.z, 1)}) \u2192 spider (${num(spider.x, 1)}, ${num(spider.z, 1)})\nThe arrow: dx = ${num(spider.x, 1)} \u2212 ${num(hero.x, 1)} = <b>${num(dx, 1)}</b>, dz = ${num(spider.z, 1)} \u2212 ${num(hero.z, 1)} = <b>${num(dz, 1)}</b>\n"Go ${num(Math.abs(dx), 1)} ${dx >= 0 ? 'right' : 'left'} and ${num(Math.abs(dz), 1)} ${dz >= 0 ? 'down' : 'up'}."`,
-      `Held (${num(hero.x, 1)}, ${num(hero.z, 1)}) \u2192 Spinne (${num(spider.x, 1)}, ${num(spider.z, 1)})\nDer Pfeil: dx = ${num(spider.x, 1)} \u2212 ${num(hero.x, 1)} = <b>${num(dx, 1)}</b>, dz = ${num(spider.z, 1)} \u2212 ${num(hero.z, 1)} = <b>${num(dz, 1)}</b>\n"Geh ${num(Math.abs(dx), 1)} nach ${dx >= 0 ? 'rechts' : 'links'} und ${num(Math.abs(dz), 1)} nach ${dz >= 0 ? 'unten' : 'oben'}."`);
+      `Held (${num(hero.x, 1)}, ${num(hero.z, 1)}) \u2192 Spinne (${num(spider.x, 1)}, ${num(spider.z, 1)})\nDer Pfeil: dx = ${num(spider.x, 1)} \u2212 ${num(hero.x, 1)} = <b>${num(dx, 1)}</b>, dz = ${num(spider.z, 1)} \u2212 ${num(hero.z, 1)} = <b>${num(dz, 1)}</b>\n"Geh ${num(Math.abs(dx), 1)} nach ${dx >= 0 ? 'rechts' : 'links'} und ${num(Math.abs(dz), 1)} nach ${dz >= 0 ? 'unten' : 'oben'}."`,
+      `英雄 (${num(hero.x, 1)}, ${num(hero.z, 1)}) \u2192 蜘蛛 (${num(spider.x, 1)}, ${num(spider.z, 1)})\n箭頭：dx = ${num(spider.x, 1)} \u2212 ${num(hero.x, 1)} = <b>${num(dx, 1)}</b>，dz = ${num(spider.z, 1)} \u2212 ${num(hero.z, 1)} = <b>${num(dz, 1)}</b>\n「往${dx >= 0 ? '右' : '左'}走 ${num(Math.abs(dx), 1)} 格，再往${dz >= 0 ? '下' : '上'}走 ${num(Math.abs(dz), 1)} 格。」`);
     if (show === 'far') {
       const seen = d < SPIDER.aggro;
       out.innerHTML = tr(`Math.hypot(${num(dx, 1)}, ${num(dz, 1)}) = \u221A(${num(dx, 1)}\u00B2 + ${num(dz, 1)}\u00B2) = <b>${num(d)}</b> cells\nThe red circle is the spider's aggro distance (${SPIDER.aggro} cells): ${seen ? '<b style="color:#ff9a8a">it has noticed you!</b>' : 'it hasn\'t noticed you yet.'}`,
-        `Math.hypot(${num(dx, 1)}, ${num(dz, 1)}) = \u221A(${num(dx, 1)}\u00B2 + ${num(dz, 1)}\u00B2) = <b>${num(d)}</b> Zellen\nDer rote Kreis ist die Bemerk-Entfernung der Spinne (${SPIDER.aggro} Zellen): ${seen ? '<b style="color:#ff9a8a">Sie hat dich bemerkt!</b>' : 'Sie hat dich noch nicht bemerkt.'}`);
+        `Math.hypot(${num(dx, 1)}, ${num(dz, 1)}) = \u221A(${num(dx, 1)}\u00B2 + ${num(dz, 1)}\u00B2) = <b>${num(d)}</b> Zellen\nDer rote Kreis ist die Bemerk-Entfernung der Spinne (${SPIDER.aggro} Zellen): ${seen ? '<b style="color:#ff9a8a">Sie hat dich bemerkt!</b>' : 'Sie hat dich noch nicht bemerkt.'}`,
+        `Math.hypot(${num(dx, 1)}, ${num(dz, 1)}) = \u221A(${num(dx, 1)}\u00B2 + ${num(dz, 1)}\u00B2) = <b>${num(d)}</b> 格\n紅色圓圈代表蜘蛛會發現你的距離（${SPIDER.aggro} 格）：${seen ? '<b style="color:#ff9a8a">牠發現你了！</b>' : '牠還沒發現你。'}`);
     }
   }
 
@@ -104,6 +109,6 @@ export default function mount(el) {
   });
   c.addEventListener('pointermove', e => { if (drag) { Object.assign(drag, toCube(e)); draw(); } });
   c.addEventListener('pointerup', () => { drag = null; });
-  html(el, `<p class="small muted" style="margin:6px 0 0">${show === 'where' ? tr('Drag the hero around.', 'Zieh den Helden herum.') : tr('Drag the hero and the spider around.', 'Zieh den Helden und die Spinne herum.')}</p>`);
+  html(el, `<p class="small muted" style="margin:6px 0 0">${show === 'where' ? tr('Drag the hero around.', 'Zieh den Helden herum.', '拖曳英雄移動。') : tr('Drag the hero and the spider around.', 'Zieh den Helden und die Spinne herum.', '拖曳英雄和蜘蛛移動。')}</p>`);
   draw();
 }

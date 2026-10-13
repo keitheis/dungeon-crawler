@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-de="Monster bauen · Kinderführer zu Cube Crawler">Making Monsters · Kids' Guide to Cube Crawler</title>
+<title data-de="Monster bauen · Kinderführer zu Cube Crawler" data-zh-hant="製作怪物 · Cube Crawler 兒童指南">Making Monsters · Kids' Guide to Cube Crawler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="kids.css">
 <script src="lang.js"></script>
@@ -13,50 +13,64 @@
 <section class="slide" id="by-code" data-lv="1">
   <h2 lang="en">Models made by code</h2>
   <h2 lang="de">Modelle, die Code baut</h2>
+  <h2 lang="zh-Hant">用程式碼製作模型</h2>
   <div class="cols">
     <div>
       <p class="lead" lang="en">The houses, trees, swords and monsters are 3D <a class="w" href="words.html#model">models</a>. Usually, an artist builds them by hand in a 3D program, pulling points around with the mouse.</p>
       <p class="lead" lang="de">Die Häuser, Bäume, Schwerter und Monster sind 3D-<a class="w" href="words.html#model">Modelle</a>. Normalerweise baut eine Künstlerin sie von Hand in einem 3D-Programm und zieht dabei Punkte mit der Maus herum.</p>
+      <p class="lead" lang="zh-Hant">房子、樹木、劍和怪物都是 3D<a class="w" href="words.html#model">模型</a>。通常，美術設計師會在 3D 程式裡用滑鼠移動各個點，親手做出模型。</p>
       <p lang="en">In Cube Crawler, they are built by <b>code</b>. In the <code>blender/</code> folder there is a Python script for each one: <code>snake.py</code>, <code>octonaut.py</code>, <code>town.py</code>... Running a script in <b>Blender</b> (a free 3D program) builds the model, its skeleton and its animations, takes preview pictures, and saves everything into <code>assets/</code> for the game.</p>
       <p lang="de">In Cube Crawler werden sie von <b>Code</b> gebaut. Im Ordner <code>blender/</code> gibt es für jedes ein Python-Skript: <code>snake.py</code>, <code>octonaut.py</code>, <code>town.py</code>... Ein Skript in <b>Blender</b> (einem kostenlosen 3D-Programm) auszuführen baut das Modell, sein Skelett und seine Animationen, macht Vorschaubilder und speichert alles für das Spiel in <code>assets/</code>.</p>
+      <p lang="zh-Hant">在 Cube Crawler 裡，這些東西是用<b>程式碼</b>製作的。<code>blender/</code>資料夾裡，每個模型都有自己的 Python 指令稿，例如 <code>snake.py</code>、<code>octonaut.py</code>、<code>town.py</code>。在 <b>Blender</b>（免費的 3D 程式）裡執行指令稿，就會製作模型、骨架和動畫，拍下預覽圖，再把所有內容存進遊戲的 <code>assets/</code>資料夾。</p>
       <p lang="en">The snake started as a sketch on a whiteboard. Then it was described in words, turned into code, looked at, and improved, again and again.</p>
       <p lang="de">Die Schlange fing als Skizze auf einem Whiteboard an. Dann wurde sie in Worten beschrieben, in Code verwandelt, angeschaut und verbessert, immer wieder.</p>
+      <p lang="zh-Hant">這條蛇一開始只是白板上的草圖。接著大家用文字描述它，把描述寫成程式碼，檢查成果，再一次又一次地改進。</p>
     </div>
-    <figure><img class="shot" src="../blender/previews/town-preview.png" alt="The town's buildings: an inn, a stable, a pet shop, a blacksmith and three market tents" data-de-alt="Die Gebäude der Stadt: ein Gasthaus, ein Stall, eine Tierhandlung, eine Schmiede und drei Marktstände"><figcaption lang="en">The town's buildings, all made by blender/town.py. These preview pictures are made by the scripts too.</figcaption> <figcaption lang="de">Die Gebäude der Stadt, alle gebaut von blender/town.py. Auch diese Vorschaubilder machen die Skripte.</figcaption></figure>
+    <figure><img class="shot" src="../blender/previews/town-preview.png" alt="The town's buildings: an inn, a stable, a pet shop, a blacksmith and three market tents" data-de-alt="Die Gebäude der Stadt: ein Gasthaus, ein Stall, eine Tierhandlung, eine Schmiede und drei Marktstände" data-zh-hant-alt="城鎮裡的建築：旅店、馬廄、寵物店、鐵匠鋪和三個市集帳篷"><figcaption lang="en">The town's buildings, all made by blender/town.py. These preview pictures are made by the scripts too.</figcaption> <figcaption lang="de">Die Gebäude der Stadt, alle gebaut von blender/town.py. Auch diese Vorschaubilder machen die Skripte.</figcaption> <figcaption lang="zh-Hant">城鎮裡的建築全由 blender/town.py 製作，這些預覽圖片也是指令稿做出來的。</figcaption></figure>
   </div>
 </section>
 
 <section class="slide" id="clay" data-lv="1">
   <h2 lang="en">Try it: digital clay</h2>
   <h2 lang="de">Probier es: digitale Knete</h2>
+  <h2 lang="zh-Hant">動手試試：數位黏土</h2>
   <p lang="en">The monsters are made like clay figures: a body, a head, some legs, and they <b>melt together</b> where they meet. Drag the blobs and change how much they melt.</p>
   <p lang="de">Die Monster werden gemacht wie Knetfiguren: ein Körper, ein Kopf, ein paar Beine, und wo sie sich treffen, <b>verschmelzen</b> sie. Zieh die Klumpen herum und ändere, wie sehr sie verschmelzen.</p>
+  <p lang="zh-Hant">怪物就像黏土做成的小模型：有身體、頭和幾隻腳，碰在一起的地方會<b>融合</b>。拖曳這些黏土塊，調整它們融合的程度。</p>
   <div class="demo" data-demo="sdf"></div>
   <p class="small muted" lang="en">The game's monster scripts do this in 3D with dozens of shapes: tubes for legs, balls for eyes, cones for flames.</p>
   <p class="small muted" lang="de">Die Monster-Skripte des Spiels machen das in 3D mit Dutzenden Formen: Röhren für Beine, Kugeln für Augen, Kegel für Flammen.</p>
+  <p class="small muted" lang="zh-Hant">遊戲裡的怪物指令稿會在 3D 空間中用幾十種形狀做出這些效果：用管子做腿、用球做眼睛、用圓錐做火焰。</p>
 </section>
 
 <section class="slide" id="sdf" data-lv="2">
   <h2 lang="en">Signed distance fields</h2>
   <h2 lang="de">Vorzeichenbehaftete Distanzfelder</h2>
+  <h2 lang="zh-Hant">帶正負號的距離場</h2>
   <div class="cols">
     <div>
       <p lang="en">How do you describe a ball with code? Not with points and triangles, but with a question: <i>"how far is this spot from the ball's surface?"</i></p>
       <p lang="de">Wie beschreibt man eine Kugel mit Code? Nicht mit Punkten und Dreiecken, sondern mit einer Frage: <i>"Wie weit ist diese Stelle von der Oberfläche der Kugel entfernt?"</i></p>
-      <pre><code lang="en">distance = (distance to the centre) - radius</code> <code lang="de">Abstand = (Abstand zur Mitte) - Radius</code></pre>
+      <p lang="zh-Hant">要怎麼用程式碼描述一顆球？不是列出點和三角形，而是問：「這個位置離球的表面有多遠？」</p>
+      <pre><code lang="en">distance = (distance to the centre) - radius</code> <code lang="de">Abstand = (Abstand zur Mitte) - Radius</code> <code lang="zh-Hant">距離 =（到中心的距離）- 半徑</code></pre>
       <p lang="en">Outside the ball the answer is positive, on the surface zero, inside negative. That's why it's called a <b>signed</b> distance <a class="w" href="words.html#sdf">field</a>. Switch on "show distances" in the demo to see the rings.</p>
       <p lang="de">Außerhalb der Kugel ist die Antwort positiv, auf der Oberfläche null, innen negativ. Darum heißt es <b>vorzeichenbehaftetes</b> Distanz<a class="w" href="words.html#sdf">feld</a> (Signed Distance Field, SDF). Schalte in der Demo "Abstände zeigen" an, um die Ringe zu sehen.</p>
+      <p lang="zh-Hant">球外的距離是正數，表面上是零，球裡面則是負數。因此它叫做帶<b>正負號</b>的距離<a class="w" href="words.html#sdf">場</a>（Signed Distance Field，SDF）。在示範中打開「顯示距離」，就能看到那些圓圈。</p>
       <p lang="en">To join two shapes: take the <b>smaller</b> of the two distances. For melting, use a <i>smooth</i> minimum, which rounds off the crease where they meet.</p>
       <p lang="de">Um zwei Formen zu verbinden: Nimm den <b>kleineren</b> der beiden Abstände. Zum Verschmelzen nimmt man ein <i>weiches</i> Minimum, das die Kante abrundet, wo sie sich treffen.</p>
+      <p lang="zh-Hant">要把兩個形狀接在一起，就取兩個距離中<b>較小</b>的那個。要讓它們融合，就使用<i>平滑</i>的最小值，讓交接處的折角變圓滑。</p>
     </div>
     <div class="card">
       <h3 lang="en">From field to triangles</h3>
       <h3 lang="de">Vom Feld zu Dreiecken</h3>
+      <h3 lang="zh-Hant">從距離場變成三角形</h3>
       <p lang="en">The graphics card wants triangles, not questions. So the script asks the question at millions of points on a 3D grid, and a program called OpenVDB builds the triangles along the "zero" surface.</p>
       <p lang="de">Die Grafikkarte will Dreiecke, keine Fragen. Darum stellt das Skript die Frage an Millionen Punkten auf einem 3D-Gitter, und ein Programm namens OpenVDB baut die Dreiecke entlang der "Null"-Oberfläche.</p>
+      <p lang="zh-Hant">顯示卡需要三角形，不能只看問題。所以指令稿會在 3D 網格上的數百萬個位置提出這個問題，再由一個叫 OpenVDB 的程式沿著「零」表面建立三角形。</p>
       <p lang="en">Then all parts become <b>one smooth mesh</b> with plain colours: no pictures painted on it. That's what gives the monsters their soft, toy-like look.</p>
       <p lang="de">Dann werden alle Teile zu <b>einem glatten Netz</b> mit einfachen Farben: keine aufgemalten Bilder. Das gibt den Monstern ihr weiches, spielzeugartiges Aussehen.</p>
-      <figure><img class="shot" src="../blender/previews/fireface-preview.png" alt="The Fire-face monster in six poses" data-de-alt="Das Fire-face-Monster in sechs Posen"><figcaption lang="en">The Fire-face: flame tongues are melted cones.</figcaption> <figcaption lang="de">Das Fire-face: Die Flammenzungen sind verschmolzene Kegel.</figcaption></figure>
+      <p lang="zh-Hant">接著，所有部分會合成<b>一個平滑的網格</b>，再塗上純色，不需要貼上圖片。這讓怪物看起來柔軟，像玩具一樣。</p>
+      <figure><img class="shot" src="../blender/previews/fireface-preview.png" alt="The Fire-face monster in six poses" data-de-alt="Das Fire-face-Monster in sechs Posen" data-zh-hant-alt="Fire-face 怪物的六種姿勢"><figcaption lang="en">The Fire-face: flame tongues are melted cones.</figcaption> <figcaption lang="de">Das Fire-face: Die Flammenzungen sind verschmolzene Kegel.</figcaption> <figcaption lang="zh-Hant">Fire-face：火焰舌頭是融合在一起的圓錐。</figcaption></figure>
     </div>
   </div>
 </section>
@@ -64,26 +78,35 @@
 <section class="slide" id="bones" data-lv="2" data-src="src/core/enemies.js#SNAKE">
   <h2 lang="en">Bones and animations</h2>
   <h2 lang="de">Knochen und Animationen</h2>
+  <h2 lang="zh-Hant">骨骼與動畫</h2>
   <div class="cols">
     <div>
       <p lang="en">To move, a model needs a <b>skeleton</b>: invisible bones inside it. Every corner of the mesh is glued to one or more bones, a bit like skin. Move the bone, and the skin follows.</p>
       <p lang="de">Um sich zu bewegen, braucht ein Modell ein <b>Skelett</b>: unsichtbare Knochen darin. Jede Ecke des Netzes klebt an einem oder mehreren Knochen, ein bisschen wie Haut. Beweg den Knochen, und die Haut folgt.</p>
+      <p lang="zh-Hant">模型要動起來，需要一副<b>骨架</b>：藏在裡面的看不見的骨頭。網格的每個角都會連到一根或多根骨頭，就像皮膚一樣。骨頭移動時，皮膚也會跟著動。</p>
       <p lang="en">The scripts compute every pose with math, and save it as <b>keyframes</b>, 30 per second. A few short clips per monster: walk, attack, death.</p>
       <p lang="de">Die Skripte berechnen jede Pose mit Mathe und speichern sie als <b>Schlüsselbilder</b> (Keyframes), 30 pro Sekunde. Ein paar kurze Clips pro Monster: laufen, angreifen, sterben.</p>
+      <p lang="zh-Hant">指令稿會用數學算出每個姿勢，並存成<b>關鍵影格</b>，每秒 30 個。每種怪物都有幾段短動畫：走路、攻擊和死亡。</p>
       <p lang="en">The snake's walk is clever: a wave runs backwards along its body at exactly its walking speed. So its body slides along a path that stays still on the floor, like a real snake!</p>
       <p lang="de">Der Lauf der Schlange ist schlau: Eine Welle läuft genau mit ihrem Lauftempo rückwärts den Körper entlang. So gleitet ihr Körper einen Weg entlang, der auf dem Boden stillsteht, wie bei einer echten Schlange!</p>
+      <p lang="zh-Hant">蛇的走路動畫很巧妙：一個波浪會以和牠前進速度相同的速度，沿著身體往後移動。這樣蛇的身體就會沿著地面上固定不動的路徑滑行，就像真的蛇一樣！</p>
     </div>
     <div class="card">
       <h3 lang="en">The game and the art must agree</h3>
       <h3 lang="de">Spiel und Kunst müssen zusammenpassen</h3>
+      <h3 lang="zh-Hant">遊戲和美術要配合好</h3>
       <p lang="en">The snake's attack clip snaps its jaw shut on <b>frame 12</b>. So the game deals the bite damage at 12/30 = 0.4 seconds into the attack. If one changes without the other, the bite would hurt before (or after) the jaw closes.</p>
       <p lang="de">Der Angriffsclip der Schlange schnappt bei <b>Bild 12</b> den Kiefer zu. Darum macht das Spiel den Bissschaden nach 12/30 = 0,4 Sekunden des Angriffs. Würde sich eins ändern ohne das andere, täte der Biss weh, bevor (oder nachdem) der Kiefer zuschnappt.</p>
+      <p lang="zh-Hant">蛇的攻擊動畫會在第 <b>12 格</b>合上嘴巴，因此遊戲會在攻擊開始後 12/30 = 0.4 秒造成咬擊傷害。如果只改動畫或只改遊戲程式，咬擊就會在嘴巴合上之前（或之後）造成傷害。</p>
       <p lang="en">That's why the game has tests that open the exported models and check that the clips, bones and hit frames are what the code expects.</p>
       <p lang="de">Darum hat das Spiel Tests, die die exportierten Modelle öffnen und prüfen, dass Clips, Knochen und Trefferbilder so sind, wie der Code es erwartet.</p>
+      <p lang="zh-Hant">所以遊戲會用測試打開匯出的模型，確認動畫、骨骼和命中影格都符合程式碼的預期。</p>
       <p lang="en">In the game, the hero's clips are also <b>blended</b>: idle into walk into run, depending on speed, and the legs swing further when running faster than the clip.</p>
       <p lang="de">Im Spiel werden die Clips des Helden auch <b>gemischt</b>: Stehen geht in Gehen über und Gehen in Rennen, je nach Tempo, und die Beine schwingen weiter aus, wenn er schneller rennt als der Clip.</p>
+      <p lang="zh-Hant">遊戲也會<b>混合</b>英雄的動畫：依速度把站立接到走路，再接到奔跑；如果英雄跑得比動畫快，雙腿擺動的幅度也會更大。</p>
       <a class="portal" href="animation.html#mixing" lang="en">Mixing walk and run</a>
       <a class="portal" href="animation.html#mixing" lang="de">Gehen und Rennen mischen</a>
+      <a class="portal" href="animation.html#mixing" lang="zh-Hant">混合走路和奔跑動畫</a>
     </div>
   </div>
 </section>
@@ -91,28 +114,36 @@
 <section class="slide" id="recolour" data-lv="1">
   <h2 lang="en">Try it: same snake, new colours</h2>
   <h2 lang="de">Probier es: dieselbe Schlange, neue Farben</h2>
+  <h2 lang="zh-Hant">動手試試：同一條蛇，換個顏色</h2>
   <p lang="en">A Blood viper is the same model as a Grass snake, just recoloured. The game picks one <b>anchor</b> colour (the skin) and moves all related colours along with it, so the darker rib bands stay darker by the same amount. Click the kinds, or mix your own.</p>
   <p lang="de">Eine Blood viper ist dasselbe Modell wie eine Grass snake, nur umgefärbt. Das Spiel wählt eine <b>Ankerfarbe</b> (die Haut) und bewegt alle verwandten Farben mit, damit die dunkleren Rippenstreifen um genauso viel dunkler bleiben. Klick die Sorten an oder misch deine eigene.</p>
+  <p lang="zh-Hant">Blood viper 和 Grass snake 使用同一個模型，只是換了顏色。遊戲會選一個<b>基準色</b>（皮膚顏色），並一起調整相關顏色，讓較深的肋紋仍然保持同樣的深淺差距。點選不同種類，或自己調配顏色。</p>
   <div class="demo real" data-demo="recolor"></div>
   <p class="small muted" lang="en">The colours use OKLCH: <b>L</b>ightness, <b>C</b>olourfulness (chroma) and <b>H</b>ue. Unlike plain RGB, changing the hue doesn't make a colour suddenly look brighter or darker.</p>
   <p class="small muted" lang="de">Die Farben benutzen OKLCH: <b>L</b> für Helligkeit (lightness), <b>C</b> für Buntheit (chroma) und <b>H</b> für den Farbton (hue). Anders als bei einfachem RGB sieht eine Farbe nicht plötzlich heller oder dunkler aus, wenn man den Farbton ändert.</p>
+  <p class="small muted" lang="zh-Hant">顏色使用 OKLCH：<b>L</b>代表明度（lightness）、<b>C</b>代表彩度（chroma）、<b>H</b>代表色相（hue）。和一般的 RGB 不同，改變色相時，顏色不會突然變亮或變暗。</p>
 </section>
 
 
 <section class="slide" id="sdf-code" data-lv="3">
   <h2 lang="en">The real code: clay in Python</h2>
   <h2 lang="de">Der echte Code: Knete in Python</h2>
+  <h2 lang="zh-Hant">實際程式碼：用 Python 做黏土</h2>
   <div class="cols wide-left">
     <pre data-code="blender/figure.py#_smin blender/creature.py#ellipsoid"></pre>
     <div>
       <p lang="en">This is <b>Python</b>, the language Blender speaks. <code>np</code> is NumPy, which does math on millions of points at once.</p>
       <p lang="de">Das ist <b>Python</b>, die Sprache, die Blender spricht. <code>np</code> ist NumPy, das Mathe mit Millionen Punkten auf einmal macht.</p>
+      <p lang="zh-Hant">這是 Blender 使用的程式語言 <b>Python</b>。<code>np</code> 是 NumPy，可以一次對數百萬個點進行數學運算。</p>
       <p lang="en"><code>_smin</code> is the smooth minimum. <code>h</code> says how much each shape wins at this spot; the last part, <code>- k * h * (1 - h)</code>, pulls the surface outwards where both are close: that's the melted fillet. The demo two slides back uses this exact formula.</p>
       <p lang="de"><code>_smin</code> ist das weiche Minimum. <code>h</code> sagt, wie sehr jede Form an dieser Stelle gewinnt; der letzte Teil, <code>- k * h * (1 - h)</code>, zieht die Oberfläche nach außen, wo beide nah sind: Das ist die verschmolzene Rundung. Die Demo zwei Folien vorher benutzt genau diese Formel.</p>
+      <p lang="zh-Hant"><code>_smin</code>是平滑最小值。<code>h</code>表示每個形狀在這個位置的影響程度；最後一段 <code>- k * h * (1 - h)</code>會在兩個形狀靠近時把表面往外推，形成融合後的圓角。前兩頁的示範正是使用這個公式。</p>
       <p lang="en"><code>ellipsoid</code> is the distance to an egg shape (IQ is Inigo Quilez, who shares lots of these formulas online).</p>
       <p lang="de"><code>ellipsoid</code> ist der Abstand zu einer Eiform (IQ ist Inigo Quilez, der viele solche Formeln im Internet teilt).</p>
+      <p lang="zh-Hant"><code>ellipsoid</code>表示到橢球形（像蛋的形狀）的距離。IQ 是 Inigo Quilez 的縮寫，他在網路上分享了很多這類公式。</p>
       <p lang="en">A monster is a long list of shapes like this, joined with <code>_smin</code>.</p>
       <p lang="de">Ein Monster ist eine lange Liste solcher Formen, verbunden mit <code>_smin</code>.</p>
+      <p lang="zh-Hant">一隻怪物就是一長串這類形狀，再用 <code>_smin</code>把它們融合起來。</p>
     </div>
   </div>
 </section>

@@ -22,18 +22,18 @@ const FLUID = { 1: [46, 134, 222], 2: [255, 90, 0], 3: [125, 255, 58] };
 // the things in the box we explain (others are listed by name); grep: look for it in the code
 const THINGS = [
   { key: 'floors', grep: true, about: () => tr('Every piece of ground you can stand on: which square, how high, and whether it is water, lava or acid. Gold squares have floors stacked on top of each other.',
-    'Jedes Stück Boden, auf dem man stehen kann: welches Feld, wie hoch und ob es Wasser, Lava oder Säure ist. Goldene Felder haben mehrere Böden übereinander.') },
+    'Jedes Stück Boden, auf dem man stehen kann: welches Feld, wie hoch und ob es Wasser, Lava oder Säure ist. Goldene Felder haben mehrere Böden übereinander.', '你可以站立的每塊地面：它在哪一格、高度是多少，以及它是水、熔岩還是酸液。金色格子表示有好幾層地板疊在一起。') },
   { key: 'portals', grep: true, about: () => tr('The ways in and out: which side of the cube, which square, how high.',
-    'Die Wege hinein und hinaus: welche Seite des Würfels, welches Feld, wie hoch.') },
+    'Die Wege hinein und hinaus: welche Seite des Würfels, welches Feld, wie hoch.', '出入口的位置：方塊的哪一面、哪一格，以及高度。') },
   { key: 'ladders', grep: true, about: () => tr('Ladders up a cliff: where they stand and from which height to which.',
-    'Leitern eine Klippe hinauf: wo sie stehen und von welcher Höhe zu welcher.') },
+    'Leitern eine Klippe hinauf: wo sie stehen und von welcher Höhe zu welcher.', '爬上懸崖的梯子：梯子在哪裡，以及連接哪些高度。') },
   { key: 'fenceList', grep: true, about: () => tr('Fences along cliff edges, so you don\'t fall off by accident.',
-    'Zäune an Klippenrändern, damit du nicht aus Versehen hinunterfällst.') },
+    'Zäune an Klippenrändern, damit du nicht aus Versehen hinunterfällst.', '懸崖邊的柵欄，免得你不小心掉下去。') },
   { key: 'routes', grep: true, about: () => tr('The ways the inspector walked, to check that every entrance leads to the exit (P in the game shows them).',
-    'Die Wege, die der Prüfer gegangen ist, um zu prüfen, dass jeder Eingang zum Ausgang führt (P im Spiel zeigt sie).') },
+    'Die Wege, die der Prüfer gegangen ist, um zu prüfen, dass jeder Eingang zum Ausgang führt (P im Spiel zeigt sie).', '檢查器走過的路線，用來確認每個入口都能通往出口（在遊戲裡按 P 可以顯示）。') },
   { key: 'rewardSites', grep: true, about: () => tr('Special places for treasure or a fight.',
-    'Besondere Plätze für einen Schatz oder einen Kampf.') },
-  { key: 'stats', about: m => tr('A little report about the cube, for people who look at it: ', 'Ein kleiner Bericht über den Würfel, für Leute, die ihn sich anschauen: ') + Object.entries(m.stats).filter(([, v]) => typeof v === 'number').map(([k, v]) => `${k} ${v}`).join(', ') },
+    'Besondere Plätze für einen Schatz oder einen Kampf.', '放寶物或安排戰鬥的特別地點。') },
+  { key: 'stats', about: m => tr('A little report about the cube, for people who look at it: ', 'Ein kleiner Bericht über den Würfel, für Leute, die ihn sich anschauen: ', '給檢查方塊的人看的簡短報告：') + Object.entries(m.stats).filter(([, v]) => typeof v === 'number').map(([k, v]) => `${k} ${v}`).join(', ') },
 ];
 
 export default function mount(el) {
@@ -42,8 +42,8 @@ export default function mount(el) {
   box.style.maxWidth = '330px';
   const row = html(el, `<div class="row">
     <label>Seed <input type="number" class="seed" value="${1 + Math.floor(Math.random() * 999)}"></label>
-    <label>${tr('depth', 'Tiefe')} <select class="depth">${Array.from({ length: MAX_DEPTH }, (_, d) => d + 1).map(d => `<option value="${d}" ${d === 1 ? 'selected' : ''}>${d} \u00B7 ${themeLabel(themeAt(d))}</option>`).join('')}</select></label>
-    <button class="dice">${tr('Another cube', 'Anderer Würfel')}</button></div>`);
+    <label>${tr('depth', 'Tiefe', '深度')} <select class="depth">${Array.from({ length: MAX_DEPTH }, (_, d) => d + 1).map(d => `<option value="${d}" ${d === 1 ? 'selected' : ''}>${d} \u00B7 ${themeLabel(themeAt(d))}</option>`).join('')}</select></label>
+    <button class="dice">${tr('Another cube', 'Anderer Würfel', '另一個方塊')}</button></div>`);
   const list = html(el, '<div class="row things"></div>');
   const out = html(el, '<div class="out"></div>');
   const $ = s => row.querySelector(s);
@@ -110,12 +110,12 @@ export default function mount(el) {
     draw();
     list.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.k === picked));
     const thing = THINGS.find(t => t.key === picked), by = readers?.get(picked);
-    const facts = `${tr('cube', 'Würfel')} <b>${map.key}</b> \u00B7 ${tr('depth', 'Tiefe')} <b>${map.depth}</b> \u00B7 ${tr('land', 'Land')} <b>${map.kind}</b> \u00B7 ${tr('shape', 'Form')} <b>${map.archetype}</b>`;
+    const facts = `${tr('cube', 'Würfel', '方塊')} <b>${map.key}</b> \u00B7 ${tr('depth', 'Tiefe', '深度')} <b>${map.depth}</b> \u00B7 ${tr('land', 'Land', '地形')} <b>${map.kind}</b> \u00B7 ${tr('shape', 'Form', '形狀')} <b>${map.archetype}</b>`;
     const known = new Set([...THINGS.map(t => t.key), 'key', 'depth', 'kind', 'archetype']), rest = Object.keys(map).filter(k => !known.has(k));
     out.innerHTML = `${facts}\n\n<b>${picked}</b>: ${thing.about(map)}` +
-      (thing.grep ? `\n${tr('Used by', 'Benutzt von')}: ` + (by ? [...by].sort((a, b) => b[1] - a[1]).map(([p, n]) => `<span class="chip">${p === 'main' ? 'main.js' : p + '/'} \u00D7${n}</span>`).join(' ')
-        : tr('(reading the code\u2026)', '(lese den Code\u2026)')) : '') +
-      `\n\n<span class="muted">${tr('Also in the box', 'Außerdem in der Kiste')}: ${rest.join(', ')}</span>`;
+      (thing.grep ? `\n${tr('Used by', 'Benutzt von', '使用者')}: ` + (by ? [...by].sort((a, b) => b[1] - a[1]).map(([p, n]) => `<span class="chip">${p === 'main' ? 'main.js' : p + '/'} \u00D7${n}</span>`).join(' ')
+        : tr('(reading the code\u2026)', '(lese den Code\u2026)', '（正在讀取程式碼……）')) : '') +
+      `\n\n<span class="muted">${tr('Also in the box', 'Außerdem in der Kiste', '盒子裡還有')}: ${rest.join(', ')}</span>`;
   }
 
   $('.dice').onclick = () => { $('.seed').value = 1 + Math.floor(Math.random() * 99999); build(); };

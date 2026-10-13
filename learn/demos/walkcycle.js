@@ -15,8 +15,8 @@ const CLIP = { walk: { reach: 26, lift: 10, bob: 3 }, run: { reach: 44, lift: 24
 
 export default function mount(el) {
   const W = 560, H = 250, { g } = canvas(el, W, H);
-  const row = html(el, `<div class="row"><label>${tr('speed', 'Tempo')} <input type="range" class="sp" min="0" max="${RUN_SPEED}" step="0.05" value="${WALK_SPEED}"> <b class="sv"></b></label>
-    <label><input type="checkbox" class="follow" checked> ${tr('the cycle follows the speed', 'der Zyklus folgt dem Tempo')}</label></div>`);
+  const row = html(el, `<div class="row"><label>${tr('speed', 'Tempo', '速度')} <input type="range" class="sp" min="0" max="${RUN_SPEED}" step="0.05" value="${WALK_SPEED}"> <b class="sv"></b></label>
+    <label><input type="checkbox" class="follow" checked> ${tr('the cycle follows the speed', 'der Zyklus folgt dem Tempo', '動畫循環跟著速度改變')}</label></div>`);
   const out = html(el, '<div class="out"></div>');
   const $ = s => row.querySelector(s);
   const GY = 210, HX = 230, THIGH = 42, SHIN = 42;
@@ -78,9 +78,9 @@ export default function mount(el) {
       g.fillStyle = '#d8dde6'; g.fillText(`${n} ${Math.round(v * 100)}%`, 400, y - 2);
     });
     $('.sv').textContent = num(speed);
-    out.innerHTML = speed < 0.05 ? tr('Standing still: the idle clip only.', 'Stillstehen: nur der Steh-Clip.')
-      : (slipping ? tr('<b style="color:#ff9a8a">The feet slide!</b> The clip plays at its own pace, not at the pace of the ground.', '<b style="color:#ff9a8a">Die Füße rutschen!</b> Der Clip spielt in seinem eigenen Tempo, nicht im Tempo des Bodens.')
-        : tr('<b style="color:#70d6aa">The feet stay planted:</b> a foot on the ground moves back exactly as fast as the ground.', '<b style="color:#70d6aa">Die Füße bleiben stehen:</b> Ein Fuß auf dem Boden bewegt sich genau so schnell nach hinten wie der Boden.'))
-        + tr(`\n${num(rate)} cycles a second.`, `\n${num(rate)} Zyklen pro Sekunde.`);
+    out.innerHTML = speed < 0.05 ? tr('Standing still: the idle clip only.', 'Stillstehen: nur der Steh-Clip.', '站著不動：只播放待機動畫。')
+      : (slipping ? tr('<b style="color:#ff9a8a">The feet slide!</b> The clip plays at its own pace, not at the pace of the ground.', '<b style="color:#ff9a8a">Die Füße rutschen!</b> Der Clip spielt in seinem eigenen Tempo, nicht im Tempo des Bodens.', '<b style="color:#ff9a8a">腳在滑！</b>動畫照自己的速度播放，和地面移動速度不同。')
+        : tr('<b style="color:#70d6aa">The feet stay planted:</b> a foot on the ground moves back exactly as fast as the ground.', '<b style="color:#70d6aa">Die Füße bleiben stehen:</b> Ein Fuß auf dem Boden bewegt sich genau so schnell nach hinten wie der Boden.', '<b style="color:#70d6aa">腳穩穩踩在地上：</b>腳往後移動的速度和地面完全一樣。'))
+        + tr(`\n${num(rate)} cycles a second.`, `\n${num(rate)} Zyklen pro Sekunde.`, `\n每秒 ${num(rate)} 個循環。`);
   });
 }

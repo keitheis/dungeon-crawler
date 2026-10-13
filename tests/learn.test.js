@@ -1,7 +1,8 @@
-// The kids' guide (learn/): its pages, its two languages, and its references into the game.
+// The kids' guide (learn/): its pages, its three languages, and its references into the game.
 // "up to date with the game" fails when code the guide explains has changed; the message says
 // which slides to review (learn/README.md, tools/learn.mjs).
 import { test } from 'node:test';
+import { runInNewContext } from 'node:vm';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -15,6 +16,25 @@ const LEARN = join(ROOT, 'learn');
 const pages = readdirSync(LEARN).filter(f => f.endsWith('.html'));
 const read = f => readFileSync(join(LEARN, f), 'utf8');
 const ids = f => new Set([...read(f).matchAll(/\bid="([^"]+)"/g)].map(m => m[1]));
+
+test('guide selects a saved language or a supported browser preference before rendering', () => {
+  const source = read('lang.js');
+  for (const [saved, preferences, expected] of [
+    ['zh-Hant', ['de-DE'], 'zh-Hant'], ['de', ['zh-TW'], 'de'], ['en', ['zh-TW'], 'en'],
+    [null, ['zh-TW', 'en-US'], 'zh-Hant'], [null, ['zh-Hant-TW'], 'zh-Hant'],
+    [null, ['zh-HK'], 'zh-Hant'], [null, ['zh'], 'zh-Hant'],
+    ['unknown', ['fr-FR', 'de-AT'], 'de'], [null, ['fr-FR'], 'en'],
+    [null, ['zh-CN', 'en-US'], 'en'],
+  ]) {
+    const document = { documentElement: { dataset: {} } };
+    runInNewContext(source, { document, navigator: { languages: preferences }, localStorage: { getItem: () => saved } });
+    assert.equal(document.documentElement.lang, expected, `${saved}: ${preferences}`);
+    assert.equal(document.documentElement.dataset.lang, expected);
+  }
+  const document = { documentElement: { dataset: {} } };
+  runInNewContext(source, { document, navigator: { language: 'zh-TW' }, localStorage: { getItem() { throw new Error('unavailable'); } } });
+  assert.equal(document.documentElement.lang, 'zh-Hant', 'works when storage is unavailable');
+});
 
 test('learn markers do not change the code fingerprints', () => {
   for (const [path, source, marker] of [
@@ -33,35 +53,51 @@ test('learn markers do not change the code fingerprints', () => {
 test('every room in decks.js exists and every room page is in decks.js', () => {
   for (const d of DECKS) {
     assert.ok(pages.includes(d.file), `${d.file} is listed but missing`);
-    assert.ok(d.de?.title && d.de?.teaser, `${d.file}: German title and teaser`);
+    for (const lang of ['de', 'zh-Hant'])
+      assert.ok(d[lang]?.title && d[lang]?.teaser, `${d.file}: ${lang} title and teaser`);
     assert.ok(existsSync(resolve(LEARN, d.icon)), `${d.file}: icon ${d.icon}`);
   }
   for (const p of pages.filter(p => read(p).includes('<main class="deck">')))
     assert.ok(DECKS.some(d => d.file === p), `${p} is a room but not in decks.js`);
 });
 
-// <x lang="en"> is always followed by its <x lang="de"> (and the other way round), so no text
-// is missing in either language
-test('every text comes in English and German', () => {
+// Each translated block must have the same sibling block in every supported language.
+// This guards missing or misplaced text that would disappear when readers switch languages.
+test('every text comes in English, German and Taiwan Chinese', () => {
+  const languages = ['en', 'de', 'zh-Hant'];
   for (const page of pages) {
     const html = read(page);
     assert.match(html, /<script src="lang.js"><\/script>/, `${page}: loads lang.js`);
-    assert.match(html, /<title data-de="[^"]+">/, `${page}: German title`);
-    const tags = [...html.matchAll(/<(\w+)\b([^>]*)>/g)].filter(m => m[1] !== 'html');
-    const opens = tags.map(m => ({ tag: m[1], lang: m[2].match(/\blang="(\w+)"/)?.[1], at: m.index }));
-    for (const [i, t] of opens.entries()) {
-      if (t.lang === 'en') {
-        // its German partner: the next element at the same level, after the English one closes
-        const close = html.indexOf(`</${t.tag}>`, t.at), next = opens.find(o => o.at > close);
-        assert.ok(next && next.tag === t.tag && next.lang === 'de', `${page}: <${t.tag} lang="en"> at ${line(html, t.at)} has no <${t.tag} lang="de"> after it`);
-      } else if (t.lang === 'de') {
-        const prev = opens.slice(0, i).reverse().find(o => o.tag === t.tag && (o.lang === 'en' || o.lang === 'de'));
-        assert.ok(prev?.lang === 'en', `${page}: <${t.tag} lang="de"> at ${line(html, t.at)} has no English partner`);
-      } else assert.ok(!t.lang, `${page}: unknown lang at ${line(html, t.at)}`);
+    const title = html.match(/<title\b[^>]*>/)?.[0] || '';
+    for (const lang of languages.slice(1))
+      assert.match(title, new RegExp(`data-${lang.toLowerCase()}="[^"]+"`), `${page}: ${lang} title`);
+    const root = { children: [] }, stack = [root], translated = [];
+    for (const m of html.matchAll(/<(\/?)(\w+)\b([^>]*)>/g)) {
+      const [, closing, tag, attrs] = m;
+      if (closing) {
+        while (stack.length > 1 && stack.pop().tag !== tag);
+        continue;
+      }
+      const parent = stack.at(-1), lang = attrs.match(/\blang="([^"\s]+)"/)?.[1];
+      const node = { tag, lang, at: m.index, parent, children: [] };
+      parent.children.push(node);
+      if (lang && tag !== 'html') translated.push(node);
+      if (!VOID.has(tag)) stack.push(node);
     }
-    // a shared image (outside the language pairs) needs its German alt text in data-de-alt
+    for (const node of translated) {
+      const languageIndex = languages.indexOf(node.lang);
+      assert.ok(languageIndex >= 0, `${page}: unknown lang ${node.lang} at ${line(html, node.at)}`);
+      const start = node.parent.children.indexOf(node) - languageIndex;
+      for (const [offset, lang] of languages.entries()) {
+        const sibling = node.parent.children[start + offset];
+        assert.ok(sibling?.tag === node.tag && sibling.lang === lang,
+          `${page}: <${node.tag} lang="${node.lang}"> at ${line(html, node.at)} needs its ${lang} sibling`);
+      }
+    }
     for (const m of html.matchAll(/<img\b[^>]*>/g))
-      if (/\balt="[^"]+"/.test(m[0]) && !inLang(html, m.index)) assert.match(m[0], /data-de-alt="/, `${page}: image at ${line(html, m.index)} needs data-de-alt`);
+      if (/\balt="[^"]+"/.test(m[0]) && !inLang(html, m.index))
+        for (const lang of languages.slice(1)) assert.ok(m[0].includes(`data-${lang.toLowerCase()}-alt="`),
+          `${page}: image at ${line(html, m.index)} needs ${lang} alt text`);
   }
 });
 const line = (s, at) => 'line ' + (s.slice(0, at).split('\n').length);

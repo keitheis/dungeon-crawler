@@ -20,8 +20,8 @@ function sound(kill) {
 
 export default function mount(el) {
   const W = 640, H = 230, { g, c } = canvas(el, W, H);
-  const FX = [['stop', tr('hit pause', 'Trefferpause')], ['kick', tr('camera nudge', 'Kamera-Schubs')], ['sparks', tr('sparks', 'Funken')], ['num', tr('damage number', 'Schadenszahl')], ['flash', tr('white flash + push', 'weißer Blitz + Stoß')], ['snd', tr('sound', 'Geräusch')]];
-  const row = html(el, `<div><div class="row"><button class="hit">${tr('Hit it! (or click the picture)', 'Hau drauf! (oder klick ins Bild)')}</button><button class="all">${tr('all on', 'alle an')}</button><button class="none">${tr('all off', 'alle aus')}</button></div>
+  const FX = [['stop', tr('hit pause', 'Trefferpause', '命中停頓')], ['kick', tr('camera nudge', 'Kamera-Schubs', '攝影機震動')], ['sparks', tr('sparks', 'Funken', '火花')], ['num', tr('damage number', 'Schadenszahl', '傷害數字')], ['flash', tr('white flash + push', 'weißer Blitz + Stoß', '白光閃爍＋擊退')], ['snd', tr('sound', 'Geräusch', '音效')]];
+  const row = html(el, `<div><div class="row"><button class="hit">${tr('Hit it! (or click the picture)', 'Hau drauf! (oder klick ins Bild)', '打它！（或點一下畫面）')}</button><button class="all">${tr('all on', 'alle an', '全部開啟')}</button><button class="none">${tr('all off', 'alle aus', '全部關閉')}</button></div>
     <div class="row">${FX.map(([k, n]) => `<label><input type="checkbox" class="${k}" checked> ${n}</label>`).join('')}</div></div>`);
   const on = k => row.querySelector('.' + k).checked;
   const blob = { x: 430, hp: 100, flash: 0, push: 0, dead: 0 };

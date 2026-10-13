@@ -23,8 +23,10 @@
 [data-theme=core]     { --sky1: #4a1404; --sky2: #0a0201; --accent: #ff5a00; }
 
 * { box-sizing: border-box; }
-/* every text block exists twice, <x lang="en"> and <x lang="de">; lang.js picks one */
-html:not([data-lang=de]) body [lang=de], html[data-lang=de] body [lang=en] { display: none !important; }
+/* Show only the text blocks selected by lang.js. Shared code and demos stay visible. */
+html[data-lang=en] body [lang]:not([lang=en]),
+html[data-lang=de] body [lang]:not([lang=de]),
+html[data-lang="zh-Hant"] body [lang]:not([lang="zh-Hant"]) { display: none !important; }
 html, body { margin: 0; min-height: 100%; }
 body { background: radial-gradient(ellipse at 50% 35%, var(--sky1) 0%, var(--sky2) 70%, #05070a 100%) fixed;
   color: var(--text); font: 17px/1.55 var(--read); }
@@ -301,3 +303,8 @@ pre.stepper .ln.on { background: color-mix(in srgb, var(--accent) 28%, transpare
   .slide { display: block !important; box-shadow: none; break-inside: avoid; background: #fff; border-color: #aaa; }
   h1, h2, b { color: #000; }
 }
+
+html[data-lang="zh-Hant"] .demo::before { content: "動手試試"; }
+html[data-lang="zh-Hant"] .demo.real::before { content: "動手試試 · 實際遊戲程式碼"; }
+select.langsw { color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 5px; padding: 4px 6px; cursor: pointer; }
+select.langsw option { background: #12161e; color: #d8dde6; }

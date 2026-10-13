@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-de="Damit alles läuft · Kinderführer zu Cube Crawler">Keeping It Working · Kids' Guide to Cube Crawler</title>
+<title data-de="Damit alles läuft · Kinderführer zu Cube Crawler" data-zh-hant="讓遊戲順利運作 · Cube Crawler 兒童指南">Keeping It Working · Kids' Guide to Cube Crawler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="kids.css">
 <script src="lang.js"></script>
@@ -13,18 +13,29 @@
 <section class="slide" id="break" data-lv="1">
   <h2 lang="en">Programs break in surprising places</h2>
   <h2 lang="de">Programme gehen an überraschenden Stellen kaputt</h2>
+  <h2 lang="zh-Hant">程式可能在意想不到的地方出問題</h2>
   <div class="cols">
     <div>
       <p class="lead" lang="en">You make the hero run a little slower. Easy! But then the legs move too fast for the speed, the footsteps don't match, and a monster that used to just miss you now catches you.</p>
       <p class="lead" lang="de">Du lässt den Helden ein bisschen langsamer rennen. Ganz leicht! Aber dann bewegen sich die Beine zu schnell für das Tempo, die Schritte passen nicht mehr, und ein Monster, das dich vorher knapp verfehlt hat, erwischt dich jetzt.</p>
+      <p class="lead" lang="zh-Hant">你讓英雄跑慢一點。很簡單！但接著，腿擺動的速度太快，腳步聲對不上，原本差一點抓到你的怪物，現在卻追上你了。</p>
       <p lang="en">In a game, everything touches everything. One small change can show up somewhere far away. Game makers can't play the whole game after every change, so they have helpers:</p>
       <p lang="de">In einem Spiel hängt alles mit allem zusammen. Eine kleine Änderung kann sich ganz woanders zeigen. Spielemacher können nicht nach jeder Änderung das ganze Spiel durchspielen, darum haben sie Helfer:</p>
+      <p lang="zh-Hant">遊戲裡的各個部分都互相影響。一個小改動，可能會在很遠的地方產生影響。遊戲製作者不可能每改一次就把整款遊戲玩過一遍，所以他們有這些幫手：</p>
     </div>
     <div class="cols" style="gap:12px">
-      <div class="card"><h3 lang="en">Tests</h3> <h3 lang="de">Tests</h3><p class="small" lang="en">Little programs that check the rules, hundreds of times, in seconds.</p> <p class="small" lang="de">Kleine Programme, die die Regeln prüfen, hundertfach, in Sekunden.</p></div>
-      <div class="card"><h3 lang="en">Seeds</h3> <h3 lang="de">Seeds</h3><p class="small" lang="en">A bug that happened once can be made to happen again.</p> <p class="small" lang="de">Ein Fehler, der einmal passiert ist, lässt sich wieder hervorholen.</p></div>
-      <div class="card"><h3 lang="en">Tools to look</h3> <h3 lang="de">Werkzeuge zum Hinschauen</h3><p class="small" lang="en">Secret switches and pages that show what is normally hidden.</p> <p class="small" lang="de">Geheime Schalter und Seiten, die zeigen, was sonst versteckt ist.</p></div>
-      <div class="card"><h3 lang="en">Save points</h3> <h3 lang="de">Speicherpunkte</h3><p class="small" lang="en">Every working step is saved, so you can always go back.</p> <p class="small" lang="de">Jeder funktionierende Schritt wird gespeichert, damit du immer zurück kannst.</p></div>
+      <div class="card"><h3 lang="en">Tests</h3> <h3 lang="de">Tests</h3>
+      <h3 lang="zh-Hant">測試</h3><p class="small" lang="en">Little programs that check the rules, hundreds of times, in seconds.</p> <p class="small" lang="de">Kleine Programme, die die Regeln prüfen, hundertfach, in Sekunden.</p>
+      <p class="small" lang="zh-Hant">小程式能在幾秒內，重複檢查規則好幾百次。</p></div>
+      <div class="card"><h3 lang="en">Seeds</h3> <h3 lang="de">Seeds</h3>
+      <h3 lang="zh-Hant">種子</h3><p class="small" lang="en">A bug that happened once can be made to happen again.</p> <p class="small" lang="de">Ein Fehler, der einmal passiert ist, lässt sich wieder hervorholen.</p>
+      <p class="small" lang="zh-Hant">曾經發生過的錯誤，可以再次重現。</p></div>
+      <div class="card"><h3 lang="en">Tools to look</h3> <h3 lang="de">Werkzeuge zum Hinschauen</h3>
+      <h3 lang="zh-Hant">觀察工具</h3><p class="small" lang="en">Secret switches and pages that show what is normally hidden.</p> <p class="small" lang="de">Geheime Schalter und Seiten, die zeigen, was sonst versteckt ist.</p>
+      <p class="small" lang="zh-Hant">特殊開關和工具頁面，能顯示平常看不見的資訊。</p></div>
+      <div class="card"><h3 lang="en">Save points</h3> <h3 lang="de">Speicherpunkte</h3>
+      <h3 lang="zh-Hant">存檔點</h3><p class="small" lang="en">Every working step is saved, so you can always go back.</p> <p class="small" lang="de">Jeder funktionierende Schritt wird gespeichert, damit du immer zurück kannst.</p>
+      <p class="small" lang="zh-Hant">每次成功的進展都保存下來，隨時都能回到之前的狀態。</p></div>
     </div>
   </div>
 </section>
@@ -32,20 +43,25 @@
 <section class="slide" id="try-test" data-lv="1" data-src="src/core/combat.js#SWORD,swordHit src/core/enemies.js#SPIDER,STUNDER">
   <h2 lang="en">Try it: break a test</h2>
   <h2 lang="de">Probier es: Mach einen Test kaputt</h2>
+  <h2 lang="zh-Hant">動手試試：讓測試失敗</h2>
   <p lang="en">One of the game's tests checks how the Old Sword feels: a spider should take <b>two</b> slashes, a Stunder <b>five</b>. Here the test runs with the game's real combat code. Change the sword's damage and run the test again.</p>
   <p lang="de">Einer der Tests des Spiels prüft, wie sich das Alte Schwert anfühlt: Eine Spinne soll <b>zwei</b> Hiebe brauchen, ein Stunder <b>fünf</b>. Hier läuft der Test mit dem echten Kampfcode des Spiels. Ändere den Schaden des Schwerts und lass den Test noch mal laufen.</p>
+  <p lang="zh-Hant">遊戲有個測試會檢查 Old Sword 的戰鬥手感：蜘蛛應該要砍<b>兩刀</b>，Stunder 則要砍<b>五刀</b>。這裡的測試會使用遊戲實際的戰鬥程式碼。改變劍的傷害，再執行一次測試。</p>
   <div class="demo real" data-demo="testlab"></div>
   <p class="small muted" lang="en">Look at the strip: only a few numbers pass. The test doesn't care about the exact number, it cares about how the fight <i>feels</i>.</p>
   <p class="small muted" lang="de">Schau dir den Streifen an: Nur wenige Zahlen bestehen. Dem Test ist die genaue Zahl egal, ihm ist wichtig, wie sich der Kampf <i>anfühlt</i>.</p>
+  <p class="small muted" lang="zh-Hant">看看色帶：只有少數數值能通過。測試在意的不是精確的數字，而是戰鬥的<i>手感</i>。</p>
 </section>
 
 <section class="slide" id="tests" data-lv="2">
   <h2 lang="en">Tests: inspectors that never get tired</h2>
   <h2 lang="de">Tests: Prüfer, die nie müde werden</h2>
+  <h2 lang="zh-Hant">測試：永遠不會累的檢查員</h2>
   <div class="cols">
     <div>
       <p lang="en">A <a class="w" href="words.html#test">test</a> is a small program that uses the game's code and checks one thing. For example:</p>
       <p lang="de">Ein <a class="w" href="words.html#test">Test</a> ist ein kleines Programm, das den Code des Spiels benutzt und eine Sache prüft. Zum Beispiel:</p>
+      <p lang="zh-Hant"><a class="w" href="words.html#test">測試</a>是一個使用遊戲程式碼、檢查一件事情的小程式。例如：</p>
       <pre data-label="tests/movement.test.js (as of commit 3e16e07)"><code>test('running ramps up over RUN_RAMP, passing walking pace early, so taps stay precise', () =&gt; {
   stand();
   const walk = until(WALK_SPEED, 1, 0, true);
@@ -56,20 +72,27 @@
 });</code></pre>
       <p lang="en">Type <code>npm test</code>, and all of them run. Green: all good. Red: something you changed broke something, maybe something you didn't even think about.</p>
       <p lang="de">Tipp <code>npm test</code>, und alle laufen. Grün: alles gut. Rot: Etwas, das du geändert hast, hat etwas kaputtgemacht, vielleicht etwas, an das du gar nicht gedacht hast.</p>
+      <p lang="zh-Hant">輸入 <code>npm test</code>，就能執行所有測試。綠色：一切正常。紅色：你的改動讓某個地方出問題了，甚至可能是你根本沒想到的地方。</p>
       <p lang="en">Some tests build hundreds of worlds and walk through them: can every world be finished down to the core? Do houses in the town overlap?</p>
       <p lang="de">Manche Tests bauen Hunderte Welten und laufen hindurch: Kann man jede Welt bis zum Kern schaffen? Überlappen sich Häuser in der Stadt?</p>
+      <p lang="zh-Hant">有些測試會建立幾百個世界，再走遍它們：每個世界都能一路走到核心嗎？城鎮裡的房子會重疊嗎？</p>
     </div>
     <div class="card">
       <h3 lang="en">A true story</h3>
       <h3 lang="de">Eine wahre Geschichte</h3>
+      <h3 lang="zh-Hant">一個真實的例子</h3>
       <p lang="en">The hero used to run at 4.1 cells per second. It felt too fast, so the run was slowed down to 2.8.</p>
       <p lang="de">Der Held rannte früher mit 4,1 Zellen pro Sekunde. Das fühlte sich zu schnell an, also wurde das Rennen auf 2,8 verlangsamt.</p>
+      <p lang="zh-Hant">英雄原本每秒能跑 4.1 格。感覺太快了，所以把跑步速度降到 2.8。</p>
       <p lang="en">And then a test failed! It checked that, when you start running, you reach walking speed after about <i>half</i> of the speed-up time. With the slower run, that now took 70%.</p>
       <p lang="de">Und dann schlug ein Test fehl! Er prüfte, dass man beim Losrennen nach etwa der <i>Hälfte</i> der Anlaufzeit Gehtempo erreicht. Mit dem langsameren Rennen dauerte das jetzt 70%.</p>
+      <p lang="zh-Hant">結果有個測試失敗了！它會檢查開始跑步後，是不是在加速時間過了大約<i>一半</i>時達到步行速度。跑步變慢後，現在要等到加速時間的 70% 才能達到。</p>
       <p lang="en">Was that bad? No, it was fine, so the test was updated to say 70%, and the notes in <code>docs/combat.md</code> too.</p>
       <p lang="de">War das schlimm? Nein, es war in Ordnung, also wurde der Test auf 70% geändert, und die Notizen in <code>docs/combat.md</code> auch.</p>
+      <p lang="zh-Hant">這樣不好嗎？沒有，這樣也沒問題，所以我們把測試改成 70%，也更新了 <code>docs/combat.md</code> 裡的說明。</p>
       <p class="small muted" lang="en">Lesson: a failing test is not always a bug. It's a question: "did you mean to change this?"</p>
       <p class="small muted" lang="de">Lehre: Ein fehlschlagender Test ist nicht immer ein Fehler. Er ist eine Frage: "Wolltest du das ändern?"</p>
+      <p class="small muted" lang="zh-Hant">學到的事：測試失敗不一定代表有錯誤。它是在問你：「你確定要改變這個行為嗎？」</p>
     </div>
   </div>
 </section>
@@ -77,32 +100,43 @@
 <section class="slide" id="replay" data-lv="2">
   <h2 lang="en">Bugs you can replay</h2>
   <h2 lang="de">Fehler, die man wiederholen kann</h2>
+  <h2 lang="zh-Hant">可以重現的錯誤</h2>
   <div class="cols">
     <div>
       <p lang="en">The worst kind of bug is one you saw once and can never find again. In Cube Crawler that almost can't happen: every world comes from a <a class="w" href="words.html#seed">seed</a>. Open the same seed, and you get the same world, the same bridges, the same monsters in the same places.</p>
       <p lang="de">Die schlimmste Art Fehler ist einer, den man einmal gesehen hat und nie wiederfindet. In Cube Crawler kann das fast nicht passieren: Jede Welt kommt aus einem <a class="w" href="words.html#seed">Seed</a>. Öffne denselben Seed, und du bekommst dieselbe Welt, dieselben Brücken, dieselben Monster an denselben Stellen.</p>
+      <p lang="zh-Hant">最麻煩的錯誤，是你只看過一次，之後怎麼找都找不到。在 Cube Crawler 裡，這幾乎不會發生：每個世界都來自一顆<a class="w" href="words.html#seed">種子</a>。使用同一顆種子，就會得到同一個世界、同樣的橋，怪物也會出現在同樣的位置。</p>
       <p lang="en">The dev panel (<code>?dev=1</code>) shows the seed, the depth and the floor you're on, with a button to copy all of it.</p>
       <p lang="de">Das Entwickler-Panel (<code>?dev=1</code>) zeigt den Seed, die Tiefe und das Stockwerk, auf dem du bist, mit einem Knopf, um alles zu kopieren.</p>
+      <p lang="zh-Hant">開發者面板（<code>?dev=1</code>）會顯示種子、深度和你所在的樓層，還有一個按鈕可以把這些資訊全部複製下來。</p>
       <a class="portal" href="random.html#why" lang="en">Why "not really random" is great</a>
       <a class="portal" href="random.html#why" lang="de">Warum "nicht wirklich zufällig" super ist</a>
+      <a class="portal" href="random.html#why" lang="zh-Hant">為什麼「不完全隨機」很棒</a>
     </div>
     <div class="card">
       <h3 lang="en">A good bug report</h3>
       <h3 lang="de">Ein guter Fehlerbericht</h3>
+      <h3 lang="zh-Hant">一份好的錯誤回報</h3>
       <p lang="en">Whoever fixes the bug wasn't there when it happened. Tell them three things, and where:</p>
       <p lang="de">Wer den Fehler repariert, war nicht dabei, als er passiert ist. Sag drei Dinge, und wo:</p>
+      <p lang="zh-Hant">修正錯誤的人並不在現場。告訴他這三件事，以及發生的位置：</p>
       <ol class="steps">
         <li lang="en"><b>What you did:</b> "I jumped from the bridge into the lava."</li>
         <li lang="de"><b>Was du gemacht hast:</b> "Ich bin von der Brücke in die Lava gesprungen."</li>
+        <li lang="zh-Hant"><b>你做了什麼：</b>「我從橋上跳進熔岩裡。」</li>
         <li lang="en"><b>What happened:</b> "I landed on it and walked away."</li>
         <li lang="de"><b>Was passiert ist:</b> "Ich bin darauf gelandet und weggelaufen."</li>
+        <li lang="zh-Hant"><b>發生了什麼：</b>「我踩在熔岩上，還能走開。」</li>
         <li lang="en"><b>What you expected:</b> "I should have burned."</li>
         <li lang="de"><b>Was du erwartet hast:</b> "Ich hätte verbrennen sollen."</li>
+        <li lang="zh-Hant"><b>你預期會怎樣：</b>「我應該被燒到。」</li>
         <li lang="en"><b>Where:</b> "Seed 123, depth 4, next to the stairs." A screenshot helps a lot.</li>
         <li lang="de"><b>Wo:</b> "Seed 123, Tiefe 4, neben der Treppe." Ein Screenshot hilft sehr.</li>
+        <li lang="zh-Hant"><b>在哪裡：</b>「種子 123，深度 4，樓梯旁邊。」附上截圖會很有幫助。</li>
       </ol>
       <p class="small muted" lang="en">"Lava is broken" is not a bug report. It's a riddle.</p>
       <p class="small muted" lang="de">"Lava ist kaputt" ist kein Fehlerbericht. Das ist ein Rätsel.</p>
+      <p class="small muted" lang="zh-Hant">「熔岩壞掉了」算不上錯誤回報，比較像謎語。</p>
     </div>
   </div>
 </section>
@@ -110,46 +144,62 @@
 <section class="slide" id="look" data-lv="2">
   <h2 lang="en">Tools to look inside</h2>
   <h2 lang="de">Werkzeuge, um hineinzuschauen</h2>
+  <h2 lang="zh-Hant">查看遊戲內部的工具</h2>
   <p lang="en">A lot of what the game does is invisible: routes, dice rolls, odds. So the makers built tools to make it visible. Try them:</p>
   <p lang="de">Vieles, was das Spiel macht, ist unsichtbar: Routen, Würfelwürfe, Chancen. Darum haben die Macher Werkzeuge gebaut, die es sichtbar machen. Probier sie aus:</p>
+  <p lang="zh-Hant">遊戲做的很多事情都看不見：路線、擲骰結果、機率。所以製作者做了工具，把這些資訊顯示出來。試試看：</p>
   <div class="cols">
     <div>
       <ul>
         <li lang="en"><a href="../index.html?dev=1"><code>?dev=1</code></a>: the dev panel. <kbd>PgDn</kbd> / <kbd>PgUp</kbd> jump a depth down or up, clicking a portal takes it, and you can drop any monster at any level next to you.</li>
         <li lang="de"><a href="../index.html?dev=1"><code>?dev=1</code></a>: das Entwickler-Panel. <kbd>Bild↓</kbd> / <kbd>Bild↑</kbd> springen eine Tiefe nach unten oder oben, ein Klick auf ein Portal nimmt es, und du kannst jedes Monster in jeder Stufe neben dir erscheinen lassen.</li>
+        <li lang="zh-Hant"><a href="../index.html?dev=1"><code>?dev=1</code></a>：開發者面板。按 <kbd>PgDn</kbd> / <kbd>PgUp</kbd> 能往下或往上跳一層，點擊傳送門就能通過，也能在你旁邊生成任何種類、任何等級的怪物。</li>
         <li lang="en"><kbd>P</kbd> in the game: the route the cube factory planned, as a pink line.</li>
         <li lang="de"><kbd>P</kbd> im Spiel: die Route, die die Würfelfabrik geplant hat, als rosa Linie.</li>
+        <li lang="zh-Hant">在遊戲中按 <kbd>P</kbd>：用粉紅色線條顯示方塊工廠規劃的路線。</li>
         <li lang="en"><a href="../tools/kinds.html">tools/kinds.html</a>: every monster kind lined up, coloured as in the game.</li>
         <li lang="de"><a href="../tools/kinds.html">tools/kinds.html</a>: alle Monstersorten in einer Reihe, gefärbt wie im Spiel.</li>
+        <li lang="zh-Hant"><a href="../tools/kinds.html">tools/kinds.html</a>：把所有種類的怪物排成一列，顏色和遊戲裡相同。</li>
         <li lang="en"><a href="../tools/player.html">tools/player.html</a>: a music player for the game's songs, with every mood.</li>
         <li lang="de"><a href="../tools/player.html">tools/player.html</a>: ein Musikspieler für die Lieder des Spiels, mit jeder Stimmung.</li>
+        <li lang="zh-Hant"><a href="../tools/player.html">tools/player.html</a>：遊戲音樂的播放器，可以聽到各種情緒的版本。</li>
         <li lang="en">In a terminal, <code>node tools/loot-table.mjs</code> prints the odds of every sword, and <code>node tools/balance.mjs</code> plays whole games in fast-forward and prints how strong you are at every depth.</li>
         <li lang="de">Im Terminal druckt <code>node tools/loot-table.mjs</code> die Chancen für jedes Schwert, und <code>node tools/balance.mjs</code> spielt ganze Spiele im Schnelldurchlauf und druckt, wie stark du in jeder Tiefe bist.</li>
+        <li lang="zh-Hant">在終端機執行 <code>node tools/loot-table.mjs</code>，會列出每種劍的出現機率。執行 <code>node tools/balance.mjs</code>，則會快速模擬整場遊戲，列出你在各個深度的強度。</li>
       </ul>
     </div>
-    <figure><img class="shot" src="../blender/previews/items-preview.png" alt="A sheet of item models: swords, potions, coins, crystals" data-de-alt="Ein Bogen mit Gegenstandsmodellen: Schwerter, Tränke, Münzen, Kristalle"><figcaption lang="en">Every Blender script also saves a picture of what it built, a "contact sheet", into blender/previews/. One look, and you know if a sword came out wrong.</figcaption> <figcaption lang="de">Jedes Blender-Skript speichert auch ein Bild von dem, was es gebaut hat, einen "Kontaktbogen", in blender/previews/. Ein Blick, und du weißt, ob ein Schwert schiefgegangen ist.</figcaption></figure>
+    <figure><img class="shot" src="../blender/previews/items-preview.png" alt="A sheet of item models: swords, potions, coins, crystals" data-de-alt="Ein Bogen mit Gegenstandsmodellen: Schwerter, Tränke, Münzen, Kristalle" data-zh-hant-alt="物品模型總覽圖：劍、藥水、硬幣和水晶"><figcaption lang="en">Every Blender script also saves a picture of what it built, a "contact sheet", into blender/previews/. One look, and you know if a sword came out wrong.</figcaption> <figcaption lang="de">Jedes Blender-Skript speichert auch ein Bild von dem, was es gebaut hat, einen "Kontaktbogen", in blender/previews/. Ein Blick, und du weißt, ob ein Schwert schiefgegangen ist.</figcaption>
+    <figcaption lang="zh-Hant">每個 Blender 指令稿還會把製作成果存成一張「模型總覽圖」，放在 blender/previews/ 裡。看一眼，就能知道劍的模型有沒有做錯。</figcaption></figure>
   </div>
 </section>
 
 <section class="slide" id="git" data-lv="2">
   <h2 lang="en">Save points: git</h2>
   <h2 lang="de">Speicherpunkte: git</h2>
+  <h2 lang="zh-Hant">程式碼的存檔點：git</h2>
   <div class="cols">
     <div>
       <p lang="en">Games have save points. Code has <a class="w" href="words.html#git">git</a>. Every time something works, you save a <b>commit</b>: a snapshot of all files, with a message saying what changed.</p>
       <p lang="de">Spiele haben Speicherpunkte. Code hat <a class="w" href="words.html#git">git</a>. Jedes Mal, wenn etwas funktioniert, speicherst du einen <b>Commit</b>: einen Schnappschuss aller Dateien, mit einer Nachricht, was sich geändert hat.</p>
+      <p lang="zh-Hant">遊戲有存檔點。程式碼則有 <a class="w" href="words.html#git">git</a>。每次做出能正常運作的成果，就保存一筆 <b>commit</b>：所有檔案的快照，附上一段說明改了什麼的訊息。</p>
       <p lang="en">If your next change goes wrong, you can always go back to the last commit. That makes it safe to try wild ideas!</p>
       <p lang="de">Wenn deine nächste Änderung schiefgeht, kannst du immer zum letzten Commit zurück. Darum ist es sicher, wilde Ideen auszuprobieren!</p>
+      <p lang="zh-Hant">如果下一次改動出了問題，隨時都能回到上一筆 commit。這樣就能放心嘗試各種新奇點子！</p>
       <table>
-        <tr><td><code>git status</code></td><td lang="en">which files did I change?</td> <td lang="de">welche Dateien habe ich geändert?</td></tr>
-        <tr><td><code>git diff</code></td><td lang="en">what exactly did I change?</td> <td lang="de">was genau habe ich geändert?</td></tr>
-        <tr><td><code>git commit</code></td><td lang="en">save a snapshot, with a message</td> <td lang="de">einen Schnappschuss speichern, mit einer Nachricht</td></tr>
-        <tr><td><code>git restore</code></td><td lang="en">throw away changes, back to the last snapshot</td> <td lang="de">Änderungen wegwerfen, zurück zum letzten Schnappschuss</td></tr>
+        <tr><td><code>git status</code></td><td lang="en">which files did I change?</td> <td lang="de">welche Dateien habe ich geändert?</td>
+        <td lang="zh-Hant">我改了哪些檔案？</td></tr>
+        <tr><td><code>git diff</code></td><td lang="en">what exactly did I change?</td> <td lang="de">was genau habe ich geändert?</td>
+        <td lang="zh-Hant">我到底改了什麼？</td></tr>
+        <tr><td><code>git commit</code></td><td lang="en">save a snapshot, with a message</td> <td lang="de">einen Schnappschuss speichern, mit einer Nachricht</td>
+        <td lang="zh-Hant">保存快照，附上說明訊息</td></tr>
+        <tr><td><code>git restore</code></td><td lang="en">throw away changes, back to the last snapshot</td> <td lang="de">Änderungen wegwerfen, zurück zum letzten Schnappschuss</td>
+        <td lang="zh-Hant">捨棄改動，回到上一次快照</td></tr>
       </table>
     </div>
     <div>
       <p lang="en">Some real commit messages from this game:</p>
       <p lang="de">Ein paar echte Commit-Nachrichten aus diesem Spiel:</p>
+      <p lang="zh-Hant">這款遊戲裡的一些實際 commit 訊息：</p>
       <pre><code>feat(loot): add generated weapon drops with rarity glows and floor panel
 feat(player): get up from ragdolls with authored clips
 fix(player): keep feet planted while getting up
@@ -158,6 +208,7 @@ fix(player): slow the run and match its cycle and footsteps
 feat(dev): spawn any enemy kind from the dev panel</code></pre>
       <p class="small" lang="en">"feat" means a new feature, "fix" a repair. The word in brackets is the part of the game. Short, clear, one thing each.</p>
       <p class="small" lang="de">"feat" heißt neue Funktion, "fix" eine Reparatur. Das Wort in Klammern ist der Teil des Spiels. Kurz, klar, eine Sache pro Nachricht.</p>
+      <p class="small" lang="zh-Hant">「feat」表示新功能，「fix」表示修正。括號裡的字是遊戲的哪個部分。訊息要簡短、清楚，每次說明一件事。</p>
     </div>
   </div>
 </section>
@@ -165,6 +216,7 @@ feat(dev): spawn any enemy kind from the dev panel</code></pre>
 <section class="slide" id="example" data-lv="3">
   <h2 lang="en">A real change, from idea to commit</h2>
   <h2 lang="de">Eine echte Änderung, von der Idee zum Commit</h2>
+  <h2 lang="zh-Hant">一次實際改動：從點子到 commit</h2>
   <div class="cols wide-left">
     <pre data-label="git show 3e16e07 (shortened)"><code>fix(player): slow the run and match its cycle and footsteps
 
@@ -186,20 +238,27 @@ feat(dev): spawn any enemy kind from the dev panel</code></pre>
     <div>
       <p lang="en">This is how a change looks to git. Lines with <code>-</code> were removed, lines with <code>+</code> added.</p>
       <p lang="de">So sieht eine Änderung für git aus. Zeilen mit <code>-</code> wurden entfernt, Zeilen mit <code>+</code> hinzugefügt.</p>
+      <p lang="zh-Hant">git 會這樣顯示改動。開頭是 <code>-</code> 的行被刪除了，開頭是 <code>+</code> 的行則是新加入的。</p>
       <p lang="en">The idea: "the run is too fast, and the legs don't match the speed". The change:</p>
       <p lang="de">Die Idee: "Das Rennen ist zu schnell, und die Beine passen nicht zum Tempo." Die Änderung:</p>
+      <p lang="zh-Hant">點子：「跑步太快了，而且腿部動作跟不上速度。」改動包括：</p>
       <ol class="steps">
         <li lang="en">the rule: <code>RUN_SPEED</code> from 4.1 to 2.8,</li>
         <li lang="de">die Regel: <code>RUN_SPEED</code> von 4,1 auf 2,8,</li>
+        <li lang="zh-Hant">規則：把 <code>RUN_SPEED</code> 從 4.1 改成 2.8，</li>
         <li lang="en">the look: the run animation now plays at the same pace (<code>RUN_ANIM</code>), so the feet don't slide,</li>
         <li lang="de">das Aussehen: Die Rennanimation spielt jetzt im selben Tempo (<code>RUN_ANIM</code>), damit die Füße nicht rutschen,</li>
+        <li lang="zh-Hant">畫面：讓跑步動畫以相同的速度播放（<code>RUN_ANIM</code>），這樣腳就不會滑動，</li>
         <li lang="en">the check: the test, updated on purpose,</li>
         <li lang="de">die Prüfung: der Test, absichtlich angepasst,</li>
+        <li lang="zh-Hant">檢查：有意識地更新測試，</li>
         <li lang="en">the notes: <code>docs/combat.md</code>.</li>
         <li lang="de">die Notizen: <code>docs/combat.md</code>.</li>
+        <li lang="zh-Hant">說明：<code>docs/combat.md</code>。</li>
       </ol>
       <p lang="en">Rule, look, check, notes. A good change usually touches all four.</p>
       <p lang="de">Regel, Aussehen, Prüfung, Notizen. Eine gute Änderung berührt meistens alle vier.</p>
+      <p lang="zh-Hant">規則、畫面、檢查、說明。一次好的改動通常會一起處理這四件事。</p>
     </div>
   </div>
 </section>
@@ -207,24 +266,33 @@ feat(dev): spawn any enemy kind from the dev panel</code></pre>
 <section class="slide" id="small-steps" data-lv="1">
   <h2 lang="en">Small steps</h2>
   <h2 lang="de">Kleine Schritte</h2>
+  <h2 lang="zh-Hant">一次一小步</h2>
   <p lang="en">Game makers work in a loop, a bit like the game loop:</p>
   <p lang="de">Spielemacher arbeiten in einer Schleife, ein bisschen wie die Spielschleife:</p>
+  <p lang="zh-Hant">遊戲製作者也會不斷重複一個流程，有點像遊戲迴圈：</p>
   <ol class="steps">
     <li lang="en"><b>Idea:</b> one thing at a time. "Spiders should notice me from further away."</li>
     <li lang="de"><b>Idee:</b> eine Sache auf einmal. "Spinnen sollen mich von weiter weg bemerken."</li>
+    <li lang="zh-Hant"><b>點子：</b>一次處理一件事。「蜘蛛應該從更遠的地方就能發現我。」</li>
     <li lang="en"><b>Change</b> the code.</li>
     <li lang="de"><b>Ändern</b>: den Code.</li>
+    <li lang="zh-Hant"><b>修改</b>程式碼。</li>
     <li lang="en"><b>Check:</b> run the tests.</li>
     <li lang="de"><b>Prüfen:</b> die Tests laufen lassen.</li>
+    <li lang="zh-Hant"><b>檢查：</b>執行測試。</li>
     <li lang="en"><b>Play:</b> does it feel right? Is it fun? No test can tell you that.</li>
     <li lang="de"><b>Spielen:</b> Fühlt es sich richtig an? Macht es Spaß? Das kann dir kein Test sagen.</li>
+    <li lang="zh-Hant"><b>玩玩看：</b>手感對嗎？好玩嗎？這些事情，測試沒辦法告訴你。</li>
     <li lang="en"><b>Save or undo:</b> happy? Commit it. Not happy? Go back and try something else.</li>
     <li lang="de"><b>Speichern oder zurück:</b> Zufrieden? Commit. Nicht zufrieden? Zurück und etwas anderes probieren.</li>
+    <li lang="zh-Hant"><b>保存或復原：</b>滿意嗎？做一筆 commit。不滿意？回到之前的狀態，換個方法試試。</li>
   </ol>
   <p lang="en">Small loops are better than big ones: if something breaks, you know which step broke it.</p>
   <p lang="de">Kleine Schleifen sind besser als große: Wenn etwas kaputtgeht, weißt du, welcher Schritt es war.</p>
+  <p lang="zh-Hant">小迴圈比大迴圈好：出了問題，就能知道是哪一步造成的。</p>
   <div class="note" lang="en"><b>Your own game</b> Everything in this guide works for a new game too: a game loop, seeds, a puzzle world, paths, a state machine, a loot table, juice. Start tiny (one room, one monster, one sword), and grow it one small loop at a time.</div>
   <div class="note" lang="de"><b>Dein eigenes Spiel</b> Alles in diesem Führer klappt auch für ein neues Spiel: eine Spielschleife, Seeds, eine Puzzle-Welt, Wege, ein Zustandsautomat, eine Beutetabelle, Juice. Fang winzig an (ein Raum, ein Monster, ein Schwert) und lass es Schleife für Schleife wachsen.</div>
+  <div class="note" lang="zh-Hant"><b>你自己的遊戲</b> 這份指南裡的概念也能用在新遊戲裡：遊戲迴圈、種子、像拼圖的世界、路線、狀態機、掉落物機率表、打擊感。先從小小的規模開始（一個房間、一隻怪物、一把劍），每完成一個小迴圈，就讓遊戲成長一點。</div>
 </section>
 
 </main>

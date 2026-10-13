@@ -14,7 +14,7 @@ export default function mount(el) {
     <div class="row"><label>seed A <input type="number" class="a" value="123"></label><span class="da"></span></div>
     <div class="row"><label>seed B <input type="number" class="b" value="123"></label><span class="db"></span></div>
     <div class="row"><label style="min-width:9.5em">Math.random()</label><span class="dr"></span></div>
-    <div class="row"><button class="roll">${tr('Roll all three again!', 'Alle drei nochmal würfeln!')}</button></div></div>`);
+    <div class="row"><button class="roll">${tr('Roll all three again!', 'Alle drei nochmal würfeln!', '再擲一次這三顆骰子！')}</button></div></div>`);
   const out = html(el, '<div class="out"></div>');
   let rolls = 0;
   const row = (rng) => Array.from({ length: 10 }, () => die(Math.floor(rng() * 6))).join(' ');
@@ -26,8 +26,9 @@ export default function mount(el) {
     box.querySelector('.dr').innerHTML = row(Math.random);
     out.innerHTML = rolls > 1
       ? tr(`Rolled ${rolls} times. The seeded rows never change. ${a === b ? 'A and B have the same seed, so they match. Change seed B!' : 'A and B have different seeds, so they differ.'}`,
-        `${rolls}-mal gewürfelt. Die Reihen mit Seed ändern sich nie. ${a === b ? 'A und B haben denselben Seed, also sind sie gleich. Ändere Seed B!' : 'A und B haben verschiedene Seeds, also sind sie verschieden.'}`)
-      : tr('Press the button a few times. Then change one of the seeds.', 'Drück ein paarmal auf den Knopf. Dann ändere einen der Seeds.');
+        `${rolls}-mal gewürfelt. Die Reihen mit Seed ändern sich nie. ${a === b ? 'A und B haben denselben Seed, also sind sie gleich. Ändere Seed B!' : 'A und B haben verschiedene Seeds, also sind sie verschieden.'}`,
+        `已擲骰 ${rolls} 次。有種子的兩列不會改變。${a === b ? 'A 和 B 的種子相同，所以結果也相同。試著改變 B 的種子！' : 'A 和 B 的種子不同，所以結果也不同。'}`)
+      : tr('Press the button a few times. Then change one of the seeds.', 'Drück ein paarmal auf den Knopf. Dann ändere einen der Seeds.', '按幾次按鈕，再改其中一個種子。');
   }
   box.querySelector('.roll').onclick = roll;
   box.querySelectorAll('input').forEach(i => i.oninput = roll);
@@ -35,8 +36,8 @@ export default function mount(el) {
 }
 
 function cubes(el) {
-  const box = html(el, `<div><div class="row"><label>${tr('world seed', 'Welt-Seed')} <input type="number" value="123"></label>
-    <span class="muted small">${tr('each square is one cube of depth 1; click one', 'jedes Feld ist ein Würfel in Tiefe 1; klick eins an')}</span></div><div class="grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px"></div></div>`);
+  const box = html(el, `<div><div class="row"><label>${tr('world seed', 'Welt-Seed', '世界種子')} <input type="number" value="123"></label>
+    <span class="muted small">${tr('each square is one cube of depth 1; click one', 'jedes Feld ist ein Würfel in Tiefe 1; klick eins an', '每個格子都是深度 1 的方塊；點一個看看')}</span></div><div class="grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px"></div></div>`);
   const out = html(el, '<div class="out">&nbsp;</div>');
   const grid = box.querySelector('.grid'), input = box.querySelector('input');
   let pick = '0,-1,0';
@@ -53,7 +54,7 @@ function cubes(el) {
       grid.append(b);
     }
     const r = rng(pick);
-    out.innerHTML = `${tr('cube', 'Würfel')} <b>${pick}</b>: hash32(${seed} ^ hashKey("${pick}")) = <b>${hash32(seed ^ hashKey(pick))}</b>\n${tr('its first five rolls', 'seine ersten fünf Würfe')}: <b>${Array.from({ length: 5 }, () => r().toFixed(3)).join('  ')}</b>`;
+    out.innerHTML = `${tr('cube', 'Würfel', '方塊')} <b>${pick}</b>: hash32(${seed} ^ hashKey("${pick}")) = <b>${hash32(seed ^ hashKey(pick))}</b>\n${tr('its first five rolls', 'seine ersten fünf Würfe', '前五次擲骰結果')}: <b>${Array.from({ length: 5 }, () => r().toFixed(3)).join('  ')}</b>`;
   }
   input.oninput = draw;
   draw();

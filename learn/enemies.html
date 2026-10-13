@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-de="Monster-Gehirne · Kinderführer zu Cube Crawler">Monster Brains · Kids' Guide to Cube Crawler</title>
+<title data-de="Monster-Gehirne · Kinderführer zu Cube Crawler" data-zh-hant="怪物的大腦 · Cube Crawler 兒童指南">Monster Brains · Kids' Guide to Cube Crawler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="kids.css">
 <script src="lang.js"></script>
@@ -12,145 +12,146 @@
 
 <section class="slide" id="numbers" data-lv="1">
   <h2 lang="en">A monster is a list of numbers</h2>
-  <h2 lang="de">Ein Monster ist eine Liste von Zahlen</h2>
+  <h2 lang="de">Ein Monster ist eine Liste von Zahlen</h2><h2 lang="zh-Hant">怪物就是一串數字</h2>
   <div class="cols">
     <div>
       <p class="lead" lang="en">To the game, a spider is not scary at all. It is a short list of numbers, called a <a class="w" href="words.html#profile">profile</a>:</p>
-      <p class="lead" lang="de">Für das Spiel ist eine Spinne überhaupt nicht gruselig. Sie ist eine kurze Liste von Zahlen, ein sogenanntes <a class="w" href="words.html#profile">Profil</a>:</p>
+      <p class="lead" lang="de">Für das Spiel ist eine Spinne überhaupt nicht gruselig. Sie ist eine kurze Liste von Zahlen, ein sogenanntes <a class="w" href="words.html#profile">Profil</a>:</p><p class="lead" lang="zh-Hant">對遊戲來說，蜘蛛一點也不可怕。牠只是一小串數字，叫做<a class="w" href="words.html#profile">資料設定</a>：</p>
       <table>
-        <tr><td><span lang="en">health</span><span lang="de">Gesundheit</span></td><td><b data-val="src/core/enemies.js#SPIDER.hp">32</b></td><td class="muted"><span lang="en">two hits with the Old Sword</span><span lang="de">zwei Treffer mit dem Alten Schwert</span></td></tr>
-        <tr><td><span lang="en">bite damage</span><span lang="de">Bissschaden</span></td><td><b data-val="src/core/enemies.js#SPIDER.damage">15</b></td><td class="muted"><span lang="en">you have 100 health at the start</span><span lang="de">du hast am Anfang 100 Gesundheit</span></td></tr>
-        <tr><td><span lang="en">notices you within</span><span lang="de">bemerkt dich innerhalb</span></td><td><b data-val="src/core/enemies.js#SPIDER.aggro">3</b> <span lang="en">cells</span><span lang="de">Zellen</span></td><td class="muted"><span lang="en">"aggro" range</span><span lang="de">"Aggro"-Reichweite</span></td></tr>
-        <tr><td><span lang="en">gives up beyond</span><span lang="de">gibt auf ab</span></td><td><b data-val="src/core/enemies.js#SPIDER.giveUp">6</b> <span lang="en">cells</span><span lang="de">Zellen</span></td><td></td></tr>
-        <tr><td><span lang="en">chase speed</span><span lang="de">Jagdtempo</span></td><td><b data-val="src/core/enemies.js#SPIDER.chase">2.6</b> <span lang="en">cells/s</span><span lang="de">Zellen/s</span></td><td class="muted"><span lang="en">you run at 2.8!</span><span lang="de">du rennst mit 2,8!</span></td></tr>
-        <tr><td><span lang="en">wander speed</span><span lang="de">Wandertempo</span></td><td><b data-val="src/core/enemies.js#SPIDER.wander">0.6</b> <span lang="en">cells/s</span><span lang="de">Zellen/s</span></td><td></td></tr>
-        <tr><td><span lang="en">bite reach</span><span lang="de">Bissreichweite</span></td><td><b data-val="src/core/enemies.js#SPIDER.reach">0.85</b> <span lang="en">cells</span><span lang="de">Zellen</span></td><td></td></tr>
-        <tr><td><span lang="en">wind-up before the bite</span><span lang="de">Ausholen vor dem Biss</span></td><td><b data-val="src/core/enemies.js#SPIDER.hitAt">0.42</b> <span lang="en">s</span><span lang="de">s</span></td><td class="muted"><span lang="en">your chance to step away</span><span lang="de">deine Chance auszuweichen</span></td></tr>
-        <tr><td><span lang="en">rest after a bite</span><span lang="de">Pause nach einem Biss</span></td><td><b data-val="src/core/enemies.js#SPIDER.cooldown">1.2</b> <span lang="en">s</span><span lang="de">s</span></td><td class="muted"><span lang="en">"cooldown"</span><span lang="de">"Abklingzeit"</span></td></tr>
+        <tr><td><span lang="en">health</span><span lang="de">Gesundheit</span><span lang="zh-Hant">生命值</span></td><td><b data-val="src/core/enemies.js#SPIDER.hp">32</b></td><td class="muted"><span lang="en">two hits with the Old Sword</span><span lang="de">zwei Treffer mit dem Alten Schwert</span><span lang="zh-Hant">用古老之劍砍兩下</span></td></tr>
+        <tr><td><span lang="en">bite damage</span><span lang="de">Bissschaden</span><span lang="zh-Hant">咬擊傷害</span></td><td><b data-val="src/core/enemies.js#SPIDER.damage">15</b></td><td class="muted"><span lang="en">you have 100 health at the start</span><span lang="de">du hast am Anfang 100 Gesundheit</span><span lang="zh-Hant">一開始你有 100 點生命值</span></td></tr>
+        <tr><td><span lang="en">notices you within</span><span lang="de">bemerkt dich innerhalb</span><span lang="zh-Hant">在幾格內發現你</span></td><td><b data-val="src/core/enemies.js#SPIDER.aggro">3</b> <span lang="en">cells</span><span lang="de">Zellen</span><span lang="zh-Hant">格</span></td><td class="muted"><span lang="en">"aggro" range</span><span lang="de">"Aggro"-Reichweite</span><span lang="zh-Hant">「aggro」偵測範圍</span></td></tr>
+        <tr><td><span lang="en">gives up beyond</span><span lang="de">gibt auf ab</span><span lang="zh-Hant">超過幾格就放棄</span></td><td><b data-val="src/core/enemies.js#SPIDER.giveUp">6</b> <span lang="en">cells</span><span lang="de">Zellen</span><span lang="zh-Hant">格</span></td><td></td></tr>
+        <tr><td><span lang="en">chase speed</span><span lang="de">Jagdtempo</span><span lang="zh-Hant">追擊速度</span></td><td><b data-val="src/core/enemies.js#SPIDER.chase">2.6</b> <span lang="en">cells/s</span><span lang="de">Zellen/s</span><span lang="zh-Hant">格／秒</span></td><td class="muted"><span lang="en">you run at 2.8!</span><span lang="de">du rennst mit 2,8!</span><span lang="zh-Hant">你跑步速度是 2.8！</span></td></tr>
+        <tr><td><span lang="en">wander speed</span><span lang="de">Wandertempo</span><span lang="zh-Hant">遊走速度</span></td><td><b data-val="src/core/enemies.js#SPIDER.wander">0.6</b> <span lang="en">cells/s</span><span lang="de">Zellen/s</span><span lang="zh-Hant">格／秒</span></td><td></td></tr>
+        <tr><td><span lang="en">bite reach</span><span lang="de">Bissreichweite</span><span lang="zh-Hant">咬擊距離</span></td><td><b data-val="src/core/enemies.js#SPIDER.reach">0.85</b> <span lang="en">cells</span><span lang="de">Zellen</span><span lang="zh-Hant">格</span></td><td></td></tr>
+        <tr><td><span lang="en">wind-up before the bite</span><span lang="de">Ausholen vor dem Biss</span><span lang="zh-Hant">咬下前的蓄力時間</span></td><td><b data-val="src/core/enemies.js#SPIDER.hitAt">0.42</b> <span lang="en">s</span><span lang="de">s</span><span lang="zh-Hant">秒</span></td><td class="muted"><span lang="en">your chance to step away</span><span lang="de">deine Chance auszuweichen</span><span lang="zh-Hant">你趁機躲開的時間</span></td></tr>
+        <tr><td><span lang="en">rest after a bite</span><span lang="de">Pause nach einem Biss</span><span lang="zh-Hant">咬完後的休息時間</span></td><td><b data-val="src/core/enemies.js#SPIDER.cooldown">1.2</b> <span lang="en">s</span><span lang="de">s</span><span lang="zh-Hant">秒</span></td><td class="muted"><span lang="en">"cooldown"</span><span lang="de">"Abklingzeit"</span><span lang="zh-Hant">「冷卻時間」</span></td></tr>
       </table>
       <p class="small" lang="en">All monsters share the same brain. Only their numbers (and models) are different.</p>
-      <p class="small" lang="de">Alle Monster teilen sich dasselbe Gehirn. Nur ihre Zahlen (und Modelle) sind verschieden.</p>
+      <p class="small" lang="de">Alle Monster teilen sich dasselbe Gehirn. Nur ihre Zahlen (und Modelle) sind verschieden.</p><p class="small" lang="zh-Hant">所有怪物共用同一套腦袋，只有數字（和模型）不同。</p>
     </div>
-    <figure><img class="shot" src="img/mines.jpg" alt="A dark crystal mine full of spiders and glowing triangles" data-de-alt="Eine dunkle Kristallmine voller Spinnen und leuchtender Dreiecke"><figcaption lang="en">Depth 13: spiders and Triangles in the crystal mines.</figcaption> <figcaption lang="de">Tiefe 13: Spinnen und Triangles in den Kristallminen.</figcaption></figure>
+    <figure><img class="shot" src="img/mines.jpg" alt="A dark crystal mine full of spiders and glowing triangles" data-de-alt="Eine dunkle Kristallmine voller Spinnen und leuchtender Dreiecke" data-zh-hant-alt="充滿蜘蛛與發光三角形的黑暗水晶礦坑"><figcaption lang="en">Depth 13: spiders and Triangles in the crystal mines.</figcaption> <figcaption lang="de">Tiefe 13: Spinnen und Triangles in den Kristallminen.</figcaption><figcaption lang="zh-Hant">深度 13：水晶礦坑裡的蜘蛛和 Triangle。</figcaption></figure>
   </div>
 </section>
 
 <section class="slide" id="brain" data-lv="1">
   <h2 lang="en">Try it: a spider's brain</h2>
-  <h2 lang="de">Probier es: das Gehirn einer Spinne</h2>
+  <h2 lang="de">Probier es: das Gehirn einer Spinne</h2><h2 lang="zh-Hant">動手試試：蜘蛛的腦袋</h2>
   <p lang="en">Drag the hero (the white dot) around. Get close to the spider, but stay behind the wall: it can't see you! Then step out. When it's winding up (red), step away quickly.
     The dashed circle is how far it can see. Escape further than 6 cells, and it gives up.</p>
   <p lang="de">Zieh den Helden (den weißen Punkt) herum. Geh nah an die Spinne heran, aber bleib hinter der Wand: Sie kann dich nicht sehen! Dann tritt hervor. Wenn sie ausholt (rot), geh schnell weg.
-    Der gestrichelte Kreis zeigt, wie weit sie sehen kann. Flieh weiter als 6 Zellen, und sie gibt auf. (Die Zustände heißen im Code idle, walk, chase, attack und home.)</p>
+    Der gestrichelte Kreis zeigt, wie weit sie sehen kann. Flieh weiter als 6 Zellen, und sie gibt auf. (Die Zustände heißen im Code idle, walk, chase, attack und home.)</p><p lang="zh-Hant">拖曳英雄（白點）四處移動。靠近蜘蛛，但要躲在牆後：牠看不到你！接著走出來。牠開始蓄力（變紅）時，快點躲開。虛線圓圈表示牠看得見的範圍。逃到距離超過 6 格，牠就會放棄。</p>
   <div class="demo real" data-demo="brain"></div>
 </section>
 
 <section class="slide" id="state-machine" data-lv="2" data-src="src/game/enemyai.js#decide,act">
   <h2 lang="en">One mood at a time: a state machine</h2>
-  <h2 lang="de">Immer nur eine Laune: ein Zustandsautomat</h2>
+  <h2 lang="de">Immer nur eine Laune: ein Zustandsautomat</h2><h2 lang="zh-Hant">一次一種心情：狀態機</h2>
   <div class="cols">
     <div>
       <p lang="en">The spider's brain is always in exactly one <b>state</b>, like a mood. Each state has its own job, and its own rules for when to switch to another one. This is called a <a class="w" href="words.html#state-machine">state machine</a>.</p>
-      <p lang="de">Das Gehirn der Spinne ist immer in genau einem <b>Zustand</b>, wie in einer Laune. Jeder Zustand hat seine eigene Aufgabe und eigene Regeln, wann er in einen anderen wechselt. Das nennt man <a class="w" href="words.html#state-machine">Zustandsautomat</a>.</p>
+      <p lang="de">Das Gehirn der Spinne ist immer in genau einem <b>Zustand</b>, wie in einer Laune. Jeder Zustand hat seine eigene Aufgabe und eigene Regeln, wann er in einen anderen wechselt. Das nennt man <a class="w" href="words.html#state-machine">Zustandsautomat</a>.</p><p lang="zh-Hant">蜘蛛的腦袋隨時都只處於一種<b>狀態</b>，就像一種心情。每種狀態都有自己的工作，也有切換到其他狀態的規則。這就叫做<a class="w" href="words.html#state-machine">狀態機</a>。</p>
       <table>
-        <tr><th lang="en">STATE</th> <th lang="de">ZUSTAND</th><th lang="en">DOES</th> <th lang="de">MACHT</th><th lang="en">SWITCHES WHEN</th> <th lang="de">WECHSELT, WENN</th></tr>
-        <tr><td lang="en">idle</td> <td lang="de">idle (ruhen)</td><td lang="en">rests, looks at you if close</td> <td lang="de">ruht, schaut dich an, wenn du nah bist</td><td lang="en">timer runs out → walk</td> <td lang="de">Zeit ist um → walk</td></tr>
-        <tr><td lang="en">walk</td> <td lang="de">walk (wandern)</td><td lang="en">wanders near home</td> <td lang="de">läuft nahe dem Zuhause herum</td><td lang="en">arrived → idle</td> <td lang="de">angekommen → idle</td></tr>
-        <tr><td lang="en">chase</td> <td lang="de">chase (jagen)</td><td lang="en">follows its path to you</td> <td lang="de">folgt seinem Weg zu dir</td><td lang="en">close and ready → attack<br>lost you → home</td> <td lang="de">nah und bereit → attack<br>dich verloren → home</td></tr>
-        <tr><td lang="en">attack</td> <td lang="de">attack (angreifen)</td><td lang="en">winds up, bites, finishes</td> <td lang="de">holt aus, beißt, macht fertig</td><td lang="en">done → chase</td> <td lang="de">fertig → chase</td></tr>
-        <tr><td lang="en">home</td> <td lang="de">home (heimgehen)</td><td lang="en">walks back home</td> <td lang="de">läuft nach Hause</td><td lang="en">arrived → idle</td> <td lang="de">angekommen → idle</td></tr>
+        <tr><th lang="en">STATE</th> <th lang="de">ZUSTAND</th><th lang="zh-Hant">狀態</th><th lang="en">DOES</th> <th lang="de">MACHT</th><th lang="zh-Hant">做什麼</th><th lang="en">SWITCHES WHEN</th> <th lang="de">WECHSELT, WENN</th><th lang="zh-Hant">何時切換</th></tr>
+        <tr><td lang="en">idle</td> <td lang="de">idle (ruhen)</td><td lang="zh-Hant">idle</td><td lang="en">rests, looks at you if close</td> <td lang="de">ruht, schaut dich an, wenn du nah bist</td><td lang="zh-Hant">休息；你靠近時會看著你</td><td lang="en">timer runs out → walk</td> <td lang="de">Zeit ist um → walk</td><td lang="zh-Hant">計時結束 → walk</td></tr>
+        <tr><td lang="en">walk</td> <td lang="de">walk (wandern)</td><td lang="zh-Hant">walk</td><td lang="en">wanders near home</td> <td lang="de">läuft nahe dem Zuhause herum</td><td lang="zh-Hant">在巢穴附近遊走</td><td lang="en">arrived → idle</td> <td lang="de">angekommen → idle</td><td lang="zh-Hant">抵達 → idle</td></tr>
+        <tr><td lang="en">chase</td> <td lang="de">chase (jagen)</td><td lang="zh-Hant">chase</td><td lang="en">follows its path to you</td> <td lang="de">folgt seinem Weg zu dir</td><td lang="zh-Hant">沿著路徑朝你追來</td><td lang="en">close and ready → attack<br>lost you → home</td> <td lang="de">nah und bereit → attack<br>dich verloren → home</td><td lang="zh-Hant">靠近且準備好 → attack<br>跟丟你 → home</td></tr>
+        <tr><td lang="en">attack</td> <td lang="de">attack (angreifen)</td><td lang="zh-Hant">attack</td><td lang="en">winds up, bites, finishes</td> <td lang="de">holt aus, beißt, macht fertig</td><td lang="zh-Hant">蓄力、咬擊、結束</td><td lang="en">done → chase</td> <td lang="de">fertig → chase</td><td lang="zh-Hant">結束 → chase</td></tr>
+        <tr><td lang="en">home</td> <td lang="de">home (heimgehen)</td><td lang="zh-Hant">home</td><td lang="en">walks back home</td> <td lang="de">läuft nach Hause</td><td lang="zh-Hant">走回巢穴</td><td lang="en">arrived → idle</td> <td lang="de">angekommen → idle</td><td lang="zh-Hant">抵達 → idle</td></tr>
       </table>
       <p class="small" lang="en">From idle or walk, seeing you switches to chase. A hit that staggers it switches to chase too.</p>
-      <p class="small" lang="de">Aus idle oder walk wechselt sie zu chase, wenn sie dich sieht. Ein Treffer, der sie taumeln lässt, wechselt auch zu chase.</p>
+      <p class="small" lang="de">Aus idle oder walk wechselt sie zu chase, wenn sie dich sieht. Ein Treffer, der sie taumeln lässt, wechselt auch zu chase.</p><p class="small" lang="zh-Hant">在 idle 或 walk 狀態看到你，就會切換到 chase。被打到踉蹌時，也會切換到 chase。</p>
     </div>
     <div class="card">
       <h3 lang="en">Why is this a good idea?</h3>
-      <h3 lang="de">Warum ist das eine gute Idee?</h3>
+      <h3 lang="de">Warum ist das eine gute Idee?</h3><h3 lang="zh-Hant">為什麼這樣設計比較好？</h3>
       <p lang="en">Each state is small and easy to understand. To add a new behaviour (say, "flee when hurt"), you add one state and a few switches. You don't have to rethink everything.</p>
-      <p lang="de">Jeder Zustand ist klein und leicht zu verstehen. Für ein neues Verhalten (zum Beispiel "fliehen, wenn verletzt") fügst du einen Zustand und ein paar Wechsel hinzu. Du musst nicht alles neu durchdenken.</p>
+      <p lang="de">Jeder Zustand ist klein und leicht zu verstehen. Für ein neues Verhalten (zum Beispiel "fliehen, wenn verletzt") fügst du einen Zustand und ein paar Wechsel hinzu. Du musst nicht alles neu durchdenken.</p><p lang="zh-Hant">每種狀態都很簡單，容易看懂。想加入新行為（例如「受傷時逃跑」），只要增加一種狀態和幾個切換規則，不必把整套設計重新想過。</p>
       <p lang="en">Guardians use one more state, <b>defend</b>: they stay near their post and only charge when you come close to their gate.</p>
-      <p lang="de">Wächter benutzen noch einen Zustand, <b>defend</b> (verteidigen): Sie bleiben nahe ihrem Posten und stürmen nur los, wenn du ihrem Tor zu nahe kommst.</p>
+      <p lang="de">Wächter benutzen noch einen Zustand, <b>defend</b> (verteidigen): Sie bleiben nahe ihrem Posten und stürmen nur los, wenn du ihrem Tor zu nahe kommst.</p><p lang="zh-Hant">守衛還會用另一種狀態：<b>defend</b>（防守）。牠們會待在守衛位置附近，只有你靠近大門時才會衝上來。</p>
       <p lang="en">Most game characters, from Pac-Man's ghosts to big game bosses, use a state machine somewhere inside.</p>
-      <p lang="de">Die meisten Spielfiguren, von den Geistern in Pac-Man bis zu großen Spiel-Bossen, haben irgendwo innen einen Zustandsautomaten.</p>
+      <p lang="de">Die meisten Spielfiguren, von den Geistern in Pac-Man bis zu großen Spiel-Bossen, haben irgendwo innen einen Zustandsautomaten.</p><p lang="zh-Hant">許多遊戲角色，從 Pac-Man 的鬼魂到大型遊戲頭目，內部都會用到狀態機。</p>
     </div>
   </div>
 </section>
 
 <section class="slide" id="fair" data-lv="2" data-src="src/game/enemyai.js#stepEnemies src/game/enemies.js#ENTRY_GRACE">
   <h2 lang="en">Thinking slowly on purpose</h2>
-  <h2 lang="de">Absichtlich langsam denken</h2>
+  <h2 lang="de">Absichtlich langsam denken</h2><h2 lang="zh-Hant">故意慢慢思考</h2>
   <div class="cols">
     <div>
       <p lang="en"><b>Thinking five times a second.</b> Monsters <i>move</i> every frame, but they only <i>decide</i> every 0.2 seconds. Searching for paths is work, and with 20 spiders in a room, it adds up. It also looks more natural: real animals don't react instantly either.</p>
-      <p lang="de"><b>Fünfmal pro Sekunde denken.</b> Monster <i>bewegen</i> sich in jedem Bild, aber sie <i>entscheiden</i> nur alle 0,2 Sekunden. Wege suchen ist Arbeit, und mit 20 Spinnen in einem Raum summiert sich das. Es sieht auch natürlicher aus: Echte Tiere reagieren auch nicht sofort.</p>
+      <p lang="de"><b>Fünfmal pro Sekunde denken.</b> Monster <i>bewegen</i> sich in jedem Bild, aber sie <i>entscheiden</i> nur alle 0,2 Sekunden. Wege suchen ist Arbeit, und mit 20 Spinnen in einem Raum summiert sich das. Es sieht auch natürlicher aus: Echte Tiere reagieren auch nicht sofort.</p><p lang="zh-Hant"><b>每秒思考五次。</b>怪物每個影格都會<b>移動</b>，但每 0.2 秒才會<b>決定</b>下一步。找路需要運算，一個房間裡有 20 隻蜘蛛時，運算量就會累積起來。這樣看起來也比較自然：真正的動物也不會立刻反應。</p>
       <p lang="en"><b>Wind-ups you can see.</b> Every attack starts with a wind-up animation. This is called a <a class="w" href="words.html#telegraph">telegraph</a>: the monster tells you what it's about to do. Once it starts, it is committed and can't change its mind. That's your chance to dodge!</p>
-      <p lang="de"><b>Ausholen, das man sieht.</b> Jeder Angriff beginnt mit einer Ausholbewegung. Das nennt man eine <a class="w" href="words.html#telegraph">Ankündigung</a> (englisch: telegraph): Das Monster verrät dir, was es gleich tun wird. Sobald es anfängt, ist es festgelegt und kann es sich nicht anders überlegen. Das ist deine Chance auszuweichen!</p>
+      <p lang="de"><b>Ausholen, das man sieht.</b> Jeder Angriff beginnt mit einer Ausholbewegung. Das nennt man eine <a class="w" href="words.html#telegraph">Ankündigung</a> (englisch: telegraph): Das Monster verrät dir, was es gleich tun wird. Sobald es anfängt, ist es festgelegt und kann es sich nicht anders überlegen. Das ist deine Chance auszuweichen!</p><p lang="zh-Hant"><b>看得見的蓄力動作。</b>每次攻擊前都會先播放蓄力動畫。這叫做<a class="w" href="words.html#telegraph">攻擊預告</a>：怪物會讓你知道牠接下來要做什麼。開始蓄力後，牠就會繼續完成攻擊，不能臨時改變主意。這就是你閃避的好機會！</p>
     </div>
     <div>
       <p lang="en"><b>Aiming stops early.</b> A Fire-face turns to aim at you, but stops turning before it spits. So stepping sideways at the right moment makes it miss.</p>
-      <p lang="de"><b>Das Zielen hört früh auf.</b> Ein Fire-face dreht sich, um auf dich zu zielen, hört aber auf zu drehen, bevor es spuckt. Ein Schritt zur Seite im richtigen Moment lässt es also danebenschießen.</p>
+      <p lang="de"><b>Das Zielen hört früh auf.</b> Ein Fire-face dreht sich, um auf dich zu zielen, hört aber auf zu drehen, bevor es spuckt. Ein Schritt zur Seite im richtigen Moment lässt es also danebenschießen.</p><p lang="zh-Hant"><b>瞄準會提早停止。</b>Fire-face 會轉向瞄準你，但在噴火前就會停止轉動。所以你在對的時機往旁邊跨一步，就能讓牠打不中。</p>
       <p lang="en"><b>A moment of peace.</b> When you enter a cube, monsters may chase you, but they don't attack for 1.2 seconds (or until you hit one). No getting bitten the moment you arrive.</p>
-      <p lang="de"><b>Ein Moment Ruhe.</b> Wenn du einen Würfel betrittst, dürfen Monster dich jagen, greifen aber 1,2 Sekunden lang nicht an (oder bis du eins triffst). Kein Biss in der Sekunde, in der du ankommst.</p>
+      <p lang="de"><b>Ein Moment Ruhe.</b> Wenn du einen Würfel betrittst, dürfen Monster dich jagen, greifen aber 1,2 Sekunden lang nicht an (oder bis du eins triffst). Kein Biss in der Sekunde, in der du ankommst.</p><p lang="zh-Hant"><b>給你一點喘息時間。</b>你進入一個方塊區域時，怪物可能會追你，但 1.2 秒內不會攻擊（或直到你打中其中一隻）。你不會一到就被咬。</p>
       <p lang="en"><b>No contact damage.</b> Just bumping into a monster never hurts. Only real attacks do.</p>
-      <p lang="de"><b>Kein Berührungsschaden.</b> Einfach gegen ein Monster zu laufen tut nie weh. Nur echte Angriffe.</p>
+      <p lang="de"><b>Kein Berührungsschaden.</b> Einfach gegen ein Monster zu laufen tut nie weh. Nur echte Angriffe.</p><p lang="zh-Hant"><b>碰撞不會受傷。</b>只是撞到怪物不會讓你受傷，只有真正的攻擊才會。</p>
       <div class="note think" lang="en"><b>Think</b> All of these make the game <i>easier</i>, but also <i>fairer</i>. When you lose, it should feel like your mistake, not the game cheating.</div>
-      <div class="note think" lang="de"><b>Denk nach</b> All das macht das Spiel <i>leichter</i>, aber auch <i>fairer</i>. Wenn du verlierst, soll es sich nach deinem Fehler anfühlen, nicht nach einem schummelnden Spiel.</div>
+      <div class="note think" lang="de"><b>Denk nach</b> All das macht das Spiel <i>leichter</i>, aber auch <i>fairer</i>. Wenn du verlierst, soll es sich nach deinem Fehler anfühlen, nicht nach einem schummelnden Spiel.</div><div class="note think" lang="zh-Hant"><b>想一想</b> 這些設計都讓遊戲<b>比較簡單</b>，也<b>比較公平</b>。輸掉時，你應該覺得是自己失誤，而不是遊戲在耍賴。</div>
     </div>
   </div>
 </section>
 
 <section class="slide" id="bestiary" data-lv="1">
   <h2 lang="en">Meet the monsters</h2>
-  <h2 lang="de">Lerne die Monster kennen</h2>
+  <h2 lang="de">Lerne die Monster kennen</h2><h2 lang="zh-Hant">認識怪物</h2>
   <p lang="en">Eight <b>species</b> live in the depths. They are all made in Blender by code. Besides the <b>spiders</b>, which come in big packs, and the <b>Stunder</b>, a huge, slow beast that rams you with its head and always knocks you over, there are these: <a class="portal" href="art.html">How they're made</a></p>
-  <p lang="de">Acht <b>Arten</b> leben in den Tiefen. Alle werden in Blender von Code gebaut. Neben den <b>Spinnen</b>, die in großen Rudeln kommen, und dem <b>Stunder</b>, einem riesigen, langsamen Biest, das dich mit dem Kopf rammt und immer umwirft, gibt es diese: <a class="portal" href="art.html">Wie sie gemacht werden</a></p>
+  <p lang="de">Acht <b>Arten</b> leben in den Tiefen. Alle werden in Blender von Code gebaut. Neben den <b>Spinnen</b>, die in großen Rudeln kommen, und dem <b>Stunder</b>, einem riesigen, langsamen Biest, das dich mit dem Kopf rammt und immer umwirft, gibt es diese: <a class="portal" href="art.html">Wie sie gemacht werden</a></p><p lang="zh-Hant">深處住著八種<b>物種</b>，牠們都是用程式碼在 Blender 裡製作的。除了會成群出現的<b>蜘蛛</b>，以及又大又慢、總是會用頭把你撞倒的 <b>Stunder</b>，還有以下這些怪物：<a class="portal" href="art.html">看看製作方法</a></p>
   <div class="cols3 small">
-    <figure><img class="shot" src="../blender/previews/snake-preview.png" alt="A green snake in six poses" data-de-alt="Eine grüne Schlange in sechs Posen"><figcaption lang="en">Snake: slithers, coils and bites</figcaption> <figcaption lang="de">Snake (Schlange): schlängelt, rollt sich ein und beißt</figcaption></figure>
-    <figure><img class="shot" src="../blender/previews/octonaut-preview.png" alt="A pale blue creature with six legs and two arms" data-de-alt="Ein blassblaues Wesen mit sechs Beinen und zwei Armen"><figcaption lang="en">Octonaut: slaps, or spins and knocks you over</figcaption> <figcaption lang="de">Octonaut: klatscht, oder wirbelt herum und wirft dich um</figcaption></figure>
-    <figure><img class="shot" src="../blender/previews/fireface-preview.png" alt="A floating angry flame" data-de-alt="Eine schwebende, wütende Flamme"><figcaption lang="en">Fire-face: spits fireballs that set you on fire</figcaption> <figcaption lang="de">Fire-face: spuckt Feuerbälle, die dich anzünden</figcaption></figure>
-    <figure><img class="shot" src="../blender/previews/triangle-preview.png" alt="A floating purple triangle" data-de-alt="Ein schwebendes lila Dreieck"><figcaption lang="en">Triangle: shoots its inner triangles at you</figcaption> <figcaption lang="de">Triangle: schießt seine inneren Dreiecke auf dich</figcaption></figure>
-    <figure><img class="shot" src="../blender/previews/firecat-preview.png" alt="A dark red cat with flames" data-de-alt="Eine dunkelrote Katze mit Flammen"><figcaption lang="en">Fire-cat: prowls, then pounces</figcaption> <figcaption lang="de">Fire-cat: schleicht, dann springt sie</figcaption></figure>
-    <figure><img class="shot" src="../blender/previews/shraps-preview.png" alt="A light blue creature with crab claws and a block of ice for a head" data-de-alt="Ein hellblaues Wesen mit Krebsscheren und einem Eisblock als Kopf"><figcaption lang="en">Shraps: pinches with its crab claws, or throws ice balls that slow you down. Its red cousin has a head of fire and throws fireballs.</figcaption> <figcaption lang="de">Shraps: zwickt mit seinen Krebsscheren oder wirft Eisbälle, die dich bremsen. Sein roter Vetter hat einen Kopf aus Feuer und wirft Feuerbälle.</figcaption></figure>
+    <figure><img class="shot" src="../blender/previews/snake-preview.png" alt="A green snake in six poses" data-de-alt="Eine grüne Schlange in sechs Posen" data-zh-hant-alt="六種姿勢的綠色蛇"><figcaption lang="en">Snake: slithers, coils and bites</figcaption> <figcaption lang="de">Snake (Schlange): schlängelt, rollt sich ein und beißt</figcaption><figcaption lang="zh-Hant">Snake：會蜿蜒移動、盤起身體再咬人</figcaption></figure>
+    <figure><img class="shot" src="../blender/previews/octonaut-preview.png" alt="A pale blue creature with six legs and two arms" data-de-alt="Ein blassblaues Wesen mit sechs Beinen und zwei Armen" data-zh-hant-alt="有六隻腳和兩隻手臂的淡藍色生物"><figcaption lang="en">Octonaut: slaps, or spins and knocks you over</figcaption> <figcaption lang="de">Octonaut: klatscht, oder wirbelt herum und wirft dich um</figcaption><figcaption lang="zh-Hant">Octonaut：會拍打你，也會旋轉著把你撞倒</figcaption></figure>
+    <figure><img class="shot" src="../blender/previews/fireface-preview.png" alt="A floating angry flame" data-de-alt="Eine schwebende, wütende Flamme" data-zh-hant-alt="一團漂浮、看起來很生氣的火焰"><figcaption lang="en">Fire-face: spits fireballs that set you on fire</figcaption> <figcaption lang="de">Fire-face: spuckt Feuerbälle, die dich anzünden</figcaption><figcaption lang="zh-Hant">Fire-face：會吐出讓你著火的火球</figcaption></figure>
+    <figure><img class="shot" src="../blender/previews/triangle-preview.png" alt="A floating purple triangle" data-de-alt="Ein schwebendes lila Dreieck" data-zh-hant-alt="一個漂浮的紫色三角形"><figcaption lang="en">Triangle: shoots its inner triangles at you</figcaption> <figcaption lang="de">Triangle: schießt seine inneren Dreiecke auf dich</figcaption><figcaption lang="zh-Hant">Triangle：會把身體裡的小三角形射向你</figcaption></figure>
+    <figure><img class="shot" src="../blender/previews/firecat-preview.png" alt="A dark red cat with flames" data-de-alt="Eine dunkelrote Katze mit Flammen" data-zh-hant-alt="一隻帶著火焰的深紅色貓"><figcaption lang="en">Fire-cat: prowls, then pounces</figcaption> <figcaption lang="de">Fire-cat: schleicht, dann springt sie</figcaption><figcaption lang="zh-Hant">Fire-cat：會悄悄接近，再撲向你</figcaption></figure>
+    <figure><img class="shot" src="../blender/previews/shraps-preview.png" alt="A light blue creature with crab claws and a block of ice for a head" data-de-alt="Ein hellblaues Wesen mit Krebsscheren und einem Eisblock als Kopf" data-zh-hant-alt="淺藍色生物，長著螃蟹鉗子和冰塊頭"><figcaption lang="en">Shraps: pinches with its crab claws, or throws ice balls that slow you down. Its red cousin has a head of fire and throws fireballs.</figcaption> <figcaption lang="de">Shraps: zwickt mit seinen Krebsscheren oder wirft Eisbälle, die dich bremsen. Sein roter Vetter hat einen Kopf aus Feuer und wirft Feuerbälle.</figcaption><figcaption lang="zh-Hant">Shraps：會用螃蟹鉗子夾人，或丟出會讓你變慢的冰球。牠的紅色同類頭上有火焰，會丟出火球。</figcaption></figure>
   </div>
 </section>
 
 <section class="slide" id="kinds" data-lv="2" data-src="src/core/enemies.js#BLOOD_VIPER,enemyKind">
   <h2 lang="en">Species, kinds and levels</h2>
-  <h2 lang="de">Arten, Sorten und Stufen</h2>
+  <h2 lang="de">Arten, Sorten und Stufen</h2><h2 lang="zh-Hant">物種、種類和等級</h2>
   <div class="cols">
     <div>
       <p lang="en">A <b>kind</b> is a species with new colours and stronger numbers. No new model is needed! A Blood viper is a snake that is red, with:</p>
-      <p lang="de">Eine <b>Sorte</b> (kind) ist eine Art mit neuen Farben und stärkeren Zahlen. Kein neues Modell nötig! Eine Blood viper (Blutviper) ist eine Schlange, die rot ist, mit:</p>
+      <p lang="de">Eine <b>Sorte</b> (kind) ist eine Art mit neuen Farben und stärkeren Zahlen. Kein neues Modell nötig! Eine Blood viper (Blutviper) ist eine Schlange, die rot ist, mit:</p><p lang="zh-Hant"><b>種類</b>是換了新顏色、數值也更強的同一種物種，不必做新模型！Blood viper 是一種紅色的蛇，數值會變成：</p>
       <table>
-        <tr><td lang="en">health</td> <td lang="de">Gesundheit</td><td lang="en">×1.4</td> <td lang="de">×1,4</td></tr><tr><td lang="en">damage</td> <td lang="de">Schaden</td><td lang="en">×1.4</td> <td lang="de">×1,4</td></tr>
-        <tr><td lang="en">speed</td> <td lang="de">Tempo</td><td lang="en">×1.2</td> <td lang="de">×1,2</td></tr><tr><td lang="en">size</td> <td lang="de">Größe</td><td lang="en">×1.1</td> <td lang="de">×1,1</td></tr>
+        <tr><td lang="en">health</td> <td lang="de">Gesundheit</td><td lang="zh-Hant">生命值</td><td lang="en">×1.4</td> <td lang="de">×1,4</td><td lang="zh-Hant">×1.4</td></tr><tr><td lang="en">damage</td> <td lang="de">Schaden</td><td lang="zh-Hant">傷害</td><td lang="en">×1.4</td> <td lang="de">×1,4</td><td lang="zh-Hant">×1.4</td></tr>
+        <tr><td lang="en">speed</td> <td lang="de">Tempo</td><td lang="zh-Hant">速度</td><td lang="en">×1.2</td> <td lang="de">×1,2</td><td lang="zh-Hant">×1.2</td></tr><tr><td lang="en">size</td> <td lang="de">Größe</td><td lang="zh-Hant">體型</td><td lang="en">×1.1</td> <td lang="de">×1,1</td><td lang="zh-Hant">×1.1</td></tr>
       </table>
       <p lang="en">The snakes get stronger the deeper you go: Grass snake (green), Sand viper (ochre), Blood viper (red), Shadow mamba (almost black). Ice levels have Frost adders, the swamp has Venom adders.</p>
-      <p lang="de">Die Schlangen werden stärker, je tiefer du kommst: Grass snake (grün), Sand viper (ocker), Blood viper (rot), Shadow mamba (fast schwarz). In den Eisgebieten gibt es Frost adders, im Sumpf Venom adders.</p>
+      <p lang="de">Die Schlangen werden stärker, je tiefer du kommst: Grass snake (grün), Sand viper (ocker), Blood viper (rot), Shadow mamba (fast schwarz). In den Eisgebieten gibt es Frost adders, im Sumpf Venom adders.</p><p lang="zh-Hant">越往深處走，蛇就越強：Grass snake（綠色）、Sand viper（赭色）、Blood viper（紅色）、Shadow mamba（接近黑色）。冰原有 Frost adders，沼澤有 Venom adders。</p>
       <p lang="en">A kind can even hide parts of the model. The Shraps' model has two heads, one of ice and one of fire: the Shraps shows the ice one, the red Fire shraps the fire one, and it throws fireballs instead of ice balls.</p>
       <p lang="de">Eine Sorte kann sogar Teile des Modells verstecken. Das Modell des Shraps hat zwei Köpfe, einen aus Eis und einen aus Feuer: Der Shraps zeigt den aus Eis, der rote Fire shraps den aus Feuer, und er wirft Feuerbälle statt Eisbällen.</p>
+      <p lang="zh-Hant">一種怪物甚至可以隱藏模型的部分部件。Shraps 的模型有兩個頭，一個是冰做的，另一個是火做的：Shraps 會露出冰頭，紅色的 Fire shraps 則會露出火頭，而且改丟火球，不丟冰球。</p>
       <p class="small" lang="en">Preview them all: <a href="../tools/kinds.html">tools/kinds.html</a>.</p>
-      <p class="small" lang="de">Schau sie dir alle an: <a href="../tools/kinds.html">tools/kinds.html</a>.</p>
+      <p class="small" lang="de">Schau sie dir alle an: <a href="../tools/kinds.html">tools/kinds.html</a>.</p><p class="small" lang="zh-Hant">一次看完：<a href="../tools/kinds.html">tools/kinds.html</a>。</p>
     </div>
     <div class="card">
       <h3 lang="en">Levels</h3>
-      <h3 lang="de">Stufen</h3>
+      <h3 lang="de">Stufen</h3><h3 lang="zh-Hant">等級</h3>
       <p lang="en">A monster's level is about the depth it lives at: level 1 near the top, level 20 at the core. Every level adds:</p>
-      <p lang="de">Die Stufe eines Monsters ist ungefähr die Tiefe, in der es lebt: Stufe 1 oben, Stufe 20 am Kern. Jede Stufe gibt:</p>
+      <p lang="de">Die Stufe eines Monsters ist ungefähr die Tiefe, in der es lebt: Stufe 1 oben, Stufe 20 am Kern. Jede Stufe gibt:</p><p lang="zh-Hant">怪物的等級大約代表牠住在哪個深度：靠近上方是 1 級，核心處是 20 級。每升一級會增加：</p>
       <ul>
         <li lang="en"><b>+17%</b> health</li>
-        <li lang="de"><b>+17%</b> Gesundheit</li>
+        <li lang="de"><b>+17%</b> Gesundheit</li><li lang="zh-Hant"><b>+17%</b> 生命值</li>
         <li lang="en"><b>+10%</b> damage</li>
-        <li lang="de"><b>+10%</b> Schaden</li>
+        <li lang="de"><b>+10%</b> Schaden</li><li lang="zh-Hant"><b>+10%</b> 傷害</li>
         <li lang="en"><b>+25%</b> experience and coins</li>
-        <li lang="de"><b>+25%</b> Erfahrung und Münzen</li>
+        <li lang="de"><b>+25%</b> Erfahrung und Münzen</li><li lang="zh-Hant"><b>+25%</b> 經驗值和金幣</li>
       </ul>
       <p lang="en">...of its level 1 numbers. So a level 11 spider has 32 × (1 + 0.17 × 10) = <b>86</b> health.</p>
-      <p lang="de">...gemessen an seinen Zahlen auf Stufe 1. Eine Spinne auf Stufe 11 hat also 32 × (1 + 0,17 × 10) = <b>86</b> Gesundheit.</p>
+      <p lang="de">...gemessen an seinen Zahlen auf Stufe 1. Eine Spinne auf Stufe 11 hat also 32 × (1 + 0,17 × 10) = <b>86</b> Gesundheit.</p><p lang="zh-Hant">以上數值都是以 1 級時為基準。所以 11 級蜘蛛的生命值是 32 × (1 + 0.17 × 10) = <b>86</b>。</p>
       <p lang="en">Monster levels never follow <i>your</i> level. Going back up to easy depths is safe, but gives little experience.</p>
-      <p lang="de">Monsterstufen richten sich nie nach <i>deiner</i> Stufe. Zurück in leichte Tiefen zu gehen ist sicher, bringt aber wenig Erfahrung.</p>
+      <p lang="de">Monsterstufen richten sich nie nach <i>deiner</i> Stufe. Zurück in leichte Tiefen zu gehen ist sicher, bringt aber wenig Erfahrung.</p><p lang="zh-Hant">怪物等級不會跟著<i>你的</i>等級改變。回到較淺、較簡單的地方很安全，但得到的經驗值也比較少。</p>
       <a class="portal" href="stronger.html#monsters-grow" lang="en">Growing stronger</a>
-      <a class="portal" href="stronger.html#monsters-grow" lang="de">Stärker werden</a>
+      <a class="portal" href="stronger.html#monsters-grow" lang="de">Stärker werden</a><a class="portal" href="stronger.html#monsters-grow" lang="zh-Hant">變得更強</a>
     </div>
   </div>
 </section>
@@ -158,70 +159,70 @@
 
 <section class="slide" id="guardians" data-lv="2" data-src="src/core/enemies.js#GUARDIAN_TIERS">
   <h2 lang="en">Guardians and balance</h2>
-  <h2 lang="de">Wächter und Balance</h2>
+  <h2 lang="de">Wächter und Balance</h2><h2 lang="zh-Hant">守衛與平衡</h2>
   <div class="cols">
     <div class="card">
       <h3 lang="en">Guardians</h3>
-      <h3 lang="de">Wächter</h3>
+      <h3 lang="de">Wächter</h3><h3 lang="zh-Hant">守衛</h3>
       <p lang="en">Every well down is guarded by a <b style="color:#ffb000">descent guardian</b> (gold), and one or two gates on the way by <b style="color:#ff5ab4">side guardians</b> (pink). They are normal species, promoted: much more health, harder hits, and lots of poise.</p>
-      <p lang="de">Jeder Brunnen nach unten wird von einem <b style="color:#ffb000">Brunnenwächter</b> (gold) bewacht, und ein oder zwei Tore unterwegs von <b style="color:#ff5ab4">Torwächtern</b> (pink). Es sind normale Arten, befördert: viel mehr Gesundheit, härtere Treffer und viel Standfestigkeit.</p>
+      <p lang="de">Jeder Brunnen nach unten wird von einem <b style="color:#ffb000">Brunnenwächter</b> (gold) bewacht, und ein oder zwei Tore unterwegs von <b style="color:#ff5ab4">Torwächtern</b> (pink). Es sind normale Arten, befördert: viel mehr Gesundheit, härtere Treffer und viel Standfestigkeit.</p><p lang="zh-Hant">每口向下的井都有一隻<b style="color:#ffb000">下井守衛</b>（金色）看守，沿途還有一、兩扇門由<b style="color:#ff5ab4">側門守衛</b>（粉紅色）看守。牠們是變得更強的普通物種：生命值高很多、攻擊更重，也更不容易被打退。</p>
       <p lang="en">Their gate stays sealed with a red cross until the guardian dies. Killing the others is not enough. Their arena has twice the usual monsters, and they defend together.</p>
-      <p lang="de">Ihr Tor bleibt mit einem roten Kreuz versiegelt, bis der Wächter tot ist. Die anderen zu besiegen reicht nicht. In ihrer Arena gibt es doppelt so viele Monster wie sonst, und sie verteidigen gemeinsam.</p>
+      <p lang="de">Ihr Tor bleibt mit einem roten Kreuz versiegelt, bis der Wächter tot ist. Die anderen zu besiegen reicht nicht. In ihrer Arena gibt es doppelt so viele Monster wie sonst, und sie verteidigen gemeinsam.</p><p lang="zh-Hant">守衛死掉前，大門會一直被紅色叉叉封住。打倒其他怪物還不夠。守衛的競技場裡有平常兩倍的怪物，而且牠們會一起防守。</p>
       <p lang="en">Guardians always drop good loot.</p>
-      <p lang="de">Wächter lassen immer gute Beute fallen.</p>
+      <p lang="de">Wächter lassen immer gute Beute fallen.</p><p lang="zh-Hant">守衛一定會掉落好戰利品。</p>
     </div>
     <div class="card">
       <h3 lang="en">Fair and fun: balance</h3>
-      <h3 lang="de">Fair und spaßig: Balance</h3>
+      <h3 lang="de">Fair und spaßig: Balance</h3><h3 lang="zh-Hant">公平又好玩：遊戲平衡</h3>
       <p lang="en">The game is tuned so you stay about <b>two levels above the depth</b> you're at, and fights feel the same all the way down: a spider always takes about 1 hit, a Stunder 3 to 5.</p>
-      <p lang="de">Das Spiel ist so eingestellt, dass du etwa <b>zwei Stufen über der Tiefe</b> bleibst, in der du bist, und Kämpfe sich bis ganz unten gleich anfühlen: Eine Spinne braucht immer etwa 1 Treffer, ein Stunder 3 bis 5.</p>
+      <p lang="de">Das Spiel ist so eingestellt, dass du etwa <b>zwei Stufen über der Tiefe</b> bleibst, in der du bist, und Kämpfe sich bis ganz unten gleich anfühlen: Eine Spinne braucht immer etwa 1 Treffer, ein Stunder 3 bis 5.</p><p lang="zh-Hant">遊戲經過調整，讓你的等級大約比目前深度<b>高兩級</b>，而且一路往下打起來感覺差不多：蜘蛛通常打一、兩下就能打倒，Stunder 則要打 3 到 5 下。</p>
       <p lang="en">How do the makers know? A tool <b>plays the game in fast-forward</b>, using the real tables, and prints where a player would be at each depth:</p>
-      <p lang="de">Woher wissen die Macher das? Ein Werkzeug <b>spielt das Spiel im Schnelldurchlauf</b>, mit den echten Tabellen, und druckt aus, wo ein Spieler in jeder Tiefe stehen würde:</p>
+      <p lang="de">Woher wissen die Macher das? Ein Werkzeug <b>spielt das Spiel im Schnelldurchlauf</b>, mit den echten Tabellen, und druckt aus, wo ein Spieler in jeder Tiefe stehen würde:</p><p lang="zh-Hant">製作遊戲的人怎麼知道平不平衡？有個工具會用真正的資料表<b>快速模擬遊戲</b>，並列出玩家在每個深度大約會有多強：</p>
       <pre><code>node tools/balance.mjs</code></pre>
       <p class="small muted" lang="en">Details for grown-ups: <code>docs/balance.md</code></p>
-      <p class="small muted" lang="de">Details für Erwachsene: <code>docs/balance.md</code></p>
+      <p class="small muted" lang="de">Details für Erwachsene: <code>docs/balance.md</code></p><p class="small muted" lang="zh-Hant">給大人看的詳細資料：<code>docs/balance.md</code></p>
     </div>
   </div>
 </section>
 
 <section class="slide" id="decide-code" data-lv="3">
   <h2 lang="en">The real code: deciding</h2>
-  <h2 lang="de">Der echte Code: entscheiden</h2>
+  <h2 lang="de">Der echte Code: entscheiden</h2><h2 lang="zh-Hant">實際程式碼：如何做決定</h2>
   <div class="cols wide-left">
     <pre data-code="src/game/enemyai.js#decide,stepEnemies"></pre>
     <div>
       <p lang="en">To start chasing, <b>all</b> of these must be true: you're alive, close (<code>aggro</code>), at about the same height (within 1), visible (<code>clearLine</code> from its eyes to your chest), and there's a path of at most 10 steps.</p>
-      <p lang="de">Um mit dem Jagen anzufangen, muss <b>alles</b> davon stimmen: Du lebst, bist nah (<code>aggro</code>), auf etwa derselben Höhe (höchstens 1 Unterschied), sichtbar (<code>clearLine</code> von ihren Augen zu deiner Brust), und es gibt einen Weg mit höchstens 10 Schritten.</p>
+      <p lang="de">Um mit dem Jagen anzufangen, muss <b>alles</b> davon stimmen: Du lebst, bist nah (<code>aggro</code>), auf etwa derselben Höhe (höchstens 1 Unterschied), sichtbar (<code>clearLine</code> von ihren Augen zu deiner Brust), und es gibt einen Weg mit höchstens 10 Schritten.</p><p lang="zh-Hant">要開始追你，<b>以下條件必須全部成立</b>：你還活著、距離夠近（<code>aggro</code>）、高度差不多（相差不超過 1）、看得到你（從怪物眼睛到你胸口的視線是暢通的 <code>clearLine</code>），而且找得到最多 10 步的路。</p>
       <p lang="en">While chasing, it plans a new path every think. <code>e.lost</code> counts up while it has no path or you're too far. After 1.4 seconds of that, it goes home.</p>
-      <p lang="de">Beim Jagen plant sie bei jedem Nachdenken einen neuen Weg. <code>e.lost</code> zählt hoch, solange sie keinen Weg hat oder du zu weit weg bist. Nach 1,4 Sekunden davon geht sie nach Hause.</p>
+      <p lang="de">Beim Jagen plant sie bei jedem Nachdenken einen neuen Weg. <code>e.lost</code> zählt hoch, solange sie keinen Weg hat oder du zu weit weg bist. Nach 1,4 Sekunden davon geht sie nach Hause.</p><p lang="zh-Hant">追你的時候，怪物每次思考都會重新找路。沒有路可走或你離太遠時，<code>e.lost</code> 就會一直增加。這種情況持續 1.4 秒後，牠就會回家。</p>
       <p lang="en"><code>e.think</code> is a countdown. When it reaches zero, think, and start again at 0.2. That's how "five times a second" works.</p>
-      <p lang="de"><code>e.think</code> ist ein Countdown. Wenn er null erreicht: nachdenken und wieder bei 0,2 anfangen. So funktioniert "fünfmal pro Sekunde".</p>
+      <p lang="de"><code>e.think</code> ist ein Countdown. Wenn er null erreicht: nachdenken und wieder bei 0,2 anfangen. So funktioniert "fünfmal pro Sekunde".</p><p lang="zh-Hant"><code>e.think</code> 是倒數計時。倒數到零時就思考一次，再從 0.2 開始。這就是「每秒思考五次」的做法。</p>
       <p lang="en">The demo uses the same rules on a little grid.</p>
-      <p lang="de">Die Demo benutzt dieselben Regeln auf einem kleinen Gitter.</p>
+      <p lang="de">Die Demo benutzt dieselben Regeln auf einem kleinen Gitter.</p><p lang="zh-Hant">這個示範在小格子地圖上使用相同的規則。</p>
     </div>
   </div>
 </section>
 
 <section class="slide" id="kind-code" data-lv="3">
   <h2 lang="en">The real code: making a kind</h2>
-  <h2 lang="de">Der echte Code: eine Sorte machen</h2>
+  <h2 lang="de">Der echte Code: eine Sorte machen</h2><h2 lang="zh-Hant">實際程式碼：如何製作一種新種類</h2>
   <div class="cols wide-left">
     <pre data-code="src/core/enemies.js#BLOOD_VIPER,GROWTH"></pre>
     <div>
       <p lang="en"><code>enemyKind(SNAKE, {...})</code> copies the snake's profile and changes it:</p>
-      <p lang="de"><code>enemyKind(SNAKE, {...})</code> kopiert das Profil der Schlange und ändert es:</p>
+      <p lang="de"><code>enemyKind(SNAKE, {...})</code> kopiert das Profil der Schlange und ändert es:</p><p lang="zh-Hant"><code>enemyKind(SNAKE, {...})</code> 會複製蛇的資料設定，再修改內容：</p>
       <ul>
         <li lang="en"><code>label</code>: its name. <code>reason</code>: what the game says if it kills you.</li>
-        <li lang="de"><code>label</code>: ihr Name. <code>reason</code>: was das Spiel sagt, wenn sie dich erwischt.</li>
+        <li lang="de"><code>label</code>: ihr Name. <code>reason</code>: was das Spiel sagt, wenn sie dich erwischt.</li><li lang="zh-Hant"><code>label</code>：種類名稱。<code>reason</code>：怪物打倒你時，遊戲顯示的原因。</li>
         <li lang="en"><code>colors</code>: new colours for its skin and eyes. <code>oklch</code> is a way to write colours by lightness, colourfulness and hue. <a class="portal" href="art.html#recolour">Recolouring</a></li>
-        <li lang="de"><code>colors</code>: neue Farben für Haut und Augen. <code>oklch</code> ist eine Art, Farben nach Helligkeit, Buntheit und Farbton aufzuschreiben. <a class="portal" href="art.html#recolour">Umfärben</a></li>
+        <li lang="de"><code>colors</code>: neue Farben für Haut und Augen. <code>oklch</code> ist eine Art, Farben nach Helligkeit, Buntheit und Farbton aufzuschreiben. <a class="portal" href="art.html#recolour">Umfärben</a></li><li lang="zh-Hant"><code>colors</code>：皮膚和眼睛的新顏色。<code>oklch</code> 是用亮度、鮮豔程度和色相來表示顏色的方法。<a class="portal" href="art.html#recolour">重新上色</a></li>
         <li lang="en"><code>ichor</code>: the colours of its blood droplets when hit.</li>
-        <li lang="de"><code>ichor</code>: die Farben ihrer Blutströpfchen, wenn sie getroffen wird.</li>
+        <li lang="de"><code>ichor</code>: die Farben ihrer Blutströpfchen, wenn sie getroffen wird.</li><li lang="zh-Hant"><code>ichor</code>：怪物受傷時，血滴的顏色。</li>
         <li lang="en"><code>mods</code>: multipliers for its numbers.</li>
-        <li lang="de"><code>mods</code>: Multiplikatoren für ihre Zahlen.</li>
+        <li lang="de"><code>mods</code>: Multiplikatoren für ihre Zahlen.</li><li lang="zh-Hant"><code>mods</code>：各項數值的倍率。</li>
       </ul>
       <p lang="en">Then it's added to the list <code>ENEMY_KINDS</code> and to the rosters of the depths where it should live. That's it: a new monster in 10 lines!</p>
-      <p lang="de">Dann kommt sie in die Liste <code>ENEMY_KINDS</code> und in die Besetzungslisten der Tiefen, in denen sie leben soll. Fertig: ein neues Monster in 10 Zeilen!</p>
+      <p lang="de">Dann kommt sie in die Liste <code>ENEMY_KINDS</code> und in die Besetzungslisten der Tiefen, in denen sie leben soll. Fertig: ein neues Monster in 10 Zeilen!</p><p lang="zh-Hant">接著把它加進 <code>ENEMY_KINDS</code> 清單，以及牠應該居住的深度名單。就這樣，10 行程式碼就能加入一種新怪物！</p>
     </div>
   </div>
 </section>

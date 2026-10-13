@@ -8,11 +8,11 @@ import { canvas, loop, html, t as tr } from '../deck.js';
 const S = 32, C = 20, R = 10;   // pixels per cell, grid size
 const STATES = ['idle', 'walk', 'chase', 'attack', 'home'];
 const SAY = () => ({
-  idle: tr('Resting. Looking around. In a few seconds it will wander off.', 'Ruht sich aus. Schaut sich um. In ein paar Sekunden läuft sie los.'),
-  walk: tr('Wandering to a random spot near home, slowly.', 'Läuft langsam zu einem zufälligen Platz nahe ihrem Zuhause.'),
-  chase: tr('It saw you! Following its path towards you, fast.', 'Sie hat dich gesehen! Folgt schnell ihrem Weg zu dir.'),
-  attack: tr('Winding up... it is committed now and cannot stop. Step away!', 'Holt aus... jetzt kann sie nicht mehr aufhören. Geh weg!'),
-  home: tr('Lost you. Walking back home.', 'Hat dich verloren. Läuft zurück nach Hause.'),
+  idle: tr('Resting. Looking around. In a few seconds it will wander off.', 'Ruht sich aus. Schaut sich um. In ein paar Sekunden läuft sie los.', '正在休息、四處張望。幾秒後就會開始遊蕩。'),
+  walk: tr('Wandering to a random spot near home, slowly.', 'Läuft langsam zu einem zufälligen Platz nahe ihrem Zuhause.', '慢慢走到家附近的隨機地點。'),
+  chase: tr('It saw you! Following its path towards you, fast.', 'Sie hat dich gesehen! Folgt schnell ihrem Weg zu dir.', '它發現你了！正快速朝你追來。'),
+  attack: tr('Winding up... it is committed now and cannot stop. Step away!', 'Holt aus... jetzt kann sie nicht mehr aufhören. Geh weg!', '正在蓄力……它現在停不下來了，快躲開！'),
+  home: tr('Lost you. Walking back home.', 'Hat dich verloren. Läuft zurück nach Hause.', '找不到你了。正走回家。'),
 });
 
 export default function mount(el) {
@@ -126,7 +126,7 @@ export default function mount(el) {
     // home and the aggro circle
     g.strokeStyle = '#ffffff22'; g.setLineDash([3, 4]); g.strokeRect(e.home[0] * S - 2 * S, e.home[1] * S - 2 * S, 5 * S, 5 * S);
     g.strokeStyle = '#d0503a88'; g.beginPath(); g.arc(e.x * S, e.z * S, P.aggro * S, 0, 7); g.stroke(); g.setLineDash([]);
-    g.fillStyle = '#8a96a8'; g.font = '10px ui-monospace, monospace'; g.fillText(tr('home', 'Zuhause'), e.home[0] * S - 2 * S + 3, e.home[1] * S - 2 * S + 12);
+    g.fillStyle = '#8a96a8'; g.font = '10px ui-monospace, monospace'; g.fillText(tr('home', 'Zuhause', '家'), e.home[0] * S - 2 * S + 3, e.home[1] * S - 2 * S + 12);
     // what it sees
     const dist = Math.hypot(hero.x - e.x, hero.z - e.z);
     if (dist <= P.aggro) { const ok = clearLine(e.x, e.z, hero.x, hero.z); g.strokeStyle = ok ? '#61dc6b' : '#ff6a5a66'; g.lineWidth = 1.5;
@@ -147,7 +147,7 @@ export default function mount(el) {
     g.restore();
     if (e.alert > 0) { g.fillStyle = '#ffcf7a'; g.font = 'bold 18px ui-monospace, monospace'; g.fillText('!', e.x * S - 3, e.z * S - 18); }
     diagram.querySelectorAll('.chip').forEach(ch => { const on = ch.classList.contains('st-' + e.mode); ch.style.background = on ? '#5a4a26' : ''; ch.style.borderColor = on ? '#ffcf7a' : ''; ch.style.color = on ? '#fff' : ''; });
-    out.innerHTML = `<b>${e.mode}</b>: ${SAY()[e.mode]}\n${tr('last states', 'letzte Zustände')}: ${log.join(' \u2190 ') || '-'}   ${tr('your health', 'deine Gesundheit')}: <b>${hero.hp}</b>`;
+    out.innerHTML = `<b>${e.mode}</b>: ${SAY()[e.mode]}\n${tr('last states', 'letzte Zustände', '最近狀態')}: ${log.join(' \u2190 ') || '-'}   ${tr('your health', 'deine Gesundheit', '你的生命值')}: <b>${hero.hp}</b>`;
   }
   c.onpointerdown = ev => { drag = true; c.setPointerCapture(ev.pointerId); move(ev); };
   c.onpointermove = ev => { if (drag) move(ev); };

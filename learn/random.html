@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-de="Zauberzahlen · Kinderführer zu Cube Crawler">Magic Numbers · Kids' Guide to Cube Crawler</title>
+<title data-de="Zauberzahlen · Kinderführer zu Cube Crawler" data-zh-hant="魔法數字 · Cube Crawler 兒童指南">Magic Numbers · Kids' Guide to Cube Crawler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="kids.css">
 <script src="lang.js"></script>
@@ -13,30 +13,40 @@
 <section class="slide" id="dice" data-lv="1">
   <h2 lang="en">Dice inside the computer</h2>
   <h2 lang="de">Würfel im Computer</h2>
+  <h2 lang="zh-Hant">電腦裡的骰子</h2>
   <div class="cols">
     <div>
       <p class="lead" lang="en">Games need dice. Where does the spider stand? Which sword does the chest hold? Is this cube a meadow or a lake?</p>
       <p class="lead" lang="de">Spiele brauchen Würfel. Wo steht die Spinne? Welches Schwert liegt in der Truhe? Ist dieser Würfel eine Wiese oder ein See?</p>
+      <p class="lead" lang="zh-Hant">遊戲需要骰子。蜘蛛會在哪裡？寶箱裡是哪一把劍？這個方塊會是草地還是湖泊？</p>
       <p lang="en">But a computer is an exact machine. It does the same thing every time. It cannot really roll a die!</p>
       <p lang="de">Aber ein Computer ist eine ganz genaue Maschine. Er macht jedes Mal dasselbe. Er kann gar nicht richtig würfeln!</p>
+      <p lang="zh-Hant">可是電腦是一台精確的機器。每次都會做出一模一樣的事，根本不會真的擲骰子！</p>
       <p lang="en">So it uses a trick. It takes a number and puts it through a scrambling formula. Out comes a new number that <i>looks</i> random.
         Put that one through the formula again, and you get the next one. And so on, forever.</p>
       <p lang="de">Darum benutzt er einen Trick. Er nimmt eine Zahl und steckt sie in eine Durcheinander-Formel. Heraus kommt eine neue Zahl, die zufällig <i>aussieht</i>.
         Steck die wieder in die Formel, und du bekommst die nächste. Und so weiter, für immer.</p>
+      <p lang="zh-Hant">所以電腦會用一個小技巧：把一個數字放進打亂數字的公式。公式會算出一個<i>看起來</i>隨機的新數字。再把新數字放進公式，就會得到下一個數字。如此一直重複。</p>
       <p lang="en">The very first number is called the <a class="w" href="words.html#seed">seed</a>. Everything grows from the seed, like a plant.</p>
       <p lang="de">Die allererste Zahl heißt <a class="w" href="words.html#seed">Seed</a> (englisch für Samenkorn). Alles wächst aus dem Seed, wie eine Pflanze.</p>
+      <p lang="zh-Hant">最一開始的數字叫做<a class="w" href="words.html#seed">種子</a>（seed）。所有東西都像植物一樣，從這顆種子長出來。</p>
     </div>
     <div class="card">
       <h3 lang="en">The big secret</h3>
       <h3 lang="de">Das große Geheimnis</h3>
+      <h3 lang="zh-Hant">最大的祕密</h3>
       <p lang="en">The same seed always gives <b>exactly the same</b> numbers, in the same order.</p>
       <p lang="de">Derselbe Seed gibt immer <b>genau dieselben</b> Zahlen, in derselben Reihenfolge.</p>
+      <p lang="zh-Hant">相同的種子每次都會產生<b>完全相同</b>的數字，順序也一樣。</p>
       <p lang="en">So the same seed gives the same world: the same hills, the same rivers, the same monsters in the same places.</p>
       <p lang="de">Also gibt derselbe Seed dieselbe Welt: dieselben Hügel, dieselben Flüsse, dieselben Monster an denselben Stellen.</p>
+      <p lang="zh-Hant">所以相同的種子會生成相同的世界：一樣的山丘、一樣的河流，怪物也在相同的位置。</p>
       <p lang="en">Try it in the game: <a href="../index.html?seed=123"><code>?seed=123</code></a> and then <a href="../index.html?seed=124"><code>?seed=124</code></a>.
         Visit them twice. The town is always there, but the cubes behind it change with the seed.</p>
       <p lang="de">Probier es im Spiel aus: <a href="../index.html?seed=123"><code>?seed=123</code></a> und dann <a href="../index.html?seed=124"><code>?seed=124</code></a>.
         Besuch jede zweimal. Die Stadt ist immer da, aber die Würfel dahinter ändern sich mit dem Seed.</p>
+      <p lang="zh-Hant">到遊戲裡試試看：先開啟 <a href="../index.html?seed=123"><code>?seed=123</code></a>，再開啟 <a href="../index.html?seed=124"><code>?seed=124</code></a>。
+        各玩兩次。城鎮每次都在，但後面的方塊會隨著種子改變。</p>
     </div>
   </div>
 </section>
@@ -44,36 +54,45 @@
 <section class="slide" id="try-seeds" data-lv="1">
   <h2 lang="en">Try it: same seed, same dice</h2>
   <h2 lang="de">Probier es: gleicher Seed, gleiche Würfel</h2>
+  <h2 lang="zh-Hant">試試看：相同種子，相同骰子</h2>
   <p lang="en">Seed A and seed B start the same. Roll a few times: the seeded rows are the same every time. The bottom row uses the browser's own <code>Math.random()</code>, which picks a new secret seed itself, so it changes.</p>
   <p lang="de">Seed A und Seed B fangen gleich an. Würfel ein paarmal: Die Reihen mit Seed sind jedes Mal gleich. Die unterste Reihe benutzt das eigene <code>Math.random()</code> des Browsers, das sich selbst einen geheimen Seed ausdenkt. Darum ändert sie sich.</p>
+  <p lang="zh-Hant">種子 A 和種子 B 一開始都一樣。多擲幾次看看：使用種子的那幾列，每次都會相同。最下面一列使用瀏覽器自己的 <code>Math.random()</code>，它會自行想出一個神祕種子，所以結果會改變。</p>
   <div class="demo real" data-demo="seeds"></div>
   <p class="small muted" lang="en">This uses the game's real dice, the function <code>mulberry32</code> from <code>src/core/util.js</code>.</p>
   <p class="small muted" lang="de">Hier laufen die echten Würfel des Spiels, die Funktion <code>mulberry32</code> aus <code>src/core/util.js</code>.</p>
+  <p class="small muted" lang="zh-Hant">這裡使用遊戲真正的骰子，也就是 <code>src/core/util.js</code> 裡的 <code>mulberry32</code> 函式。</p>
 </section>
 
 <section class="slide" id="why" data-lv="2">
   <h2 lang="en">Why "not really random" is great</h2>
   <h2 lang="de">Warum "nicht wirklich zufällig" super ist</h2>
+  <h2 lang="zh-Hant">「不是真的隨機」為什麼這麼棒</h2>
   <div class="cols3">
-    <div class="card"><h3 lang="en">Hunting bugs</h3> <h3 lang="de">Fehlerjagd</h3><p lang="en">If a bridge is broken in world 123, a developer can open world 123 and see the exact same broken bridge. Fixing a bug you cannot see again is almost impossible.</p> <p lang="de">Wenn in Welt 123 eine Brücke kaputt ist, kann ein Entwickler Welt 123 öffnen und genau dieselbe kaputte Brücke sehen. Einen Fehler zu reparieren, den man nicht wiederfinden kann, ist fast unmöglich.</p></div>
-    <div class="card"><h3>Tests</h3><p lang="en">The game's tests build hundreds of worlds with fixed seeds and check them. Because the seeds are fixed, a test that passes today passes tomorrow, unless the code changed.</p> <p lang="de">Die Tests des Spiels bauen Hunderte Welten mit festen Seeds und prüfen sie. Weil die Seeds fest sind, besteht ein Test, der heute besteht, auch morgen, außer der Code hat sich geändert.</p></div>
-    <div class="card"><h3 lang="en">No cheating</h3> <h3 lang="de">Kein Schummeln</h3><p lang="en">What a monster drops is decided by the world seed and the monster's name. If you die and the monster comes back, it drops <b>the same thing</b> again. Dying on purpose does not give you better loot!</p> <p lang="de">Was ein Monster fallen lässt, hängt vom Welt-Seed und vom Namen des Monsters ab. Wenn du stirbst und das Monster wiederkommt, lässt es <b>dasselbe</b> wieder fallen. Absichtlich sterben bringt dir keine bessere Beute!</p></div>
+    <div class="card"><h3 lang="en">Hunting bugs</h3> <h3 lang="de">Fehlerjagd</h3><h3 lang="zh-Hant">找出程式錯誤</h3><p lang="en">If a bridge is broken in world 123, a developer can open world 123 and see the exact same broken bridge. Fixing a bug you cannot see again is almost impossible.</p> <p lang="de">Wenn in Welt 123 eine Brücke kaputt ist, kann ein Entwickler Welt 123 öffnen und genau dieselbe kaputte Brücke sehen. Einen Fehler zu reparieren, den man nicht wiederfinden kann, ist fast unmöglich.</p><p lang="zh-Hant">如果 123 號世界裡有一座壞掉的橋，開發者可以再打開 123 號世界，看到完全相同的壞橋。如果沒辦法再次看到問題，要修好程式錯誤就幾乎不可能。</p></div>
+    <div class="card"><h3 lang="en">Tests</h3><h3 lang="de">Tests</h3><h3 lang="zh-Hant">測試</h3><p lang="en">The game's tests build hundreds of worlds with fixed seeds and check them. Because the seeds are fixed, a test that passes today passes tomorrow, unless the code changed.</p> <p lang="de">Die Tests des Spiels bauen Hunderte Welten mit festen Seeds und prüfen sie. Weil die Seeds fest sind, besteht ein Test, der heute besteht, auch morgen, außer der Code hat sich geändert.</p><p lang="zh-Hant">遊戲的測試會用固定的種子建立好幾百個世界，再逐一檢查。因為種子都固定了，今天通過的測試，明天也會通過，除非程式碼改了。</p></div>
+    <div class="card"><h3 lang="en">No cheating</h3> <h3 lang="de">Kein Schummeln</h3><h3 lang="zh-Hant">不靠運氣作弊</h3><p lang="en">What a monster drops is decided by the world seed and the monster's name. If you die and the monster comes back, it drops <b>the same thing</b> again. Dying on purpose does not give you better loot!</p> <p lang="de">Was ein Monster fallen lässt, hängt vom Welt-Seed und vom Namen des Monsters ab. Wenn du stirbst und das Monster wiederkommt, lässt es <b>dasselbe</b> wieder fallen. Absichtlich sterben bringt dir keine bessere Beute!</p><p lang="zh-Hant">怪物會掉下什麼東西，是由世界種子和怪物名字決定的。如果你死掉後怪物又出現，它還是會掉下<b>同樣的東西</b>。故意送死不會讓戰利品變更好！</p></div>
   </div>
 </section>
 
 <section class="slide" id="streams" data-lv="2">
   <h2 lang="en">Every cube gets its own dice</h2>
   <h2 lang="de">Jeder Würfel bekommt eigene Würfel</h2>
+  <h2 lang="zh-Hant">每個方塊都有自己的骰子</h2>
   <div class="cols wide-right">
     <div>
       <p lang="en">If the whole world used one row of dice, building cube A first or cube B first would change both of them. Messy!</p>
       <p lang="de">Würde die ganze Welt eine einzige Würfelreihe benutzen, dann würde es beide verändern, ob zuerst Würfel A oder Würfel B gebaut wird. Chaos!</p>
+      <p lang="zh-Hant">如果整個世界共用同一串骰子，先建造方塊 A 還是方塊 B，就會改變兩個方塊的結果。太亂了！</p>
       <p lang="en">So every cube makes its <b>own</b> seed: it mixes the world seed with its own name, like <code>"2,-1,0"</code> (that is: 2 east, depth 1, 0 south).</p>
       <p lang="de">Darum macht sich jeder Würfel seinen <b>eigenen</b> Seed: Er mischt den Welt-Seed mit seinem eigenen Namen, zum Beispiel <code>"2,-1,0"</code> (also: 2 nach Osten, Tiefe 1, 0 nach Süden).</p>
+      <p lang="zh-Hant">所以每個方塊都會建立<b>自己的</b>種子：把世界種子和方塊自己的名字混在一起，例如 <code>"2,-1,0"</code>（表示向東 2 格、深度 1、向南 0 格）。</p>
       <p lang="en">The mixer is called a <a class="w" href="words.html#hash">hash</a>: a formula that turns anything into a number that looks random. A tiny change in the name gives a totally different number.</p>
       <p lang="de">Der Mixer heißt <a class="w" href="words.html#hash">Hash</a>: eine Formel, die alles in eine Zahl verwandelt, die zufällig aussieht. Eine winzige Änderung im Namen gibt eine völlig andere Zahl.</p>
+      <p lang="zh-Hant">這個混合器叫做<a class="w" href="words.html#hash">雜湊</a>（hash）：一種能把任何東西轉成看起來隨機的數字的公式。名字只要改一點點，得到的數字就會完全不同。</p>
       <p lang="en">The walls between cubes, the monsters, the loot and the decorations get their own streams too.</p>
       <p lang="de">Die Wände zwischen Würfeln, die Monster, die Beute und die Deko bekommen auch eigene Zahlenreihen.</p>
+      <p lang="zh-Hant">方塊之間的牆、怪物、戰利品和裝飾，也都有各自的數字序列。</p>
     </div>
     <div class="demo real" data-demo="seeds" data-mode="cubes"></div>
   </div>
@@ -82,35 +101,46 @@
 <section class="slide" id="weighted" data-lv="2" data-src="src/core/gear/rarities.js#RARITIES">
   <h2 lang="en">A bag of marbles</h2>
   <h2 lang="de">Ein Beutel voller Murmeln</h2>
+  <h2 lang="zh-Hant">一袋彈珠</h2>
   <p lang="en">Not everything should be equally likely. A <b>rare</b> sword should be rare! So the game uses <a class="w" href="words.html#weight">weights</a>:
     imagine a bag with 24 grey marbles (Junk), 40 white (Common), 22 green (Uncommon) and 8 blue (Rare). Grab one without looking.</p>
   <p lang="de">Nicht alles soll gleich wahrscheinlich sein. Ein <b>seltenes</b> Schwert soll selten sein! Darum benutzt das Spiel <a class="w" href="words.html#weight">Gewichte</a>:
     Stell dir einen Beutel vor mit 24 grauen Murmeln (Junk = Schrott), 40 weißen (Common = gewöhnlich), 22 grünen (Uncommon = ungewöhnlich) und 8 blauen (Rare = selten). Greif blind hinein.</p>
+  <p lang="zh-Hant">每件東西出現的機率不該都一樣。<b>稀有</b>的劍就該很少見！所以遊戲使用<a class="w" href="words.html#weight">權重</a>：
+    想像袋子裡有 24 顆灰色彈珠（Junk，垃圾）、40 顆白色（Common，普通）、22 顆綠色（Uncommon，不常見）和 8 顆藍色（Rare，稀有）。閉上眼睛抓一顆。</p>
   <div class="demo real" data-demo="marbles"></div>
   <p class="small muted" lang="en">The game uses this for almost every choice: which kind of cube, which archetype, which monster, which sword, which name.</p>
   <p class="small muted" lang="de">Das Spiel benutzt das für fast jede Wahl: welche Art Würfel, welcher Archetyp, welches Monster, welches Schwert, welcher Name.</p>
+  <p class="small muted" lang="zh-Hant">遊戲幾乎每次做選擇都會用到這個方法：方塊類型、原型、怪物、劍，還有名字。</p>
 </section>
 
 <section class="slide" id="mulberry" data-lv="3">
   <h2 lang="en">The real dice: <code>mulberry32</code></h2>
   <h2 lang="de">Die echten Würfel: <code>mulberry32</code></h2>
+  <h2 lang="zh-Hant">真正的骰子：<code>mulberry32</code></h2>
   <div class="cols wide-left">
     <pre data-code="src/core/util.js#mulberry32"></pre>
     <div>
       <p lang="en">Don't worry about every symbol. Here is the idea:</p>
       <p lang="de">Keine Sorge wegen jedem einzelnen Zeichen. Das ist die Idee:</p>
+      <p lang="zh-Hant">不用擔心每一個符號，先看懂大概想法就好：</p>
       <ul>
         <li lang="en"><code>mulberry32(seed)</code> gives you a <b>function</b>. Each time you call it, you get the next number between 0 and 1.</li>
         <li lang="de"><code>mulberry32(seed)</code> gibt dir eine <b>Funktion</b>. Jedes Mal, wenn du sie aufrufst, bekommst du die nächste Zahl zwischen 0 und 1.</li>
+        <li lang="zh-Hant"><code>mulberry32(seed)</code> 會給你一個<b>函式</b>。每呼叫一次，就會得到下一個介於 0 和 1 之間的數字。</li>
         <li lang="en">Inside, <code>a</code> remembers where we are. Each call adds a big odd number to it.</li>
         <li lang="de">Innen merkt sich <code>a</code>, wo wir gerade sind. Jeder Aufruf zählt eine große ungerade Zahl dazu.</li>
+        <li lang="zh-Hant">在函式裡，<code>a</code> 會記住我們算到哪裡。每次呼叫時，它都會加上一個很大的奇數。</li>
         <li lang="en"><code>Math.imul</code>, <code>^</code> and <code>&gt;&gt;&gt;</code> multiply, flip and shift the bits: they shuffle the number like a deck of cards.</li>
         <li lang="de"><code>Math.imul</code>, <code>^</code> und <code>&gt;&gt;&gt;</code> multiplizieren, kippen und verschieben die Bits: Sie mischen die Zahl wie ein Kartenspiel.</li>
+        <li lang="zh-Hant"><code>Math.imul</code>、<code>^</code> 和 <code>&gt;&gt;&gt;</code> 會相乘、翻轉和移動位元，像洗牌一樣把數字打亂。</li>
         <li lang="en">Dividing by 4294967296 (that is 2<sup>32</sup>) squeezes the result between 0 and 1.</li>
         <li lang="de">Das Teilen durch 4294967296 (das ist 2<sup>32</sup>) quetscht das Ergebnis zwischen 0 und 1.</li>
+        <li lang="zh-Hant">把結果除以 4294967296（也就是 2<sup>32</sup>），就能把它縮到 0 和 1 之間。</li>
       </ul>
       <p lang="en">To roll a die: <code>Math.floor(R() * 6) + 1</code>.</p>
       <p lang="de">Um einen Würfel zu werfen: <code>Math.floor(R() * 6) + 1</code>.</p>
+      <p lang="zh-Hant">要擲一顆六面骰子，可以用：<code>Math.floor(R() * 6) + 1</code>。</p>
     </div>
   </div>
 </section>
@@ -118,6 +148,7 @@
 <section class="slide" id="pick-code" data-lv="3">
   <h2 lang="en">The real marble bag</h2>
   <h2 lang="de">Der echte Murmelbeutel</h2>
+  <h2 lang="zh-Hant">真正的彈珠袋</h2>
   <div class="cols">
     <div>
       <pre data-code="src/world/world.js#archetype"></pre>
@@ -125,18 +156,24 @@
     <div>
       <p lang="en">This bag picks a cube's <a class="w" href="words.html#archetype">archetype</a>, its one big shape. Read it like the marble demo:</p>
       <p lang="de">Dieser Beutel wählt den <a class="w" href="words.html#archetype">Archetyp</a> eines Würfels, seine eine große Form. Lies es wie die Murmel-Demo:</p>
+      <p lang="zh-Hant">這個彈珠袋會選出方塊的<a class="w" href="words.html#archetype">原型</a>，也就是它的大致形狀。可以像看彈珠示範那樣讀這段程式：</p>
       <ol class="steps">
         <li lang="en"><code>w</code> is the list of choices and their weights. The theme sets them, and the kind of cube <i>leans</i> them: a lake cube makes islands three times more likely.</li>
         <li lang="de"><code>w</code> ist die Liste der Möglichkeiten mit ihren Gewichten. Das Thema legt sie fest, und die Art des Würfels <i>neigt</i> sie: Ein See-Würfel macht Inseln dreimal wahrscheinlicher.</li>
+        <li lang="zh-Hant"><code>w</code> 是各種選項和權重的清單。主題會設定清單，而方塊類型會讓某些選項<i>更容易出現</i>：湖泊方塊會讓島嶼出現的機率變成三倍。</li>
         <li lang="en"><code>R() * sum</code> throws the needle onto the line.</li>
         <li lang="de"><code>R() * Summe</code> wirft die Nadel auf die Linie.</li>
+        <li lang="zh-Hant"><code>R() * sum</code> 會把指針丟到這條線上。</li>
         <li lang="en">The loop walks along: subtract each weight. When we go below zero, that's our pick.</li>
         <li lang="de">Die Schleife läuft entlang: Zieh jedes Gewicht ab. Wenn wir unter null kommen, ist das unsere Wahl.</li>
+        <li lang="zh-Hant">迴圈會沿著清單前進：每次減掉一個權重。數字降到零以下時，就選中那個項目。</li>
         <li lang="en">The last line is a safety net that should never be needed.</li>
         <li lang="de">Die letzte Zeile ist ein Sicherheitsnetz, das nie gebraucht werden sollte.</li>
+        <li lang="zh-Hant">最後一行是安全措施，理論上不會用到。</li>
       </ol>
       <a class="portal" href="world.html#noise" lang="en">Archetypes in the world room</a>
       <a class="portal" href="world.html#noise" lang="de">Archetypen in "Die Welt erschaffen"</a>
+      <a class="portal" href="world.html#noise" lang="zh-Hant">世界房間裡的原型</a>
     </div>
   </div>
 </section>

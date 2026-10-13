@@ -16,11 +16,12 @@ const icon = item => new URL('../../' + ITEMS[item.itemId].icon, import.meta.url
 function weaponCard(item) {
   const r = RARITY[item.gen.rarity], s = itemStats(item);
   return `<div class="weapon" style="--rarity:${r.css}"><img src="${icon(item)}" alt="">
-      <div><h4>${esc(displayName(item))}</h4><div class="base">${r.name} \u00B7 ${tr('item level', 'Stufe')} ${item.gen.ilvl}${baseLine(item) ? ' \u00B7 ' + baseLine(item) : ''}</div>
+      <div><h4>${esc(displayName(item))}</h4><div class="base">${r.name} \u00B7 ${tr('item level', 'Stufe', '道具等級')} ${item.gen.ilvl}${baseLine(item) ? ' \u00B7 ' + baseLine(item) : ''}</div>
       <div class="stats">${tr(`${s.damage} damage \u00B7 ${(1 / s.interval).toFixed(2)} attacks per second \u00B7 ${Math.round(weaponDps(s))} damage per second
 ${s.ranged ? 'range' : 'reach'} ${s.range.toFixed(2)} cells \u00B7 ${Math.round(s.crit * 100)}% critical hits`, `${s.damage} Schaden \u00B7 ${(1 / s.interval).toFixed(2)} Angriffe pro Sekunde \u00B7 ${Math.round(weaponDps(s))} Schaden pro Sekunde
-${s.ranged ? 'Schussweite' : 'Reichweite'} ${s.range.toFixed(2)} Felder \u00B7 ${Math.round(s.crit * 100)}% kritische Treffer`)}</div>
-      <ul>${affixLines(item).map((t, i) => `<li>${t} <span style="color:#5a6678">(${AFFIX[item.gen.affixes[i].id].name}, ${tr('tier', 'Stufe')} ${item.gen.affixes[i].tier})</span></li>`).join('')}</ul></div></div>`;
+${s.ranged ? 'Schussweite' : 'Reichweite'} ${s.range.toFixed(2)} Felder \u00B7 ${Math.round(s.crit * 100)}% kritische Treffer`,
+`${s.damage} 點傷害 \u00B7 每秒攻擊 ${(1 / s.interval).toFixed(2)} 次 \u00B7 每秒造成 ${Math.round(weaponDps(s))} 點傷害\n${s.ranged ? '射程' : '攻擊距離'} ${s.range.toFixed(2)} 格 \u00B7 ${Math.round(s.crit * 100)}% 暴擊率`)}</div>
+      <ul>${affixLines(item).map((t, i) => `<li>${t} <span style="color:#5a6678">(${AFFIX[item.gen.affixes[i].id].name}, ${tr('tier', 'Stufe', '階級')} ${item.gen.affixes[i].tier})</span></li>`).join('')}</ul></div></div>`;
 }
 
 // one floating card for the whole page, next to the pointer (or the focused tile)
@@ -44,9 +45,9 @@ const tip = {
 
 export default function mount(el) {
   if (el.dataset.mode === 'odds') return odds(el);
-  const row = html(el, `<div><div class="row"><label>${tr('item level', 'Gegenstandsstufe')} <input type="range" class="lv" min="1" max="25" value="5"> <b class="lvv">5</b></label>
-    <label><input type="checkbox" class="guard"> ${tr('guardian luck', 'Wächter-Glück')}</label>
-    <button class="roll">${tr('Roll a weapon!', 'Waffe würfeln!')}</button><button class="many">${tr('Open 100 chests', '100 Truhen öffnen')}</button></div></div>`);
+  const row = html(el, `<div><div class="row"><label>${tr('item level', 'Gegenstandsstufe', '道具等級')} <input type="range" class="lv" min="1" max="25" value="5"> <b class="lvv">5</b></label>
+    <label><input type="checkbox" class="guard"> ${tr('guardian luck', 'Wächter-Glück', '守衛的好運')}</label>
+    <button class="roll">${tr('Roll a weapon!', 'Waffe würfeln!', '隨機打造一把武器！')}</button><button class="many">${tr('Open 100 chests', '100 Truhen öffnen', '打開 100 個寶箱')}</button></div></div>`);
   const card = html(el, '<div style="margin-top:10px"></div>');
   const out = html(el, '<div class="out"></div>');
   const $ = s => row.querySelector(s);
@@ -56,13 +57,16 @@ export default function mount(el) {
     const r = RARITY[item.gen.rarity], base = ITEMS[item.itemId];
     card.innerHTML = weaponCard(item);
     const kinds = item.gen.affixes.map(a => AFFIX[a.id].kind);
-    const list = kinds.length ? item.gen.affixes.map((a, i) => `<b>${AFFIX[a.id].name}</b> (${kinds[i]})`).join(', ') : tr('none', 'keine');
+    const list = kinds.length ? item.gen.affixes.map((a, i) => `<b>${AFFIX[a.id].name}</b> (${kinds[i]})`).join(', ') : tr('none', 'keine', '無');
     out.innerHTML = tr(`The dice decided, step by step:\n1. rarity: <b style="color:${r.css}">${r.name}</b> \u2192 ${r.affixes} affix${r.affixes === 1 ? '' : 'es'}, damage \u00D7${r.damage}\n`
       + `2. base: <b>${base.name}</b> (${base.weapon.damage} damage at level 1, +5% per item level)\n`
       + `3. affixes: ${list}\n4. name: <b>${displayName(item)}</b>`,
       `Die Würfel haben Schritt für Schritt entschieden:\n1. Seltenheit: <b style="color:${r.css}">${r.name}</b> \u2192 ${r.affixes} Affix${r.affixes === 1 ? '' : 'e'}, Schaden \u00D7${r.damage}\n`
       + `2. Grundtyp: <b>${base.name}</b> (${base.weapon.damage} Schaden auf Stufe 1, +5% pro Gegenstandsstufe)\n`
-      + `3. Affixe: ${list}\n4. Name: <b>${displayName(item)}</b>`);
+      + `3. Affixe: ${list}\n4. Name: <b>${displayName(item)}</b>`,
+      `骰子一步步決定了結果：\n1. 稀有度：<b style="color:${r.css}">${r.name}</b> \u2192 ${r.affixes} 個詞綴，傷害 \u00D7${r.damage}\n`
+      + `2. 基本武器：<b>${base.name}</b>（等級 1 時造成 ${base.weapon.damage} 點傷害；每升一級增加 5%）\n`
+      + `3. 詞綴：${list}\n4. 名稱：<b>${displayName(item)}</b>`);
   }
   $('.lv').oninput = () => { $('.lvv').textContent = $('.lv').value; };
   $('.roll').onclick = () => tip.hide() ?? show(rollWeapon(mulberry32(seed++), +$('.lv').value, opts()));
@@ -87,15 +91,16 @@ export default function mount(el) {
       b.onclick = () => { tiles.forEach(t => t.classList.toggle('on', t === b)); pinned.innerHTML = weaponCard(it); };
     });
     out.innerHTML = tr('100 chests opened, the best weapons first. Point at a weapon to see its card, click it to keep the card open. Try a higher item level, or guardian luck.',
-      '100 Truhen geöffnet, die besten Waffen zuerst. Zeig auf eine Waffe, um ihre Karte zu sehen, klick sie an, damit die Karte offen bleibt. Probier eine höhere Gegenstandsstufe oder Wächter-Glück.');
+      '100 Truhen geöffnet, die besten Waffen zuerst. Zeig auf eine Waffe, um ihre Karte zu sehen, klick sie an, damit die Karte offen bleibt. Probier eine höhere Gegenstandsstufe oder Wächter-Glück.',
+      '已打開 100 個寶箱，最好的武器排在前面。把滑鼠移到武器上可查看卡片，點一下可固定卡片。試著提高道具等級，或開啟守衛好運。');
   };
   $('.roll').click();
 }
 
 function odds(el) {
   const W = 640, H = 250, { g } = canvas(el, W, H);
-  const row = html(el, `<div class="row"><label>${tr('item level', 'Gegenstandsstufe')} <input type="range" class="lv" min="1" max="25" value="1"> <b class="lvv">1</b></label>
-    <label>${tr('luck', 'Glück')} <input type="range" class="luck" min="0" max="0.45" step="0.05" value="0"> <b class="lk">0</b></label></div>`);
+  const row = html(el, `<div class="row"><label>${tr('item level', 'Gegenstandsstufe', '道具等級')} <input type="range" class="lv" min="1" max="25" value="1"> <b class="lvv">1</b></label>
+    <label>${tr('luck', 'Glück', '運氣')} <input type="range" class="luck" min="0" max="0.45" step="0.05" value="0"> <b class="lk">0</b></label></div>`);
   const out = html(el, '<div class="out"></div>');
   const $ = s => row.querySelector(s);
   function draw() {
@@ -110,12 +115,13 @@ function odds(el) {
       g.fillStyle = '#e6e9ef'; g.font = '12px ui-monospace, monospace'; g.textAlign = 'center';
       g.fillText(r.name, x + bw / 2, 218);
       g.fillStyle = share ? r.css : '#5a6678';
-      g.fillText(share ? (share >= 0.01 ? (share * 100).toFixed(1) + '%' : (share * 100).toFixed(2) + '%') : r.guardianOnly ? tr('guardians', 'Wächter') : `lv ${r.minLevel}+`, x + bw / 2, 238);
+      g.fillText(share ? (share >= 0.01 ? (share * 100).toFixed(1) + '%' : (share * 100).toFixed(2) + '%') : r.guardianOnly ? tr('guardians', 'Wächter', '守衛') : `lv ${r.minLevel}+`, x + bw / 2, 238);
     });
     g.textAlign = 'left';
     const best = RARITIES.filter((r, i) => p[i] > 0).at(-1);
     out.innerHTML = tr(`At item level <b>${lv}</b>, the best possible is <b style="color:${best.css}">${best.name}</b>. Bars are drawn by the square root, so tiny chances stay visible.`,
-      `Auf Gegenstandsstufe <b>${lv}</b> ist das Beste, was geht: <b style="color:${best.css}">${best.name}</b>. Die Balken sind mit der Wurzel gezeichnet, damit winzige Chancen sichtbar bleiben.`);
+      `Auf Gegenstandsstufe <b>${lv}</b> ist das Beste, was geht: <b style="color:${best.css}">${best.name}</b>. Die Balken sind mit der Wurzel gezeichnet, damit winzige Chancen sichtbar bleiben.`,
+      `道具等級 <b>${lv}</b> 時，可能出現的最好結果是 <b style="color:${best.css}">${best.name}</b>。長條使用平方根比例繪製，所以很小的機率也看得見。`);
   }
   row.querySelectorAll('input').forEach(i => i.oninput = draw);
   draw();

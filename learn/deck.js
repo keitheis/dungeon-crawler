@@ -6,13 +6,13 @@
 //   - [data-demo="name"] loads demos/name.js when it comes into view and calls its default export
 //   - <a class="w" href="words.html#seed"> shows the glossary entry when hovered
 //   - <pre data-file="..."> gets light syntax colours and a file label
-// Pages are bilingual: every text block is a <x lang="en"> / <x lang="de"> pair and lang.js
-// shows one of them (attributes: data-de-alt, data-de-title ... replace alt, title ... in German).
+// Pages carry English, German and Taiwan Chinese blocks; lang.js selects one.
+// Translated attributes use data-de-* or data-zh-hant-*; shared code and demos exist once.
 //   - <pre data-code="src/x.js#name"> shows that definition, read live from the game's code
 //   - <b data-val="src/x.js#NAME.field"> shows that value, read live from the game's code
 //     (demos can show live code too: set data-code on a <pre> and call liveCode)
 //   - slides that stamps.json lists as outdated get a note (tools/learn.mjs, README.md)
-import { DECKS, LEVELS, THEME_NAMES, THEME_NAMES_DE, local, iconUrl } from './decks.js';
+import { DECKS, LEVELS, THEME_NAMES, THEME_NAMES_DE, THEME_NAMES_ZH_HANT, local, iconUrl } from './decks.js';
 import { parseRefs, extract, readValue, formatValue } from './refs.js';
 
 const store = {
@@ -22,27 +22,32 @@ const store = {
 const here = location.pathname.split('/').pop() || 'index.html';
 
 // ---- language ---------------------------------------------------------------------------------
-export const lang = document.documentElement.dataset.lang === 'de' ? 'de' : 'en';
-// t('text', 'Text'): the English or the German, for the page's language
-export const t = (en, de) => lang === 'de' ? de : en;
-// a game theme's name (src/themes/), in German by its prop set
-export const themeLabel = theme => lang === 'de' ? THEME_NAMES_DE[theme.props] ?? theme.name : theme.name;
-// the element of a language pair (or a single element) that is showing
-export const shown = (root, sel) => root.querySelector(`${sel}[lang=${lang}]`) ?? root.querySelector(sel);
-// German attributes and title
-if (lang === 'de') {
+export const lang = ['en', 'de', 'zh-Hant'].includes(document.documentElement.dataset.lang)
+  ? document.documentElement.dataset.lang : 'en';
+// Shared UI and demos use the same order as the page blocks: English, German, Taiwan Chinese.
+export const t = (en, de, zh) => (lang === 'de' ? de : lang === 'zh-Hant' ? zh : en) ?? en;
+const themeNames = lang === 'de' ? THEME_NAMES_DE : lang === 'zh-Hant' ? THEME_NAMES_ZH_HANT : THEME_NAMES;
+export const themeLabel = theme => lang === 'en' ? theme.name : themeNames[theme.props] ?? theme.name;
+export const shown = (root, sel) => root.querySelector(`${sel}[lang="${lang}"]`) ?? root.querySelector(sel);
+if (lang !== 'en') {
+  const prefix = `data-${lang.toLowerCase()}-`;
   for (const el of document.querySelectorAll('*')) for (const a of [...el.attributes])
-    if (a.name.startsWith('data-de-')) el.setAttribute(a.name.slice(8), a.value);
-  const title = document.querySelector('title[data-de]');
-  if (title) document.title = title.dataset.de;
+    if (a.name.startsWith(prefix)) el.setAttribute(a.name.slice(prefix.length), a.value);
+  const title = document.querySelector('title');
+  const translated = title?.getAttribute(`data-${lang.toLowerCase()}`);
+  if (translated) document.title = translated;
 }
 function langSwitch(into) {
-  const b = document.createElement('button');
-  b.className = 'langsw';
-  b.textContent = lang === 'de' ? 'EN' : 'DE';
-  b.title = lang === 'de' ? 'Switch to English' : 'Auf Deutsch lesen';
-  b.onclick = () => { store.set('lang', lang === 'de' ? 'en' : 'de'); location.reload(); };
-  into.append(b);
+  const select = document.createElement('select');
+  select.className = 'langsw';
+  select.setAttribute('aria-label', t('Language', 'Sprache', '語言'));
+  for (const [value, label] of [['en', 'EN'], ['de', 'DE'], ['zh-Hant', '繁體中文']]) {
+    const option = document.createElement('option');
+    option.value = value; option.textContent = label; option.selected = value === lang;
+    select.append(option);
+  }
+  select.onchange = () => { store.set('lang', select.value); location.reload(); };
+  into.append(select);
 }
 export const level = () => +store.get('lv', 3);
 export const visited = () => new Set(JSON.parse(store.get('visited', '[]')));
@@ -99,8 +104,8 @@ function label(pre) {
   for (const r of refs) byFile.set(r.path, [...(byFile.get(r.path) ?? []), ...(r.name && r.name !== 'header' ? [r.name] : [])]);
   const text = pre.dataset.label ?? [...byFile].map(([f, names]) => names.length ? `${f} \u00B7 ${names.join(', ')}` : f).join('  +  ');
   if (!text) return '';
-  return `<span class="file">${esc(text)}${live ? ` <span class="live" title="${t('Read from the game\'s code right now', 'Gerade eben aus dem Code des Spiels gelesen')}">${t('LIVE', 'LIVE')}</span>`
-    : refs.length && !pre.dataset.label ? ` <span class="excerpt">${t('excerpt', 'Auszug')}</span>` : ''}</span>`;
+  return `<span class="file">${esc(text)}${live ? ` <span class="live" title="${t('Read from the game\'s code right now', 'Gerade eben aus dem Code des Spiels gelesen', '即時讀取遊戲的程式碼')}">${t('LIVE', 'LIVE', '即時')}</span>`
+    : refs.length && !pre.dataset.label ? ` <span class="excerpt">${t('excerpt', 'Auszug', '節錄')}</span>` : ''}</span>`;
 }
 
 // ---- live code and values from the game ----------------------------------------------------------
@@ -126,7 +131,8 @@ export async function liveCode(pre) {
     pre.textContent = parts.join('\n\n');
   } catch (err) {
     pre.textContent = t(`// This code could not be read from the game's files: ${err.message}`,
-      `// Dieser Code ließ sich nicht aus den Dateien des Spiels lesen: ${err.message}`);
+      `// Dieser Code ließ sich nicht aus den Dateien des Spiels lesen: ${err.message}`,
+      `// 無法從遊戲檔案讀取這段程式碼：${err.message}`);
   }
   highlight(pre);
 }
@@ -135,7 +141,7 @@ async function liveValues(root) {
     const [path, expr] = el.dataset.val.split('#');
     try {
       const v = readValue(await import(new URL(path, ROOT).href), expr);
-      if (v !== undefined) el.textContent = formatValue(v, el.dataset.fmt, el.closest('[lang]')?.lang === 'de' ? 'de' : 'en');
+      if (v !== undefined) el.textContent = formatValue(v, el.dataset.fmt, el.closest('[lang]')?.lang || lang);
     } catch { /* keep the written value */ }
   }
 }
@@ -145,8 +151,8 @@ async function staleNotes(slides) {
   try { stamps = await (await fetch('stamps.json')).json(); } catch { return; }
   for (const s of slides) {
     const why = stamps.outdated?.[`${here}#${s.id}`];
-    if (why) s.querySelector('h2:last-of-type')?.insertAdjacentHTML('afterend', `<div class="note stale"><b>${t('Heads-up', 'Achtung')}</b> ${t(
-      'The game changed since this slide was written, so a detail may be out of date', 'Das Spiel hat sich geändert, seit diese Folie geschrieben wurde, ein Detail ist vielleicht veraltet')} (${esc(why)}).</div>`);
+    if (why) s.querySelector('h2:last-of-type')?.insertAdjacentHTML('afterend', `<div class="note stale"><b>${t('Heads-up', 'Achtung', '提醒')}</b> ${t(
+      'The game changed since this slide was written, so a detail may be out of date', 'Das Spiel hat sich geändert, seit diese Folie geschrieben wurde, ein Detail ist vielleicht veraltet', '這張投影片寫好後，遊戲已有變更，部分細節可能已過時')} (${esc(why)}).</div>`);
   }
 }
 
@@ -189,7 +195,7 @@ function demos(root) {
       target.dataset.mounted = '1';
       io.unobserve(target);
       const box = document.createElement('div');
-      box.className = 'loading'; box.textContent = t('loading\u2026', 'lädt\u2026');
+      box.className = 'loading'; box.textContent = t('loading\u2026', 'lädt\u2026', '載入中…');
       target.append(box);
       import(`./demos/${target.dataset.demo}.js`)
         .then(m => { box.remove(); return m.default(target); })
@@ -197,7 +203,7 @@ function demos(root) {
           console.error(err);
           target.append(box);
           box.className = 'err';
-          box.textContent = t('This demo did not load: ', 'Diese Demo ließ sich nicht laden: ') + err.message;
+          box.textContent = t('This demo did not load: ', 'Diese Demo ließ sich nicht laden: ', '這個示範無法載入：') + err.message;
         });
     }
   }, { rootMargin: '200px' });
@@ -233,40 +239,40 @@ export function html(el, s) { el.insertAdjacentHTML('beforeend', s); return el.l
 function deck(main) {
   const slides = [...main.querySelectorAll('section.slide')];
   const deckIdx = DECKS.findIndex(d => d.file === here), info = deckIdx >= 0 ? local(DECKS[deckIdx], lang) : null;
-  const themes = lang === 'de' ? THEME_NAMES_DE : THEME_NAMES, lvName = L => lang === 'de' ? L.de : L.name;
+  const themes = themeNames, lvName = L => L[lang] ?? L.name;
   slides.forEach((s, i) => {
     s.id ||= 'slide-' + (i + 1);
     s.dataset.lv ||= '1';
     const L = LEVELS[s.dataset.lv];
-    s.insertAdjacentHTML('afterbegin', `<span class="tag" title="${t('Detail level', 'Detailstufe')}">${L.short} \u00B7 ${lvName(L)}</span>`);
+    s.insertAdjacentHTML('afterbegin', `<span class="tag" title="${t('Detail level', 'Detailstufe', '詳細程度')}">${L.short} \u00B7 ${lvName(L)}</span>`);
   });
   // the last slide ends the room: the way on to the next room, or back to the map
   const next = DECKS[deckIdx + 1] && local(DECKS[deckIdx + 1], lang), prev = deckIdx > 0 && local(DECKS[deckIdx - 1], lang);
   if (slides.length) slides.at(-1).insertAdjacentHTML('beforeend', `<nav class="roomend">
-    <p class="done">\u2713 ${t('You finished', 'Geschafft')}: <b>${esc(info?.title ?? '')}</b></p>
+    <p class="done">\u2713 ${t('You finished', 'Geschafft', '你已完成')}: <b>${esc(info?.title ?? '')}</b></p>
     <div class="ways">${next ? `<a class="way next" href="${next.file}"><img src="${iconUrl(next)}" alt="">
-      <span><small>${t('Next room', 'Nächster Raum')} \u00B7 ${deckIdx + 2}/${DECKS.length}</small><b>${esc(next.title)}</b><i>${esc(next.teaser)}</i></span><em>\u25B8</em></a>`
-      : `<p class="last">${t('That was the last room. You have seen the whole guide!', 'Das war der letzte Raum. Du hast den ganzen Führer gesehen!')}</p>`}
-    <a class="way map" href="index.html"><em>\u25C2</em><span><small>${t('All rooms', 'Alle Räume')}</small><b>${t('Back to the map', 'Zurück zur Karte')}</b></span></a></div></nav>`);
+      <span><small>${t('Next room', 'Nächster Raum', '下一個房間')} \u00B7 ${deckIdx + 2}/${DECKS.length}</small><b>${esc(next.title)}</b><i>${esc(next.teaser)}</i></span><em>\u25B8</em></a>`
+      : `<p class="last">${t('That was the last room. You have seen the whole guide!', 'Das war der letzte Raum. Du hast den ganzen Führer gesehen!', '這是最後一個房間。你已讀完整份指南！')}</p>`}
+    <a class="way map" href="index.html"><em>\u25C2</em><span><small>${t('All rooms', 'Alle Räume', '所有房間')}</small><b>${t('Back to the map', 'Zurück zur Karte', '回到地圖')}</b></span></a></div></nav>`);
 
   // top bar
   const bar = document.createElement('div');
   bar.className = 'bar';
-  bar.innerHTML = `<a href="index.html" title="${t('The map (M)', 'Die Karte (M)')}">\u25C2 ${t('Map', 'Karte')}</a>
-    <div class="where">${info ? `${t('Room', 'Raum')} ${deckIdx + 1}/${DECKS.length} \u00B7 <b>${info.title}</b> \u00B7 <i>${t('depth', 'Tiefe')} ${info.depth} \u00B7 ${themes[info.theme]}</i>` : ''}</div>
-    <div class="tools"><span class="lvpick" title="${t('How much detail do you want?', 'Wie viele Details möchtest du?')}">${[1, 2, 3].map(l =>
+  bar.innerHTML = `<a href="index.html" title="${t('The map (M)', 'Die Karte (M)', '地圖（M）')}">\u25C2 ${t('Map', 'Karte', '地圖')}</a>
+    <div class="where">${info ? `${t('Room', 'Raum', '房間')} ${deckIdx + 1}/${DECKS.length} \u00B7 <b>${info.title}</b> \u00B7 <i>${t('depth', 'Tiefe', '深度')} ${info.depth} \u00B7 ${themes[info.theme]}</i>` : ''}</div>
+    <div class="tools"><span class="lvpick" title="${t('How much detail do you want?', 'Wie viele Details möchtest du?', '你想看多詳細？')}">${[1, 2, 3].map(l =>
       `<button data-lv="${l}" style="--c:${LEVELS[l].color}" title="${lvName(LEVELS[l])}">${LEVELS[l].short}</button>`).join('')}</span>
-    <button class="mode" title="${t('Slides or one long page (S)', 'Folien oder eine lange Seite (S)')}"></button><button class="helpbtn" title="${t('Keys (?)', 'Tasten (?)')}">?</button></div>`;
+    <button class="mode" title="${t('Slides or one long page (S)', 'Folien oder eine lange Seite (S)', '投影片或整頁閱讀（S）')}"></button><button class="helpbtn" title="${t('Keys (?)', 'Tasten (?)', '快捷鍵（?）')}">?</button></div>`;
   langSwitch(bar.querySelector('.tools'));
   document.body.prepend(bar);
 
   // quick bar
   const qbar = document.createElement('nav');
   qbar.className = 'qbar';
-  qbar.innerHTML = `${prev ? `<a class="door" href="${prev.file}#end" title="${t('Previous room', 'Voriger Raum')}: ${esc(prev.title)}"><img src="${iconUrl(prev)}" alt=""></a>` : ''}<button class="arrow prev" title="${t('Previous', 'Zurück')} (\u2190)">\u25C2</button><div class="slots">${slides.map((s, i) =>
+  qbar.innerHTML = `${prev ? `<a class="door" href="${prev.file}#end" title="${t('Previous room', 'Voriger Raum', '上一個房間')}: ${esc(prev.title)}"><img src="${iconUrl(prev)}" alt=""></a>` : ''}<button class="arrow prev" title="${t('Previous', 'Zurück', '上一張')} (\u2190)">\u25C2</button><div class="slots">${slides.map((s, i) =>
     `<a class="slot lv${s.dataset.lv}" href="#${s.id}" title="${esc(shown(s, 'h2')?.textContent ?? '')}"><span>${i + 1}</span></a>`).join('')}</div>
-    <button class="arrow next" title="${t('Next', 'Weiter')} (\u2192)">\u25B8</button>${next
-    ? `<a class="door" href="${next.file}" title="${t('Next room', 'Nächster Raum')}: ${esc(next.title)}"><img src="${iconUrl(next)}" alt=""></a>` : ''}`;
+    <button class="arrow next" title="${t('Next', 'Weiter', '下一張')} (\u2192)">\u25B8</button>${next
+    ? `<a class="door" href="${next.file}" title="${t('Next room', 'Nächster Raum', '下一個房間')}: ${esc(next.title)}"><img src="${iconUrl(next)}" alt=""></a>` : ''}`;
   document.body.append(qbar);
   const slots = [...qbar.querySelectorAll('.slot')];
 
@@ -283,9 +289,9 @@ function deck(main) {
     const end = cur === slides.findLastIndex((_, j) => allowed(j)), first = cur === slides.findIndex((_, j) => allowed(j));
     const fwd = qbar.querySelector('.next'), back = qbar.querySelector('.prev');
     fwd.classList.toggle('to-room', end && !!next);
-    fwd.title = end && next ? `${t('Next room', 'Nächster Raum')}: ${next.title} (\u2192)` : `${t('Next', 'Weiter')} (\u2192)`;
+    fwd.title = end && next ? `${t('Next room', 'Nächster Raum', '下一個房間')}: ${next.title} (\u2192)` : `${t('Next', 'Weiter', '下一張')} (\u2192)`;
     back.classList.toggle('to-room', first && !!prev);
-    back.title = first && prev ? `${t('Previous room', 'Voriger Raum')}: ${prev.title} (\u2190)` : `${t('Previous', 'Zurück')} (\u2190)`;
+    back.title = first && prev ? `${t('Previous room', 'Voriger Raum', '上一個房間')}: ${prev.title} (\u2190)` : `${t('Previous', 'Zurück', '上一張')} (\u2190)`;
   }
   const step = d => {
     for (let i = cur + d; i >= 0 && i < slides.length; i += d) if (allowed(i)) return show(i);
@@ -300,7 +306,7 @@ function deck(main) {
   function setMode(m) {
     document.body.classList.toggle('scroll', m === 'scroll');
     document.body.classList.toggle('slides', m !== 'scroll');
-    bar.querySelector('.mode').textContent = m === 'scroll' ? t('slides', 'Folien') : t('scroll', 'Seite');
+    bar.querySelector('.mode').textContent = m === 'scroll' ? t('slides', 'Folien', '投影片') : t('scroll', 'Seite', '整頁閱讀');
     store.set('mode', m);
     if (m === 'scroll') slides[cur].scrollIntoView(); else show(cur);
   }
@@ -350,13 +356,18 @@ function help() {
     <dt><kbd>\u2192</kbd> <kbd>Space</kbd></dt><dd>next slide</dd><dt><kbd>\u2190</kbd></dt><dd>previous slide</dd>
     <dt><kbd>S</kbd></dt><dd>slides or one long page</dd><dt><kbd>M</kbd></dt><dd>back to the map</dd>
     <dt>Lv 1 / 2 / 3</dt><dd>how much detail: Lv 1 is the big idea, Lv 3 shows the real code</dd>
-    <dt>dotted words</dt><dd>point at them to see what they mean</dd><dt>DE</dt><dd>read this in German</dd>
+    <dt>dotted words</dt><dd>point at them to see what they mean</dd><dt>EN / DE / 繁體中文</dt><dd>choose a language</dd>
     <dt><kbd>?</kbd> <kbd>Esc</kbd></dt><dd>close this</dd></dl></section>`, `<section><h1>Tasten</h1><dl>
     <dt><kbd>\u2192</kbd> <kbd>Leertaste</kbd></dt><dd>nächste Folie</dd><dt><kbd>\u2190</kbd></dt><dd>vorige Folie</dd>
     <dt><kbd>S</kbd></dt><dd>Folien oder eine lange Seite</dd><dt><kbd>M</kbd></dt><dd>zurück zur Karte</dd>
     <dt>Lv 1 / 2 / 3</dt><dd>wie viele Details: Lv 1 ist die große Idee, Lv 3 zeigt den echten Code</dd>
-    <dt>gepunktete Wörter</dt><dd>zeig darauf, um zu sehen, was sie bedeuten</dd><dt>EN</dt><dd>auf Englisch lesen</dd>
-    <dt><kbd>?</kbd> <kbd>Esc</kbd></dt><dd>schließen</dd></dl></section>`);
+    <dt>gepunktete Wörter</dt><dd>zeig darauf, um zu sehen, was sie bedeuten</dd><dt>EN / DE / 繁體中文</dt><dd>Sprache wählen</dd>
+    <dt><kbd>?</kbd> <kbd>Esc</kbd></dt><dd>schließen</dd></dl></section>`, `<section><h1>快捷鍵</h1><dl>
+    <dt><kbd>→</kbd> <kbd>空白鍵</kbd></dt><dd>下一張投影片</dd><dt><kbd>←</kbd></dt><dd>上一張投影片</dd>
+    <dt><kbd>S</kbd></dt><dd>切換投影片或整頁閱讀</dd><dt><kbd>M</kbd></dt><dd>回到地圖</dd>
+    <dt>Lv 1 / 2 / 3</dt><dd>詳細程度：Lv 1 介紹基本概念，Lv 3 展示實際程式碼</dd>
+    <dt>有點狀底線的詞彙</dt><dd>將滑鼠移上去，就能看到解釋</dd><dt>EN / DE / 繁體中文</dt><dd>選擇語言</dd>
+    <dt><kbd>?</kbd> <kbd>Esc</kbd></dt><dd>關閉說明</dd></dl></section>`);
   h.onclick = () => h.remove();
   document.body.append(h);
 }

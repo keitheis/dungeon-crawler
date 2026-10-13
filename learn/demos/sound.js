@@ -29,40 +29,40 @@ function tone(type, f0, f1, t, dur, into) {
   o.connect(into); o.start(t); o.stop(t + dur + 0.05);
 }
 const SOUNDS = {
-  swing: { layers: ['hiss (noise) through a band-pass filter that sweeps from 500 up to 2600 Hz and back down to 800'],
+  swing: { layers: ['hiss (noise) through a band-pass filter that sweeps from 500 up to 2600 Hz and back down to 800'], zh: ['嘶嘶聲（雜訊）通過帶通濾波器，音高從 500 Hz 升到 2600 Hz，再降回 800 Hz'],
     de: ['Zischen (Rauschen) durch einen Bandpass-Filter, der von 500 hoch auf 2600 Hz und zurück auf 800 gleitet'], play(t, out, p) {
     const f = filter('bandpass', 500 * p, 0.9, amp(t, 0.04, 1.3, 0.17, out));
     f.frequency.setValueAtTime(500 * p, t); f.frequency.exponentialRampToValueAtTime(2600 * p, t + 0.07); f.frequency.exponentialRampToValueAtTime(800 * p, t + 0.21);
     noise(t, 0.24, f);
   } },
-  hit: { layers: ['a thump: a sine tone falling from 180 to 50 Hz', 'a body: muffled noise (low-pass)', 'a crack: a tiny burst of thin noise (high-pass)'],
+  hit: { layers: ['a thump: a sine tone falling from 180 to 50 Hz', 'a body: muffled noise (low-pass)', 'a crack: a tiny burst of thin noise (high-pass)'], zh: ['砰的一聲：正弦音從 180 Hz 降到 50 Hz', '碰撞聲：模糊的雜訊（低通濾波）', '喀的一聲：短暫尖細的雜訊（高通濾波）'],
     de: ['ein Wumms: ein Sinuston, der von 180 auf 50 Hz fällt', 'ein Körper: dumpfes Rauschen (Tiefpass)', 'ein Knacks: ein winziger Stoß dünnes Rauschen (Hochpass)'], play(t, out, p) {
     tone('sine', 180 * p, 50 * p, t, 0.12, amp(t, 0.002, 0.8, 0.12, out));
     noise(t, 0.1, filter('lowpass', 2200 * p, 0.7, amp(t, 0.002, 0.7, 0.08, out)));
     noise(t, 0.04, filter('highpass', 3500, 0.7, amp(t, 0.001, 0.3, 0.03, out)));
   } },
-  kill: { layers: ['a deeper, longer thump: 120 down to 32 Hz', 'muffled noise', 'a crunch: noise through a narrow band-pass', 'a crack'],
+  kill: { layers: ['a deeper, longer thump: 120 down to 32 Hz', 'muffled noise', 'a crunch: noise through a narrow band-pass', 'a crack'], zh: ['更低沉、更長的砰聲：從 120 Hz 降到 32 Hz', '模糊的雜訊', '碎裂聲：雜訊通過窄帶通濾波器', '喀的一聲'],
     de: ['ein tieferer, längerer Wumms: 120 runter auf 32 Hz', 'dumpfes Rauschen', 'ein Knirschen: Rauschen durch einen schmalen Bandpass', 'ein Knacks'], play(t, out, p) {
     tone('sine', 120 * p, 32 * p, t, 0.35, amp(t, 0.002, 1, 0.35, out));
     noise(t, 0.32, filter('lowpass', 900 * p, 0.7, amp(t, 0.003, 0.8, 0.3, out)));
     noise(t, 0.2, filter('bandpass', 320 * p, 3, amp(t, 0.002, 0.7, 0.18, out)));
     noise(t, 0.05, filter('highpass', 3000, 0.7, amp(t, 0.001, 0.35, 0.04, out)));
   } },
-  coin: { layers: ['two quick bright notes (triangle waves): G at 1568 Hz, then C at 2093 Hz'],
+  coin: { layers: ['two quick bright notes (triangle waves): G at 1568 Hz, then C at 2093 Hz'], zh: ['兩個快速明亮的音符（三角波）：先是 1568 Hz 的 G 音，再來是 2093 Hz 的 C 音'],
     de: ['zwei schnelle, helle Töne (Dreieckswellen): G mit 1568 Hz, dann C mit 2093 Hz'], play(t, out, p) {
     tone('triangle', 1568 * p, 1568 * p, t, 0.08, amp(t, 0.002, 0.32, 0.07, out));
     tone('triangle', 2093 * p, 2093 * p, t + 0.055, 0.2, amp(t + 0.055, 0.002, 0.3, 0.18, out));
   } },
-  unlock: { layers: ['four notes one after the other, A C# E A: a rising chord'],
+  unlock: { layers: ['four notes one after the other, A C# E A: a rising chord'], zh: ['四個音符依序響起，A、C#、E、A：一路升高的和弦'],
     de: ['vier Töne nacheinander, A Cis E A: ein steigender Akkord'], play(t, out, p) {
     for (const [i, hz] of [440, 554, 660, 880].entries()) { const at = t + i * 0.07; tone('triangle', hz * p, hz * p, at, 0.35, amp(at, 0.005, 0.25, 0.35, out)); }
   } },
-  zap: { layers: ['a buzzy square wave falling from 900 to 160 Hz', 'a sine falling underneath'],
+  zap: { layers: ['a buzzy square wave falling from 900 to 160 Hz', 'a sine falling underneath'], zh: ['帶有嗡嗡聲的方波，從 900 Hz 降到 160 Hz', '底下還有一個逐漸降低的正弦音'],
     de: ['eine summende Rechteckwelle, die von 900 auf 160 Hz fällt', 'ein Sinus, der darunter fällt'], play(t, out, p) {
     tone('square', 900 * p, 160 * p, t, 0.22, filter('lowpass', 2400, 2, amp(t, 0.004, 0.25, 0.22, out)));
     tone('sine', 300 * p, 90 * p, t, 0.18, amp(t, 0.004, 0.5, 0.18, out));
   } },
-  fireball: { layers: ['a breathy roar: noise through a low-pass filter that opens and closes', 'a low sawtooth rumble'],
+  fireball: { layers: ['a breathy roar: noise through a low-pass filter that opens and closes', 'a low sawtooth rumble'], zh: ['呼嘯聲：雜訊通過會開合的低通濾波器', '低沉的鋸齒波隆隆聲'],
     de: ['ein hauchiges Brüllen: Rauschen durch einen Tiefpass, der auf- und zugeht', 'ein tiefes Sägezahn-Grollen'], play(t, out, p) {
     const f = filter('lowpass', 600 * p, 1, amp(t, 0.06, 1, 0.35, out));
     f.frequency.setValueAtTime(400 * p, t); f.frequency.exponentialRampToValueAtTime(1800 * p, t + 0.12); f.frequency.exponentialRampToValueAtTime(500 * p, t + 0.4);
@@ -74,15 +74,15 @@ const SOUNDS = {
 export default function mount(el) {
   const W = 640, H = 150, { g } = canvas(el, W, H);
   const row = html(el, `<div><div class="row">${Object.keys(SOUNDS).map(n => `<button data-s="${n}">${n}</button>`).join('')}</div>
-    <div class="row"><label>${tr('pitch', 'Tonhöhe')} <input type="range" class="p" min="0.5" max="2" step="0.05" value="1"> <b class="pv">1.00</b></label></div></div>`);
-  const out = html(el, `<div class="out">${tr('Press a sound. (Turn your volume down a bit first!)', 'Drück auf ein Geräusch. (Mach vorher den Ton etwas leiser!)')}</div>`);
+    <div class="row"><label>${tr('pitch', 'Tonhöhe', '音高')} <input type="range" class="p" min="0.5" max="2" step="0.05" value="1"> <b class="pv">1.00</b></label></div></div>`);
+  const out = html(el, `<div class="out">${tr('Press a sound. (Turn your volume down a bit first!)', 'Drück auf ein Geräusch. (Mach vorher den Ton etwas leiser!)', '按一下音效按鈕。（記得先把音量調小一點！）')}</div>`);
   const pitch = () => +row.querySelector('.p').value;
   row.querySelector('.p').oninput = () => { row.querySelector('.pv').textContent = pitch().toFixed(2); };
   row.querySelectorAll('[data-s]').forEach(b => b.onclick = () => {
     audio();
     const s = SOUNDS[b.dataset.s];
     s.play(ac.currentTime + 0.005, master, pitch());
-    out.innerHTML = `<b>${b.dataset.s}</b> ${tr('is made of', 'besteht aus')}:\n${tr(s.layers, s.de).map(l => '  \u2022 ' + l).join('\n')}`;
+    out.innerHTML = `<b>${b.dataset.s}</b> ${tr('is made of', 'besteht aus', '由這些組成')}:\n${tr(s.layers, s.de, s.zh).map(l => '  \u2022 ' + l).join('\n')}`;
   });
   const data = new Uint8Array(2048);
   loop(el, () => {

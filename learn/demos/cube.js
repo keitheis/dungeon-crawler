@@ -24,10 +24,10 @@ export default function mount(el) {
   const W = 640, H = 540, { g } = canvas(el, W, H);
   const row = html(el, `<div class="row">
     <label>Seed <input type="number" class="seed" value="${1 + Math.floor(Math.random() * 999)}"></label>
-    <label>${tr('depth', 'Tiefe')} <select class="depth">${Array.from({ length: MAX_DEPTH + 1 }, (_, d) => `<option value="${d}" ${d === 1 ? 'selected' : ''}>${d} \u00B7 ${themeLabel(themeAt(d))}</option>`).join('')}</select></label>
-    <label>${tr('room', 'Raum')} <input type="range" class="room" min="0" max="6" value="2"> <b class="rn"></b></label></div>
-    <div class="row"><button class="build">${tr('Build it!', 'Bauen!')}</button><button class="dice">${tr('New seed', 'Neuer Seed')}</button><button class="turn">${tr('Turn view', 'Ansicht drehen')}</button>
-    <label><input type="checkbox" class="route" checked> ${tr('show route', 'Route zeigen')}</label></div>`);
+    <label>${tr('depth', 'Tiefe', '深度')} <select class="depth">${Array.from({ length: MAX_DEPTH + 1 }, (_, d) => `<option value="${d}" ${d === 1 ? 'selected' : ''}>${d} \u00B7 ${themeLabel(themeAt(d))}</option>`).join('')}</select></label>
+    <label>${tr('room', 'Raum', '房間')} <input type="range" class="room" min="0" max="6" value="2"> <b class="rn"></b></label></div>
+    <div class="row"><button class="build">${tr('Build it!', 'Bauen!', '開始建造！')}</button><button class="dice">${tr('New seed', 'Neuer Seed', '換一個種子')}</button><button class="turn">${tr('Turn view', 'Ansicht drehen', '旋轉視角')}</button>
+    <label><input type="checkbox" class="route" checked> ${tr('show route', 'Route zeigen', '顯示路線')}</label></div>`);
   const out = html(el, '<div class="out"></div>');
   const $ = s => row.querySelector(s) || el.querySelector(s);
   let world = null, worldSeed = null, rot = 0, last = null;
@@ -111,11 +111,11 @@ export default function mount(el) {
       g.beginPath(); pts.forEach((q, i) => { const [x, y] = P(q.x, q.z, q.y); i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke();
       g.setLineDash([]);
     }
-    const roomName = last.role ? last.role.replace(/-/g, ' ') : tr('room', 'Raum');
-    out.innerHTML = `${tr('cube', 'Würfel')} <b>${last.k}</b> \u00B7 ${tr('depth', 'Tiefe')} ${d}: <b>${themeLabel(theme)}</b> \u00B7 ${roomName} ${last.i + 1} ${tr('of', 'von')} ${last.n}\n`
-      + `${tr('land', 'Land')}: <b>${m.kind}</b> \u00B7 ${tr('shape', 'Form')}: <b>${m.archetype || 'town'}</b> \u00B7 ${tr('layers', 'Ebenen')}: <b>${m.K}</b> \u00B7 `
-      + (last.fresh ? tr(`built in <b>${last.ms.toFixed(0)} ms</b>`, `gebaut in <b>${last.ms.toFixed(0)} ms</b>`) + (m.attempts ? tr(` on try number <b>${m.attempts}</b>`, ` beim <b>${m.attempts}.</b> Versuch`) : '')
-        : tr('already built (the world remembers its cubes)', 'schon gebaut (die Welt merkt sich ihre Würfel)'));
+    const roomName = last.role ? last.role.replace(/-/g, ' ') : tr('room', 'Raum', '房間');
+    out.innerHTML = `${tr('cube', 'Würfel', '方塊')} <b>${last.k}</b> \u00B7 ${tr('depth', 'Tiefe', '深度')} ${d}: <b>${themeLabel(theme)}</b> \u00B7 ${roomName} ${last.i + 1} ${tr('of', 'von', '／')} ${last.n}\n`
+      + `${tr('land', 'Land', '地形')}: <b>${m.kind}</b> \u00B7 ${tr('shape', 'Form', '形狀')}: <b>${m.archetype || 'town'}</b> \u00B7 ${tr('layers', 'Ebenen', '層')}: <b>${m.K}</b> \u00B7 `
+      + (last.fresh ? tr(`built in <b>${last.ms.toFixed(0)} ms</b>`, `gebaut in <b>${last.ms.toFixed(0)} ms</b>`, `花了 <b>${last.ms.toFixed(0)} 毫秒</b>建好`) + (m.attempts ? tr(` on try number <b>${m.attempts}</b>`, ` beim <b>${m.attempts}.</b> Versuch`, `（第 <b>${m.attempts}</b> 次嘗試）`) : '')
+        : tr('already built (the world remembers its cubes)', 'schon gebaut (die Welt merkt sich ihre Würfel)', '之前就建好了（世界會記得已建好的方塊）'));
   }
 
   $('.build').onclick = build;

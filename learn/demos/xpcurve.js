@@ -27,14 +27,15 @@ export default function mount(el) {
       g.fillStyle = '#8a96a8'; g.textAlign = 'center';
       if (i % 2 || i === pick) g.fillText(i, x + bw / 2, H - B + 13);
     }
-    g.textAlign = 'center'; g.fillText(tr('your level', 'deine Stufe'), (W + L) / 2, H - 4);
+    g.textAlign = 'center'; g.fillText(tr('your level', 'deine Stufe', '你的等級'), (W + L) / 2, H - 4);
     const need = xpToNext(pick), sp = xpOf(SPIDER, pick), st = xpOf(STUNDER, pick), l = Math.max(1, pick - 2);
     out.innerHTML = tr(`From level <b>${pick}</b> to ${pick + 1}: <b>${fmt(need)}</b> XP.\nA level-${l} spider gives you ${sp} XP, a level-${l} Stunder ${st}. So that's about <b>${Math.ceil(need / sp)} spiders</b>, or <b>${Math.ceil(need / st)} Stunders</b>.`,
-      `Von Stufe <b>${pick}</b> auf ${pick + 1}: <b>${fmt(need)}</b> XP.\nEine Spinne auf Stufe ${l} gibt dir ${sp} XP, ein Stunder auf Stufe ${l} ${st}. Das sind also etwa <b>${Math.ceil(need / sp)} Spinnen</b> oder <b>${Math.ceil(need / st)} Stunder</b>.`);
+      `Von Stufe <b>${pick}</b> auf ${pick + 1}: <b>${fmt(need)}</b> XP.\nEine Spinne auf Stufe ${l} gibt dir ${sp} XP, ein Stunder auf Stufe ${l} ${st}. Das sind also etwa <b>${Math.ceil(need / sp)} Spinnen</b> oder <b>${Math.ceil(need / st)} Stunder</b>.`,
+      `從等級 <b>${pick}</b> 升到 ${pick + 1} 級需要 <b>${fmt(need)}</b> XP。\n等級 ${l} 的蜘蛛會給你 ${sp} XP，等級 ${l} 的 Stunder 會給你 ${st} XP。所以大約要打倒 <b>${Math.ceil(need / sp)} 隻蜘蛛</b>，或 <b>${Math.ceil(need / st)} 隻 Stunder</b>。`);
   }
   const move = e => { const [x] = at(e); pick = Math.max(1, Math.min(MAX, Math.floor((x - L) / bw) + 1)); draw(); };
   c.addEventListener('pointermove', move);
   c.addEventListener('pointerdown', move);
-  html(el, `<p class="small muted" style="margin:6px 0 0">${tr('Point at a bar.', 'Zeig auf einen Balken.')}</p>`);
+  html(el, `<p class="small muted" style="margin:6px 0 0">${tr('Point at a bar.', 'Zeig auf einen Balken.', '把滑鼠移到長條上。')}</p>`);
   draw();
 }

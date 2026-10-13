@@ -1,7 +1,7 @@
 # The kids' guide
 
-An interactive guide to how Cube Crawler works, written for children around 12, in English and
-German. It goes from the big ideas down to the real code. The grown-up design notes are in
+An interactive guide to how Cube Crawler works, written for children around 12, in English, German and
+Taiwan Traditional Chinese. It goes from the big ideas down to the real code. The grown-up design notes are in
 `docs/`; this is the friendly version of the same knowledge.
 
 ```sh
@@ -24,7 +24,7 @@ export function inSwordArc(p, enemy) {
 When you change such a definition, finish the game change first, then:
 
 1. `npm run learn` (or `npm test`) lists the slides that explain code that changed.
-2. Read those slides in both languages and fix what no longer matches. Code shown with
+2. Read those slides in all three languages and fix what no longer matches. Code shown with
    `data-code` and numbers shown with `data-val` update themselves; the words around them
    do not.
 3. `npm run learn -- --stamp` accepts the code as it is now. It also rewrites the markers and
@@ -50,7 +50,7 @@ Plain HTML, CSS and ES modules, no build step, like the game.
 | File | What |
 |---|---|
 | `index.html` | the map: the rooms, the detail level picker (`map.js`) |
-| `decks.js` | the list of rooms in order, their titles in both languages, the game depth (theme) each borrows its look from |
+| `decks.js` | the list of rooms in order, their titles in all three languages, the game depth (theme) each borrows its look from |
 | `lang.js` | picks the language before the page is drawn: the reader's choice, else the browser's |
 | `deck.js` | the engine every page loads: slides, quick bar, levels, scroll mode, language switch, glossary tips, live code and values, demo loading |
 | `refs.js` | finds a definition in a source file, and fingerprints it (used by `deck.js` and the tool) |
@@ -63,21 +63,23 @@ Plain HTML, CSS and ES modules, no build step, like the game.
 | `img/` | screenshots of the game |
 | `../tools/learn.mjs` | the check / `--stamp` / `--defer` tool |
 
-## Two languages in one file
+## Three languages in one file
 
-Every piece of text is a pair, English first:
+Every piece of text has three sibling blocks: English, German, then Taiwan Traditional Chinese:
 
 ```html
 <p lang="en">Every cube is a room of <b>16 by 16</b> squares.</p>
 <p lang="de">Jeder Würfel ist ein Raum aus <b>16 mal 16</b> Feldern.</p>
+<p lang="zh-Hant">每個方塊都是一個由 <b>16 × 16</b> 格組成的房間。</p>
 ```
 
-Pair whole blocks (`p`, `li`, `h2`, `td`, `figcaption`, `q` ...), or `<span lang>` pairs inside a
-shared element. Everything else (slides, demos, code, images) exists once. Attributes take a
-`data-de-` twin: `alt="..." data-de-alt="..."`; the title is `<title data-de="...">`. Demos use
-`tr('English', 'Deutsch')` from `deck.js`. The tests fail on a text without its partner.
+Translate whole blocks (`p`, `li`, `h2`, `td`, `figcaption`, `q` ...), or `<span lang>` blocks inside a
+shared element. Everything else (slides, demos, code, images) exists once. Attributes use `data-de-*` and `data-zh-hant-*`: for example,
+`alt="..." data-de-alt="..." data-zh-hant-alt="..."`. Titles use `data-de` and `data-zh-hant`.
+Demos use `tr('English', 'Deutsch', '台灣中文')` from `deck.js`. The language menu preserves the
+reader's choice in `kids.lang`. Tests fail when a language block or shared image translation is missing.
 
-Names that the game shows in English (Rare, Stunder, Blood viper) stay English in the German
+Names that the game shows in English (Rare, Stunder, Blood viper) stay English in translated
 text. Code and its comments stay as they are.
 
 ## What belongs in the guide
@@ -133,7 +135,12 @@ or it is 2D), say where it comes from in its first comment.
 
 ## Tests
 
-`tests/learn.test.js` checks the rooms, that every text has both languages, links, anchors,
+`tests/learn.test.js` checks the rooms, that every text has all three languages, links, anchors,
 images and demo modules, that every name a demo imports from the game is still exported, and
 `tools/learn.mjs`'s check: references resolve, fingerprints, markers and written values
 are current.
+
+Taiwan Chinese uses `zh-Hant` language tags and Taiwan terms such as 程式碼、變數、物件、陣列、函式、記憶體 and 滑鼠.
+Keep identifiers, links, `data-code` and `data-val` references unchanged. Browser preferences
+`zh`, `zh-TW`, `zh-Hant`, `zh-HK` and `zh-MO` select Traditional Chinese; other unsupported
+preferences fall back to a supported browser language, then English.

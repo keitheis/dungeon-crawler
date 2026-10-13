@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-de="Was sich das Spiel merkt · Kinderführer zu Cube Crawler">What the Game Remembers · Kids' Guide to Cube Crawler</title>
+<title data-de="Was sich das Spiel merkt · Kinderführer zu Cube Crawler" data-zh-hant="遊戲記住了什麼 · Cube Crawler 兒童指南">What the Game Remembers · Kids' Guide to Cube Crawler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="kids.css">
 <script src="lang.js"></script>
@@ -13,26 +13,35 @@
 <section class="slide" id="remake" data-lv="1">
   <h2 lang="en">The world is not saved. It is made again.</h2>
   <h2 lang="de">Die Welt wird nicht gespeichert. Sie wird neu gemacht.</h2>
+  <h2 lang="zh-Hant">世界不會被存起來，而是重新生成。</h2>
   <div class="cols">
     <div>
       <p class="lead" lang="en">A world of Cube Crawler has hundreds of cubes, each with hundreds of floors, stairs and trees. Writing all that down would take a lot of space. The game doesn't.</p>
       <p class="lead" lang="de">Eine Welt von Cube Crawler hat Hunderte Würfel, jeder mit Hunderten Böden, Treppen und Bäumen. Das alles aufzuschreiben würde viel Platz brauchen. Das Spiel macht es nicht.</p>
+      <p class="lead" lang="zh-Hant">Cube Crawler 的世界有好幾百個方塊，每個方塊裡又有好幾百個地板、樓梯和樹木。把這些全部記下來會佔很多空間。遊戲不需要這樣做。</p>
       <p lang="en">It only needs the <a class="w" href="words.html#seed">seed</a>. The same seed always builds the same cube, down to the last pebble. So the game can throw a cube away and build it again whenever it needs it.</p>
       <p lang="de">Es braucht nur den <a class="w" href="words.html#seed">Seed</a>. Derselbe Seed baut immer denselben Würfel, bis zum letzten Kieselstein. Darum kann das Spiel einen Würfel wegwerfen und neu bauen, wann immer es ihn braucht.</p>
+      <p lang="zh-Hant">遊戲只需要<a class="w" href="words.html#seed">種子</a>。同一顆種子每次都會生成完全相同的方塊，連最後一顆小石頭都一樣。所以遊戲可以丟掉方塊，需要時再重新生成。</p>
       <p lang="en">Think of a cake recipe. You don't keep the cake in the cupboard for a year. You keep the recipe, and bake the cake when you want one.</p>
       <p lang="de">Denk an ein Kuchenrezept. Du hebst den Kuchen nicht ein Jahr lang im Schrank auf. Du hebst das Rezept auf und backst den Kuchen, wenn du einen willst.</p>
+      <p lang="zh-Hant">想像一份蛋糕食譜。你不會把蛋糕放在櫃子裡保存一年，而是留下食譜，想吃時再烤一個。</p>
       <a class="portal" href="random.html#try-seeds" lang="en">Same seed, same dice</a>
       <a class="portal" href="random.html#try-seeds" lang="de">Gleicher Seed, gleiche Würfel</a>
+      <a class="portal" href="random.html#try-seeds" lang="zh-Hant">相同種子，相同骰子</a>
     </div>
     <div class="card">
       <h3 lang="en">But what about what you did?</h3>
       <h3 lang="de">Aber was ist mit dem, was du gemacht hast?</h3>
+      <h3 lang="zh-Hant">那你做過的事怎麼辦？</h3>
       <p lang="en">The recipe makes the cube as it was <i>before</i> you came. It doesn't know that you killed the spiders, opened the chest and left a sword lying on the floor.</p>
       <p lang="de">Das Rezept macht den Würfel so, wie er war, <i>bevor</i> du kamst. Es weiß nicht, dass du die Spinnen besiegt, die Truhe geöffnet und ein Schwert auf dem Boden liegen gelassen hast.</p>
+      <p lang="zh-Hant">食譜會照著你來之前的樣子生成方塊。它不知道你打倒了蜘蛛、打開了寶箱，還把一把劍留在地上。</p>
       <p lang="en">So the game writes down <b>only the changes</b>. Recipe plus changes: that's your world.</p>
       <p lang="de">Darum schreibt das Spiel <b>nur die Änderungen</b> auf. Rezept plus Änderungen: Das ist deine Welt.</p>
+      <p lang="zh-Hant">所以遊戲<b>只會記下改變的地方</b>。食譜加上這些改變，就是你的世界。</p>
       <p class="small muted" lang="en">And when you close the page? Everything is gone, except one thing: whether the music was on. Each visit is a new adventure.</p>
       <p class="small muted" lang="de">Und wenn du die Seite schließt? Alles ist weg, bis auf eine Sache: ob die Musik an war. Jeder Besuch ist ein neues Abenteuer.</p>
+      <p class="small muted" lang="zh-Hant">關掉網頁之後呢？除了音樂原本有沒有開之外，其他內容都會消失。每次回來都是新的冒險。</p>
     </div>
   </div>
 </section>
@@ -40,35 +49,47 @@
 <section class="slide" id="notes" data-lv="1" data-src="src/core/progression.js#createRun">
   <h2 lang="en">What it writes down</h2>
   <h2 lang="de">Was es aufschreibt</h2>
+  <h2 lang="zh-Hant">遊戲會記下什麼</h2>
   <div class="cols">
     <div>
       <p lang="en">Everything that you changed in the world goes into one object, called the <b>run</b>:</p>
       <p lang="de">Alles, was du an der Welt verändert hast, kommt in ein Objekt, das <b>run</b> heißt (dein Durchgang):</p>
+      <p lang="zh-Hant">你對世界做過的所有改變，都會放進一個叫做 <b>run</b>（這次冒險）的物件裡：</p>
       <pre class="wrap" data-code="src/core/progression.js#createRun"></pre>
       <ul>
         <li lang="en"><code>defeated</code>: the names of all monsters you beat.</li>
         <li lang="de"><code>defeated</code>: die Namen aller Monster, die du besiegt hast.</li>
+        <li lang="zh-Hant"><code>defeated</code>：你打倒的所有怪物名稱。</li>
         <li lang="en"><code>unlockedGates</code>: the guardian gates you opened.</li>
         <li lang="de"><code>unlockedGates</code>: die Wächter-Tore, die du geöffnet hast.</li>
+        <li lang="zh-Hant"><code>unlockedGates</code>：你打開的守衛之門。</li>
         <li lang="en"><code>loot</code>: what is lying on the floor, cube by cube.</li>
         <li lang="de"><code>loot</code>: was auf dem Boden liegt, Würfel für Würfel.</li>
+        <li lang="zh-Hant"><code>loot</code>：每個方塊地上留下的戰利品。</li>
         <li lang="en"><code>chests</code>: the chests you opened.</li>
         <li lang="de"><code>chests</code>: die Truhen, die du geöffnet hast.</li>
+        <li lang="zh-Hant"><code>chests</code>：你打開過的寶箱。</li>
         <li lang="en"><code>townPortal</code>: where your town portal stands, if one is open.</li>
         <li lang="de"><code>townPortal</code>: wo dein Stadtportal steht, falls eins offen ist.</li>
+        <li lang="zh-Hant"><code>townPortal</code>：城鎮傳送門的位置（如果已經開啟）。</li>
       </ul>
     </div>
     <div class="card">
       <h3 lang="en">And you</h3>
       <h3 lang="de">Und du</h3>
+      <h3 lang="zh-Hant">還有你</h3>
       <p lang="en">The hero's own numbers live in the notebook too: your level, your experience, your health and your bag.</p>
       <p lang="de">Die eigenen Zahlen des Helden stehen auch im Notizbuch: deine Stufe, deine Erfahrung, deine Gesundheit und deine Tasche.</p>
+      <p lang="zh-Hant">筆記本裡也會記下英雄自己的數值：等級、經驗值、生命值和背包。</p>
       <p lang="en"><code>new Set()</code> is a special list: each thing can be in it only once, and asking "is this in it?" is very fast. Perfect for "have I beaten this monster already?".</p>
       <p lang="de"><code>new Set()</code> ist eine besondere Liste: Jedes Ding kann nur einmal darin sein, und die Frage "Ist das drin?" geht sehr schnell. Perfekt für "Habe ich dieses Monster schon besiegt?".</p>
+      <p lang="zh-Hant"><code>new Set()</code> 是一種特別的清單：每樣東西只能放一次，而且查「這個在清單裡嗎？」非常快。很適合用來查「我打倒過這隻怪物了嗎？」</p>
       <p lang="en"><code>new Map()</code> is a list of pairs: a name and what belongs to it, like a cube's address and the loot lying there.</p>
       <p lang="de"><code>new Map()</code> ist eine Liste aus Paaren: ein Name und was dazugehört, wie die Adresse eines Würfels und die Beute, die dort liegt.</p>
+      <p lang="zh-Hant"><code>new Map()</code> 是一份由配對組成的清單：一個名字和它對應的東西，例如方塊地址和放在那裡的戰利品。</p>
       <a class="portal" href="architecture.html#notebook" lang="en">The shared notebook</a>
       <a class="portal" href="architecture.html#notebook" lang="de">Das gemeinsame Notizbuch</a>
+      <a class="portal" href="architecture.html#notebook" lang="zh-Hant">大家共用的筆記本</a>
     </div>
   </div>
 </section>
@@ -76,20 +97,25 @@
 <section class="slide" id="names" data-lv="2" data-src="src/core/enemies.js#enemyRoll">
   <h2 lang="en">A name for every monster</h2>
   <h2 lang="de">Ein Name für jedes Monster</h2>
+  <h2 lang="zh-Hant">每隻怪物都有名字</h2>
   <div class="cols">
     <div>
       <p lang="en">To remember "I beat this spider", the spider needs a name. A name that is the same every time the cube is built again. The game makes one from things that never change:</p>
       <p lang="de">Um sich "Ich habe diese Spinne besiegt" zu merken, braucht die Spinne einen Namen. Einen Namen, der jedes Mal derselbe ist, wenn der Würfel neu gebaut wird. Das Spiel macht ihn aus Dingen, die sich nie ändern:</p>
+      <p lang="zh-Hant">要記住「我打倒過這隻蜘蛛」，蜘蛛就需要一個名字。每次重新生成方塊時，這個名字都必須一樣。遊戲會用永遠不變的資料來組成名字：</p>
       <p class="mono" style="color:#fff">'2,-3,1:spider:57'</p>
       <p lang="en">"The spider in cube <code>2,-3,1</code> that starts on floor number 57." Build the cube again, and that spider gets the same name. When the game puts the monsters in, it leaves out every name that is in <code>defeated</code>.</p>
       <p lang="de">"Die Spinne im Würfel <code>2,-3,1</code>, die auf Boden Nummer 57 anfängt." Bau den Würfel neu, und diese Spinne bekommt denselben Namen. Wenn das Spiel die Monster hineinsetzt, lässt es jeden Namen weg, der in <code>defeated</code> steht.</p>
+      <p lang="zh-Hant">「在 <code>2,-3,1</code> 方塊裡，從第 57 格地板開始的蜘蛛。」重新生成方塊時，這隻蜘蛛會得到相同的名字。遊戲放入怪物時，會略過所有列在 <code>defeated</code> 裡的名字。</p>
       <p lang="en">The name is also the seed for its loot. That's why a monster always drops the same thing, even if you fight it again.</p>
       <p lang="de">Der Name ist auch der Seed für seine Beute. Darum lässt ein Monster immer dasselbe fallen, auch wenn du es noch mal bekämpfst.</p>
+      <p lang="zh-Hant">怪物的名字也是牠的戰利品種子。所以即使你再次和牠戰鬥，牠掉下的東西也都一樣。</p>
     </div>
     <div>
       <pre data-code="src/core/enemies.js#enemyRoll"></pre>
       <p class="small" lang="en">Its own dice, from the world's seed and the floor: the monster's level (±1 around the depth) and its coins. And the name, on the last line, made with a <b>template</b>: text in backticks <code>`...`</code>, with values put in at each <code>${...}</code>.</p>
       <p class="small" lang="de">Eigene Würfel, aus dem Seed der Welt und dem Boden: die Stufe des Monsters (±1 um die Tiefe) und seine Münzen. Und der Name, in der letzten Zeile, gemacht mit einer <b>Schablone</b>: Text in Backticks <code>`...`</code>, in den bei jedem <code>${...}</code> Werte eingesetzt werden.</p>
+      <p class="small" lang="zh-Hant">怪物也有自己的骰子，根據世界種子和樓層決定牠的等級（深度上下 1 級）和金幣數。最後一行會用<b>樣板</b>組成名字：把文字放在反引號 <code>`...`</code> 裡，每個 <code>${...}</code> 都會換成對應的數值。</p>
     </div>
   </div>
 </section>
@@ -97,19 +123,24 @@
 <section class="slide" id="death" data-lv="2" data-src="src/core/guardians.js#restoreDefeated src/game/flow.js#beginVisit,die">
   <h2 lang="en">Dying: back to how it was</h2>
   <h2 lang="de">Sterben: zurück zu dem, wie es war</h2>
+  <h2 lang="zh-Hant">死亡：回到原本的樣子</h2>
   <div class="cols">
     <div>
       <p lang="en">When you walk into a cube, the game quickly takes a <b>snapshot</b>: a copy of the list of beaten monsters, and a mark for the loot.</p>
       <p lang="de">Wenn du einen Würfel betrittst, macht das Spiel schnell einen <b>Schnappschuss</b>: eine Kopie der Liste besiegter Monster und eine Markierung für die Beute.</p>
+      <p lang="zh-Hant">你進入方塊時，遊戲會快速拍一張<b>快照</b>：複製已打倒怪物的清單，並記下戰利品的狀態。</p>
       <p lang="en">If you die, it puts the cube back the way it was: the monsters you beat since you came in are back, and the coins they dropped (that you didn't pick up yet) are gone. You start again at the entrance.</p>
       <p lang="de">Wenn du stirbst, stellt es den Würfel so zurück, wie er war: Die Monster, die du seitdem besiegt hast, sind wieder da, und die Münzen, die sie fallen gelassen haben (und die du noch nicht aufgehoben hast), sind weg. Du fängst am Eingang wieder an.</p>
+      <p lang="zh-Hant">如果你死掉，方塊就會恢復原狀：你進入後打倒的怪物會回來，牠們掉下但你還沒撿起的金幣則會消失。你會從入口重新開始。</p>
       <p lang="en">One thing never comes back: a guardian whose gate you opened. That would be too mean.</p>
       <p lang="de">Eine Sache kommt nie zurück: ein Wächter, dessen Tor du geöffnet hast. Das wäre zu gemein.</p>
+      <p lang="zh-Hant">有一樣東西不會回來：你已經打開大門的守衛。要是牠又回來就太不公平了。</p>
     </div>
     <div>
       <pre class="wrap" data-code="src/core/guardians.js#restoreDefeated"></pre>
       <p class="small" lang="en"><code>permanent</code>: the guardians that opened a gate. Then: for every <code>id</code> in <code>defeated</code>, if it wasn't in the snapshot (<code>before</code>) and isn't permanent, take it out again. Next time the cube fills up, that monster is back.</p>
       <p class="small" lang="de"><code>permanent</code>: die Wächter, die ein Tor geöffnet haben. Dann: Für jede <code>id</code> in <code>defeated</code>, wenn sie nicht im Schnappschuss (<code>before</code>) war und nicht dauerhaft ist, nimm sie wieder heraus. Wenn sich der Würfel das nächste Mal füllt, ist das Monster wieder da.</p>
+      <p class="small" lang="zh-Hant"><code>permanent</code>：打開大門的守衛。接著，對 <code>defeated</code> 裡每個不在快照（<code>before</code>）中的 <code>id</code>，只要它不是永久保留的，就把它移除。下次方塊重新填入內容時，怪物就會回來。</p>
     </div>
   </div>
 </section>
@@ -117,33 +148,42 @@
 <section class="slide" id="bag" data-lv="1" data-src="src/core/inventory.js#addItem,addInstance,assignBar,takeItem">
   <h2 lang="en">Try it: your bag</h2>
   <h2 lang="de">Probier es: deine Tasche</h2>
+  <h2 lang="zh-Hant">試試看：你的背包</h2>
   <p lang="en">Your bag has 24 slots. Potions of the same kind share one slot, in a <b>stack</b>. A sword is one of a kind: each gets a slot and a name of its own. This is the game's real bag code:</p>
   <p lang="de">Deine Tasche hat 24 Felder. Tränke derselben Sorte teilen sich ein Feld, als <b>Stapel</b>. Ein Schwert ist einzigartig: Jedes bekommt ein eigenes Feld und einen eigenen Namen. Das ist der echte Taschen-Code des Spiels:</p>
+  <p lang="zh-Hant">你的背包有 24 格。同一種藥水會疊在同一格，形成一<b>疊</b>。每把劍都獨一無二，各自佔一格，也有自己的名字。這就是遊戲真正的背包程式碼：</p>
   <div class="demo real" data-demo="bag"></div>
 </section>
 
 <section class="slide" id="references" data-lv="2" data-src="src/core/inventory.js#barRef,barEntry">
   <h2 lang="en">Pointing, not copying</h2>
   <h2 lang="de">Zeigen, nicht kopieren</h2>
+  <h2 lang="zh-Hant">記住位置，不複製物品</h2>
   <div class="cols">
     <div>
       <p lang="en">The quick bar (keys 1 to 6) looks like it holds your potions and swords. It doesn't. It holds little notes that <b>point</b> into the bag:</p>
       <p lang="de">Die Schnellleiste (Tasten 1 bis 6) sieht aus, als hielte sie deine Tränke und Schwerter. Tut sie nicht. Sie hält kleine Zettel, die in die Tasche <b>zeigen</b>:</p>
+      <p lang="zh-Hant">快速列（按鍵 1 到 6）看起來好像放著藥水和劍，其實沒有。它放的是一些小紙條，指向背包裡的物品：</p>
       <ul>
         <li lang="en">For potions: <code>{ itemId: 'item_potion_health' }</code>, "any health potion". Drink one, and the note now points at the next. The note stays even when none are left.</li>
         <li lang="de">Für Tränke: <code>{ itemId: 'item_potion_health' }</code>, "irgendein Heiltrank". Trink einen, und der Zettel zeigt auf den nächsten. Der Zettel bleibt sogar, wenn keiner mehr da ist.</li>
+        <li lang="zh-Hant">藥水使用：<code>{ itemId: 'item_potion_health' }</code>，意思是「任一瓶治療藥水」。喝掉一瓶後，紙條就會指向下一瓶。即使沒有藥水了，紙條還是會留下。</li>
         <li lang="en">For a sword: <code>{ instanceId: 'item-7' }</code>, "exactly this one". Drop it, and the note is torn up.</li>
         <li lang="de">Für ein Schwert: <code>{ instanceId: 'item-7' }</code>, "genau dieses". Lass es fallen, und der Zettel wird zerrissen.</li>
+        <li lang="zh-Hant">劍使用：<code>{ instanceId: 'item-7' }</code>，意思是「就是這一把」。把劍丟掉，紙條也會被撕掉。</li>
       </ul>
       <p lang="en">Why not a copy? With a copy there would be two potions: the one in the bag and the one on the bar. Drink one, and the other would still be there. Free potions! With a note there is only ever one of each thing.</p>
       <p lang="de">Warum keine Kopie? Mit einer Kopie gäbe es zwei Tränke: den in der Tasche und den auf der Leiste. Trink einen, und der andere wäre noch da. Gratis-Tränke! Mit einem Zettel gibt es jedes Ding immer nur einmal.</p>
+      <p lang="zh-Hant">為什麼不複製？如果做了複本，就會有兩瓶藥水：一瓶在背包裡，一瓶在快速列上。喝掉一瓶，另一瓶還在。變成免費藥水了！用紙條指向物品，就能確保每樣東西都只有一個。</p>
     </div>
     <div>
       <pre class="wrap" data-code="src/core/inventory.js#barRef"></pre>
       <p class="small" lang="en"><code>barRef</code> writes the note: for a stackable thing without a <code>gen</code> (not a generated sword), the kind of thing; otherwise exactly this one.</p>
       <p class="small" lang="de"><code>barRef</code> schreibt den Zettel: Für ein stapelbares Ding ohne <code>gen</code> (kein erzeugtes Schwert) die Sorte; sonst genau dieses.</p>
+      <p class="small" lang="zh-Hant"><code>barRef</code> 會寫下紙條：如果物品可以堆疊，而且沒有 <code>gen</code>（不是生成的劍），就記下物品種類；否則就記下特定的那一件。</p>
       <div class="note think" lang="en"><b>Think</b> Programmers call such a note a <a class="w" href="words.html#reference">reference</a>. One thing, many places that point to it. You saw the same idea with cube addresses: the world holds the cube, and everything else just knows its address.</div>
       <div class="note think" lang="de"><b>Denk nach</b> Programmierer nennen so einen Zettel eine <a class="w" href="words.html#reference">Referenz</a>. Ein Ding, viele Stellen, die darauf zeigen. Dieselbe Idee hast du bei den Würfeladressen gesehen: Die Welt hält den Würfel, und alle anderen kennen nur seine Adresse.</div>
+      <div class="note think" lang="zh-Hant"><b>想一想</b>程式設計師把這種紙條叫做<a class="w" href="words.html#reference">參照</a>。東西只有一個，很多地方都可以指向它。方塊地址也是一樣：遊戲世界保存方塊，其他地方只要知道它的地址就行。</div>
     </div>
   </div>
 </section>
@@ -151,22 +191,29 @@
 <section class="slide" id="bag-code" data-lv="3" data-src="src/core/inventory.js#createInventory">
   <h2 lang="en">The real code: an empty bag</h2>
   <h2 lang="de">Der echte Code: eine leere Tasche</h2>
+  <h2 lang="zh-Hant">實際程式碼：空背包</h2>
   <div class="cols wide-left">
     <pre class="wrap" data-code="src/core/inventory.js#createInventory"></pre>
     <div>
       <ul>
         <li lang="en"><code>Array(BAG_SIZE).fill(null)</code>: a list with a place for every slot, each filled with <code>null</code>, "nothing here".</li>
         <li lang="de"><code>Array(BAG_SIZE).fill(null)</code>: eine Liste mit einem Platz für jedes Feld, jedes mit <code>null</code> gefüllt, "hier ist nichts".</li>
+        <li lang="zh-Hant"><code>Array(BAG_SIZE).fill(null)</code>：建立一個清單，每格都放入 <code>null</code>，表示「這裡沒有東西」。</li>
         <li lang="en"><code>currency</code>: one counter per coin, made from the coin list with <code>.map</code>: gold, silver, copper, each starting at 0.</li>
         <li lang="de"><code>currency</code>: ein Zähler pro Münze, mit <code>.map</code> aus der Münzliste gemacht: Gold, Silber, Kupfer, jeder fängt bei 0 an.</li>
+        <li lang="zh-Hant"><code>currency</code>：每種貨幣都有一個計數器，用 <code>.map</code> 從貨幣清單建立：金、銀、銅的數量都從 0 開始。</li>
         <li lang="en"><code>bar</code>: the six notes, all empty.</li>
         <li lang="de"><code>bar</code>: die sechs Zettel, alle leer.</li>
+        <li lang="zh-Hant"><code>bar</code>：快速列上的六張紙條，一開始都是空的。</li>
         <li lang="en"><code>equipped</code>: which sword is in your hand, as a name.</li>
         <li lang="de"><code>equipped</code>: welches Schwert du in der Hand hast, als Name.</li>
+        <li lang="zh-Hant"><code>equipped</code>：你手上裝備的劍，以名字記錄。</li>
         <li lang="en"><code>nextInstance</code>: the number for the next new thing, so every sword gets its own name: <code>item-1</code>, <code>item-2</code>...</li>
         <li lang="de"><code>nextInstance</code>: die Nummer für das nächste neue Ding, damit jedes Schwert seinen eigenen Namen bekommt: <code>item-1</code>, <code>item-2</code>...</li>
+        <li lang="zh-Hant"><code>nextInstance</code>：下一件新物品的編號，讓每把劍都有自己的名字：<code>item-1</code>、<code>item-2</code>……</li>
         <li lang="en"><code>version</code>: goes up by one at every change. The screen redraws the bag only when it changed.</li>
         <li lang="de"><code>version</code>: geht bei jeder Änderung um eins hoch. Der Bildschirm malt die Tasche nur neu, wenn sie sich geändert hat.</li>
+        <li lang="zh-Hant"><code>version</code>：每次有變化就加 1。只有背包改變時，畫面才會重新繪製它。</li>
       </ul>
     </div>
   </div>
@@ -175,15 +222,20 @@
 <section class="slide" id="remember" data-lv="1">
   <h2 lang="en">What to remember</h2>
   <h2 lang="de">Was du dir merken kannst</h2>
+  <h2 lang="zh-Hant">記住這些重點</h2>
   <ol class="steps">
     <li lang="en"><b>Don't save what you can make again.</b> A seed is enough for a whole world.</li>
     <li lang="de"><b>Speicher nicht, was du neu machen kannst.</b> Ein Seed reicht für eine ganze Welt.</li>
+    <li lang="zh-Hant"><b>能重新生成的東西就不用存。</b>一顆種子就足以生成整個世界。</li>
     <li lang="en"><b>Write down only the changes</b>, in one place: the run.</li>
     <li lang="de"><b>Schreib nur die Änderungen auf</b>, an einer Stelle: dem run.</li>
+    <li lang="zh-Hant"><b>只記下改變的地方</b>，全部放在同一處：run。</li>
     <li lang="en"><b>Give things names that never change</b>, so you can find them again.</li>
     <li lang="de"><b>Gib Dingen Namen, die sich nie ändern</b>, damit du sie wiederfindest.</li>
+    <li lang="zh-Hant"><b>給物品不會改變的名字</b>，這樣以後才能再次找到它們。</li>
     <li lang="en"><b>Point, don't copy</b>, so there is only ever one of each thing.</li>
     <li lang="de"><b>Zeig, statt zu kopieren</b>, damit es jedes Ding nur einmal gibt.</li>
+    <li lang="zh-Hant"><b>用參照來指向物品，不要複製</b>，這樣每樣東西都只會有一份。</li>
   </ol>
 </section>
 

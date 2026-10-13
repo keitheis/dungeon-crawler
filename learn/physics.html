@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-de="Rennen, Springen, Fallen · Kinderführer zu Cube Crawler">Run, Jump, Fall · Kids' Guide to Cube Crawler</title>
+<title data-de="Rennen, Springen, Fallen · Kinderführer zu Cube Crawler" data-zh-hant="奔跑、跳躍、墜落 · Cube Crawler 兒童指南">Run, Jump, Fall · Kids' Guide to Cube Crawler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="kids.css">
 <script src="lang.js"></script>
@@ -13,41 +13,51 @@
 <section class="slide" id="adding" data-lv="1">
   <h2 lang="en">Moving is just adding</h2>
   <h2 lang="de">Bewegen ist nur Zusammenzählen</h2>
+  <h2 lang="zh-Hant">移動就是做加法</h2>
   <div class="cols">
     <div>
       <p class="lead" lang="en">To the computer, the hero is just a few numbers: where it is, and how fast it is going.</p>
       <p class="lead" lang="de">Für den Computer ist der Held nur ein paar Zahlen: wo er ist und wie schnell er sich bewegt.</p>
+      <p class="lead" lang="zh-Hant">在電腦眼中，英雄只是幾個數字：他在哪裡，以及移動得多快。</p>
       <ul>
         <li lang="en"><b>Position</b>: where the hero is. <code>x</code> is east-west, <code>z</code> is north-south, <code>y</code> is up-down.</li>
         <li lang="de"><b>Position</b>: wo der Held ist. <code>x</code> ist Ost-West, <code>z</code> ist Nord-Süd, <code>y</code> ist oben-unten.</li>
+        <li lang="zh-Hant"><b>位置</b>：英雄所在的地方。<code>x</code> 代表東西方向，<code>z</code> 代表南北方向，<code>y</code> 代表上下方向。</li>
         <li lang="en"><b>Velocity</b>: how fast it moves in each direction, in cells per second.</li>
         <li lang="de"><b>Geschwindigkeit</b>: wie schnell er sich in jede Richtung bewegt, in Zellen pro Sekunde.</li>
+        <li lang="zh-Hant"><b>速度</b>：每秒鐘往各個方向移動幾格。</li>
       </ul>
       <p lang="en">Every frame, the game does a tiny bit of adding:</p>
       <p lang="de">In jedem Bild rechnet das Spiel ein bisschen zusammen:</p>
-      <pre><code lang="en">position = position + velocity × dt</code> <code lang="de">Position = Position + Geschwindigkeit × dt</code></pre>
+      <p lang="zh-Hant">每個影格，遊戲都會做一點加法：</p>
+      <pre><code lang="en">position = position + velocity × dt</code> <code lang="de">Position = Position + Geschwindigkeit × dt</code> <code lang="zh-Hant">位置 = 位置 + 速度 × dt</code></pre>
       <p lang="en">And <b>gravity</b> is just as simple. Every frame, it pulls the up-down speed down a bit:</p>
       <p lang="de">Und die <b>Schwerkraft</b> ist genauso einfach. In jedem Bild zieht sie die Auf-und-ab-Geschwindigkeit ein Stück nach unten:</p>
-      <pre><code lang="en">velocity.y = velocity.y - 22 × dt</code> <code lang="de">Geschwindigkeit.y = Geschwindigkeit.y - 22 × dt</code></pre>
+      <p lang="zh-Hant"><b>重力</b>也一樣簡單。每個影格，它都會把上下方向的速度往下拉一點：</p>
+      <pre><code lang="en">velocity.y = velocity.y - 22 × dt</code> <code lang="de">Geschwindigkeit.y = Geschwindigkeit.y - 22 × dt</code> <code lang="zh-Hant">速度.y = 速度.y - 22 × dt</code></pre>
       <p lang="en">That is all you need for a jump: set the up-speed to a big number, and gravity bends it back down into a nice curve.</p>
       <p lang="de">Mehr braucht man nicht für einen Sprung: Setz die Aufwärts-Geschwindigkeit auf eine große Zahl, und die Schwerkraft biegt sie zu einer schönen Kurve zurück.</p>
+      <p lang="zh-Hant">跳躍只需要這些：把向上的速度設得很大，重力就會把它拉回來，形成漂亮的弧線。</p>
     </div>
     <div class="card">
       <h3 lang="en">The game's own measurements</h3>
       <h3 lang="de">Die Maße des Spiels</h3>
+      <h3 lang="zh-Hant">遊戲裡的測量單位</h3>
       <table>
-        <tr><td><span lang="en">one cell</span><span lang="de">eine Zelle</span></td><td>1 <span lang="en">unit wide</span><span lang="de">Einheit breit</span></td></tr>
-        <tr><td><span lang="en">one terrain level</span><span lang="de">eine Geländestufe</span></td><td><b data-val="src/core/constants.js#LH">0.5</b> <span lang="en">units high</span><span lang="de">Einheiten hoch</span></td></tr>
-        <tr><td><span lang="en">the hero</span><span lang="de">der Held</span></td><td><b data-val="src/core/constants.js#CHAR_H">0.85</b> <span lang="en">units tall</span><span lang="de">Einheiten groß</span></td></tr>
-        <tr><td><span lang="en">running</span><span lang="de">rennen</span></td><td><b data-val="src/core/constants.js#RUN_SPEED">2.8</b> <span lang="en">units per second</span><span lang="de">Einheiten pro Sekunde</span></td></tr>
-        <tr><td><span lang="en">walking (hold <kbd>Ctrl</kbd>)</span><span lang="de">gehen (<kbd>Strg</kbd> halten)</span></td><td><b data-val="src/core/constants.js#WALK_SPEED">1.9</b> <span lang="en">units per second</span><span lang="de">Einheiten pro Sekunde</span></td></tr>
-        <tr><td><span lang="en">gravity</span><span lang="de">Schwerkraft</span></td><td><b data-val="src/core/constants.js#GRAV">22</b> <span lang="en">units per second, every second</span><span lang="de">Einheiten pro Sekunde, jede Sekunde</span></td></tr>
-        <tr><td><span lang="en">jump speed</span><span lang="de">Sprungtempo</span></td><td><b data-val="src/core/constants.js#JUMP_V">6.27</b> <span lang="en">units per second up: about 0.9 units high</span><span lang="de">Einheiten pro Sekunde nach oben: etwa 0,9 Einheiten hoch</span></td></tr>
+        <tr><td><span lang="en">one cell</span><span lang="de">eine Zelle</span><span lang="zh-Hant">一格</span></td><td>1 <span lang="en">unit wide</span><span lang="de">Einheit breit</span><span lang="zh-Hant">單位寬</span></td></tr>
+        <tr><td><span lang="en">one terrain level</span><span lang="de">eine Geländestufe</span><span lang="zh-Hant">一級地形高度</span></td><td><b data-val="src/core/constants.js#LH">0.5</b> <span lang="en">units high</span><span lang="de">Einheiten hoch</span><span lang="zh-Hant">單位高</span></td></tr>
+        <tr><td><span lang="en">the hero</span><span lang="de">der Held</span><span lang="zh-Hant">英雄</span></td><td><b data-val="src/core/constants.js#CHAR_H">0.85</b> <span lang="en">units tall</span><span lang="de">Einheiten groß</span><span lang="zh-Hant">單位高</span></td></tr>
+        <tr><td><span lang="en">running</span><span lang="de">rennen</span><span lang="zh-Hant">奔跑</span></td><td><b data-val="src/core/constants.js#RUN_SPEED">2.8</b> <span lang="en">units per second</span><span lang="de">Einheiten pro Sekunde</span><span lang="zh-Hant">單位／秒</span></td></tr>
+        <tr><td><span lang="en">walking (hold <kbd>Ctrl</kbd>)</span><span lang="de">gehen (<kbd>Strg</kbd> halten)</span><span lang="zh-Hant">走路（按住 <kbd>Ctrl</kbd>）</span></td><td><b data-val="src/core/constants.js#WALK_SPEED">1.9</b> <span lang="en">units per second</span><span lang="de">Einheiten pro Sekunde</span><span lang="zh-Hant">單位／秒</span></td></tr>
+        <tr><td><span lang="en">gravity</span><span lang="de">Schwerkraft</span><span lang="zh-Hant">重力</span></td><td><b data-val="src/core/constants.js#GRAV">22</b> <span lang="en">units per second, every second</span><span lang="de">Einheiten pro Sekunde, jede Sekunde</span><span lang="zh-Hant">單位／秒²</span></td></tr>
+        <tr><td><span lang="en">jump speed</span><span lang="de">Sprungtempo</span><span lang="zh-Hant">跳躍速度</span></td><td><b data-val="src/core/constants.js#JUMP_V">6.27</b> <span lang="en">units per second up: about 0.9 units high</span><span lang="de">Einheiten pro Sekunde nach oben: etwa 0,9 Einheiten hoch</span><span lang="zh-Hant">單位／秒向上：高度約 0.9 單位</span></td></tr>
       </table>
       <p class="small muted" lang="en">All in <code>src/core/constants.js</code>. Change them, and the whole game feels different.</p>
       <p class="small muted" lang="de">Alles in <code>src/core/constants.js</code>. Ändere sie, und das ganze Spiel fühlt sich anders an.</p>
+      <p class="small muted" lang="zh-Hant">以上都在 <code>src/core/constants.js</code> 裡。改變這些數字，整個遊戲的手感也會不同。</p>
       <a class="portal" href="space.html#arrows" lang="en">Positions and arrows</a>
       <a class="portal" href="space.html#arrows" lang="de">Positionen und Pfeile</a>
+      <a class="portal" href="space.html#arrows" lang="zh-Hant">位置和箭頭</a>
     </div>
   </div>
 </section>
@@ -55,49 +65,63 @@
 <section class="slide" id="try-jump" data-lv="1">
   <h2 lang="en">Try it: run and jump</h2>
   <h2 lang="de">Probier es: rennen und springen</h2>
+  <h2 lang="zh-Hant">試試看：奔跑和跳躍</h2>
   <p lang="en">Click the picture, then run with <kbd>←</kbd> <kbd>→</kbd> and jump with <kbd>Space</kbd>. Can you leap over the water?
     Can you get onto the high block? Then play with gravity and the jump speed: try moon gravity!</p>
   <p lang="de">Klick ins Bild, dann renn mit <kbd>←</kbd> <kbd>→</kbd> und spring mit der <kbd>Leertaste</kbd>. Schaffst du den Sprung über das Wasser?
     Kommst du auf den hohen Block? Dann spiel mit Schwerkraft und Sprungtempo: Probier Mond-Schwerkraft!</p>
+  <p lang="zh-Hant">點一下圖片，接著用 <kbd>←</kbd> <kbd>→</kbd> 奔跑，用 <kbd>Space</kbd> 跳躍。你能跳過水面嗎？
+    能跳上高高的方塊嗎？再試著調整重力和跳躍速度：試試月球重力！</p>
   <div class="demo real" data-demo="jump"></div>
 </section>
 
 <section class="slide" id="feel" data-lv="2" data-src="src/physics/move.js#horizontal,jumping,LEAP src/core/constants.js#RUN_RAMP,BRAKE">
   <h2 lang="en">Tricks that make it feel good</h2>
   <h2 lang="de">Tricks, damit es sich gut anfühlt</h2>
+  <h2 lang="zh-Hant">讓操作手感更好的小技巧</h2>
   <p lang="en">Real physics is not always fun. Game makers cheat a little, on purpose, so the controls feel fair:</p>
   <p lang="de">Echte Physik macht nicht immer Spaß. Spielemacher schummeln absichtlich ein bisschen, damit sich die Steuerung fair anfühlt:</p>
+  <p lang="zh-Hant">真實的物理規則不一定好玩。遊戲設計師會故意稍微調整規則，讓操作起來更公平：</p>
   <div class="cols">
-    <div class="card"><h3 lang="en">Coyote time</h3> <h3 lang="de">Kojotenzeit</h3><p lang="en">Like the cartoon coyote who runs off a cliff and only falls when he looks down: for <b>0.12 seconds</b> after you walk off an edge, you can still jump. Without it, you would often press jump "just too late" and fall, and it would feel unfair.</p> <p lang="de">Wie der Kojote im Zeichentrick, der über eine Klippe rennt und erst fällt, wenn er nach unten schaut: <b>0,12 Sekunden</b> nachdem du über eine Kante gelaufen bist, kannst du noch springen. Ohne das würdest du oft "gerade zu spät" springen und fallen, und es würde sich unfair anfühlen.</p>
+    <div class="card"><h3 lang="en">Coyote time</h3> <h3 lang="de">Kojotenzeit</h3><h3 lang="zh-Hant">懸崖寬限時間</h3><p lang="en">Like the cartoon coyote who runs off a cliff and only falls when he looks down: for <b>0.12 seconds</b> after you walk off an edge, you can still jump. Without it, you would often press jump "just too late" and fall, and it would feel unfair.</p> <p lang="de">Wie der Kojote im Zeichentrick, der über eine Klippe rennt und erst fällt, wenn er nach unten schaut: <b>0,12 Sekunden</b> nachdem du über eine Kante gelaufen bist, kannst du noch springen. Ohne das würdest du oft "gerade zu spät" springen und fallen, und es würde sich unfair anfühlen.</p><p lang="zh-Hant">就像卡通裡的郊狼跑過懸崖，低頭看時才發現自己在掉下去：走出邊緣後的 <b>0.12 秒</b>內，你還是可以跳。沒有這段時間，你常常會「只差一點點就來不及」，結果掉下去，感覺很不公平。</p>
       <p class="small" lang="en">Try it in the demo: switch coyote time off and jump very late at the edge of the water.</p>
-      <p class="small" lang="de">Probier es in der Demo: Schalte die Kojotenzeit aus und spring ganz spät am Rand des Wassers.</p></div>
-    <div class="card"><h3 lang="en">Jump buffer</h3> <h3 lang="de">Sprungpuffer</h3><p lang="en">If you press jump a tiny moment <b>before</b> you land (up to 0.15 seconds), the game remembers it and jumps as soon as your feet touch the ground.</p> <p lang="de">Wenn du die Sprungtaste einen winzigen Moment <b>bevor</b> du landest drückst (bis zu 0,15 Sekunden), merkt sich das Spiel das und springt, sobald deine Füße den Boden berühren.</p></div>
-    <div class="card"><h3 lang="en">Speed ramp</h3> <h3 lang="de">Anlaufen</h3><p lang="en">You don't reach full speed instantly: it takes 0.25 seconds. But stopping is fast (about 0.1 seconds). Short taps stay precise, and you never slide past where you wanted to stop.</p> <p lang="de">Du erreichst die volle Geschwindigkeit nicht sofort: Es dauert 0,25 Sekunden. Aber Anhalten geht schnell (etwa 0,1 Sekunden). So bleiben kurze Tipper genau, und du rutschst nie über die Stelle hinaus, an der du stehen wolltest.</p></div>
-    <div class="card"><h3 lang="en">The leap</h3> <h3 lang="de">Der Weitsprung</h3><p lang="en">Jumping while running gives you a little push forward: just enough to get over a gap of one cell. The world builder knows this number too, and only plans jumps you can really make!</p> <p lang="de">Springen beim Rennen gibt dir einen kleinen Schubs nach vorn: genau genug, um über eine Lücke von einer Zelle zu kommen. Der Weltbauer kennt diese Zahl auch und plant nur Sprünge, die du wirklich schaffen kannst!</p></div>
+      <p class="small" lang="de">Probier es in der Demo: Schalte die Kojotenzeit aus und spring ganz spät am Rand des Wassers.</p>
+      <p class="small" lang="zh-Hant">到示範裡試試看：關閉懸崖寬限時間，再試著在水邊緣最後一刻跳躍。</p></div>
+    <div class="card"><h3 lang="en">Jump buffer</h3> <h3 lang="de">Sprungpuffer</h3><h3 lang="zh-Hant">跳躍緩衝</h3><p lang="en">If you press jump a tiny moment <b>before</b> you land (up to 0.15 seconds), the game remembers it and jumps as soon as your feet touch the ground.</p> <p lang="de">Wenn du die Sprungtaste einen winzigen Moment <b>bevor</b> du landest drückst (bis zu 0,15 Sekunden), merkt sich das Spiel das und springt, sobald deine Füße den Boden berühren.</p><p lang="zh-Hant">如果你在落地<b>之前</b>一小段時間（最多 0.15 秒）按下跳躍鍵，遊戲會記住這次按鍵，等你的腳一碰到地面就立刻跳起來。</p></div>
+    <div class="card"><h3 lang="en">Speed ramp</h3> <h3 lang="de">Anlaufen</h3><h3 lang="zh-Hant">加速和煞車</h3><p lang="en">You don't reach full speed instantly: it takes 0.25 seconds. But stopping is fast (about 0.1 seconds). Short taps stay precise, and you never slide past where you wanted to stop.</p> <p lang="de">Du erreichst die volle Geschwindigkeit nicht sofort: Es dauert 0,25 Sekunden. Aber Anhalten geht schnell (etwa 0,1 Sekunden). So bleiben kurze Tipper genau, und du rutschst nie über die Stelle hinaus, an der du stehen wolltest.</p><p lang="zh-Hant">你不會立刻達到全速，需要 0.25 秒。但停下來很快，大約只要 0.1 秒。短按也能精準控制，不會滑過你想停下的位置。</p></div>
+    <div class="card"><h3 lang="en">The leap</h3> <h3 lang="de">Der Weitsprung</h3><h3 lang="zh-Hant">跑跳</h3><p lang="en">Jumping while running gives you a little push forward: just enough to get over a gap of one cell. The world builder knows this number too, and only plans jumps you can really make!</p> <p lang="de">Springen beim Rennen gibt dir einen kleinen Schubs nach vorn: genau genug, um über eine Lücke von einer Zelle zu kommen. Der Weltbauer kennt diese Zahl auch und plant nur Sprünge, die du wirklich schaffen kannst!</p><p lang="zh-Hant">奔跑時跳起來會得到一點向前的推力，剛好能越過一格寬的缺口。世界生成器也知道這個數字，所以只會安排你真的跳得過去的路線！</p></div>
   </div>
 </section>
 
 <section class="slide" id="walls" data-lv="2" data-src="src/physics/move.js#horizontal,movePlayer">
   <h2 lang="en">Bumping into things</h2>
   <h2 lang="de">Gegen Dinge stoßen</h2>
+  <h2 lang="zh-Hant">撞到東西時</h2>
   <div class="cols">
     <div>
       <p lang="en"><b>Sliding along walls.</b> Walk diagonally into a wall: you don't stop dead, you slide along it. The trick: the game moves you east-west first and checks for a wall, then north-south and checks again. If only one direction is blocked, the other one still works.</p>
       <p lang="de"><b>An Wänden entlangrutschen.</b> Lauf schräg gegen eine Wand: Du bleibst nicht stecken, sondern rutschst an ihr entlang. Der Trick: Das Spiel bewegt dich zuerst Ost-West und prüft auf eine Wand, dann Nord-Süd und prüft nochmal. Ist nur eine Richtung versperrt, geht die andere trotzdem.</p>
+      <p lang="zh-Hant"><b>沿著牆滑行。</b>斜著撞向牆壁時，你不會卡住，而是會沿著牆滑過去。訣竅是：遊戲先讓你往東西方向移動並檢查牆壁，再往南北方向移動並重新檢查。只要其中一個方向沒被擋住，你還是能繼續移動。</p>
       <p lang="en"><b>Little steps.</b> A ledge up to 0.3 units high is walked up without jumping. Higher than that, you need to jump.</p>
       <p lang="de"><b>Kleine Stufen.</b> Eine Kante bis 0,3 Einheiten Höhe gehst du ohne Springen hoch. Ist sie höher, musst du springen.</p>
+      <p lang="zh-Hant"><b>小台階。</b>高度不超過 0.3 單位的邊緣可以直接走上去。再高一點就需要跳躍。</p>
       <p lang="en"><b>Walking downhill.</b> Without help, you would fly off every little slope like off a ramp. So when you are on the ground, the game sticks you to the floor if it is less than 0.25 units below you.</p>
       <p lang="de"><b>Bergab gehen.</b> Ohne Hilfe würdest du von jedem kleinen Hang abheben wie von einer Rampe. Darum klebt dich das Spiel am Boden fest, wenn du am Boden bist und der Boden weniger als 0,25 Einheiten unter dir ist.</p>
+      <p lang="zh-Hant"><b>往下坡走。</b>沒有輔助的話，你會像飛上跳台一樣，從每個小斜坡飛出去。所以只要你站在地面上，而地板在你下方不到 0.25 單位，遊戲就會讓你貼著地面走。</p>
     </div>
     <div>
       <p lang="en"><b>Slopes.</b> Walking uphill is slower. Slopes that are too steep make you slide down.</p>
       <p lang="de"><b>Hänge.</b> Bergauf gehen ist langsamer. Zu steile Hänge lassen dich runterrutschen.</p>
+      <p lang="zh-Hant"><b>斜坡。</b>上坡時走得比較慢。坡度太陡時，你會滑下去。</p>
       <p lang="en"><b>Ceilings.</b> Jump under a bridge, and you bump your head: your upward speed is set to zero.</p>
       <p lang="de"><b>Decken.</b> Spring unter einer Brücke, und du stößt dir den Kopf: Deine Aufwärts-Geschwindigkeit wird auf null gesetzt.</p>
+      <p lang="zh-Hant"><b>天花板。</b>在橋下跳起來會撞到頭，向上的速度就會變成 0。</p>
       <p lang="en"><b>Fluids.</b> Water, lava and acid are deadly. When you <i>walk</i> towards their edge, the game stops you. But a jump, a knockback or a fall can still carry you in. So be careful!</p>
       <p lang="de"><b>Flüssigkeiten.</b> Wasser, Lava und Säure sind tödlich. Wenn du auf ihren Rand zu <i>gehst</i>, hält das Spiel dich an. Aber ein Sprung, ein Rückstoß oder ein Sturz kann dich trotzdem hineintragen. Also Vorsicht!</p>
+      <p lang="zh-Hant"><b>液體。</b>水、熔岩和酸液都很致命。你<i>走向</i>它們的邊緣時，遊戲會把你攔住。但跳躍、擊退或掉落仍可能讓你掉進去，所以要小心！</p>
       <div class="note think" lang="en"><b>Think</b> Why does the game stop you at the edge of water when walking, but not when jumping? (Because walking in by accident is annoying, but jumping is a choice!)</div>
       <div class="note think" lang="de"><b>Denk nach</b> Warum hält das Spiel dich beim Gehen am Wasser an, aber nicht beim Springen? (Weil aus Versehen hineinzulaufen nervt, aber Springen eine Entscheidung ist!)</div>
+      <div class="note think" lang="zh-Hant"><b>想一想</b>為什麼遊戲會在你走向水邊時攔住你，跳躍時卻不會？（因為不小心走進水裡很討厭，而跳進去是你自己選的！）</div>
     </div>
   </div>
 </section>
@@ -105,26 +129,32 @@
 <section class="slide" id="landing" data-lv="2" data-src="src/game/update.js#updatePlayer">
   <h2 lang="en">Hard landings</h2>
   <h2 lang="de">Harte Landungen</h2>
+  <h2 lang="zh-Hant">重重落地</h2>
   <div class="cols">
     <div>
       <p lang="en">When you land, the game looks at how fast you were falling:</p>
       <p lang="de">Wenn du landest, schaut das Spiel, wie schnell du gefallen bist:</p>
+      <p lang="zh-Hant">落地時，遊戲會查看你掉下來的速度：</p>
       <table>
-        <tr><th lang="en">FALLING SPEED</th> <th lang="de">FALLTEMPO</th><th lang="en">WHAT HAPPENS</th> <th lang="de">WAS PASSIERT</th></tr>
-        <tr><td><span lang="en">up to</span><span lang="de">bis</span> <b data-val="src/core/constants.js#SIT_IMPACT">10</b></td><td lang="en">a normal landing</td> <td lang="de">eine normale Landung</td></tr>
-        <tr><td><span lang="en">more than</span><span lang="de">mehr als</span> <b data-val="src/core/constants.js#SIT_IMPACT">10</b></td><td lang="en">you land on your bottom and are dizzy for a moment</td> <td lang="de">du landest auf dem Hintern und bist kurz benommen</td></tr>
-        <tr><td><span lang="en">more than</span><span lang="de">mehr als</span> <b data-val="src/core/constants.js#RAGDOLL_IMPACT">14</b></td><td lang="en">you tumble over as a <b>ragdoll</b>, and it hurts: up to 60 damage</td> <td lang="de">du kippst als <b>Ragdoll</b> um, und es tut weh: bis zu 60 Schaden</td></tr>
+        <tr><th lang="en">FALLING SPEED</th> <th lang="de">FALLTEMPO</th><th lang="zh-Hant">掉落速度</th><th lang="en">WHAT HAPPENS</th> <th lang="de">WAS PASSIERT</th><th lang="zh-Hant">發生什麼事</th></tr>
+        <tr><td><span lang="en">up to</span><span lang="de">bis</span><span lang="zh-Hant">最高</span> <b data-val="src/core/constants.js#SIT_IMPACT">10</b></td><td lang="en">a normal landing</td> <td lang="de">eine normale Landung</td><td lang="zh-Hant">正常落地</td></tr>
+        <tr><td><span lang="en">more than</span><span lang="de">mehr als</span><span lang="zh-Hant">超過</span> <b data-val="src/core/constants.js#SIT_IMPACT">10</b></td><td lang="en">you land on your bottom and are dizzy for a moment</td> <td lang="de">du landest auf dem Hintern und bist kurz benommen</td><td lang="zh-Hant">你會跌坐在地上，暈一小會兒</td></tr>
+        <tr><td><span lang="en">more than</span><span lang="de">mehr als</span><span lang="zh-Hant">超過</span> <b data-val="src/core/constants.js#RAGDOLL_IMPACT">14</b></td><td lang="en">you tumble over as a <b>ragdoll</b>, and it hurts: up to 60 damage</td> <td lang="de">du kippst als <b>Ragdoll</b> um, und es tut weh: bis zu 60 Schaden</td><td lang="zh-Hant">你會像<b>布娃娃</b>一樣翻倒，受到最多 60 點傷害</td></tr>
       </table>
       <p lang="en">Falling speed grows the longer you fall, so this is really about how <i>high</i> you fell. Try the drop buttons in the jump demo!</p>
       <p lang="de">Das Falltempo wächst, je länger du fällst. Eigentlich geht es also darum, wie <i>hoch</i> du gefallen bist. Probier die Fall-Knöpfe in der Sprung-Demo!</p>
+      <p lang="zh-Hant">掉落時間越久，速度就越快，所以其實這裡表示的是你從多<i>高</i>的地方掉下來。試試跳躍示範裡的掉落按鈕！</p>
     </div>
     <div class="card">
       <h3 lang="en">Falling into the cube below</h3>
       <h3 lang="de">In den Würfel darunter fallen</h3>
+      <h3 lang="zh-Hant">掉進下方的方塊</h3>
       <p lang="en">Some cubes have holes, open to the depth below. Fall in, and you slide down into the cube below... but the landing costs the full 60 damage, and puts you back in the cube you fell from, at the last safe spot. No shortcuts!</p>
       <p lang="de">Manche Würfel haben Löcher, offen zur Tiefe darunter. Fällst du hinein, rutschst du in den Würfel darunter... aber die Landung kostet die vollen 60 Schaden und setzt dich zurück in den Würfel, aus dem du gefallen bist, an die letzte sichere Stelle. Keine Abkürzungen!</p>
+      <p lang="zh-Hant">有些方塊有洞，通往更深一層。你掉進去會滑到下方的方塊……但落地時會受到完整的 60 點傷害，並被送回原本的方塊和最後一個安全位置。不能走捷徑！</p>
       <p lang="en">The holes line up with the world: there is only a hole where the cube below really exists.</p>
       <p lang="de">Die Löcher passen zur Welt: Es gibt nur ein Loch, wo der Würfel darunter wirklich existiert.</p>
+      <p lang="zh-Hant">洞的位置會配合世界安排：只有在下方真的有方塊的地方，才會出現洞。</p>
     </div>
   </div>
 </section>
@@ -132,44 +162,59 @@
 <section class="slide" id="ragdoll" data-lv="1">
   <h2 lang="en">Floppy! The ragdoll</h2>
   <h2 lang="de">Schlabberig! Die Ragdoll</h2>
+  <h2 lang="zh-Hant">軟趴趴！布娃娃</h2>
   <p lang="en">When the hero gets knocked over, the animation stops, and a <a class="w" href="words.html#ragdoll">ragdoll</a> takes over: the body flops around by physics, like a puppet with cut strings.
     It's made of just <b>dots and sticks</b>. Knock it over, kick it, or grab a dot and throw it!</p>
   <p lang="de">Wenn der Held umgestoßen wird, hört die Animation auf, und eine <a class="w" href="words.html#ragdoll">Ragdoll</a> (Stoffpuppe) übernimmt: Der Körper schlackert durch Physik herum wie eine Marionette mit durchgeschnittenen Fäden.
     Sie besteht nur aus <b>Punkten und Stäben</b>. Stoß sie um, tritt sie, oder pack einen Punkt und wirf ihn!</p>
+  <p lang="zh-Hant">英雄被撞倒時，動畫會停下來，接著由<a class="w" href="words.html#ragdoll">布娃娃</a>物理接手：身體會像剪斷線的木偶一樣搖搖晃晃。
+    它只由<b>點和棍子</b>組成。把它撞倒、踢它，或抓住一個點把它丟出去！</p>
   <div class="demo" data-demo="ragdoll"></div>
   <p class="small muted" lang="en">This is the game's ragdoll, flattened into a side view. The game's version works the same way in 3D.</p>
   <p class="small muted" lang="de">Das ist die Ragdoll des Spiels, platt gemacht zu einer Seitenansicht. Die Version im Spiel funktioniert genauso, nur in 3D.</p>
+  <p class="small muted" lang="zh-Hant">這是遊戲裡布娃娃的側面示意圖。遊戲中的版本原理一樣，只是用 3D 呈現。</p>
 </section>
 
 <section class="slide" id="verlet" data-lv="2" data-src="src/physics/ragdoll.js#BONES,ITERS">
   <h2 lang="en">How a ragdoll works</h2>
   <h2 lang="de">Wie eine Ragdoll funktioniert</h2>
+  <h2 lang="zh-Hant">布娃娃如何運作</h2>
   <div class="cols">
     <div>
       <p lang="en">The ragdoll has 16 dots, one at each joint: pelvis, chest, neck, head, shoulders, elbows, hands, hips, knees and feet.</p>
       <p lang="de">Die Ragdoll hat 16 Punkte, einen an jedem Gelenk: Becken, Brust, Hals, Kopf, Schultern, Ellbogen, Hände, Hüften, Knie und Füße.</p>
+      <p lang="zh-Hant">布娃娃有 16 個點，每個關節一個：骨盆、胸口、脖子、頭、肩膀、手肘、手、髖部、膝蓋和腳。</p>
       <ol class="steps">
         <li lang="en"><b>Move every dot</b> as if it were alone. Its speed? Where it is now, minus where it was one step ago. (This trick is called <a class="w" href="words.html#verlet">Verlet</a>.) Add gravity.</li>
         <li lang="de"><b>Jeden Punkt bewegen</b>, als wäre er allein. Seine Geschwindigkeit? Wo er jetzt ist, minus wo er einen Schritt vorher war. (Dieser Trick heißt <a class="w" href="words.html#verlet">Verlet</a>.) Schwerkraft dazu.</li>
+        <li lang="zh-Hant"><b>移動每個點</b>，就像它自己在動。速度怎麼算？用現在的位置減掉上一步的位置。（這個技巧叫做 <a class="w" href="words.html#verlet">Verlet</a>。）再加上重力。</li>
         <li lang="en"><b>Fix the sticks.</b> Some sticks are now too long or too short. Push both ends towards the right length.</li>
         <li lang="de"><b>Die Stäbe reparieren.</b> Manche Stäbe sind jetzt zu lang oder zu kurz. Schieb beide Enden in Richtung der richtigen Länge.</li>
+        <li lang="zh-Hant"><b>修正棍子。</b>有些棍子現在太長或太短。把兩端往正確的長度推回去。</li>
         <li lang="en">Fixing one stick breaks another a bit... so fix them all <b>6 times</b>. Close enough!</li>
         <li lang="de">Einen Stab zu reparieren macht einen anderen ein bisschen kaputt... also repariere alle <b>6-mal</b>. Nah genug!</li>
+        <li lang="zh-Hant">修好一根棍子，可能會讓另一根又有點歪……所以把所有棍子修正<b>6 次</b>。這樣就夠了！</li>
         <li lang="en"><b>Floor:</b> a dot below the floor is put back on top, and slowed down (friction).</li>
         <li lang="de"><b>Boden:</b> Ein Punkt unter dem Boden wird wieder obendrauf gesetzt und abgebremst (Reibung).</li>
+        <li lang="zh-Hant"><b>地板：</b>掉到地板下方的點會被放回地板上，並且減慢速度（摩擦力）。</li>
       </ol>
       <p lang="en">That runs 120 times a second, more often than the picture, so it stays stable.</p>
       <p lang="de">Das läuft 120-mal pro Sekunde, öfter als das Bild, damit es stabil bleibt.</p>
+      <p lang="zh-Hant">這段每秒會執行 120 次，比畫面更新得更頻繁，讓動作保持穩定。</p>
     </div>
     <div class="card">
       <h3 lang="en">Getting up again</h3>
       <h3 lang="de">Wieder aufstehen</h3>
+      <h3 lang="zh-Hant">重新站起來</h3>
       <p lang="en">When the dots stop moving, the game checks: is the body lying face down or on its back? Then it plays the matching "get up" animation.</p>
       <p lang="de">Wenn die Punkte still liegen, prüft das Spiel: Liegt der Körper auf dem Bauch oder auf dem Rücken? Dann spielt es die passende "Aufstehen"-Animation.</p>
+      <p lang="zh-Hant">點都停下來後，遊戲會檢查身體是趴著還是仰躺，再播放對應的「站起來」動畫。</p>
       <p lang="en">The tricky part: the animation was made for a body lying in one exact pose, but the ragdoll lies in a random heap. So the game smoothly <b>morphs</b> the ragdoll's pose into the first frames of the get-up animation, and turns the hero to match. The feet stay planted, so nothing slides.</p>
       <p lang="de">Das Knifflige: Die Animation wurde für einen Körper in einer ganz bestimmten Lage gemacht, aber die Ragdoll liegt als zufälliger Haufen da. Darum <b>verwandelt</b> das Spiel die Haltung der Ragdoll sanft in die ersten Bilder der Aufsteh-Animation und dreht den Helden passend. Die Füße bleiben stehen, damit nichts rutscht.</p>
+      <p lang="zh-Hant">比較難的地方是：動畫是為某個固定姿勢設計的，但布娃娃倒下的姿勢每次都不同。所以遊戲會把布娃娃的姿勢平順地<b>變成</b>站起動畫的前幾個影格，並轉動英雄配合動畫。腳會留在原地，才不會滑動。</p>
       <p class="small muted" lang="en"><code>src/game/ragdoll.js</code> and <code>src/render/animator.js</code></p>
       <p class="small muted" lang="de"><code>src/game/ragdoll.js</code> und <code>src/render/animator.js</code></p>
+      <p class="small muted" lang="zh-Hant"><code>src/game/ragdoll.js</code> 和 <code>src/render/animator.js</code></p>
     </div>
   </div>
 </section>
@@ -177,19 +222,25 @@
 <section class="slide" id="move-code" data-lv="3">
   <h2 lang="en">The real code: jumping</h2>
   <h2 lang="de">Der echte Code: springen</h2>
+  <h2 lang="zh-Hant">實際程式碼：跳躍</h2>
   <div class="cols wide-left">
     <pre data-code="src/physics/move.js#LEAP,jumping"></pre>
     <div>
       <p lang="en"><code>p.coyote</code> is a timer. On the ground it is always reset to 0.12. In the air it counts down by <code>dt</code> every frame.</p>
       <p lang="de"><code>p.coyote</code> ist ein Zeitmesser. Am Boden wird er immer wieder auf 0,12 gesetzt. In der Luft zählt er in jedem Bild um <code>dt</code> herunter.</p>
+      <p lang="zh-Hant"><code>p.coyote</code> 是計時器。在地面上時，它會一直重設為 0.12；在空中時，每個影格都會減去 <code>dt</code>。</p>
       <p lang="en"><code>p.jumpBuf</code> is a timer too: pressing jump sets it to 0.15, then it counts down.</p>
       <p lang="de"><code>p.jumpBuf</code> ist auch ein Zeitmesser: Die Sprungtaste setzt ihn auf 0,15, dann zählt er herunter.</p>
+      <p lang="zh-Hant"><code>p.jumpBuf</code> 也是計時器：按下跳躍鍵會把它設成 0.15，然後開始倒數。</p>
       <p lang="en">The jump only happens if <b>both</b> timers are still above zero. That's the whole trick: two countdowns!</p>
       <p lang="de">Der Sprung passiert nur, wenn <b>beide</b> Zeitmesser noch über null sind. Das ist der ganze Trick: zwei Countdowns!</p>
+      <p lang="zh-Hant">只有在<b>兩個</b>計時器都還大於 0 時才會跳躍。訣竅就是這麼簡單：兩個倒數計時器！</p>
       <p lang="en">In water, the same code makes you paddle up out of the water, a bit slower (4.8).</p>
       <p lang="de">Im Wasser lässt dich derselbe Code aus dem Wasser hochpaddeln, etwas langsamer (4,8).</p>
+      <p lang="zh-Hant">在水裡，同一段程式碼會讓你往上游出水面，只是速度比較慢（4.8）。</p>
       <p lang="en"><code>Math.hypot(vx, vz)</code> is the speed along the ground (Pythagoras!).</p>
       <p lang="de"><code>Math.hypot(vx, vz)</code> ist das Tempo über den Boden (Pythagoras!).</p>
+      <p lang="zh-Hant"><code>Math.hypot(vx, vz)</code> 會算出你沿著地面的移動速度（畢達哥拉斯定理！）。</p>
     </div>
   </div>
 </section>
@@ -197,15 +248,19 @@
 <section class="slide" id="ragdoll-code" data-lv="3">
   <h2 lang="en">The real code: one ragdoll step</h2>
   <h2 lang="de">Der echte Code: ein Ragdoll-Schritt</h2>
+  <h2 lang="zh-Hant">實際程式碼：布娃娃的一步</h2>
   <div class="cols wide-left">
     <pre data-code="src/physics/ragdoll.js#substep,solve"></pre>
     <div>
       <p lang="en"><code>p</code> is where each dot is, <code>o</code> where it was ("old"). Their difference is the speed. <code>0.998</code> loses a tiny bit each step, like air slowing it down.</p>
       <p lang="de"><code>p</code> ist, wo jeder Punkt ist, <code>o</code>, wo er war ("old" heißt alt). Der Unterschied ist das Tempo. <code>0.998</code> verliert in jedem Schritt ein winziges bisschen, als würde die Luft bremsen.</p>
+      <p lang="zh-Hant"><code>p</code> 是每個點現在的位置，<code>o</code> 是它之前的位置（old 就是「舊的」）。兩者的差值就是速度。<code>0.998</code> 會讓點每一步都稍微慢一點，就像空氣在減速。</p>
       <p lang="en"><code>solve</code> measures a stick (<code>d</code>), compares it with its length (<code>len</code>) and moves <b>both</b> ends half of the difference (<code>* 0.5</code>) towards each other or apart.</p>
       <p lang="de"><code>solve</code> misst einen Stab (<code>d</code>), vergleicht ihn mit seiner Länge (<code>len</code>) und schiebt <b>beide</b> Enden um die Hälfte des Unterschieds (<code>* 0.5</code>) aufeinander zu oder auseinander.</p>
+      <p lang="zh-Hant"><code>solve</code> 會測量一根棍子（<code>d</code>），和它應有的長度（<code>len</code>）比較，再把<b>兩端</b>各移動差距的一半（<code>* 0.5</code>），讓它們靠近或分開。</p>
       <p lang="en">"Apart" sticks only push, never pull: they just stop a knee from folding all the way into the hip.</p>
       <p lang="de">"Abstands"-Stäbe drücken nur, ziehen nie: Sie verhindern bloß, dass ein Knie ganz in die Hüfte klappt.</p>
+      <p lang="zh-Hant">「間距」棍子只會推開，不會拉近：它們只負責避免膝蓋完全折進髖部。</p>
     </div>
   </div>
 </section>

@@ -125,6 +125,6 @@ export function readValue(mod, expr) {
 }
 export function formatValue(v, fmt, lang) {
   if (typeof v !== 'number') return String(v);
-  const num = x => new Intl.NumberFormat(lang === 'de' ? 'de-DE' : 'en-US', { maximumFractionDigits: 3, useGrouping: false }).format(x);
+  const num = x => new Intl.NumberFormat(lang === 'de' ? 'de-DE' : lang === 'zh-Hant' ? 'zh-TW' : 'en-US', { maximumFractionDigits: 3, useGrouping: false }).format(x);
   return fmt === 'pct' ? num(Math.round(v * 1e6) / 1e4) + '%' : num(v);
 }

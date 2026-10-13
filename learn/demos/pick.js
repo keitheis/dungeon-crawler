@@ -6,7 +6,7 @@ import { canvas, html, t as tr } from '../deck.js';
 
 export default function mount(el) {
   const W = 640, H = 300, { c, g, at } = canvas(el, W, H);
-  const row = html(el, `<div class="row"><label>${tr('step size', 'Schrittgröße')} <input type="range" class="step" min="2" max="60" value="8"> <b class="sv"></b></label></div>`);
+  const row = html(el, `<div class="row"><label>${tr('step size', 'Schrittgröße', '步伐大小')} <input type="range" class="step" min="2" max="60" value="8"> <b class="sv"></b></label></div>`);
   const out = html(el, '<div class="out"></div>');
   const cam = { x: 40, y: 34 }, screen = { x: 110, top: 40, bottom: 250 };
   // the ground: hills (height above the bottom of the picture), and a thin bridge
@@ -25,9 +25,9 @@ export default function mount(el) {
     // the screen: your picture, seen from the side
     g.strokeStyle = '#5fd3ff'; g.lineWidth = 4; g.beginPath(); g.moveTo(screen.x, screen.top); g.lineTo(screen.x, screen.bottom); g.stroke();
     g.fillStyle = '#5fd3ff'; g.font = '11px ui-monospace, monospace'; g.textAlign = 'center';
-    g.fillText(tr('your screen', 'dein Bildschirm'), screen.x, screen.bottom + 16);
+    g.fillText(tr('your screen', 'dein Bildschirm', '你的螢幕'), screen.x, screen.bottom + 16);
     g.fillStyle = '#ffcf7a'; g.beginPath(); g.arc(cam.x, cam.y, 9, 0, 7); g.fill();
-    g.fillText(tr('camera', 'Kamera'), cam.x, cam.y - 14);
+    g.fillText(tr('camera', 'Kamera', '攝影機'), cam.x, cam.y - 14);
     // the ray through the mouse's point on the screen, walked in steps
     const step = +row.querySelector('.step').value, dx = screen.x - cam.x, dy = sy - cam.y, l = Math.hypot(dx, dy), ux = dx / l, uy = dy / l;
     let hit = null, n = 0, missed = false;
@@ -51,14 +51,14 @@ export default function mount(el) {
     g.fillStyle = '#5fd3ff'; g.beginPath(); g.arc(screen.x, sy, 5, 0, 7); g.fill();
     if (hit) { g.fillStyle = '#ffcf7a'; g.beginPath(); g.arc(hit.x, hit.y, 7, 0, 7); g.fill(); }
     row.querySelector('.sv').textContent = step;
-    out.innerHTML = (!hit ? tr('The ray leaves the picture without hitting anything: no floor under the mouse.', 'Der Strahl verlässt das Bild, ohne etwas zu treffen: kein Boden unter der Maus.')
-      : tr(`${n} steps until the ray was inside ${hit.bridge ? 'the <b>bridge</b>' : 'the <b>ground</b>'}: that's where you clicked.`, `${n} Schritte, bis der Strahl ${hit.bridge ? 'in der <b>Brücke</b>' : 'im <b>Boden</b>'} war: Dort hast du hingeklickt.`))
-      + (missed ? tr('\n<b style="color:#ff9a8a">Oops!</b> The steps were so big that the ray jumped right through something thin. Make them smaller.', '\n<b style="color:#ff9a8a">Hoppla!</b> Die Schritte waren so groß, dass der Strahl einfach durch etwas Dünnes gesprungen ist. Mach sie kleiner.') : '');
+    out.innerHTML = (!hit ? tr('The ray leaves the picture without hitting anything: no floor under the mouse.', 'Der Strahl verlässt das Bild, ohne etwas zu treffen: kein Boden unter der Maus.', '射線離開畫面時沒有碰到任何東西：滑鼠底下沒有地板。')
+      : tr(`${n} steps until the ray was inside ${hit.bridge ? 'the <b>bridge</b>' : 'the <b>ground</b>'}: that's where you clicked.`, `${n} Schritte, bis der Strahl ${hit.bridge ? 'in der <b>Brücke</b>' : 'im <b>Boden</b>'} war: Dort hast du hingeklickt.`, `射線走了 ${n} 步，進入${hit.bridge ? '<b>橋</b>' : '<b>地面</b>'}裡；這就是你點下的位置。`))
+      + (missed ? tr('\n<b style="color:#ff9a8a">Oops!</b> The steps were so big that the ray jumped right through something thin. Make them smaller.', '\n<b style="color:#ff9a8a">Hoppla!</b> Die Schritte waren so groß, dass der Strahl einfach durch etwas Dünnes gesprungen ist. Mach sie kleiner.', '\n<b style="color:#ff9a8a">糟糕！</b>步伐太大，射線直接穿過了薄薄的東西。把步伐縮小一點。') : '');
   }
   const move = e => { const [, y] = at(e); sy = Math.max(screen.top, Math.min(screen.bottom, y)); draw(); };
   c.addEventListener('pointermove', move);
   c.addEventListener('pointerdown', move);
   row.querySelector('.step').oninput = draw;
-  html(el, `<p class="small muted" style="margin:6px 0 0">${tr('Move the mouse up and down over the picture: that moves your pointer on the screen.', 'Beweg die Maus über dem Bild auf und ab: So bewegst du deinen Zeiger auf dem Bildschirm.')}</p>`);
+  html(el, `<p class="small muted" style="margin:6px 0 0">${tr('Move the mouse up and down over the picture: that moves your pointer on the screen.', 'Beweg die Maus über dem Bild auf und ab: So bewegst du deinen Zeiger auf dem Bildschirm.', '在畫面上上下移動滑鼠，看看你的游標如何移動。')}</p>`);
   draw();
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-de="Schätze &amp; Waffen · Kinderführer zu Cube Crawler">Treasure &amp; Weapons · Kids' Guide to Cube Crawler</title>
+<title data-de="Schätze &amp; Waffen · Kinderführer zu Cube Crawler" data-zh-hant="寶物與武器 · Cube Crawler 兒童指南">Treasure &amp; Weapons · Kids' Guide to Cube Crawler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="kids.css">
 <script src="lang.js"></script>
@@ -13,38 +13,52 @@
 <section class="slide" id="machine" data-lv="1">
   <h2 lang="en">A machine that makes weapons</h2>
   <h2 lang="de">Eine Maschine, die Waffen baut</h2>
+      <h2 lang="zh-Hant">製作武器的機器</h2>
   <div class="cols wide-right">
     <div>
       <p class="lead" lang="en">Nobody designed the swords, bows, crossbows and staffs you find in Cube Crawler one by one. There is a <b>weapon machine</b> instead.</p>
       <p class="lead" lang="de">Niemand hat die Schwerter, Bögen, Armbrüste und Stäbe in Cube Crawler einzeln entworfen. Stattdessen gibt es eine <b>Waffenmaschine</b>.</p>
+      <p class="lead" lang="zh-Hant">Cube Crawler 裡的劍、弓、弩和法杖都不是一把一把手工設計的。遊戲裡有一台武器機器。</p>
       <p lang="en">Every time a monster drops a weapon, or you open a chest, the machine rolls dice and builds a brand-new one, with its own rarity, powers and name. Like "Ashsting, the Pale Queen", a legendary greatsword.</p>
       <p lang="de">Jedes Mal, wenn ein Monster eine Waffe fallen lässt oder du eine Truhe öffnest, würfelt die Maschine und baut eine brandneue, mit eigener Seltenheit, eigenen Kräften und eigenem Namen. Zum Beispiel "Ashsting, the Pale Queen", ein legendärer Zweihänder.</p>
+      <p lang="zh-Hant">每次怪物掉落武器，或你打開寶箱時，機器就會擲骰子，製作一把全新的武器，替它決定稀有度、能力和名稱。例如「Ashsting, the Pale Queen」，一把傳說級雙手劍。</p>
       <p lang="en">Its glow on the floor tells you how rare it is: no glow for common, a ring for uncommon, a pool of light for rare, beams of light for epic and up.</p>
       <p lang="de">Sein Leuchten auf dem Boden verrät, wie selten es ist: kein Leuchten bei gewöhnlichen, ein Ring bei ungewöhnlichen, ein Lichtkreis bei seltenen, Lichtstrahlen ab episch.</p>
+      <p lang="zh-Hant">武器掉在地上的光芒會告訴你它有多稀有：普通物品不發光，不常見物品有光環，稀有物品有光圈，史詩級以上會射出光束。</p>
       <p lang="en">Press <kbd>X</kbd> in the game to see the names of everything on the floor.</p>
       <p lang="de">Drück im Spiel <kbd>X</kbd>, um die Namen von allem auf dem Boden zu sehen.</p>
+      <p lang="zh-Hant">在遊戲中按 X，就能看到地上所有物品的名稱。</p>
     </div>
-    <figure><img class="shot" src="img/loot.jpg" alt="Three swords on the floor with glowing names: a legendary, a rare and an epic" data-de-alt="Drei Schwerter auf dem Boden mit leuchtenden Namen: ein legendäres, ein seltenes und ein episches"><figcaption lang="en">A legendary, a rare and an epic sword. The colour of the name is the rarity.</figcaption> <figcaption lang="de">Ein legendäres, ein seltenes und ein episches Schwert. Die Farbe des Namens ist die Seltenheit.</figcaption></figure>
+    <figure><img class="shot" src="img/loot.jpg" alt="Three swords on the floor with glowing names: a legendary, a rare and an epic" data-de-alt="Drei Schwerter auf dem Boden mit leuchtenden Namen: ein legendäres, ein seltenes und ein episches" data-zh-hant-alt="地上有三把發光的劍，名稱分別是傳說、稀有和史詩級"><figcaption lang="en">A legendary, a rare and an epic sword. The colour of the name is the rarity.</figcaption> <figcaption lang="de">Ein legendäres, ein seltenes und ein episches Schwert. Die Farbe des Namens ist die Seltenheit.</figcaption>
+      <figcaption lang="zh-Hant">一把傳說級、一把稀有級和一把史詩級的劍。名稱的顏色代表稀有度。</figcaption></figure>
   </div>
 </section>
 
 <section class="slide" id="roll" data-lv="1">
   <h2 lang="en">Try it: roll a weapon</h2>
   <h2 lang="de">Probier es: Würfel eine Waffe</h2>
+      <h2 lang="zh-Hant">動手試試：擲出一把武器</h2>
   <p lang="en">This runs the game's real weapon machine. Each roll goes through four steps: rarity, then the kind of weapon, then its magic powers (<a class="w" href="words.html#affix">affixes</a>), then a name.
     Move the item level up: weapons from deeper down are stronger and rarer.</p>
   <p lang="de">Hier läuft die echte Waffenmaschine des Spiels. Jeder Wurf geht durch vier Schritte: Seltenheit, dann die Art der Waffe, dann seine magischen Kräfte (<a class="w" href="words.html#affix">Affixe</a>), dann ein Name.
     Schieb die Gegenstandsstufe hoch: Waffen aus tieferen Tiefen sind stärker und seltener.</p>
+      <p lang="zh-Hant">這裡運作的就是遊戲裡真正的武器機器。每次擲骰都會經過四個步驟：先決定稀有度，再選武器種類，接著決定魔法能力（詞綴），最後取名字。把物品等級調高：深處找到的武器會更強，也更稀有。</p>
   <div class="demo real" data-demo="loot"></div>
 </section>
 
 <section class="slide" id="rarities" data-lv="2" data-src="src/core/gear/rarities.js#RARITIES,LEVEL_SHIFT">
   <h2 lang="en">The rarity ladder</h2>
   <h2 lang="de">Die Seltenheits-Leiter</h2>
+      <h2 lang="zh-Hant">稀有度階梯</h2>
   <div class="cols">
     <div>
       <table>
-        <tr><th lang="en">RARITY</th> <th lang="de">SELTENHEIT</th><th lang="en">WEIGHT</th> <th lang="de">GEWICHT</th><th lang="en">FROM LEVEL</th> <th lang="de">AB STUFE</th><th lang="en">AFFIXES</th> <th lang="de">AFFIXE</th><th lang="en">DAMAGE</th> <th lang="de">SCHADEN</th></tr>
+        <tr><th lang="en">RARITY</th> <th lang="de">SELTENHEIT</th>
+      <th lang="zh-Hant">稀有度</th><th lang="en">WEIGHT</th> <th lang="de">GEWICHT</th>
+      <th lang="zh-Hant">權重</th><th lang="en">FROM LEVEL</th> <th lang="de">AB STUFE</th>
+      <th lang="zh-Hant">最低等級</th><th lang="en">AFFIXES</th> <th lang="de">AFFIXE</th>
+      <th lang="zh-Hant">詞綴數量</th><th lang="en">DAMAGE</th> <th lang="de">SCHADEN</th>
+      <th lang="zh-Hant">傷害</th></tr>
         <tr style="color:#81878d"><td>Junk</td><td>24</td><td>1</td><td>0</td><td>×0.80</td></tr>
         <tr style="color:#eeeeee"><td>Common</td><td>40</td><td>1</td><td>0</td><td>×1.00</td></tr>
         <tr style="color:#61dc6b"><td>Uncommon</td><td>22</td><td>1</td><td>1</td><td>×1.05</td></tr>
@@ -58,12 +72,16 @@
     <div>
       <p lang="en">It's the <a class="portal" href="random.html#weighted">bag of marbles</a> again! 40 white marbles for Common, but only half a marble for Legendary.</p>
       <p lang="de">Das ist wieder der <a class="portal" href="random.html#weighted">Murmelbeutel</a>! 40 weiße Murmeln für Common (gewöhnlich), aber nur eine halbe Murmel für Legendary (legendär).</p>
+      <p lang="zh-Hant">這又是彈珠袋！普通級（Common）有 40 顆白彈珠，傳說級（Legendary）卻只有半顆。</p>
       <p lang="en"><b>Item level</b> is the level of the monster that dropped it (about its depth). Better rarities only appear from a certain level: no Epic before level 4.</p>
       <p lang="de">Die <b>Gegenstandsstufe</b> ist die Stufe des Monsters, das es fallen ließ (ungefähr seine Tiefe). Bessere Seltenheiten gibt es erst ab einer bestimmten Stufe: kein Epic vor Stufe 4.</p>
+      <p lang="zh-Hant">物品等級就是掉落這件物品的怪物等級（大約等於所在深度）。達到特定等級後，才有機會出現更稀有的物品：第 4 級以前不會有史詩級。</p>
       <p lang="en">And the deeper you go, the more the bag tips towards the rare end, slowly. At item level 20, about 8% of swords are Epic and 3% Legendary.</p>
       <p lang="de">Und je tiefer du gehst, desto mehr kippt der Beutel zum seltenen Ende, langsam. Auf Gegenstandsstufe 20 sind etwa 8% der Schwerter episch und 3% legendär.</p>
+      <p lang="zh-Hant">越往深處走，抽到稀有物品的機率就會慢慢提高。在物品等級 20 時，大約有 8% 的劍是史詩級，3% 是傳說級。</p>
       <p lang="en"><b>Luck</b> tips it further: guardians and chests roll with luck. Ancient swords only come from guardians.</p>
       <p lang="de"><b>Glück</b> kippt ihn noch mehr: Wächter und Truhen würfeln mit Glück. Ancient-Schwerter (uralt) kommen nur von Wächtern.</p>
+      <p lang="zh-Hant">幸運值也會讓結果更偏向稀有物品：守衛者和寶箱擲骰時會加上幸運值。遠古級（Ancient）劍只會由守衛者掉落。</p>
     </div>
   </div>
 </section>
@@ -71,47 +89,69 @@
 <section class="slide" id="odds" data-lv="2" data-src="src/core/gear/rarities.js#rarityOdds">
   <h2 lang="en">Try it: how the odds change</h2>
   <h2 lang="de">Probier es: Wie sich die Chancen ändern</h2>
+      <h2 lang="zh-Hant">動手試試：機率如何改變</h2>
   <p lang="en">These are the exact chances the game uses. Slide the item level up from 1 to 25, then add luck.</p>
   <p lang="de">Das sind genau die Chancen, die das Spiel benutzt. Schieb die Gegenstandsstufe von 1 bis 25 hoch und gib dann Glück dazu.</p>
+      <p lang="zh-Hant">這裡顯示的是遊戲實際使用的機率。把物品等級從 1 調到 25，再加入幸運值看看。</p>
   <div class="demo real" data-demo="loot" data-mode="odds"></div>
   <p class="small muted" lang="en">The formula: each rarity's weight is multiplied by <code>exp((0.025 × (level − 1) + luck) × rank)</code>. "Rank" is 0 for Junk up to 7 for Ancient, so the rarest ones grow fastest.</p>
   <p class="small muted" lang="de">Die Formel: Das Gewicht jeder Seltenheit wird mit <code>exp((0.025 × (Stufe − 1) + Glück) × Rang)</code> malgenommen. "Rang" ist 0 für Junk bis 7 für Ancient, darum wachsen die seltensten am schnellsten.</p>
+      <p class="small muted" lang="zh-Hant">公式會把每種稀有度的權重乘上 <code>exp((0.025 × (等級 − 1) + 幸運值) × 階級)</code>。「階級」從 Junk 的 0 到 Ancient 的 7，因此越稀有的物品，機率增加得越快。</p>
 </section>
 
 <section class="slide" id="affixes" data-lv="2" data-src="src/core/gear/affixes.js#AFFIXES,TIER_LEVELS src/core/gear/names.js#itemName">
   <h2 lang="en">Magic powers: affixes</h2>
   <h2 lang="de">Magische Kräfte: Affixe</h2>
+      <h2 lang="zh-Hant">魔法能力：詞綴</h2>
   <div class="cols">
     <div>
       <p lang="en">An affix is a bonus that changes one number of the weapon. <b>Prefixes</b> go in front of a name, <b>suffixes</b> after it ("Sharp sword of Reach"):</p>
       <p lang="de">Ein Affix ist ein Bonus, der eine Zahl der Waffe ändert. <b>Präfixe</b> stehen vor dem Namen, <b>Suffixe</b> dahinter ("Sharp sword of Reach"):</p>
+      <p lang="zh-Hant">詞綴會加成武器的某項數值。前綴放在名稱前，後綴放在名稱後（例如「Sharp sword of Reach」）。</p>
       <table>
-        <tr><th>AFFIX</th><th lang="en">DOES</th> <th lang="de">MACHT</th></tr>
-        <tr><td>Sharp</td><td lang="en">+ damage</td> <td lang="de">+ Schaden</td></tr>
-        <tr><td>Brutal</td><td lang="en">+ % damage</td> <td lang="de">+ % Schaden</td></tr>
-        <tr><td>Swift</td><td lang="en">faster swings</td> <td lang="de">schnellere Hiebe</td></tr>
-        <tr><td>Sweeping</td><td lang="en">a wider swing</td> <td lang="de">einen breiteren Hieb</td></tr>
-        <tr><td>Vicious</td><td lang="en">more critical hits</td> <td lang="de">mehr kritische Treffer</td></tr>
-        <tr><td>of Reach</td><td lang="en">a longer reach</td> <td lang="de">eine längere Reichweite</td></tr>
-        <tr><td>of the Leech</td><td lang="en">heals you on every hit</td> <td lang="de">heilt dich bei jedem Treffer</td></tr>
-        <tr><td>of Force</td><td lang="en">pushes monsters further</td> <td lang="de">schubst Monster weiter weg</td></tr>
-        <tr><td>of Precision</td><td lang="en">stronger critical hits</td> <td lang="de">stärkere kritische Treffer</td></tr>
-        <tr><td>of Distance</td><td lang="en">shots fly further</td> <td lang="de">Schüsse fliegen weiter</td></tr>
+        <tr><th>AFFIX</th><th lang="en">DOES</th> <th lang="de">MACHT</th>
+      <th lang="zh-Hant">能力</th></tr>
+        <tr><td>Sharp</td><td lang="en">+ damage</td> <td lang="de">+ Schaden</td>
+      <td lang="zh-Hant">額外傷害</td></tr>
+        <tr><td>Brutal</td><td lang="en">+ % damage</td> <td lang="de">+ % Schaden</td>
+      <td lang="zh-Hant">額外百分比傷害</td></tr>
+        <tr><td>Swift</td><td lang="en">faster swings</td> <td lang="de">schnellere Hiebe</td>
+      <td lang="zh-Hant">更快的揮砍速度</td></tr>
+        <tr><td>Sweeping</td><td lang="en">a wider swing</td> <td lang="de">einen breiteren Hieb</td>
+      <td lang="zh-Hant">揮砍範圍更寬</td></tr>
+        <tr><td>Vicious</td><td lang="en">more critical hits</td> <td lang="de">mehr kritische Treffer</td>
+      <td lang="zh-Hant">更高的暴擊率</td></tr>
+        <tr><td>of Reach</td><td lang="en">a longer reach</td> <td lang="de">eine längere Reichweite</td>
+      <td lang="zh-Hant">更長的攻擊距離</td></tr>
+        <tr><td>of the Leech</td><td lang="en">heals you on every hit</td> <td lang="de">heilt dich bei jedem Treffer</td>
+      <td lang="zh-Hant">每次命中都會治療你</td></tr>
+        <tr><td>of Force</td><td lang="en">pushes monsters further</td> <td lang="de">schubst Monster weiter weg</td>
+      <td lang="zh-Hant">把怪物推得更遠</td></tr>
+        <tr><td>of Precision</td><td lang="en">stronger critical hits</td> <td lang="de">stärkere kritische Treffer</td>
+      <td lang="zh-Hant">更強的暴擊傷害</td></tr>
+        <tr><td>of Distance</td><td lang="en">shots fly further</td> <td lang="de">Schüsse fliegen weiter</td>
+      <td lang="zh-Hant">投射物飛得更遠</td></tr>
       </table>
       <p class="small muted" lang="en">Sweeping and of Reach only come on swords, of Distance only on bows, crossbows and staffs.</p>
       <p class="small muted" lang="de">Sweeping und of Reach gibt es nur auf Schwertern, of Distance nur auf Bögen, Armbrüsten und Stäben.</p>
+      <p class="small muted" lang="zh-Hant">Sweeping 和 of Reach 只會出現在劍上；of Distance 只會出現在弓、弩和法杖上。</p>
     </div>
     <div class="card">
       <h3 lang="en">Tiers</h3>
       <h3 lang="de">Stufen</h3>
+      <h3 lang="zh-Hant">階級</h3>
       <p lang="en">Each affix has 7 <b>tiers</b>, like sizes. The item level picks the tier: level 1 to 3 is tier 1, level 19 and up is tier 5. Mythic and Ancient weapons reach even higher, up to tier 7.</p>
       <p lang="de">Jedes Affix hat 7 <b>Stufen</b>, wie Größen. Die Gegenstandsstufe wählt die Stufe: Stufe 1 bis 3 ist Stufe 1, ab 19 Stufe 5. Mythic- und Ancient-Waffen kommen noch höher, bis Stufe 7.</p>
+      <p lang="zh-Hant">每種詞綴都有 7 個階級，就像不同尺寸。物品等級會決定詞綴階級：物品等級 1 到 3 是階級 1，等級 19 起是階級 5。神話級和遠古級武器還能更高，最高到階級 7。</p>
       <p lang="en">Sharp at tier 1 adds 2 to 4 damage. At tier 7, 29 to 38.</p>
       <p lang="de">Sharp auf Stufe 1 gibt 2 bis 4 Schaden dazu. Auf Stufe 7 sind es 29 bis 38.</p>
+      <p lang="zh-Hant">階級 1 的 Sharp 會增加 2 到 4 點傷害；階級 7 則會增加 29 到 38 點。</p>
       <h3 lang="en">Names</h3>
       <h3 lang="de">Namen</h3>
+      <h3 lang="zh-Hant">名稱</h3>
       <p lang="en">The name is made from word lists too. Junk gets a shabby word: "Rusty Long Sword". Uncommon gets two words: "Bright Fang". Legendary gets a made-up word and a title: "Grimfang, the Last Oath".</p>
       <p lang="de">Der Name kommt auch aus Wortlisten. Junk bekommt ein schäbiges Wort: "Rusty Long Sword". Uncommon bekommt zwei Wörter: "Bright Fang". Legendary bekommt ein erfundenes Wort und einen Titel: "Grimfang, the Last Oath".</p>
+      <p lang="zh-Hant">名稱也是從字詞清單裡抽出來的。Junk 會拿到一個破舊形容詞，例如「Rusty Long Sword」。Uncommon 會拿到兩個詞，例如「Bright Fang」。Legendary 則會拿到一個自創詞和一個稱號，例如「Grimfang, the Last Oath」。</p>
     </div>
   </div>
 </section>
@@ -119,31 +159,45 @@
 <section class="slide" id="drops" data-lv="2" data-src="src/core/gear/drops.js#WEAPON_CHANCE,guardianDrops src/core/chests.js#CHESTS">
   <h2 lang="en">Who drops what</h2>
   <h2 lang="de">Wer was fallen lässt</h2>
+      <h2 lang="zh-Hant">誰會掉落什麼</h2>
   <div class="cols3">
-    <div class="card"><h3 lang="en">Monsters</h3> <h3 lang="de">Monster</h3><p lang="en">Every monster drops coins. Sometimes a sword (5%) or a health potion (3%). Tougher monsters drop more often: a Stunder 8%.</p> <p lang="de">Jedes Monster lässt Münzen fallen. Manchmal ein Schwert (5%) oder einen Heiltrank (3%). Stärkere Monster lassen öfter etwas fallen: ein Stunder 8%.</p>
+    <div class="card"><h3 lang="en">Monsters</h3> <h3 lang="de">Monster</h3>
+      <h3 lang="zh-Hant">怪物</h3><p lang="en">Every monster drops coins. Sometimes a sword (5%) or a health potion (3%). Tougher monsters drop more often: a Stunder 8%.</p> <p lang="de">Jedes Monster lässt Münzen fallen. Manchmal ein Schwert (5%) oder einen Heiltrank (3%). Stärkere Monster lassen öfter etwas fallen: ein Stunder 8%.</p>
+      <p lang="zh-Hant">每隻怪物都會掉落硬幣。有時也會掉劍（5%）或治療藥水（3%）。強大的怪物更常掉東西：Stunder 的機率是 8%。</p>
       <p class="small" lang="en">And remember: the same monster always drops the same thing, even if it comes back after you die. <a href="random.html#why">Why?</a></p>
-      <p class="small" lang="de">Und denk dran: Dasselbe Monster lässt immer dasselbe fallen, auch wenn es nach deinem Tod wiederkommt. <a href="random.html#why">Warum?</a></p></div>
-    <div class="card"><h3 lang="en">Guardians</h3> <h3 lang="de">Wächter</h3><p lang="en">A side guardian always drops a sword (at least Uncommon) and a potion. A descent guardian drops two of each, at least Rare from level 5. Only guardians can drop Ancient swords.</p> <p lang="de">Ein Torwächter lässt immer ein Schwert (mindestens Uncommon) und einen Trank fallen. Ein Brunnenwächter lässt von beidem zwei fallen, ab Stufe 5 mindestens Rare. Nur Wächter können Ancient-Schwerter fallen lassen.</p></div>
-    <div class="card"><h3 lang="en">Treasure chests</h3> <h3 lang="de">Schatztruhen</h3><p lang="en">Every depth has four treasure sites: two basic, one uncommon, one rare. Their chests hold coins, potions and a sword or two; the grander the site, the better. Click one to open it!</p> <p lang="de">Jede Tiefe hat vier Schatzplätze: zwei einfache, einen ungewöhnlichen, einen seltenen. Ihre Truhen enthalten Münzen, Tränke und ein oder zwei Schwerter; je prächtiger der Platz, desto besser. Klick eine an, um sie zu öffnen!</p></div>
+      <p class="small" lang="de">Und denk dran: Dasselbe Monster lässt immer dasselbe fallen, auch wenn es nach deinem Tod wiederkommt. <a href="random.html#why">Warum?</a></p>
+      <p class="small" lang="zh-Hant">記住：同一隻怪物每次都會掉落相同物品，即使你死後牠又回來也一樣。為什麼呢？</p></div>
+    <div class="card"><h3 lang="en">Guardians</h3> <h3 lang="de">Wächter</h3>
+      <h3 lang="zh-Hant">守衛者</h3><p lang="en">A side guardian always drops a sword (at least Uncommon) and a potion. A descent guardian drops two of each, at least Rare from level 5. Only guardians can drop Ancient swords.</p> <p lang="de">Ein Torwächter lässt immer ein Schwert (mindestens Uncommon) und einen Trank fallen. Ein Brunnenwächter lässt von beidem zwei fallen, ab Stufe 5 mindestens Rare. Nur Wächter können Ancient-Schwerter fallen lassen.</p>
+      <p lang="zh-Hant">門口的守衛者一定會掉一把劍（至少是不常見級）和一瓶藥水。井邊的守衛者會各掉兩件物品，從第 5 級起至少有一件是稀有級。只有守衛者會掉遠古級劍。</p></div>
+    <div class="card"><h3 lang="en">Treasure chests</h3> <h3 lang="de">Schatztruhen</h3>
+      <h3 lang="zh-Hant">寶箱</h3><p lang="en">Every depth has four treasure sites: two basic, one uncommon, one rare. Their chests hold coins, potions and a sword or two; the grander the site, the better. Click one to open it!</p> <p lang="de">Jede Tiefe hat vier Schatzplätze: zwei einfache, einen ungewöhnlichen, einen seltenen. Ihre Truhen enthalten Münzen, Tränke und ein oder zwei Schwerter; je prächtiger der Platz, desto besser. Klick eine an, um sie zu öffnen!</p>
+      <p lang="zh-Hant">每個深度有四個藏寶地點：兩個普通、一個不常見、一個稀有。寶箱裡有硬幣、藥水和一到兩把劍；地點越華麗，寶物就越好。點一下寶箱來打開它！</p></div>
   </div>
   <p lang="en">Coins: 10 copper make 1 silver, 100 silver make 1 gold. <img class="icon s" src="../assets/items/item_coin_copper.png" alt="copper"> <img class="icon s" src="../assets/items/item_coin_silver.png" alt="silver"> <img class="icon s" src="../assets/items/item_coin_gold.png" alt="gold"></p>
   <p lang="de">Münzen: 10 Kupfer sind 1 Silber, 100 Silber sind 1 Gold. <img class="icon s" src="../assets/items/item_coin_copper.png" alt="Kupfer"> <img class="icon s" src="../assets/items/item_coin_silver.png" alt="Silber"> <img class="icon s" src="../assets/items/item_coin_gold.png" alt="Gold"></p>
+      <p lang="zh-Hant">硬幣：10 枚銅幣換 1 枚銀幣，100 枚銀幣換 1 枚金幣。</p>
 </section>
 
 <section class="slide" id="generate-code" data-lv="3">
   <h2 lang="en">The real code: the weapon machine</h2>
   <h2 lang="de">Der echte Code: die Waffenmaschine</h2>
+      <h2 lang="zh-Hant">實際程式碼：武器機器</h2>
   <div class="cols wide-left">
     <pre data-code="src/core/gear/generate.js#rollWeapon"></pre>
     <div>
       <p lang="en">Four lines, four steps. Each step is a function in its own file: <code>rarities.js</code>, <code>bases.js</code>, <code>affixes.js</code>, <code>names.js</code>.</p>
       <p lang="de">Vier Zeilen, vier Schritte. Jeder Schritt ist eine Funktion in einer eigenen Datei: <code>rarities.js</code>, <code>bases.js</code>, <code>affixes.js</code>, <code>names.js</code>.</p>
+      <p lang="zh-Hant">四行程式碼，四個步驟。每個步驟都是獨立檔案中的函式：<code>rarities.js</code>、<code>bases.js</code>、<code>affixes.js</code>、<code>names.js</code>。</p>
       <p lang="en"><code>opts.favor</code> is the kind of weapon you fight with. <code>rollBase</code> picks that kind three times as often, so you keep finding upgrades for it.</p>
       <p lang="de"><code>opts.favor</code> ist die Art Waffe, mit der du kämpfst. <code>rollBase</code> wählt diese Art dreimal so oft, damit du immer wieder bessere davon findest.</p>
+      <p lang="zh-Hant"><code>opts.favor</code>是你目前使用的武器種類。<code>rollBase</code>抽到這種種類的機率是其他種類的三倍，讓你能一直找到適合的升級武器。</p>
       <p lang="en"><b>Pure</b> means: it only uses what you give it. Same dice (<code>rng</code>), same weapon. That makes it easy to test, and to show in this guide!</p>
       <p lang="de"><b>Rein</b> (pure) heißt: Sie benutzt nur, was du ihr gibst. Gleiche Würfel (<code>rng</code>), gleiche Waffe. Das macht sie leicht zu testen und in diesem Führer zu zeigen!</p>
+      <p lang="zh-Hant">「純函式」（pure）表示它只使用你提供的資料。同樣的隨機數產生器（<code>rng</code>），就會得到同一把武器。這樣容易測試，也方便在指南中示範！</p>
       <p lang="en">The sword is saved as what it <b>rolled</b>, not how strong it is. Its damage is worked out when needed (<code>itemStats</code> in <code>stats.js</code>). So if the makers re-balance swords later, the ones you already have change with them.</p>
       <p lang="de">Das Schwert wird gespeichert als das, was es <b>gewürfelt</b> hat, nicht wie stark es ist. Sein Schaden wird erst ausgerechnet, wenn man ihn braucht (<code>itemStats</code> in <code>stats.js</code>). Wenn die Macher Schwerter später neu einstellen, ändern sich die, die du schon hast, also mit.</p>
+      <p lang="zh-Hant">劍會以「擲骰得到的結果」存起來，而不是存它有多強。需要使用時才計算傷害（<code>stats.js</code>裡的 <code>itemStats</code>）。所以設計師之後重新平衡武器時，你已經擁有的劍也會跟著改變。</p>
     </div>
   </div>
 </section>
@@ -151,25 +205,33 @@
 <section class="slide" id="stats-code" data-lv="3">
   <h2 lang="en">The real code: how strong is it?</h2>
   <h2 lang="de">Der echte Code: Wie stark ist es?</h2>
+      <h2 lang="zh-Hant">實際程式碼：它有多強？</h2>
   <div class="cols wide-left">
     <pre data-code="src/core/gear/stats.js#ILVL_DAMAGE,ilvlDamage,itemStats"></pre>
     <div>
       <p lang="en">The damage, step by step, for a Rare Long Sword, item level 11, with "Sharp +5":</p>
       <p lang="de">Der Schaden Schritt für Schritt, für ein seltenes Langschwert (Rare Long Sword), Gegenstandsstufe 11, mit "Sharp +5":</p>
+      <p lang="zh-Hant">以下是物品等級 11 的稀有長劍（Rare Long Sword）加上「Sharp +5」後的傷害計算步驟：</p>
       <ol class="steps">
         <li lang="en">base: <b>39</b></li>
         <li lang="de">Grundwert: <b>39</b></li>
+      <li lang="zh-Hant">基本傷害：<b>39</b></li>
         <li lang="en">item level: × (1 + 0.05 × 10) = × 1.5 → 58.5</li>
         <li lang="de">Gegenstandsstufe: × (1 + 0,05 × 10) = × 1,5 → 58,5</li>
+      <li lang="zh-Hant">物品等級：× (1 + 0.05 × 10) = × 1.5 → 58.5</li>
         <li lang="en">rarity Rare: × 1.1 → 64.35</li>
         <li lang="de">Seltenheit Rare: × 1,1 → 64,35</li>
+      <li lang="zh-Hant">稀有度 Rare：× 1.1 → 64.35</li>
         <li lang="en">Sharp: + 5 → 69.35</li>
         <li lang="de">Sharp: + 5 → 69,35</li>
+      <li lang="zh-Hant">Sharp：+ 5 → 69.35</li>
         <li lang="en">no Brutal: × 1 → rounded: <b>69</b></li>
         <li lang="de">kein Brutal: × 1 → gerundet: <b>69</b></li>
+      <li lang="zh-Hant">沒有 Brutal：× 1 → 四捨五入後：<b>69</b></li>
       </ol>
       <p lang="en">Then in a fight, your own level adds 2% per level.</p>
       <p lang="de">Im Kampf gibt dann noch deine eigene Stufe 2% pro Stufe dazu.</p>
+      <p lang="zh-Hant">進入戰鬥後，你自己的等級還會再為傷害增加每級 2%。</p>
     </div>
   </div>
 </section>

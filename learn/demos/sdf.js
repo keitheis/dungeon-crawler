@@ -8,8 +8,8 @@ const smin = (a, b, k) => { if (k <= 0) return Math.min(a, b); const h = Math.mi
 
 export default function mount(el) {
   const W = 640, H = 300, { g, c, at } = canvas(el, W, H);
-  const row = html(el, `<div class="row"><label>${tr('melt (smoothness)', 'Schmelzen (Glätte)')} <input type="range" class="k" min="0" max="60" value="25"> <b class="kv">25</b></label>
-    <label><input type="checkbox" class="dist"> ${tr('show distances', 'Abstände zeigen')}</label><button class="eyes">${tr('Add eyes', 'Augen dazu')}</button><span class="muted small">${tr('drag the blobs', 'zieh die Klumpen')}</span></div>`);
+  const row = html(el, `<div class="row"><label>${tr('melt (smoothness)', 'Schmelzen (Glätte)', '融合（平滑程度）')} <input type="range" class="k" min="0" max="60" value="25"> <b class="kv">25</b></label>
+    <label><input type="checkbox" class="dist"> ${tr('show distances', 'Abstände zeigen', '顯示距離')}</label><button class="eyes">${tr('Add eyes', 'Augen dazu', '加上眼睛')}</button><span class="muted small">${tr('drag the blobs', 'zieh die Klumpen', '拖曳這些軟塊')}</span></div>`);
   const out = html(el, '<div class="out"></div>');
   const $ = s => row.querySelector(s);
   // a body (ellipse), a head (circle), and two "legs" (capsules)
@@ -53,8 +53,8 @@ export default function mount(el) {
       if (s.kind === 'circle') g.arc(s.x, s.y, s.r, 0, 7); else if (s.kind === 'ellipse') g.ellipse(s.x, s.y, s.rx, s.ry, 0, 0, 7);
       else { g.moveTo(s.x, s.y); g.lineTo(s.x2, s.y2); }
       g.stroke(); g.setLineDash([]); }
-    out.innerHTML = k ? tr(`Melt <b>${k}</b>: where two shapes come closer than that, they blend into one smooth surface.`, `Schmelzen <b>${k}</b>: wo zwei Formen sich näher kommen, verschmelzen sie zu einer glatten Oberfläche.`)
-      : tr('Melt 0: the shapes are just stuck together, with sharp creases.', 'Schmelzen 0: die Formen kleben nur aneinander, mit scharfen Kanten.');
+    out.innerHTML = k ? tr(`Melt <b>${k}</b>: where two shapes come closer than that, they blend into one smooth surface.`, `Schmelzen <b>${k}</b>: wo zwei Formen sich näher kommen, verschmelzen sie zu einer glatten Oberfläche.`, `融合值 <b>${k}</b>：兩個形狀靠得比這個距離更近時，就會融合成平滑的表面。`)
+      : tr('Melt 0: the shapes are just stuck together, with sharp creases.', 'Schmelzen 0: die Formen kleben nur aneinander, mit scharfen Kanten.', '融合值為 0：形狀只是黏在一起，接縫很尖銳。');
   }
   c.onpointerdown = e => {
     const [x, y] = at(e);

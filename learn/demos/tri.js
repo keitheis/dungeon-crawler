@@ -6,9 +6,9 @@ import { makeNoise, mulberry32 } from '../../src/core/util.js';
 
 export default function mount(el) {
   const W = 640, H = 330, { g } = canvas(el, W, H);
-  const row = html(el, `<div class="row"><label><input type="checkbox" class="fill" checked> ${tr('paint', 'malen')}</label>
-    <label><input type="checkbox" class="edges"> ${tr('show triangles', 'Dreiecke zeigen')}</label><label><input type="checkbox" class="light" checked> ${tr('sunlight', 'Sonnenlicht')}</label>
-    <label><input type="checkbox" class="spin" checked> ${tr('turn', 'drehen')}</label><label>${tr('sun', 'Sonne')} <input type="range" class="sun" min="0" max="360" value="220"></label></div>`);
+  const row = html(el, `<div class="row"><label><input type="checkbox" class="fill" checked> ${tr('paint', 'malen', '填色')}</label>
+    <label><input type="checkbox" class="edges"> ${tr('show triangles', 'Dreiecke zeigen', '顯示三角形')}</label><label><input type="checkbox" class="light" checked> ${tr('sunlight', 'Sonnenlicht', '陽光')}</label>
+    <label><input type="checkbox" class="spin" checked> ${tr('turn', 'drehen', '轉向')}</label><label>${tr('sun', 'Sonne', '太陽')} <input type="range" class="sun" min="0" max="360" value="220"></label></div>`);
   const out = html(el, '<div class="out"></div>');
   const $ = s => row.querySelector(s);
   // a 6x6 grid of columns; heights from the game's own noise function
@@ -54,6 +54,7 @@ export default function mount(el) {
       if ($('.edges').checked || !$('.fill').checked) { g.strokeStyle = '#ffcf7acc'; g.lineWidth = 0.7; g.stroke(); }
     }
     out.innerHTML = tr(`<b>${tris.length}</b> triangles, painted far-to-near. A cube in the real game has thousands, the whole screen often hundreds of thousands.`,
-      `<b>${tris.length}</b> Dreiecke, von hinten nach vorne gemalt. Ein Würfel im echten Spiel hat Tausende, der ganze Bildschirm oft Hunderttausende.`);
+      `<b>${tris.length}</b> Dreiecke, von hinten nach vorne gemalt. Ein Würfel im echten Spiel hat Tausende, der ganze Bildschirm oft Hunderttausende.`,
+      `<b>${tris.length}</b> 個三角形，從遠到近繪製。遊戲中的一個方塊就有好幾千個三角形，整個畫面常常有幾十萬個。`);
   });
 }

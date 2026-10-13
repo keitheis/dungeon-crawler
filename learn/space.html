@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-de="Wo die Dinge sind · Kinderführer zu Cube Crawler">Where Things Are · Kids' Guide to Cube Crawler</title>
+<title data-de="Wo die Dinge sind · Kinderführer zu Cube Crawler" data-zh-hant="東西在哪裡 · Cube Crawler 兒童指南">Where Things Are · Kids' Guide to Cube Crawler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="kids.css">
 <script src="lang.js"></script>
@@ -13,22 +13,29 @@
 <section class="slide" id="address" data-lv="1" data-src="src/core/constants.js#N">
   <h2 lang="en">Try it: every spot has an address</h2>
   <h2 lang="de">Probier es: Jeder Ort hat eine Adresse</h2>
+  <h2 lang="zh-Hant">試試看：每個位置都有地址</h2>
   <div class="cols wide-right">
     <div>
       <p class="lead" lang="en">To the game, every place is just a few numbers: its <b>coordinates</b>.</p>
       <p class="lead" lang="de">Für das Spiel ist jeder Ort nur ein paar Zahlen: seine <b>Koordinaten</b>.</p>
+      <p class="lead" lang="zh-Hant">對遊戲來說，每個位置都只是幾個數字：它的<b>座標</b>。</p>
       <ul>
         <li lang="en"><b>x</b> goes left to right, east.</li>
         <li lang="de"><b>x</b> geht von links nach rechts, nach Osten.</li>
+        <li lang="zh-Hant"><b>x</b> 軸從左往右，也就是往東。</li>
         <li lang="en"><b>z</b> goes top to bottom on this map, south.</li>
         <li lang="de"><b>z</b> geht auf dieser Karte von oben nach unten, nach Süden.</li>
+        <li lang="zh-Hant"><b>z</b> 軸在這張地圖上從上往下，也就是往南。</li>
         <li lang="en"><b>y</b> goes up, towards the sky. (This map is seen from above, so you can't see y here.)</li>
         <li lang="de"><b>y</b> geht nach oben, zum Himmel. (Diese Karte ist von oben gesehen, darum siehst du y hier nicht.)</li>
+        <li lang="zh-Hant"><b>y</b> 軸往上，朝向天空。（這張地圖是從上方往下看，所以看不到 y 軸。）</li>
       </ul>
       <p lang="en">A cube is <b data-val="src/core/constants.js#N">16</b> cells wide, so x and z go from 0 to 16. One cell is exactly 1 long.</p>
       <p lang="de">Ein Würfel ist <b data-val="src/core/constants.js#N">16</b> Zellen breit, also gehen x und z von 0 bis 16. Eine Zelle ist genau 1 lang.</p>
+      <p lang="zh-Hant">一個方塊寬 <b data-val="src/core/constants.js#N">16</b> 格，所以 x 和 z 的範圍是 0 到 16。一格的長度剛好是 1。</p>
       <p lang="en">The hero can stand anywhere, like at x = 4.3. But floors, walls and stairs are built cell by cell. Which cell is the hero in? Round down: <code>Math.floor(4.3)</code> is 4.</p>
       <p lang="de">Der Held kann überall stehen, zum Beispiel bei x = 4,3. Aber Böden, Wände und Treppen sind Zelle für Zelle gebaut. In welcher Zelle ist der Held? Abrunden: <code>Math.floor(4.3)</code> ist 4.</p>
+      <p lang="zh-Hant">英雄可以站在任何位置，例如 x = 4.3。不過地板、牆壁和樓梯都是一格一格建出來的。英雄在哪一格？把小數無條件捨去：<code>Math.floor(4.3)</code> 等於 4。</p>
     </div>
     <div class="demo" data-demo="space" data-show="where"></div>
   </div>
@@ -37,17 +44,22 @@
 <section class="slide" id="arrows" data-lv="1">
   <h2 lang="en">Try it: arrows from here to there</h2>
   <h2 lang="de">Probier es: Pfeile von hier nach dort</h2>
+  <h2 lang="zh-Hant">試試看：從這裡指向那裡的箭頭</h2>
   <div class="cols wide-right">
     <div>
       <p lang="en">How do you get from the hero to the spider? Take the spider's numbers <b>minus</b> the hero's numbers:</p>
       <p lang="de">Wie kommst du vom Helden zur Spinne? Nimm die Zahlen der Spinne <b>minus</b> die Zahlen des Helden:</p>
+      <p lang="zh-Hant">從英雄到蜘蛛要怎麼走？用蜘蛛的數字<b>減掉</b>英雄的數字：</p>
       <p class="mono" style="color:#fff">dx = spider.x − hero.x<br>dz = spider.z − hero.z</p>
       <p lang="en">That pair of numbers is an arrow, called a <a class="w" href="words.html#vector">vector</a>. It says which way, and how far: "go 6 right and 5 up".</p>
       <p lang="de">Dieses Zahlenpaar ist ein Pfeil, ein sogenannter <a class="w" href="words.html#vector">Vektor</a>. Er sagt, in welche Richtung und wie weit: "Geh 6 nach rechts und 5 nach oben."</p>
+      <p lang="zh-Hant">這一對數字就像一支箭，叫做<a class="w" href="words.html#vector">向量</a>。它會告訴你方向和距離：「往右 6 格、往上 5 格。」</p>
       <p lang="en">Vectors are everywhere in the game. The hero's speed is one too: an arrow for how far it moves in one second. Every frame, the game adds a little bit of that arrow to the hero's position.</p>
       <p lang="de">Vektoren sind überall im Spiel. Das Tempo des Helden ist auch einer: ein Pfeil dafür, wie weit er sich in einer Sekunde bewegt. In jedem Bild zählt das Spiel ein kleines Stück dieses Pfeils zur Position des Helden dazu.</p>
+      <p lang="zh-Hant">向量在遊戲裡到處可見。英雄的速度也是一種向量：它表示英雄一秒鐘會移動多遠。每個影格，遊戲都會把這支箭的一小段加到英雄的位置上。</p>
       <a class="portal" href="physics.html#adding" lang="en">Moving is just adding</a>
       <a class="portal" href="physics.html#adding" lang="de">Bewegen ist nur Zusammenzählen</a>
+      <a class="portal" href="physics.html#adding" lang="zh-Hant">移動就是做加法</a>
     </div>
     <div class="demo" data-demo="space" data-show="arrow"></div>
   </div>
@@ -56,16 +68,20 @@
 <section class="slide" id="distance" data-lv="2" data-src="src/core/enemies.js#SPIDER src/core/townportal.js#onPad">
   <h2 lang="en">Try it: how far is it?</h2>
   <h2 lang="de">Probier es: Wie weit ist es?</h2>
+  <h2 lang="zh-Hant">試試看：距離有多遠？</h2>
   <div class="cols wide-right">
     <div>
       <p lang="en">The arrow and its two numbers make a triangle with a right angle. Over two thousand years ago, Pythagoras found out how long the slanted side is:</p>
       <p lang="de">Der Pfeil und seine zwei Zahlen bilden ein Dreieck mit einem rechten Winkel. Vor über zweitausend Jahren hat Pythagoras herausgefunden, wie lang die schräge Seite ist:</p>
+      <p lang="zh-Hant">箭頭和它的兩個數字會形成一個直角三角形。兩千多年前，畢達哥拉斯發現了斜邊的長度怎麼算：</p>
       <p class="mono" style="color:#fff">distance = √(dx² + dz²)</p>
       <p lang="en">In code that's <code>Math.hypot(dx, dz)</code>. The game asks it all the time: has the spider seen me (closer than <b data-val="src/core/enemies.js#SPIDER.aggro">3</b> cells)? Is it close enough to bite? Am I standing on the town portal?</p>
       <p lang="de">Im Code heißt das <code>Math.hypot(dx, dz)</code>. Das Spiel fragt das ständig: Hat die Spinne mich gesehen (näher als <b data-val="src/core/enemies.js#SPIDER.aggro">3</b> Zellen)? Ist sie nah genug zum Beißen? Stehe ich auf dem Stadtportal?</p>
+      <p lang="zh-Hant">在程式碼裡，這寫成 <code>Math.hypot(dx, dz)</code>。遊戲一直在計算距離：蜘蛛有看到我嗎（距離不到 <b data-val="src/core/enemies.js#SPIDER.aggro">3</b> 格）？牠近到可以咬人了嗎？我站在城鎮傳送門上嗎？</p>
       <pre class="wrap" data-code="src/core/townportal.js#onPad"></pre>
       <p class="small muted" lang="en">You're on the portal if your height is close (<code>Math.abs</code> drops the minus sign), the distance is small, you stand on the ground, aren't stunned, and aren't running through.</p>
       <p class="small muted" lang="de">Du bist auf dem Portal, wenn deine Höhe nah dran ist (<code>Math.abs</code> lässt das Minus weg), die Entfernung klein ist, du auf dem Boden stehst, nicht betäubt bist und nicht durchrennst.</p>
+      <p class="small muted" lang="zh-Hant">當你的高度差不多（<code>Math.abs</code> 會去掉負號）、距離夠近、站在地上、沒有被擊暈，而且沒有正在跑過去時，就算站在傳送門上。</p>
     </div>
     <div class="demo" data-demo="space" data-show="far"></div>
   </div>
@@ -74,19 +90,25 @@
 <section class="slide" id="angles" data-lv="2" data-src="src/game/enemyai.js#turn">
   <h2 lang="en">Try it: which way to turn?</h2>
   <h2 lang="de">Probier es: Wohin drehen?</h2>
+  <h2 lang="zh-Hant">試試看：該往哪裡轉？</h2>
   <div class="cols wide-right">
     <div>
       <p lang="en">To face the spider, the hero has to turn. By how much? <code>Math.atan2(dx, dz)</code> turns the arrow into an <b>angle</b>. The game calls the way something faces its <code>yaw</code>.</p>
       <p lang="de">Um die Spinne anzuschauen, muss sich der Held drehen. Um wie viel? <code>Math.atan2(dx, dz)</code> macht aus dem Pfeil einen <b>Winkel</b>. Das Spiel nennt die Richtung, in die etwas schaut, seinen <code>yaw</code>.</p>
+      <p lang="zh-Hant">英雄必須轉身才能面向蜘蛛。要轉多少？<code>Math.atan2(dx, dz)</code> 會把箭頭轉成一個<b>角度</b>。遊戲把物件面向的方向叫做 <code>yaw</code>。</p>
       <p lang="en">Computers measure angles in <b>radians</b>, not degrees: a full turn is 2 × π, about 6.28, instead of 360°.</p>
       <p lang="de">Computer messen Winkel im <b>Bogenmaß</b>, nicht in Grad: Eine ganze Drehung ist 2 × π, ungefähr 6,28, statt 360°.</p>
+      <p lang="zh-Hant">電腦用<b>弧度</b>而不是度數來測量角度：轉一整圈是 2 × π，大約 6.28，而不是 360°。</p>
       <p lang="en">Monsters turn towards you with this little machine. It doesn't snap round at once, it turns a bit every frame, and always the short way:</p>
       <p lang="de">Monster drehen sich mit dieser kleinen Maschine zu dir. Sie schnappen nicht auf einmal herum, sie drehen sich in jedem Bild ein Stück, und immer den kurzen Weg:</p>
+      <p lang="zh-Hant">怪物會用這段小程式轉向你。牠們不會一下子轉到底，而是在每個影格轉一點點，而且每次都走較短的方向：</p>
       <pre class="wrap" data-code="src/game/enemyai.js#turn"></pre>
       <p class="small muted" lang="en">The <code>Math.atan2(Math.sin(...), Math.cos(...))</code> part is a trick: it turns "350° to the left" into "10° to the right".</p>
       <p class="small muted" lang="de">Der Teil <code>Math.atan2(Math.sin(...), Math.cos(...))</code> ist ein Trick: Er macht aus "350° nach links" ein "10° nach rechts".</p>
+      <p class="small muted" lang="zh-Hant"><code>Math.atan2(Math.sin(...), Math.cos(...))</code> 這部分是個小技巧：把「向左 350°」換成「向右 10°」。</p>
       <a class="portal" href="combat.html#hit-test" lang="en">Angles decide if your sword hits</a>
       <a class="portal" href="combat.html#hit-test" lang="de">Winkel entscheiden, ob dein Schwert trifft</a>
+      <a class="portal" href="combat.html#hit-test" lang="zh-Hant">用角度判斷劍有沒有打中</a>
     </div>
     <div class="demo" data-demo="space" data-show="angle"></div>
   </div>
@@ -95,17 +117,21 @@
 <section class="slide" id="unit" data-lv="2" data-src="src/game/sword.js#hitEnemy">
   <h2 lang="en">Try it: just the direction</h2>
   <h2 lang="de">Probier es: nur die Richtung</h2>
+  <h2 lang="zh-Hant">試試看：只看方向</h2>
   <div class="cols wide-right">
     <div>
       <p lang="en">Sometimes you only want to know <i>which way</i>, not how far. When your sword (or your arrow) hits a spider, it gets pushed away from you. The push should be the same strength, whether the spider was close or a bit further away.</p>
       <p lang="de">Manchmal willst du nur wissen, <i>in welche Richtung</i>, nicht wie weit. Wenn dein Schwert (oder dein Pfeil) eine Spinne trifft, wird sie von dir weggestoßen. Der Stoß soll gleich stark sein, egal ob die Spinne nah war oder etwas weiter weg.</p>
+      <p lang="zh-Hant">有時你只想知道<i>方向</i>，不在意距離。劍（或箭）打中蜘蛛時，會把牠推開。不管蜘蛛原本離你近還是遠，推力都該一樣大。</p>
       <p lang="en">So the game divides the arrow by its own length. The new arrow points the same way, but is exactly 1 long. Then it multiplies by how hard to push:</p>
       <p lang="de">Also teilt das Spiel den Pfeil durch seine eigene Länge. Der neue Pfeil zeigt in dieselbe Richtung, ist aber genau 1 lang. Dann nimmt es ihn mal, wie fest gestoßen werden soll:</p>
+      <p lang="zh-Hant">所以遊戲會用箭頭的長度去除箭頭。新的箭頭方向相同，但長度剛好是 1。接著再乘上需要的推力大小：</p>
       <pre data-src="src/game/sword.js#hitEnemy"><code>const dx = e.x - p.x, dz = e.z - p.z, l = Math.hypot(dx, dz) || 1;
 const push = ...;   // how hard: harder when it dies, less for heavy monsters
 e.kbx = dx / l * push; e.kbz = dz / l * push;</code></pre>
       <p class="small muted" lang="en"><code>|| 1</code> is a safety net: if the spider stood exactly on you, the length would be 0, and dividing by 0 breaks maths.</p>
       <p class="small muted" lang="de"><code>|| 1</code> ist ein Sicherheitsnetz: Wenn die Spinne genau auf dir stünde, wäre die Länge 0, und durch 0 teilen macht die Mathe kaputt.</p>
+      <p class="small muted" lang="zh-Hant"><code>|| 1</code> 是一個安全措施：如果蜘蛛剛好站在你的位置，長度就會是 0；除以 0 會讓數學計算出錯。</p>
     </div>
     <div class="demo" data-demo="space" data-show="unit"></div>
   </div>
@@ -114,23 +140,29 @@ e.kbx = dx / l * push; e.kbz = dz / l * push;</code></pre>
 <section class="slide" id="cube-address" data-lv="2" data-src="src/world/coords.js#D6,key,parse,step">
   <h2 lang="en">Addresses for whole cubes</h2>
   <h2 lang="de">Adressen für ganze Würfel</h2>
+  <h2 lang="zh-Hant">整個方塊的地址</h2>
   <div class="cols">
     <div>
       <p lang="en">The hero's x and z only say where it is <i>inside</i> its cube. The cubes need addresses too, like house numbers on a street. Every cube has three whole numbers: <b>X</b>, <b>Y</b> and <b>Z</b>.</p>
       <p lang="de">x und z des Helden sagen nur, wo er <i>in</i> seinem Würfel ist. Die Würfel brauchen auch Adressen, wie Hausnummern in einer Straße. Jeder Würfel hat drei ganze Zahlen: <b>X</b>, <b>Y</b> und <b>Z</b>.</p>
+      <p lang="zh-Hant">英雄的 x 和 z 只能表示他在方塊<i>裡面</i>的位置。每個方塊也需要地址，就像街道上的門牌號碼。每個方塊都有三個整數：<b>X</b>、<b>Y</b> 和 <b>Z</b>。</p>
       <ul>
         <li lang="en">The town is at <code>0,0,0</code>.</li>
         <li lang="de">Die Stadt ist bei <code>0,0,0</code>.</li>
+        <li lang="zh-Hant">城鎮位於 <code>0,0,0</code>。</li>
         <li lang="en"><b>Y</b> is the floor: 0 at the surface, −1 one depth down, −20 at the core. So the depth is just −Y.</li>
         <li lang="de"><b>Y</b> ist das Stockwerk: 0 an der Oberfläche, −1 eine Tiefe weiter unten, −20 am Kern. Die Tiefe ist also einfach −Y.</li>
+        <li lang="zh-Hant"><b>Y</b> 表示樓層：地表是 0，往下一層是 −1，核心是 −20。所以深度就是 −Y。</li>
         <li lang="en">The address is written as text, like <code>'2,-3,1'</code>, so it can be used as a name: the world keeps its cubes under these names.</li>
         <li lang="de">Die Adresse wird als Text geschrieben, wie <code>'2,-3,1'</code>, damit sie als Name dienen kann: Die Welt hebt ihre Würfel unter diesen Namen auf.</li>
+        <li lang="zh-Hant">地址會寫成文字，例如 <code>'2,-3,1'</code>，這樣就能當作名字：遊戲世界會用這些名字記住方塊。</li>
       </ul>
     </div>
     <div>
       <pre data-code="src/world/coords.js#D6,key,parse,step"></pre>
       <p lang="en"><code>D6</code> lists the six neighbours as arrows: east, west, south, north, down, up. <code>step</code> takes an address and a direction and gives the neighbour's address: <code>parse</code> turns the text into numbers, it adds the arrow, and <code>key</code> turns it back into text.</p>
       <p lang="de"><code>D6</code> listet die sechs Nachbarn als Pfeile auf: Osten, Westen, Süden, Norden, unten, oben. <code>step</code> nimmt eine Adresse und eine Richtung und gibt die Adresse des Nachbarn: <code>parse</code> macht aus dem Text Zahlen, dann wird der Pfeil dazugezählt, und <code>key</code> macht wieder Text daraus.</p>
+      <p lang="zh-Hant"><code>D6</code> 把六個鄰居列成箭頭：東、西、南、北、下、上。<code>step</code> 接收一個地址和方向，並傳回鄰居的地址：<code>parse</code> 把文字變成數字，加上箭頭後，<code>key</code> 再把結果轉回文字。</p>
     </div>
   </div>
 </section>
@@ -138,17 +170,19 @@ e.kbx = dx / l * push; e.kbz = dz / l * push;</code></pre>
 <section class="slide" id="toolbox" data-lv="1">
   <h2 lang="en">Your maths toolbox</h2>
   <h2 lang="de">Dein Mathe-Werkzeugkasten</h2>
+  <h2 lang="zh-Hant">你的數學工具箱</h2>
   <p lang="en">With these few tools, you can read almost every bit of maths in the game:</p>
   <p lang="de">Mit diesen paar Werkzeugen kannst du fast jedes Stück Mathe im Spiel lesen:</p>
+  <p lang="zh-Hant">只要學會這幾個工具，你就幾乎能看懂遊戲裡所有的數學：</p>
   <table>
-    <tr><th lang="en">TOOL</th> <th lang="de">WERKZEUG</th><th lang="en">ANSWERS</th> <th lang="de">BEANTWORTET</th><th lang="en">USED FOR</th> <th lang="de">BENUTZT FÜR</th></tr>
-    <tr><td><code>x, y, z</code></td><td lang="en">where is it?</td> <td lang="de">wo ist es?</td><td lang="en">everything that moves</td> <td lang="de">alles, was sich bewegt</td></tr>
-    <tr><td><code>Math.floor(x)</code></td><td lang="en">which cell?</td> <td lang="de">welche Zelle?</td><td lang="en">floors, walls, the minimap</td> <td lang="de">Böden, Wände, die Minikarte</td></tr>
-    <tr><td><code>b.x − a.x</code></td><td lang="en">how do I get there?</td> <td lang="de">wie komme ich hin?</td><td lang="en">chasing, aiming, falling</td> <td lang="de">Jagen, Zielen, Fallen</td></tr>
-    <tr><td><code>Math.hypot(dx, dz)</code></td><td lang="en">how far?</td> <td lang="de">wie weit?</td><td lang="en">noticing, biting, picking things up</td> <td lang="de">Bemerken, Beißen, Aufheben</td></tr>
-    <tr><td><code>Math.atan2(dx, dz)</code></td><td lang="en">which way to face?</td> <td lang="de">wohin schauen?</td><td lang="en">turning, the sword's arc</td> <td lang="de">Drehen, der Bogen des Schwerts</td></tr>
-    <tr><td><code>dx / length</code></td><td lang="en">just the direction</td> <td lang="de">nur die Richtung</td><td lang="en">pushing, flying fireballs</td> <td lang="de">Stoßen, fliegende Feuerbälle</td></tr>
-    <tr><td><code>'X,Y,Z'</code></td><td lang="en">which cube?</td> <td lang="de">welcher Würfel?</td><td lang="en">the world, portals, the map</td> <td lang="de">die Welt, Portale, die Karte</td></tr>
+    <tr><th lang="en">TOOL</th> <th lang="de">WERKZEUG</th><th lang="zh-Hant">工具</th><th lang="en">ANSWERS</th> <th lang="de">BEANTWORTET</th><th lang="zh-Hant">回答的問題</th><th lang="en">USED FOR</th> <th lang="de">BENUTZT FÜR</th><th lang="zh-Hant">用途</th></tr>
+    <tr><td><code>x, y, z</code></td><td lang="en">where is it?</td> <td lang="de">wo ist es?</td><td lang="zh-Hant">它在哪裡？</td><td lang="en">everything that moves</td> <td lang="de">alles, was sich bewegt</td><td lang="zh-Hant">所有會移動的東西</td></tr>
+    <tr><td><code>Math.floor(x)</code></td><td lang="en">which cell?</td> <td lang="de">welche Zelle?</td><td lang="zh-Hant">在哪一格？</td><td lang="en">floors, walls, the minimap</td> <td lang="de">Böden, Wände, die Minikarte</td><td lang="zh-Hant">地板、牆壁、小地圖</td></tr>
+    <tr><td><code>b.x − a.x</code></td><td lang="en">how do I get there?</td> <td lang="de">wie komme ich hin?</td><td lang="zh-Hant">我要怎麼到那裡？</td><td lang="en">chasing, aiming, falling</td> <td lang="de">Jagen, Zielen, Fallen</td><td lang="zh-Hant">追趕、瞄準、掉落</td></tr>
+    <tr><td><code>Math.hypot(dx, dz)</code></td><td lang="en">how far?</td> <td lang="de">wie weit?</td><td lang="zh-Hant">有多遠？</td><td lang="en">noticing, biting, picking things up</td> <td lang="de">Bemerken, Beißen, Aufheben</td><td lang="zh-Hant">發現、咬人、撿起物品</td></tr>
+    <tr><td><code>Math.atan2(dx, dz)</code></td><td lang="en">which way to face?</td> <td lang="de">wohin schauen?</td><td lang="zh-Hant">該面向哪裡？</td><td lang="en">turning, the sword's arc</td> <td lang="de">Drehen, der Bogen des Schwerts</td><td lang="zh-Hant">轉身、劍的揮擊範圍</td></tr>
+    <tr><td><code>dx / length</code></td><td lang="en">just the direction</td> <td lang="de">nur die Richtung</td><td lang="zh-Hant">只看方向</td><td lang="en">pushing, flying fireballs</td> <td lang="de">Stoßen, fliegende Feuerbälle</td><td lang="zh-Hant">推開物件、發射火球</td></tr>
+    <tr><td><code>'X,Y,Z'</code></td><td lang="en">which cube?</td> <td lang="de">welcher Würfel?</td><td lang="zh-Hant">是哪個方塊？</td><td lang="en">the world, portals, the map</td> <td lang="de">die Welt, Portale, die Karte</td><td lang="zh-Hant">世界、傳送門、地圖</td></tr>
   </table>
 </section>
 

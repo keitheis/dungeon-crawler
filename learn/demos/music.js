@@ -11,14 +11,17 @@ const WHEN = () => tr({
 }, {
   explore: 'nichts los', treasure: 'eine Schatztruhe ist nah', sense: 'ein Monster ist nah, aber nicht hinter dir her',
   rise: 'ein Monster jagt dich von weitem', fight: 'ein Monster ist hinter dir her und nah, oder es gab gerade Schläge', boss: 'ein Wächter ist hinter dir her',
+}, {
+  explore: '一切平靜', treasure: '附近有寶箱', sense: '附近有怪物，但牠沒有追你',
+  rise: '怪物正在遠處追你', fight: '怪物就在附近追你，或剛剛發生了交手', boss: '守衛正在追你',
 });
 
 export default function mount(el) {
-  const row = html(el, `<div><div class="row"><label>${tr('song', 'Lied')} <select class="song">${SONGS.map(s => `<option ${s === 'overworld' ? 'selected' : ''}>${s}</option>`).join('')}</select></label>
-    <button class="play">${tr('Play', 'Abspielen')}</button><button class="stop">${tr('Stop', 'Stopp')}</button></div>
+  const row = html(el, `<div><div class="row"><label>${tr('song', 'Lied', '歌曲')} <select class="song">${SONGS.map(s => `<option ${s === 'overworld' ? 'selected' : ''}>${s}</option>`).join('')}</select></label>
+    <button class="play">${tr('Play', 'Abspielen', '播放')}</button><button class="stop">${tr('Stop', 'Stopp', '停止')}</button></div>
     <div class="row moods">${MOODS.map(m => `<button data-m="${m}" title="${WHEN()[m]}">${m}</button>`).join('')}</div></div>`);
   const voicesBox = html(el, '<div class="row voices"></div>');
-  const out = html(el, `<div class="out">${tr('Press Play, then switch moods while it plays.', 'Drück Abspielen und wechsle dann die Stimmung, während es spielt.')}</div>`);
+  const out = html(el, `<div class="out">${tr('Press Play, then switch moods while it plays.', 'Drück Abspielen und wechsle dann die Stimmung, während es spielt.', '按下「播放」，再試著在音樂播放時切換情緒。')}</div>`);
   const $ = s => row.querySelector(s);
   let score = null, mood = 'explore', playing = false;
   async function load(name) {
@@ -55,7 +58,7 @@ export default function mount(el) {
     });
     out.innerHTML = playing
       ? (info.playing ? tr(`<b>${info.playing}</b>, mood <b>${mood}</b> (${WHEN()[mood]}): <b>${on.size}</b> of ${score.song.voices.length} voices playing.`,
-        `<b>${info.playing}</b>, Stimmung <b>${mood}</b> (${WHEN()[mood]}): <b>${on.size}</b> von ${score.song.voices.length} Stimmen spielen.`) : tr('starting\u2026', 'startet\u2026'))
-      : tr(`mood <b>${mood}</b> uses: ${[...planned].join(', ')}. Press Play to hear it.`, `Stimmung <b>${mood}</b> benutzt: ${[...planned].join(', ')}. Drück Abspielen, um sie zu hören.`);
+        `<b>${info.playing}</b>, Stimmung <b>${mood}</b> (${WHEN()[mood]}): <b>${on.size}</b> von ${score.song.voices.length} Stimmen spielen.`, `<b>${info.playing}</b>，情緒 <b>${mood}</b>（${WHEN()[mood]}）：正在播放 <b>${on.size}</b> 個聲部，共 ${score.song.voices.length} 個。`) : tr('starting\u2026', 'startet\u2026', '正在開始……'))
+      : tr(`mood <b>${mood}</b> uses: ${[...planned].join(', ')}. Press Play to hear it.`, `Stimmung <b>${mood}</b> benutzt: ${[...planned].join(', ')}. Drück Abspielen, um sie zu hören.`, `情緒 <b>${mood}</b>會使用：${[...planned].join('、')}。按下「播放」來聽聽看。`);
   });
 }

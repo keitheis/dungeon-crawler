@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-de="Schwerter &amp; Kämpfe · Kinderführer zu Cube Crawler">Swords &amp; Fighting · Kids' Guide to Cube Crawler</title>
+<title data-de="Schwerter &amp; Kämpfe · Kinderführer zu Cube Crawler" data-zh-hant="劍與戰鬥 · Cube Crawler 兒童指南">Swords &amp; Fighting · Kids' Guide to Cube Crawler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="kids.css">
 <script src="lang.js"></script>
@@ -13,61 +13,91 @@
 <section class="slide" id="fight" data-lv="1">
   <h2 lang="en">A sword fight, step by step</h2>
   <h2 lang="de">Ein Schwertkampf, Schritt für Schritt</h2>
+      <h2 lang="zh-Hant">劍戰，一步一步來</h2>
   <div class="cols wide-right">
     <div>
       <p class="lead" lang="en">You click on a Stunder. Your hero walks up and swings. Thwack! Sparks fly, a number pops up, the Stunder staggers.</p>
       <p class="lead" lang="de">Du klickst auf einen Stunder. Dein Held läuft hin und schlägt zu. Zack! Funken fliegen, eine Zahl springt hoch, der Stunder taumelt.</p>
+      <p class="lead" lang="zh-Hant">你點擊 Stunder，英雄走上前揮劍。啪！火花四射，跳出傷害數字，Stunder 踉蹌了一下。</p>
       <p lang="en">That took less than half a second. But the game had to answer four questions:</p>
       <p lang="de">Das hat weniger als eine halbe Sekunde gedauert. Aber das Spiel musste vier Fragen beantworten:</p>
+      <p lang="zh-Hant">這不到半秒就完成了，但遊戲必須回答四個問題：</p>
       <ol class="steps">
         <li lang="en"><b>When</b> does the blade move, and when can it hurt?</li>
         <li lang="de"><b>Wann</b> bewegt sich die Klinge, und wann kann sie wehtun?</li>
+      <li lang="zh-Hant">劍刃什麼時候揮動？什麼時候會造成傷害？</li>
         <li lang="en"><b>Did it hit?</b> Was the monster close enough, in front, at the right height?</li>
         <li lang="de"><b>Getroffen?</b> War das Monster nah genug, vorne, auf der richtigen Höhe?</li>
+      <li lang="zh-Hant">有打中嗎？怪物夠近嗎？在前方嗎？高度對嗎？</li>
         <li lang="en"><b>How much</b> does it hurt, and what does the monster do?</li>
         <li lang="de"><b>Wie sehr</b> tut es weh, und was macht das Monster?</li>
+      <li lang="zh-Hant">造成多少傷害？怪物接著會怎麼做？</li>
         <li lang="en"><b>How does it feel?</b> Sparks, sounds, a tiny freeze.</li>
         <li lang="de"><b>Wie fühlt es sich an?</b> Funken, Geräusche, ein winziges Einfrieren.</li>
+      <li lang="zh-Hant">打起來感覺如何？火花、音效，還有短暫停頓。</li>
       </ol>
     </div>
-    <figure><img class="shot" src="img/fight.jpg" alt="The hero swinging a sword at a tall green Stunder" data-de-alt="Der Held schlägt mit dem Schwert nach einem großen grünen Stunder"><figcaption lang="en">Swinging at a Stunder. The bar over its head shows its health.</figcaption> <figcaption lang="de">Ein Hieb gegen einen Stunder. Der Balken über seinem Kopf zeigt seine Gesundheit.</figcaption></figure>
+    <figure><img class="shot" src="img/fight.jpg" alt="The hero swinging a sword at a tall green Stunder" data-de-alt="Der Held schlägt mit dem Schwert nach einem großen grünen Stunder" data-zh-hant-alt="英雄正揮劍攻擊高大的綠色 Stunder"><figcaption lang="en">Swinging at a Stunder. The bar over its head shows its health.</figcaption> <figcaption lang="de">Ein Hieb gegen einen Stunder. Der Balken über seinem Kopf zeigt seine Gesundheit.</figcaption>
+      <figcaption lang="zh-Hant">英雄正揮劍攻擊 Stunder。牠頭上的長條顯示生命值。</figcaption></figure>
   </div>
 </section>
 
 <section class="slide" id="swing" data-lv="1">
   <h2 lang="en">Try it: the anatomy of a swing</h2>
   <h2 lang="de">Probier es: die Anatomie eines Hiebs</h2>
+      <h2 lang="zh-Hant">動手試試：揮劍的各個階段</h2>
   <p lang="en">A swing has three parts. First the <b style="color:var(--lv2)">wind-up</b>: the arm pulls back. Then a short moment when the blade can <b style="color:var(--gold)">hit</b>.
     Then the <b>recovery</b>: the arm comes back. Swing a few times, then try a different sword.</p>
   <p lang="de">Ein Hieb hat drei Teile. Zuerst das <b style="color:var(--lv2)">Ausholen</b>: Der Arm geht zurück. Dann ein kurzer Moment, in dem die Klinge <b style="color:var(--gold)">treffen</b> kann.
     Dann die <b>Erholung</b>: Der Arm kommt zurück. Schlag ein paarmal zu, dann probier ein anderes Schwert.</p>
+      <p lang="zh-Hant">揮劍分成三個階段。首先是<b>蓄力</b>：手臂往後拉。接著有一小段<b>攻擊時間</b>，劍刃可以命中。最後是<b>收招</b>：手臂回到原位。揮幾次，再試試別把劍。</p>
   <div class="demo real" data-demo="swing"></div>
 </section>
 
 <section class="slide" id="chain" data-lv="2" data-src="src/core/combat.js#SWORD src/core/items.js#WEAPONS src/game/update.js#lunge">
   <h2 lang="en">Chaining, cancelling, lunging</h2>
   <h2 lang="de">Verketten, abbrechen, nachsetzen</h2>
+      <h2 lang="zh-Hant">連續揮劍、取消、突進</h2>
   <div class="cols">
     <div>
       <p lang="en"><b>Chaining.</b> You don't have to wait for the whole swing. From the pink line on, a new swing can start. That time is the sword's <i>attack speed</i>: 0.32 seconds for the short sword, 0.66 for the greatsword.</p>
       <p lang="de"><b>Verketten.</b> Du musst nicht auf das Ende des Hiebs warten. Ab der rosa Linie kann ein neuer Hieb starten. Diese Zeit ist das <i>Angriffstempo</i> des Schwerts: 0,32 Sekunden beim Kurzschwert, 0,66 beim Zweihänder.</p>
+      <p lang="zh-Hant"><b>連續攻擊。</b>不必等整次揮劍結束。從粉紅線開始，就能接著揮下一劍。這段時間就是劍的<i>攻擊速度</i>：短劍是 0.32 秒，巨劍是 0.66 秒。</p>
       <p lang="en"><b>Remembering clicks.</b> If you click a bit too early, the game keeps your click for 0.3 seconds and swings as soon as it can. That makes fast clicking feel smooth, not ignored.</p>
       <p lang="de"><b>Klicks merken.</b> Wenn du ein bisschen zu früh klickst, merkt sich das Spiel deinen Klick 0,3 Sekunden lang und schlägt zu, sobald es geht. So fühlt sich schnelles Klicken flüssig an, statt ignoriert zu werden.</p>
+      <p lang="zh-Hant"><b>記住點擊。</b>如果你稍微按得太早，遊戲會記住這次點擊 0.3 秒，能揮劍時就立刻出手。快速連點因此會很順暢，不會被忽略。</p>
       <p lang="en"><b>Cancelling.</b> From the green line on, walking away cuts the recovery short. Before that, your feet are planted: you have committed to the swing!</p>
       <p lang="de"><b>Abbrechen.</b> Ab der grünen Linie bricht Weggehen die Erholung ab. Vorher stehen deine Füße fest: Du hast dich für den Hieb entschieden!</p>
+      <p lang="zh-Hant"><b>取消收招。</b>從綠線開始，走開就能提早結束收招。在那之前，你的腳會固定在地上：這一劍已經出手，不能反悔！</p>
     </div>
     <div>
       <p lang="en"><b>Lunging.</b> If the monster is just a bit out of reach, your hero steps in towards it during the wind-up. You don't have to be pixel perfect. (Only with a sword: a bow, crossbow or staff shoots from where you stand.)</p>
       <p lang="de"><b>Nachsetzen.</b> Wenn das Monster knapp außer Reichweite ist, macht dein Held beim Ausholen einen Schritt darauf zu. Du musst nicht pixelgenau sein. (Nur mit einem Schwert: Ein Bogen, eine Armbrust oder ein Stab schießt von da, wo du stehst.)</p>
+      <p lang="zh-Hant"><b>突進。</b>如果怪物只差一點點才在攻擊範圍內，英雄會在蓄力時向前踏一步。不必精準到像素。（只有劍會這樣：弓、弩或法杖會從你站的位置射出。）</p>
       <p lang="en"><b>Heavy and light.</b> All swords use the same animation, just played faster or slower. The heavy ones hit harder, reach further and sweep wider, but plant you longer. The light ones are quick.</p>
       <p lang="de"><b>Schwer und leicht.</b> Alle Schwerter benutzen dieselbe Animation, nur schneller oder langsamer abgespielt. Die schweren treffen härter, reichen weiter und schwingen breiter, aber halten dich länger fest. Die leichten sind flink.</p>
+      <p lang="zh-Hant"><b>重型和輕型武器。</b>所有劍使用相同的動畫，只是播放速度不同。重劍打得更痛、攻擊距離更遠、揮動範圍更大，但會讓你停留久一些；輕劍則很敏捷。</p>
       <table>
-        <tr><th lang="en">SWORD</th> <th lang="de">SCHWERT</th><th lang="en">DAMAGE</th> <th lang="de">SCHADEN</th><th lang="en">SWING TIME</th> <th lang="de">HIEBZEIT</th><th lang="en">PER SECOND</th> <th lang="de">PRO SEKUNDE</th></tr>
-        <tr><td lang="en">Short</td> <td lang="de">Short (kurz)</td><td>23</td><td lang="en">0.32 s</td> <td lang="de">0,32 s</td><td>72</td></tr>
-        <tr><td lang="en">Medium</td> <td lang="de">Medium (mittel)</td><td>34</td><td lang="en">0.42 s</td> <td lang="de">0,42 s</td><td>81</td></tr>
-        <tr><td lang="en">Long</td> <td lang="de">Long (lang)</td><td>39</td><td lang="en">0.48 s</td> <td lang="de">0,48 s</td><td>81</td></tr>
-        <tr><td lang="en">Broadsword</td> <td lang="de">Broadsword (Breitschwert)</td><td>46</td><td lang="en">0.54 s</td> <td lang="de">0,54 s</td><td>85</td></tr>
-        <tr><td lang="en">Greatsword</td> <td lang="de">Greatsword (Zweihänder)</td><td>60</td><td lang="en">0.66 s</td> <td lang="de">0,66 s</td><td>91</td></tr>
+        <tr><th lang="en">SWORD</th> <th lang="de">SCHWERT</th>
+      <th lang="zh-Hant">劍</th><th lang="en">DAMAGE</th> <th lang="de">SCHADEN</th>
+      <th lang="zh-Hant">傷害</th><th lang="en">SWING TIME</th> <th lang="de">HIEBZEIT</th>
+      <th lang="zh-Hant">揮劍時間</th><th lang="en">PER SECOND</th> <th lang="de">PRO SEKUNDE</th>
+      <th lang="zh-Hant">每秒傷害</th></tr>
+        <tr><td lang="en">Short</td> <td lang="de">Short (kurz)</td>
+      <td lang="zh-Hant">短劍</td><td>23</td><td lang="en">0.32 s</td> <td lang="de">0,32 s</td>
+      <td lang="zh-Hant">0.32 秒</td><td>72</td></tr>
+        <tr><td lang="en">Medium</td> <td lang="de">Medium (mittel)</td>
+      <td lang="zh-Hant">中型劍</td><td>34</td><td lang="en">0.42 s</td> <td lang="de">0,42 s</td>
+      <td lang="zh-Hant">0.42 秒</td><td>81</td></tr>
+        <tr><td lang="en">Long</td> <td lang="de">Long (lang)</td>
+      <td lang="zh-Hant">長劍</td><td>39</td><td lang="en">0.48 s</td> <td lang="de">0,48 s</td>
+      <td lang="zh-Hant">0.48 秒</td><td>81</td></tr>
+        <tr><td lang="en">Broadsword</td> <td lang="de">Broadsword (Breitschwert)</td>
+      <td lang="zh-Hant">闊劍</td><td>46</td><td lang="en">0.54 s</td> <td lang="de">0,54 s</td>
+      <td lang="zh-Hant">0.54 秒</td><td>85</td></tr>
+        <tr><td lang="en">Greatsword</td> <td lang="de">Greatsword (Zweihänder)</td>
+      <td lang="zh-Hant">巨劍</td><td>60</td><td lang="en">0.66 s</td> <td lang="de">0,66 s</td>
+      <td lang="zh-Hant">0.66 秒</td><td>91</td></tr>
       </table>
     </div>
   </div>
@@ -76,24 +106,32 @@
 <section class="slide" id="hit-test" data-lv="1" data-src="src/core/combat.js#inSwordArc">
   <h2 lang="en">Try it: did the blade hit?</h2>
   <h2 lang="de">Probier es: Hat die Klinge getroffen?</h2>
+      <h2 lang="zh-Hant">動手試試：劍刃有打中嗎？</h2>
   <div class="cols wide-right">
     <div>
       <p lang="en">There is no real sword hitting a real spider. There are just numbers. So the game asks three questions:</p>
       <p lang="de">Da trifft kein echtes Schwert eine echte Spinne. Da sind nur Zahlen. Also stellt das Spiel drei Fragen:</p>
+      <p lang="zh-Hant">沒有真的劍，也沒有真的蜘蛛被打中，只有數字。所以遊戲要問三個問題：</p>
       <ol class="steps">
         <li lang="en"><b>Close enough?</b> Is the distance smaller than the blade's reach plus the size of the monster's body?</li>
         <li lang="de"><b>Nah genug?</b> Ist der Abstand kleiner als die Reichweite der Klinge plus die Größe des Monsterkörpers?</li>
+      <li lang="zh-Hant">距離夠近嗎？距離是否小於劍刃的攻擊距離加上怪物身體的大小？</li>
         <li lang="en"><b>In front?</b> Is the monster inside the arc the blade sweeps?</li>
         <li lang="de"><b>Vorne?</b> Ist das Monster im Bogen, den die Klinge schwingt?</li>
+      <li lang="zh-Hant">在前面嗎？怪物是否位於劍刃揮過的弧形範圍內？</li>
         <li lang="en"><b>Right height?</b> The blade sweeps from your knees to your chest. A monster on a ledge above you, or below you, is safe.</li>
         <li lang="de"><b>Richtige Höhe?</b> Die Klinge schwingt von deinen Knien bis zur Brust. Ein Monster auf einem Felsvorsprung über dir oder unter dir ist sicher.</li>
+      <li lang="zh-Hant">高度正確嗎？劍刃從膝蓋揮到胸口。站在上方或下方平台的怪物不會被打到。</li>
       </ol>
       <p lang="en">Drag the monster around. Turn the hero. Put the monster on a ledge with the slider.</p>
       <p lang="de">Zieh das Monster herum. Dreh den Helden. Stell das Monster mit dem Regler auf einen Vorsprung.</p>
+      <p lang="zh-Hant">拖曳怪物、轉動英雄，再用滑桿把怪物放到平台上。</p>
       <p class="small muted" lang="en">The game also checks that no wall is in between, and that each monster is hit at most once per swing.</p>
       <p class="small muted" lang="de">Das Spiel prüft außerdem, dass keine Wand dazwischen ist und dass jedes Monster pro Hieb höchstens einmal getroffen wird.</p>
+      <p class="small muted" lang="zh-Hant">遊戲還會檢查中間是否有牆，並確保每隻怪物在一次揮劍中最多只會被打中一次。</p>
       <p class="small muted" lang="en">This test is only for blades. Arrows, bolts and spells ask their own question while they fly: the next slide.</p>
       <p class="small muted" lang="de">Diese Prüfung gibt es nur für Klingen. Pfeile, Bolzen und Zauber stellen ihre eigene Frage, während sie fliegen: die nächste Folie.</p>
+      <p class="small muted" lang="zh-Hant">這項檢查只用在劍刃上。箭、弩箭和法術飛行時會各自進行碰撞檢查：下一頁會介紹。</p>
     </div>
     <div class="demo real" data-demo="arc"></div>
   </div>
@@ -102,54 +140,72 @@
 <section class="slide" id="shoot" data-lv="1" data-src="src/core/combat.js#KINDS src/core/shots.js#stepShot">
   <h2 lang="en">Bows, crossbows and staffs</h2>
   <h2 lang="de">Bögen, Armbrüste und Stäbe</h2>
+      <h2 lang="zh-Hant">弓、弩和法杖</h2>
   <div class="cols wide-right">
     <div>
       <p class="lead" lang="en">Not every hero likes to get close. Monsters also drop bows, crossbows and staffs, and you fight with them just like with a sword: click, and your hero does the rest.</p>
       <p class="lead" lang="de">Nicht jeder Held geht gern nah ran. Monster lassen auch Bögen, Armbrüste und Stäbe fallen, und du kämpfst mit ihnen genau wie mit einem Schwert: klicken, und dein Held macht den Rest.</p>
+      <p class="lead" lang="zh-Hant">不是每位英雄都喜歡靠近敵人。怪物也會掉落弓、弩和法杖。使用方法和劍一樣簡單：點一下，英雄就會完成攻擊。</p>
       <ul>
         <li lang="en"><b>Bow:</b> quick, and it shoots furthest. Your hero turns sideways, pulls the string back to the cheek and lets go.</li>
         <li lang="de"><b>Bogen:</b> schnell, und er schießt am weitesten. Dein Held dreht sich seitlich, zieht die Sehne bis zur Wange und lässt los.</li>
+      <li lang="zh-Hant"><b>弓：</b>速度快，射得最遠。英雄會側身，拉弓到臉頰旁，再放開弓弦。</li>
         <li lang="en"><b>Crossbow:</b> hits hard, and its bolt can fly right through a monster into the next one. After every shot, your hero pulls the string back and lays in a new bolt.</li>
         <li lang="de"><b>Armbrust:</b> trifft hart, und ihr Bolzen kann durch ein Monster hindurch ins nächste fliegen. Nach jedem Schuss spannt dein Held die Sehne neu und legt einen neuen Bolzen ein.</li>
+      <li lang="zh-Hant"><b>弩：</b>傷害高，弩箭可以穿過一隻怪物，繼續射中後面的怪物。每次射擊後，英雄都會重新拉弦並裝上弩箭。</li>
         <li lang="en"><b>Staff:</b> slow, but its spell bursts where it hits, and hurts everything around it a little too.</li>
         <li lang="de"><b>Stab:</b> langsam, aber sein Zauber platzt da, wo er trifft, und tut allem drumherum auch ein bisschen weh.</li>
+      <li lang="zh-Hant"><b>法杖：</b>速度較慢，但法術會在命中時爆開，也會稍微傷到周圍所有東西。</li>
       </ul>
       <p lang="en">The attack still has a wind-up, a moment and a recovery. But at that moment, nothing sweeps: something <b>flies</b>. Every frame, the game moves it a bit and asks: does it touch a monster's body? A wall? Has it flown as far as it can?</p>
       <p lang="de">Der Angriff hat immer noch Ausholen, Moment und Erholung. Aber in dem Moment schwingt nichts: Etwas <b>fliegt</b>. In jedem Bild bewegt das Spiel es ein Stück und fragt: Berührt es den Körper eines Monsters? Eine Wand? Ist es so weit geflogen, wie es kann?</p>
+      <p lang="zh-Hant">攻擊仍然分成蓄力、攻擊和收招。但攻擊時沒有劍刃揮動，而是有東西<b>飛出去</b>。每個影格，遊戲都會讓它前進一小段，並檢查它有沒有碰到怪物的身體或牆，或者是否已經飛到最遠距離。</p>
       <p class="small muted" lang="en">Shooting from far away is safer, so these hit a bit less hard than swords. And the weapon machine knows what you like: fight with a bow, and about half of the weapons you find are bows.</p>
       <p class="small muted" lang="de">Aus der Ferne zu schießen ist sicherer, darum treffen sie etwas weniger hart als Schwerter. Und die Waffenmaschine weiß, was du magst: Kämpfst du mit einem Bogen, ist ungefähr die Hälfte der Waffen, die du findest, ein Bogen.</p>
+      <p class="small muted" lang="zh-Hant">從遠處射擊比較安全，所以這些武器的傷害比劍稍低。武器機器也會記住你的喜好：如果你用弓戰鬥，找到的武器大約有一半會是弓。</p>
     </div>
-    <figure><img class="shot" src="img/bow.jpg" alt="The hero with a bow; an arrow flies towards a big green Stunder" data-de-alt="Der Held mit einem Bogen; ein Pfeil fliegt auf einen großen grünen Stunder zu"><figcaption lang="en">The arrow is on its way. The Stunder doesn't know yet.</figcaption> <figcaption lang="de">Der Pfeil ist unterwegs. Der Stunder weiß es noch nicht.</figcaption></figure>
+    <figure><img class="shot" src="img/bow.jpg" alt="The hero with a bow; an arrow flies towards a big green Stunder" data-de-alt="Der Held mit einem Bogen; ein Pfeil fliegt auf einen großen grünen Stunder zu" data-zh-hant-alt="英雄手持弓，箭正射向大型綠色 Stunder"><figcaption lang="en">The arrow is on its way. The Stunder doesn't know yet.</figcaption> <figcaption lang="de">Der Pfeil ist unterwegs. Der Stunder weiß es noch nicht.</figcaption>
+      <figcaption lang="zh-Hant">箭已經射出，Stunder 還沒發現。</figcaption></figure>
   </div>
 </section>
 
 <section class="slide" id="damage" data-lv="2" data-src="src/core/combat.js#damageEnemy src/core/gear/stats.js#CRIT_CHANCE,CRIT_DAMAGE src/core/progression.js#levelDamage">
   <h2 lang="en">How much does it hurt?</h2>
   <h2 lang="de">Wie sehr tut es weh?</h2>
+      <h2 lang="zh-Hant">造成多少傷害？</h2>
   <div class="cols">
     <div>
       <p lang="en">The Old Sword you start with does <b data-val="src/core/combat.js#SWORD.damage">30</b> damage. A level 1 spider has <b data-val="src/core/enemies.js#SPIDER.hp">32</b> health: two hits. A Stunder has <b data-val="src/core/enemies.js#STUNDER.hp">140</b>: five hits.</p>
       <p lang="de">Das Alte Schwert, mit dem du anfängst, macht <b data-val="src/core/combat.js#SWORD.damage">30</b> Schaden. Eine Spinne auf Stufe 1 hat <b data-val="src/core/enemies.js#SPIDER.hp">32</b> Gesundheit: zwei Treffer. Ein Stunder hat <b data-val="src/core/enemies.js#STUNDER.hp">140</b>: fünf Treffer.</p>
+      <p lang="zh-Hant">你一開始拿到的舊劍造成 <b data-val="src/core/combat.js#SWORD.damage">30</b> 點傷害。第 1 級蜘蛛有 <b data-val="src/core/enemies.js#SPIDER.hp">32</b> 點生命值：打兩下就夠。Stunder 有 <b data-val="src/core/enemies.js#STUNDER.hp">140</b> 點：需要打五下。</p>
       <ul>
         <li lang="en"><b>Critical hits:</b> 5% of all hits (1 in 20) do 1.5 times the damage, shown as a bigger, golden number.</li>
         <li lang="de"><b>Kritische Treffer:</b> 5% aller Treffer (1 von 20) machen 1,5-mal so viel Schaden und erscheinen als größere, goldene Zahl.</li>
+      <li lang="zh-Hant"><b>暴擊：</b>每 20 次命中大約有 1 次（5%）造成 1.5 倍傷害，會以更大的金色數字顯示。</li>
         <li lang="en"><b>Your level:</b> every level makes your weapon 2% stronger.</li>
         <li lang="de"><b>Deine Stufe:</b> Jede Stufe macht deine Waffe 2% stärker.</li>
+      <li lang="zh-Hant"><b>你的等級：</b>每升一級，武器就會強 2%。</li>
         <li lang="en"><b>Better swords:</b> rarer and deeper swords hit harder. <a class="portal" href="loot.html">Treasure</a></li>
         <li lang="de"><b>Bessere Schwerter:</b> Seltenere und tiefere Schwerter treffen härter. <a class="portal" href="loot.html">Schätze</a></li>
+      <li lang="zh-Hant"><b>更好的劍：</b>稀有度更高、在更深處找到的劍，傷害也更高。<a class="portal" href="loot.html">寶藏</a></li>
         <li lang="en"><b>Knockback:</b> the monster gets pushed away from you a bit.</li>
         <li lang="de"><b>Rückstoß:</b> Das Monster wird ein Stück von dir weggeschubst.</li>
+      <li lang="zh-Hant"><b>擊退：</b>怪物會被往遠離你的方向推開一點。</li>
       </ul>
     </div>
     <div class="card">
       <h3 lang="en">Stagger and poise</h3>
       <h3 lang="de">Taumeln und Standfestigkeit</h3>
+      <h3 lang="zh-Hant">踉蹌與韌性</h3>
       <p lang="en">A hit <b>staggers</b> a monster: it stops its attack, is stunned for a moment, and cannot attack again for 0.45 seconds.</p>
       <p lang="de">Ein Treffer bringt ein Monster ins <b>Taumeln</b>: Es bricht seinen Angriff ab, ist kurz betäubt und kann 0,45 Sekunden lang nicht wieder angreifen.</p>
+      <p lang="zh-Hant">受到攻擊時，怪物會<b>踉蹌</b>：牠會中斷攻擊、短暫暈眩，並且 0.45 秒內不能再次攻擊。</p>
       <p lang="en">But if that was all, you could keep any monster stuck forever by hitting fast! So after a stagger, a monster is <b>poised</b> for a while: braced, like a boxer with the guard up. Light hits still hurt it, but don't stop it. It can hit back.</p>
       <p lang="de">Aber wenn das alles wäre, könntest du jedes Monster für immer festhalten, indem du schnell zuschlägst! Darum ist ein Monster nach dem Taumeln eine Weile <b>standfest</b> (poise): gefasst, wie ein Boxer mit erhobener Deckung. Leichte Treffer tun ihm immer noch weh, halten es aber nicht auf. Es kann zurückschlagen.</p>
+      <p lang="zh-Hant">如果一直這樣，你只要快速攻擊，就能讓任何怪物永遠動不了！所以怪物踉蹌後會有一段時間處於<b>穩住姿勢</b>（poise）的狀態，就像拳擊手舉起雙臂防守。輕擊仍會造成傷害，卻不能打斷牠；牠還是可以反擊。</p>
       <p lang="en">Spiders and snakes have no poise. A Stunder is poised for 1.5 seconds, guardians up to 2. A really big hit (a quarter of its health or more) staggers anyway.</p>
       <p lang="de">Spinnen und Schlangen sind nie standfest. Ein Stunder ist es 1,5 Sekunden lang, Wächter bis zu 2. Ein richtig großer Treffer (ein Viertel seiner Gesundheit oder mehr) bringt es trotzdem ins Taumeln.</p>
+      <p lang="zh-Hant">蜘蛛和蛇沒有韌性。Stunder 會穩住 1.5 秒，守衛者最多 2 秒。若受到非常強的攻擊（傷害至少是生命值的四分之一），牠仍會踉蹌。</p>
     </div>
   </div>
 </section>
@@ -157,36 +213,46 @@
 <section class="slide" id="juice" data-lv="1" data-src="src/game/juice.js#timeScale,enemyHitFx">
   <h2 lang="en">Juice: why hits feel good</h2>
   <h2 lang="de">Juice: Warum sich Treffer gut anfühlen</h2>
+      <h2 lang="zh-Hant">Juice：命中為什麼感覺很棒</h2>
   <p lang="en">Game makers call the extras that make actions feel great <a class="w" href="words.html#juice">juice</a>. They change nothing about the rules, but everything about the feeling.
     Hit the blob with everything on. Then turn things off one by one. Which one do you miss most?</p>
   <p lang="de">Spielemacher nennen die Extras, durch die sich Aktionen toll anfühlen, <a class="w" href="words.html#juice">Juice</a> (Saft). Sie ändern nichts an den Regeln, aber alles am Gefühl.
     Hau mit allem eingeschaltet auf den Klumpen. Dann schalte die Sachen eine nach der anderen aus. Was vermisst du am meisten?</p>
+      <p lang="zh-Hant">遊戲設計師把讓動作感覺很棒的額外效果叫做 <a class="w" href="words.html#juice">Juice</a>。它們不會改變規則，卻能大幅改變感受。把所有效果都打開來攻擊黏團怪物，再一個一個關掉。你最想念哪個效果？</p>
   <div class="demo" data-demo="juice"></div>
   <p class="small muted" lang="en">The <b>hit pause</b> is tiny: time slows to 3% for 0.055 seconds (0.09 on a kill). You can't really see it, but you can feel it. Turn it off and hits feel like hitting air.</p>
   <p class="small muted" lang="de">Die <b>Trefferpause</b> ist winzig: Die Zeit läuft 0,055 Sekunden lang nur mit 3% (0,09 bei einem Todesstoß). Sehen kannst du sie kaum, aber spüren. Schalte sie aus, und Treffer fühlen sich an wie Schläge in die Luft.</p>
+      <p class="small muted" lang="zh-Hant"><b>命中停頓</b>很短：時間會以 3% 速度運行 0.055 秒（擊殺時為 0.09 秒）。你不太看得出來，卻感覺得到。關掉它，命中就會像打在空氣上一樣。</p>
 </section>
 
 
 <section class="slide" id="arc-code" data-lv="3">
   <h2 lang="en">The real code: the hit test</h2>
   <h2 lang="de">Der echte Code: der Treffertest</h2>
+      <h2 lang="zh-Hant">實際程式碼：命中檢查</h2>
   <div class="cols wide-left">
     <pre data-code="src/core/combat.js#inSwordArc"></pre>
     <div>
       <p lang="en">Line by line:</p>
       <p lang="de">Zeile für Zeile:</p>
+      <p lang="zh-Hant">逐行看：</p>
       <ol class="steps">
         <li lang="en">Only during the hit window (<code>activeStart</code> to <code>activeEnd</code>), only for a blade (not <code>stats.ranged</code>: bows, crossbows and staffs shoot instead), not a dead monster, and not one this swing already hit (<code>s.hits</code>).</li>
         <li lang="de">Nur während des Trefferfensters (<code>activeStart</code> bis <code>activeEnd</code>), nur für eine Klinge (nicht <code>stats.ranged</code>: Bögen, Armbrüste und Stäbe schießen stattdessen), kein totes Monster, und keins, das dieser Hieb schon getroffen hat (<code>s.hits</code>).</li>
+      <li lang="zh-Hant">只有在命中時間窗（<code>activeStart</code> 到 <code>activeEnd</code>）內才檢查；只檢查劍刃（不是 <code>stats.ranged</code>，因為弓、弩和法杖會發射投射物）；跳過已死亡的怪物，也跳過這次揮劍已經打中的怪物（<code>s.hits</code>）。</li>
         <li lang="en"><code>Math.hypot</code>: the distance, by Pythagoras.</li>
         <li lang="de"><code>Math.hypot</code>: der Abstand, mit Pythagoras.</li>
+      <li lang="zh-Hant"><code>Math.hypot</code>：用畢氏定理計算距離。</li>
         <li lang="en"><code>atan2</code> gives the direction to the monster. Subtract the way we face (<code>yaw</code>): if the cosine of that angle is smaller than the cosine of the arc, it's outside.</li>
         <li lang="de"><code>atan2</code> gibt die Richtung zum Monster. Zieh die Blickrichtung (<code>yaw</code>) ab: Ist der Kosinus dieses Winkels kleiner als der Kosinus des Bogens, ist es draußen.</li>
+      <li lang="zh-Hant"><code>atan2</code>會算出怪物所在方向。減去角色面向的方向（<code>yaw</code>）：如果這個角度的餘弦比揮擊弧度的餘弦小，怪物就在範圍外。</li>
         <li lang="en">Do the heights overlap? The monster's body goes from its feet (<code>enemy.y</code>) up by <code>bodyHeight</code>.</li>
         <li lang="de">Überlappen sich die Höhen? Der Körper des Monsters geht von seinen Füßen (<code>enemy.y</code>) um <code>bodyHeight</code> nach oben.</li>
+      <li lang="zh-Hant">高度有重疊嗎？怪物的身體從腳底（<code>enemy.y</code>）往上延伸 <code>bodyHeight</code>。</li>
       </ol>
       <p class="small" lang="en">The demo two slides back calls exactly this function.</p>
       <p class="small" lang="de">Die Demo zwei Folien vorher ruft genau diese Funktion auf.</p>
+      <p class="small" lang="zh-Hant">前兩頁的示範會呼叫同一個函式。</p>
     </div>
   </div>
 </section>
@@ -194,19 +260,25 @@
 <section class="slide" id="stagger-code" data-lv="3">
   <h2 lang="en">The real code: damage, stagger, poise</h2>
   <h2 lang="de">Der echte Code: Schaden, Taumeln, Standfestigkeit</h2>
+      <h2 lang="zh-Hant">實際程式碼：傷害、踉蹌與韌性</h2>
   <div class="cols wide-left">
     <pre data-code="src/core/combat.js#HEAVY_HIT,damageEnemy"></pre>
     <div>
       <p lang="en"><code>Math.max(0, ...)</code> stops health from going below zero.</p>
       <p lang="de"><code>Math.max(0, ...)</code> verhindert, dass die Gesundheit unter null geht.</p>
+      <p lang="zh-Hant"><code>Math.max(0, ...)</code>會避免生命值降到零以下。</p>
       <p lang="en"><code>hurtT = 0.22</code>: the monster flashes for 0.22 seconds (the drawing code looks at this).</p>
       <p lang="de"><code>hurtT = 0.22</code>: Das Monster blinkt 0,22 Sekunden lang (der Malcode schaut darauf).</p>
+      <p lang="zh-Hant"><code>hurtT = 0.22</code>：怪物會閃爍 0.22 秒（繪圖程式碼會讀取這個值）。</p>
       <p lang="en">The <code>staggered</code> line reads: staggered if it died, <b>or</b> it is not poised, <b>or</b> the hit was heavy (<code>||</code> means "or", <code>!</code> means "not").</p>
       <p lang="de">Die <code>staggered</code>-Zeile liest sich so: taumelt, wenn es gestorben ist, <b>oder</b> wenn es nicht standfest ist, <b>oder</b> wenn der Treffer schwer war (<code>||</code> heißt "oder", <code>!</code> heißt "nicht").</p>
+      <p lang="zh-Hant"><code>staggered</code>這一行的意思是：怪物已死，<b>或</b>沒有韌性，<b>或</b>受到重擊時就會踉蹌（<code>||</code>代表「或」，<code>!</code>代表「不是」）。</p>
       <p lang="en">A stagger stuns it (<code>stun</code>), delays its next attack (<code>cool</code>), makes it think again right away (<code>think = 0</code>) and starts its poise timer.</p>
       <p lang="de">Taumeln betäubt es (<code>stun</code>), verzögert seinen nächsten Angriff (<code>cool</code>), lässt es sofort neu nachdenken (<code>think = 0</code>) und startet seinen Standfestigkeits-Zeitmesser.</p>
+      <p lang="zh-Hant">踉蹌會讓牠暈眩（<code>stun</code>）、延後下一次攻擊（<code>cool</code>）、立刻重新思考（<code>think = 0</code>），並啟動韌性計時器。</p>
       <p lang="en">Notice: no sparks, no sounds in here. Just rules. <a class="portal" href="architecture.html#rules-vs-pictures">Rules and pictures</a></p>
       <p lang="de">Fällt dir auf: Hier drin keine Funken, keine Geräusche. Nur Regeln. <a class="portal" href="architecture.html#rules-vs-pictures">Regeln und Bilder</a></p>
+      <p lang="zh-Hant">注意：這裡沒有火花，也沒有音效，只有規則。<a class="portal" href="architecture.html#rules-vs-pictures">規則和畫面</a></p>
     </div>
   </div>
 </section>

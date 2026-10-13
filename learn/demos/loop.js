@@ -4,7 +4,7 @@
 //   follow: smoothing, the way the game's camera and zoom catch up (x += (target - x) × dt × k)
 import { canvas, loop, html, t as tr } from '../deck.js';
 
-const PHASES = () => [tr('LISTEN', 'HÖREN'), tr('THINK', 'DENKEN'), tr('DRAW', 'MALEN')];
+const PHASES = () => [tr('LISTEN', 'HÖREN', '聆聽'), tr('THINK', 'DENKEN', '思考'), tr('DRAW', 'MALEN', '繪製')];
 
 function runner(g, x, y, t, color) {
   const leg = Math.sin(t * 14) * 6;
@@ -20,8 +20,8 @@ export default function mount(el) {
   const mode = el.dataset.mode || 'basic';
   if (mode === 'follow') return follow(el);
   const H = mode === 'dt' ? 220 : 190, { g, w, c } = canvas(el, 640, H);
-  const row = html(el, `<div class="row"><label>${tr('pictures per second', 'Bilder pro Sekunde')} <input type="range" min="1" max="60" value="60"> <b class="fps">60</b></label>
-    ${mode === 'basic' ? `<span class="muted small">${tr('click the picture to jump', 'klick auf das Bild zum Springen')}</span>` : `<button class="reset">${tr('restart race', 'Rennen neu starten')}</button>`}</div>`);
+  const row = html(el, `<div class="row"><label>${tr('pictures per second', 'Bilder pro Sekunde', '每秒畫面數')} <input type="range" min="1" max="60" value="60"> <b class="fps">60</b></label>
+    ${mode === 'basic' ? `<span class="muted small">${tr('click the picture to jump', 'klick auf das Bild zum Springen', '點畫面就能跳躍')}</span>` : `<button class="reset">${tr('restart race', 'Rennen neu starten', '重新開始比賽')}</button>`}</div>`);
   const out = html(el, '<div class="out"></div>');
   const slider = row.querySelector('input'), fpsOut = row.querySelector('.fps');
   let fps = 60, acc = 0, frames = 0, flash = 0, t = 0, wantJump = false;
@@ -56,8 +56,8 @@ export default function mount(el) {
     else {
       g.fillStyle = '#ffcf7a55'; g.fillRect(w - 40, 10, 3, H - 20);
       runner(g, A.x, 95, t, '#61dc6b'); runner(g, B.x, 190, t, '#ff8a7a');
-      g.font = '12px ui-monospace, monospace'; g.fillStyle = '#61dc6b'; g.fillText(tr('moves speed \u00D7 dt', 'bewegt sich Tempo \u00D7 dt'), 8, 20);
-      g.fillStyle = '#ff8a7a'; g.fillText(tr('moves the same step every picture', 'macht in jedem Bild den gleichen Schritt'), 8, 115);
+      g.font = '12px ui-monospace, monospace'; g.fillStyle = '#61dc6b'; g.fillText(tr('moves speed \u00D7 dt', 'bewegt sich Tempo \u00D7 dt', '位移＝速度 \\u00D7 dt'), 8, 20);
+      g.fillStyle = '#ff8a7a'; g.fillText(tr('moves the same step every picture', 'macht in jedem Bild den gleichen Schritt', '每張畫面都移動相同距離'), 8, 115);
     }
   }
   loop(el, dt => {
@@ -76,13 +76,13 @@ export default function mount(el) {
         g.fillStyle = i === p ? '#0b0d12' : '#8a96a8'; g.font = 'bold 12px ui-monospace, monospace';
         g.fillText(name, 18 + i * 112, 179);
       });
-      out.innerHTML = `${tr('pictures drawn', 'gemalte Bilder')}: <b>${frames}</b>   ${tr('time between pictures', 'Zeit zwischen den Bildern')}: <b>${(1000 / fps).toFixed(1)} ms</b>`;
+      out.innerHTML = `${tr('pictures drawn', 'gemalte Bilder', '已繪製畫面數')}: <b>${frames}</b>   ${tr('time between pictures', 'Zeit zwischen den Bildern', '畫面之間的時間')}: <b>${(1000 / fps).toFixed(1)} ms</b>`;
     } else {
       out.innerHTML = race.done
-        ? (Math.abs(A.x - B.x) < 8 ? tr('A tie! At 60 pictures per second both ways give the same result.', 'Unentschieden! Bei 60 Bildern pro Sekunde kommt bei beiden das Gleiche heraus.')
-          : A.x > B.x ? tr('The green runner wins. Now try another speed.', 'Der grüne Läufer gewinnt. Probier jetzt eine andere Geschwindigkeit.')
-          : tr('The red runner wins. Now try another speed.', 'Der rote Läufer gewinnt. Probier jetzt eine andere Geschwindigkeit.'))
-        : `${tr('green', 'grün')}: <b>${Math.round(A.x)}</b> px   ${tr('red', 'rot')}: <b>${Math.round(B.x)}</b> px`;
+        ? (Math.abs(A.x - B.x) < 8 ? tr('A tie! At 60 pictures per second both ways give the same result.', 'Unentschieden! Bei 60 Bildern pro Sekunde kommt bei beiden das Gleiche heraus.', '平手！每秒 60 張畫面時，兩種方式的結果相同。')
+          : A.x > B.x ? tr('The green runner wins. Now try another speed.', 'Der grüne Läufer gewinnt. Probier jetzt eine andere Geschwindigkeit.', '綠色跑者贏了。換個速度試試看。')
+          : tr('The red runner wins. Now try another speed.', 'Der rote Läufer gewinnt. Probier jetzt eine andere Geschwindigkeit.', '紅色跑者贏了。換個速度試試看。'))
+        : `${tr('green', 'grün', '綠色')}: <b>${Math.round(A.x)}</b> px   ${tr('red', 'rot', '紅色')}: <b>${Math.round(B.x)}</b> px`;
     }
   });
   draw();
@@ -90,8 +90,8 @@ export default function mount(el) {
 
 function follow(el) {
   const { g, w, h, c, at } = canvas(el, 640, 220);
-  const row = html(el, `<div class="row"><label>${tr('catch-up speed', 'Aufholtempo')} <input type="range" min="1" max="40" value="8"> <b>8</b></label>
-    <span class="muted small">${tr('move your mouse (or finger) over the picture', 'beweg die Maus (oder den Finger) über das Bild')}</span></div>`);
+  const row = html(el, `<div class="row"><label>${tr('catch-up speed', 'Aufholtempo', '追上速度')} <input type="range" min="1" max="40" value="8"> <b>8</b></label>
+    <span class="muted small">${tr('move your mouse (or finger) over the picture', 'beweg die Maus (oder den Finger) über das Bild', '在畫面上移動滑鼠（或手指）')}</span></div>`);
   const s = row.querySelector('input'), sOut = row.querySelector('b');
   let k = 8; s.oninput = () => { k = +s.value; sOut.textContent = k; };
   const target = [w / 2, h / 2], pos = [w / 2, h / 2], trail = [];
@@ -105,6 +105,6 @@ function follow(el) {
     g.strokeStyle = '#5fd3ff'; g.lineWidth = 2; g.beginPath(); g.arc(...target, 10, 0, 7); g.stroke();
     g.fillStyle = '#ffcf7a'; g.beginPath(); g.arc(...pos, 9, 0, 7); g.fill();
     g.font = '12px ui-monospace, monospace'; g.fillStyle = '#8a96a8';
-    g.fillText(tr('blue: where it wants to be   gold: where it is (like the camera)', 'blau: wo es hin will   gold: wo es ist (wie die Kamera)'), 10, h - 10);
+    g.fillText(tr('blue: where it wants to be   gold: where it is (like the camera)', 'blau: wo es hin will   gold: wo es ist (wie die Kamera)', '藍色：想去的位置\u3000金色：目前位置（像攝影機）'), 10, h - 10);
   });
 }

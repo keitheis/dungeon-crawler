@@ -15,14 +15,14 @@ export default function mount(el) {
   const inv = createInventory(), R = mulberry32(7);
   addItem(inv, HEALTH_POTION.id, 3); autoBar(inv, HEALTH_POTION.id);
   const row = html(el, `<div class="row">
-    <button data-a="potion">${tr('Find a potion', 'Trank finden')}</button>
-    <button data-a="sword">${tr('Find a sword', 'Schwert finden')}</button>
-    <button data-a="drink">${tr('Drink (bar slot 1)', 'Trinken (Leistenfeld 1)')}</button>
-    <button data-a="bar">${tr('Last sword on the bar', 'Letztes Schwert auf die Leiste')}</button>
-    <button data-a="drop">${tr('Drop the last sword', 'Letztes Schwert fallen lassen')}</button></div>`);
+    <button data-a="potion">${tr('Find a potion', 'Trank finden', '找一瓶藥水')}</button>
+    <button data-a="sword">${tr('Find a sword', 'Schwert finden', '找一把劍')}</button>
+    <button data-a="drink">${tr('Drink (bar slot 1)', 'Trinken (Leistenfeld 1)', '喝藥水（快捷欄第 1 格）')}</button>
+    <button data-a="bar">${tr('Last sword on the bar', 'Letztes Schwert auf die Leiste', '把最後一把劍放到快捷欄')}</button>
+    <button data-a="drop">${tr('Drop the last sword', 'Letztes Schwert fallen lassen', '丟掉最後一把劍')}</button></div>`);
   const view = html(el, '<div class="bagview"><div class="slots"></div><div class="mono small muted bl"></div><div class="qslots"></div></div>');
   const out = html(el, '<div class="out"></div>');
-  let said = tr('Your bag at the start of the game: three potions, one on the quick bar.', 'Deine Tasche am Anfang des Spiels: drei Tränke, einer auf der Schnellleiste.');
+  let said = tr('Your bag at the start of the game: three potions, one on the quick bar.', 'Deine Tasche am Anfang des Spiels: drei Tränke, einer auf der Schnellleiste.', '遊戲開始時的背包：三瓶藥水，其中一瓶放在快捷欄。');
   const swords = () => inv.slots.filter(s => s?.gen);
 
   function cell(slot, count) {
@@ -32,34 +32,34 @@ export default function mount(el) {
   }
   function draw() {
     view.querySelector('.slots').innerHTML = inv.slots.map(s => cell(s, s?.count)).join('');
-    view.querySelector('.bl').textContent = tr('quick bar (keys 1-6)', 'Schnellleiste (Tasten 1-6)');
+    view.querySelector('.bl').textContent = tr('quick bar (keys 1-6)', 'Schnellleiste (Tasten 1-6)', '快捷欄（按鍵 1–6）');
     view.querySelector('.qslots').innerHTML = Array.from({ length: BAR_SIZE }, (_, i) => {
       const e = barEntry(inv, i);
       // a note for a used-up stack stays: shown faded, with 0
       return e && !e.slot ? `<div class="slot gone"><img src="${icon(e.itemId)}" alt=""><span>0</span></div>` : cell(e?.slot ?? null, e?.count);
     }).join('');
     const refs = inv.bar.map((r, i) => `  bar[${i}]: ${r ? esc(JSON.stringify(r)) : 'null'}`).join('\n');
-    out.innerHTML = `${said}\n\n<span class="muted">${tr('What the quick bar really holds:', 'Was die Schnellleiste wirklich enthält:')}</span>\n${refs}`;
+    out.innerHTML = `${said}\n\n<span class="muted">${tr('What the quick bar really holds:', 'Was die Schnellleiste wirklich enthält:', '快捷欄真正放的是：')}</span>\n${refs}`;
   }
   const act = {
     potion: () => { const ok = addItem(inv, HEALTH_POTION.id, 1); autoBar(inv, HEALTH_POTION.id);
-      said = ok ? tr('A potion goes onto the stack that is already there: same kind, one slot.', 'Ein Trank kommt auf den Stapel, der schon da ist: gleiche Sorte, ein Feld.') : tr('The bag is full!', 'Die Tasche ist voll!'); },
+      said = ok ? tr('A potion goes onto the stack that is already there: same kind, one slot.', 'Ein Trank kommt auf den Stapel, der schon da ist: gleiche Sorte, ein Feld.', '藥水會疊在同一種藥水上，所以只佔一格。') : tr('The bag is full!', 'Die Tasche ist voll!', '背包滿了！'); },
     sword: () => { const w = rollWeapon(R, 1 + Math.floor(R() * 12)), id = addInstance(inv, w);
-      said = id ? tr(`<b>${esc(w.gen.name)}</b>: a sword is one of a kind, so it gets its own slot and its own name: ${id}.`, `<b>${esc(w.gen.name)}</b>: Ein Schwert ist einzigartig, darum bekommt es ein eigenes Feld und einen eigenen Namen: ${id}.`)
-        : tr(`The bag is full (${BAG_SIZE} slots)!`, `Die Tasche ist voll (${BAG_SIZE} Felder)!`); },
+      said = id ? tr(`<b>${esc(w.gen.name)}</b>: a sword is one of a kind, so it gets its own slot and its own name: ${id}.`, `<b>${esc(w.gen.name)}</b>: Ein Schwert ist einzigartig, darum bekommt es ein eigenes Feld und einen eigenen Namen: ${id}.`, `<b>${esc(w.gen.name)}</b>：每把劍都是獨一無二的，所以會有自己的格子和名字：${id}。`)
+        : tr(`The bag is full (${BAG_SIZE} slots)!`, `Die Tasche ist voll (${BAG_SIZE} Felder)!`, `背包滿了（${BAG_SIZE} 格）！`); },
     drink: () => { const e = barEntry(inv, 0);
-      if (!e?.slot) { said = tr('Nothing to drink: bar slot 1 is empty, or its stack is used up.', 'Nichts zu trinken: Leistenfeld 1 ist leer, oder sein Stapel ist aufgebraucht.'); return; }
+      if (!e?.slot) { said = tr('Nothing to drink: bar slot 1 is empty, or its stack is used up.', 'Nichts zu trinken: Leistenfeld 1 ist leer, oder sein Stapel ist aufgebraucht.', '沒有藥水可喝：快捷欄第 1 格是空的，或藥水已經喝完了。'); return; }
       removeItem(inv, e.slot.instanceId, 1);
-      said = tr('Gulp! One potion fewer. Bar slot 1 still says "health potion", even when none are left: find one, and it is back.', 'Gluck! Ein Trank weniger. Leistenfeld 1 sagt immer noch "Heiltrank", auch wenn keiner mehr da ist: Findest du einen, ist er wieder da.'); },
+      said = tr('Gulp! One potion fewer. Bar slot 1 still says "health potion", even when none are left: find one, and it is back.', 'Gluck! Ein Trank weniger. Leistenfeld 1 sagt immer noch "Heiltrank", auch wenn keiner mehr da ist: Findest du einen, ist er wieder da.', '咕嚕！少了一瓶藥水。就算喝光了，快捷欄第 1 格仍寫著「生命藥水」；找到新的一瓶，它就會放回來。'); },
     bar: () => { const s = swords().at(-1);
-      if (!s) { said = tr('Find a sword first.', 'Finde zuerst ein Schwert.'); return; }
+      if (!s) { said = tr('Find a sword first.', 'Finde zuerst ein Schwert.', '先找一把劍。'); return; }
       const free = inv.bar.findIndex((r, i) => i > 0 && !r);
       assignBar(inv, free < 0 ? BAR_SIZE - 1 : free, s.instanceId);
-      said = tr(`The bar doesn't get the sword itself, only a note: "the thing called ${s.instanceId}". The sword stays in the bag.`, `Die Leiste bekommt nicht das Schwert selbst, nur einen Zettel: "das Ding namens ${s.instanceId}". Das Schwert bleibt in der Tasche.`); },
+      said = tr(`The bar doesn't get the sword itself, only a note: "the thing called ${s.instanceId}". The sword stays in the bag.`, `Die Leiste bekommt nicht das Schwert selbst, nur einen Zettel: "das Ding namens ${s.instanceId}". Das Schwert bleibt in der Tasche.`, `快捷欄拿到的不是劍，而是一張寫著「名為 ${s.instanceId} 的物品」的便條。劍仍然留在背包裡。`); },
     drop: () => { const s = swords().at(-1);
-      if (!s) { said = tr('No sword to drop.', 'Kein Schwert zum Fallenlassen.'); return; }
+      if (!s) { said = tr('No sword to drop.', 'Kein Schwert zum Fallenlassen.', '沒有劍可以丟。'); return; }
       takeItem(inv, s.instanceId);
-      said = tr(`${s.instanceId} left the bag, so every note pointing at it was cleared too.`, `${s.instanceId} hat die Tasche verlassen, also wurde jeder Zettel, der darauf zeigte, auch gelöscht.`); },
+      said = tr(`${s.instanceId} left the bag, so every note pointing at it was cleared too.`, `${s.instanceId} hat die Tasche verlassen, also wurde jeder Zettel, der darauf zeigte, auch gelöscht.`, `${s.instanceId} 已經離開背包，所以所有指向它的便條也都清除了。`); },
   };
   row.querySelectorAll('button').forEach(b => b.onclick = () => { act[b.dataset.a](); draw(); });
   draw();

@@ -7,16 +7,16 @@ import { depthLevel } from '../../src/core/enemies.js';
 import { html, liveCode, t as tr, lang } from '../deck.js';
 
 const MACHINES = [
-  { name: 'maxHealth', path: 'src/core/progression.js', fn: maxHealth, input: () => tr('your level', 'deine Stufe'), min: 1, max: 40, value: 5,
-    about: () => tr('How much health you have at a level.', 'Wie viel Gesundheit du auf einer Stufe hast.') },
-  { name: 'xpToNext', path: 'src/core/progression.js', fn: xpToNext, input: () => tr('your level', 'deine Stufe'), min: 1, max: 40, value: 1,
-    about: () => tr('How much experience the next level costs.', 'Wie viel Erfahrung die nächste Stufe kostet.') },
-  { name: 'levelDamage', path: 'src/core/progression.js', fn: levelDamage, input: () => tr('your level', 'deine Stufe'), min: 1, max: 40, value: 10,
-    about: () => tr('What your level multiplies your sword\'s damage by.', 'Womit deine Stufe den Schaden deines Schwerts malnimmt.') },
-  { name: 'formatCoins', path: 'src/core/inventory.js', fn: formatCoins, input: () => tr('copper coins', 'Kupfermünzen'), min: 0, max: 99999, value: 1234,
-    about: () => tr('Turns a pile of copper into gold (g), silver (s) and copper (c), as the bag shows it.', 'Macht aus einem Haufen Kupfer Gold (g), Silber (s) und Kupfer (c), so wie die Tasche es zeigt.') },
-  { name: 'depthLevel', path: 'src/core/enemies.js', fn: depthLevel, input: () => tr('depth', 'Tiefe'), min: 0, max: 20, value: 7,
-    about: () => tr('The level of the monsters at a depth.', 'Die Stufe der Monster in einer Tiefe.') },
+  { name: 'maxHealth', path: 'src/core/progression.js', fn: maxHealth, input: () => tr('your level', 'deine Stufe', '你的等級'), min: 1, max: 40, value: 5,
+    about: () => tr('How much health you have at a level.', 'Wie viel Gesundheit du auf einer Stufe hast.', '每個等級有多少生命值。') },
+  { name: 'xpToNext', path: 'src/core/progression.js', fn: xpToNext, input: () => tr('your level', 'deine Stufe', '你的等級'), min: 1, max: 40, value: 1,
+    about: () => tr('How much experience the next level costs.', 'Wie viel Erfahrung die nächste Stufe kostet.', '升到下一級需要多少經驗值。') },
+  { name: 'levelDamage', path: 'src/core/progression.js', fn: levelDamage, input: () => tr('your level', 'deine Stufe', '你的等級'), min: 1, max: 40, value: 10,
+    about: () => tr('What your level multiplies your sword\'s damage by.', 'Womit deine Stufe den Schaden deines Schwerts malnimmt.', '你的等級會讓劍的傷害增加多少倍。') },
+  { name: 'formatCoins', path: 'src/core/inventory.js', fn: formatCoins, input: () => tr('copper coins', 'Kupfermünzen', '銅幣'), min: 0, max: 99999, value: 1234,
+    about: () => tr('Turns a pile of copper into gold (g), silver (s) and copper (c), as the bag shows it.', 'Macht aus einem Haufen Kupfer Gold (g), Silber (s) und Kupfer (c), so wie die Tasche es zeigt.', '把一堆銅幣換算成金幣（g）、銀幣（s）和銅幣（c），就像背包裡顯示的那樣。') },
+  { name: 'depthLevel', path: 'src/core/enemies.js', fn: depthLevel, input: () => tr('depth', 'Tiefe', '深度'), min: 0, max: 20, value: 7,
+    about: () => tr('The level of the monsters at a depth.', 'Die Stufe der Monster in einer Tiefe.', '每一層怪物的等級。') },
 ];
 const show = v => typeof v === 'number' ? new Intl.NumberFormat(lang === 'de' ? 'de-DE' : 'en-US', { maximumFractionDigits: 3, useGrouping: false }).format(v) : JSON.stringify(v);
 
@@ -25,7 +25,7 @@ export default function mount(el) {
   const box = html(el, `<div class="machine">
     <div class="in"><label class="lbl"></label><input type="number" class="val"></div>
     <div class="body"><b class="name"></b><span class="gear">\u2699</span></div>
-    <div class="outv"><span class="muted small">${tr('comes out', 'heraus kommt')}</span><b class="res"></b></div></div>`);
+    <div class="outv"><span class="muted small">${tr('comes out', 'heraus kommt', '輸出結果')}</span><b class="res"></b></div></div>`);
   const call = html(el, '<div class="out"></div>');
   const code = html(el, '<pre class="mcode"></pre>');
   const $ = s => box.querySelector(s);

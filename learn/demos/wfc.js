@@ -7,15 +7,15 @@ import { hashKey, step as stepKey } from '../../src/world/coords.js';
 import { themeAt } from '../../src/themes/depth.js';
 import { canvas, loop, html, t as tr, themeLabel } from '../deck.js';
 
-const PLAY = () => tr('Play', 'Abspielen');
+const PLAY = () => tr('Play', 'Abspielen', '播放');
 const COLS = 9, ROWS = 6, SOCK = { L: '#6fae4f', H: '#a08052', W: '#3f8fd8' };
 
 export default function mount(el) {
   const W = 640, H = 430, { g, c, at } = canvas(el, W, H);
-  const row = html(el, `<div class="row"><button class="step">${tr('One step', 'Ein Schritt')}</button><button class="play">${PLAY()}</button><button class="fill">${tr('Fill all', 'Alles füllen')}</button>
-    <button class="reset">${tr('Start over', 'Neu anfangen')}</button><label>${tr('depth', 'Tiefe')} <select class="depth">${[1, 3, 4, 7, 9, 13].map(d => `<option value="${d}">${d} \u00B7 ${themeLabel(themeAt(d))}</option>`).join('')}</select></label></div>
+  const row = html(el, `<div class="row"><button class="step">${tr('One step', 'Ein Schritt', '走一步')}</button><button class="play">${PLAY()}</button><button class="fill">${tr('Fill all', 'Alles füllen', '全部填滿')}</button>
+    <button class="reset">${tr('Start over', 'Neu anfangen', '重新開始')}</button><label>${tr('depth', 'Tiefe', '深度')} <select class="depth">${[1, 3, 4, 7, 9, 13].map(d => `<option value="${d}">${d} \u00B7 ${themeLabel(themeAt(d))}</option>`).join('')}</select></label></div>
     <div class="legend">${Object.entries(KIND_COLOR).map(([k, col]) => `<span><i style="background:${col}"></i>${k}</span>`).join('')}
-    <span>${tr('edges', 'Kanten')}: <i style="background:${SOCK.L}"></i>L ${tr('lowland', 'Tiefland')} <i style="background:${SOCK.H}"></i>H ${tr('highland', 'Hochland')} <i style="background:${SOCK.W}"></i>W ${tr('river', 'Fluss')}</span></div>`);
+    <span>${tr('edges', 'Kanten', '邊緣')}: <i style="background:${SOCK.L}"></i>L ${tr('lowland', 'Tiefland', '低地')} <i style="background:${SOCK.H}"></i>H ${tr('highland', 'Hochland', '高地')} <i style="background:${SOCK.W}"></i>W ${tr('river', 'Fluss', '河流')}</span></div>`);
   const out = html(el, '<div class="out"></div>');
   const $ = s => el.querySelector(s);
   let wfc, keys, Y, playing = false, acc = 0, lastPick = null, seed = 1, hover = null;
@@ -66,13 +66,13 @@ export default function mount(el) {
         t.sock.forEach((s, d) => { g.fillStyle = SOCK[s]; g.fillRect(...e[d]); g.strokeStyle = '#0008'; g.lineWidth = 1; g.strokeRect(...e[d]); });
         g.fillStyle = '#0b0d12'; g.font = 'bold 11px ui-monospace, monospace';
         g.fillText(t.kind, X + S / 2, Z + S / 2 + 1);
-        g.font = '10px ui-monospace, monospace'; g.fillText(tr(`${t.K} layer${t.K > 1 ? 's' : ''}`, `${t.K} Ebene${t.K > 1 ? 'n' : ''}`), X + S / 2, Z + S / 2 + 14);
+        g.font = '10px ui-monospace, monospace'; g.fillText(tr(`${t.K} layer${t.K > 1 ? 's' : ''}`, `${t.K} Ebene${t.K > 1 ? 'n' : ''}`, `${t.K} 層`), X + S / 2, Z + S / 2 + 14);
       } else {
         const n = wfc.domain(k).length;
         g.fillStyle = '#161b24'; g.fillRect(X + 2, Z + 2, S - 4, S - 4);
         g.fillStyle = n < 30 ? '#ffcf7a' : '#5a6678'; g.font = 'bold 15px ui-monospace, monospace';
         g.fillText(String(n), X + S / 2, Z + S / 2 + 2);
-        g.font = '10px ui-monospace, monospace'; g.fillStyle = '#8a96a8'; g.fillText(tr('options', 'Optionen'), X + S / 2, Z + S / 2 + 16);
+        g.font = '10px ui-monospace, monospace'; g.fillStyle = '#8a96a8'; g.fillText(tr('options', 'Optionen', '種選擇'), X + S / 2, Z + S / 2 + 16);
       }
       if (nx?.k === k) { g.strokeStyle = '#ffcf7a'; g.lineWidth = 3; g.strokeRect(X + 2, Z + 2, S - 4, S - 4); }
       if (lastPick?.k === k) { g.strokeStyle = '#fff'; g.lineWidth = 2; g.strokeRect(X + 4, Z + 4, S - 8, S - 8); }
@@ -81,18 +81,18 @@ export default function mount(el) {
     const done = keys.filter(k => wfc.tiles.has(k)).length;
     let text = lastPick
       ? tr(`The cube at ${lastPick.k.split(',')[0]},${lastPick.k.split(',')[2]} had <b>${lastPick.options}</b> pieces that fit, the fewest of all. The dice picked <b>${lastPick.tile.kind}</b> (edges ${lastPick.tile.sock.join(' ')}: east west south north).`,
-        `Der Würfel bei ${lastPick.k.split(',')[0]},${lastPick.k.split(',')[2]} hatte <b>${lastPick.options}</b> passende Teile, die wenigsten von allen. Die Würfel wählten <b>${lastPick.tile.kind}</b> (Kanten ${lastPick.tile.sock.join(' ')}: Ost West Süd Nord).`)
-      : tr('Every empty cube shows how many puzzle pieces still fit there. Press "One step".', 'Jeder leere Würfel zeigt, wie viele Puzzleteile dort noch passen. Drück "Ein Schritt".');
-    if (done === keys.length) text += tr('\nDone! Every edge matches its neighbour. Start over for a new world.', '\nFertig! Jede Kante passt zu ihrem Nachbarn. Fang neu an für eine neue Welt.');
-    else if (nx) text += tr(`\nNext: the gold-framed cube (${nx.dom.length} options).`, `\nAls Nächstes: der gold umrandete Würfel (${nx.dom.length} Optionen).`);
-    if (hover && wfc.tiles.get(hover)) { const t = wfc.tiles.get(hover); text = tr(`${hover}: ${t.kind}, edges ${t.sock.join(' ')}, ${t.K} layers`, `${hover}: ${t.kind}, Kanten ${t.sock.join(' ')}, ${t.K} Ebenen`); }
+        `Der Würfel bei ${lastPick.k.split(',')[0]},${lastPick.k.split(',')[2]} hatte <b>${lastPick.options}</b> passende Teile, die wenigsten von allen. Die Würfel wählten <b>${lastPick.tile.kind}</b> (Kanten ${lastPick.tile.sock.join(' ')}: Ost West Süd Nord).`, `座標 ${lastPick.k.split(',')[0]},${lastPick.k.split(',')[2]} 的方塊只有 <b>${lastPick.options}</b> 種拼法，是所有方塊中最少的。骰子選了 <b>${lastPick.tile.kind}</b>（邊緣 ${lastPick.tile.sock.join(' ')}：東、西、南、北）。`)
+      : tr('Every empty cube shows how many puzzle pieces still fit there. Press "One step".', 'Jeder leere Würfel zeigt, wie viele Puzzleteile dort noch passen. Drück "Ein Schritt".', '每個空方塊都會顯示還有幾塊拼圖片放得進去。按下「走一步」開始。');
+    if (done === keys.length) text += tr('\nDone! Every edge matches its neighbour. Start over for a new world.', '\nFertig! Jede Kante passt zu ihrem Nachbarn. Fang neu an für eine neue Welt.', '\n完成！每個邊緣都和旁邊的方塊接起來了。重新開始就能生成新世界。');
+    else if (nx) text += tr(`\nNext: the gold-framed cube (${nx.dom.length} options).`, `\nAls Nächstes: der gold umrandete Würfel (${nx.dom.length} Optionen).`, `\n接下來要處理的是金框方塊（有 ${nx.dom.length} 種選擇）。`);
+    if (hover && wfc.tiles.get(hover)) { const t = wfc.tiles.get(hover); text = tr(`${hover}: ${t.kind}, edges ${t.sock.join(' ')}, ${t.K} layers`, `${hover}: ${t.kind}, Kanten ${t.sock.join(' ')}, ${t.K} Ebenen`, `${hover}：${t.kind}，邊緣 ${t.sock.join(' ')}，${t.K} 層`); }
     out.innerHTML = text;
   }
   c.onpointermove = e => { const [x, y] = at(e), cx = Math.floor((x - ox) / S), cz = Math.floor((y - oy) / S);
     const k = cx >= 0 && cz >= 0 && cx < COLS && cz < ROWS ? `${cx},${Y},${cz}` : null; if (k !== hover) { hover = k; draw(); } };
   c.onpointerleave = () => { hover = null; draw(); };
   $('.step').onclick = () => { step(); draw(); };
-  $('.play').onclick = () => { playing = !playing; $('.play').textContent = playing ? tr('Pause', 'Pause') : PLAY(); };
+  $('.play').onclick = () => { playing = !playing; $('.play').textContent = playing ? tr('Pause', 'Pause', '暫停') : PLAY(); };
   $('.fill').onclick = () => { while (step()); draw(); };
   $('.reset').onclick = reset;
   $('.depth').onchange = reset;

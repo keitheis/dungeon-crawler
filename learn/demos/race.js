@@ -14,10 +14,10 @@ const KINDS = [SPIDER, SNAKE, OCTONAUT, STUNDER];
 
 export default function mount(el) {
   const row = html(el, `<div class="row"><select class="kind">${KINDS.map((k, i) => `<option value="${i}">${k.label}</option>`).join('')}</select>
-    <label><input type="checkbox" class="old"> ${tr('keep the Old Sword', 'beim Alten Schwert bleiben')}</label>
-    <label><input type="checkbox" class="nolv"> ${tr('never level up', 'nie aufsteigen')}</label></div>`);
+    <label><input type="checkbox" class="old"> ${tr('keep the Old Sword', 'beim Alten Schwert bleiben', '繼續使用舊劍')}</label>
+    <label><input type="checkbox" class="nolv"> ${tr('never level up', 'nie aufsteigen', '永遠不升級')}</label></div>`);
   const W = 620, H = 230, { c, g, at } = canvas(el, W, H);
-  html(el, `<div class="legend"><span><i style="background:#51a9ff"></i>${tr('your slashes to beat it', 'deine Hiebe, um es zu besiegen')}</span><span><i style="background:#ff6a5a"></i>${tr('its blows to beat you', 'seine Schläge, um dich zu besiegen')}</span></div>`);
+  html(el, `<div class="legend"><span><i style="background:#51a9ff"></i>${tr('your slashes to beat it', 'deine Hiebe, um es zu besiegen', '你打倒它需要的揮劍次數')}</span><span><i style="background:#ff6a5a"></i>${tr('its blows to beat you', 'seine Schläge, um dich zu besiegen', '它打倒你需要的攻擊次數')}</span></div>`);
   const out = html(el, '<div class="out"></div>');
   const $ = s => row.querySelector(s);
   const L = 30, B = 26, bw = (W - L - 8) / MAX_DEPTH;
@@ -45,10 +45,11 @@ export default function mount(el) {
       g.fillStyle = '#ff6a5a'; g.fillRect(x + bw / 2, y(r.blows), bw / 2 - 2, H - B - y(r.blows));
       g.fillStyle = '#8a96a8'; g.textAlign = 'center'; g.fillText(i + 1, x + bw / 2, H - B + 13);
     });
-    g.textAlign = 'center'; g.fillText(tr('depth', 'Tiefe'), (W + L) / 2, H - 2);
+    g.textAlign = 'center'; g.fillText(tr('depth', 'Tiefe', '深度'), (W + L) / 2, H - 2);
     const r = rows[pick - 1];
     out.innerHTML = tr(`Depth ${pick}: a level-${r.mlv} ${r.kind.label} has <b>${r.m.hp}</b> health and hits for <b>${r.m.damage}</b>.\nYou, level ${r.plv}: your sword hits for <b>${r.hit}</b>, you have <b>${r.hp}</b> health.\nYou need <b>${r.slashes}</b> slash${r.slashes === 1 ? '' : 'es'}, it needs <b>${r.blows}</b> blow${r.blows === 1 ? '' : 's'}.`,
-      `Tiefe ${pick}: ${r.kind.label} auf Stufe ${r.mlv} hat <b>${r.m.hp}</b> Gesundheit und trifft mit <b>${r.m.damage}</b>.\nDu, Stufe ${r.plv}: Dein Schwert trifft mit <b>${r.hit}</b>, du hast <b>${r.hp}</b> Gesundheit.\nDu brauchst <b>${r.slashes}</b> ${r.slashes === 1 ? 'Hieb' : 'Hiebe'}, es braucht <b>${r.blows}</b> ${r.blows === 1 ? 'Schlag' : 'Schläge'}.`);
+      `Tiefe ${pick}: ${r.kind.label} auf Stufe ${r.mlv} hat <b>${r.m.hp}</b> Gesundheit und trifft mit <b>${r.m.damage}</b>.\nDu, Stufe ${r.plv}: Dein Schwert trifft mit <b>${r.hit}</b>, du hast <b>${r.hp}</b> Gesundheit.\nDu brauchst <b>${r.slashes}</b> ${r.slashes === 1 ? 'Hieb' : 'Hiebe'}, es braucht <b>${r.blows}</b> ${r.blows === 1 ? 'Schlag' : 'Schläge'}.`,
+      `第 ${pick} 層：等級 ${r.mlv} 的${r.kind.label}有 <b>${r.m.hp}</b> 點生命值，攻擊會造成 <b>${r.m.damage}</b> 點傷害。\n你目前是等級 ${r.plv}：劍會造成 <b>${r.hit}</b> 點傷害，你有 <b>${r.hp}</b> 點生命值。\n你需要揮劍 <b>${r.slashes}</b> 次才能打倒牠；牠需要攻擊 <b>${r.blows}</b> 次才能打倒你。`);
   }
   const move = e => { const [x] = at(e); pick = Math.max(1, Math.min(MAX_DEPTH, Math.floor((x - L) / bw) + 1)); draw(); };
   c.addEventListener('pointermove', move);

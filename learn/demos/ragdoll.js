@@ -16,7 +16,7 @@ const floorAt = x => x > 3.2 ? 0.35 : x < 0.6 ? 0.6 - x * 0.4 : 0;   // a slope 
 
 export default function mount(el) {
   const W = 640, H = 260, { g, c, at } = canvas(el, W, H);
-  const row = html(el, `<div class="row"><button class="knock">${tr('Knock over!', 'Umstoßen!')}</button><button class="kick">${tr('Big kick', 'Großer Tritt')}</button><button class="drop">${tr('Drop from high up', 'Von hoch oben fallen')}</button><button class="stand">${tr('Stand up', 'Aufstehen')}</button><span class="muted small">${tr('or grab a dot and throw it', 'oder pack einen Punkt und wirf ihn')}</span></div>`);
+  const row = html(el, `<div class="row"><button class="knock">${tr('Knock over!', 'Umstoßen!', '把它撞倒！')}</button><button class="kick">${tr('Big kick', 'Großer Tritt', '大力一踢')}</button><button class="drop">${tr('Drop from high up', 'Von hoch oben fallen', '從高處落下')}</button><button class="stand">${tr('Stand up', 'Aufstehen', '站起來')}</button><span class="muted small">${tr('or grab a dot and throw it', 'oder pack einen Punkt und wirf ihn', '或抓住一個點，把它丟出去')}</span></div>`);
   const out = html(el, '<div class="out"></div>');
   let P, O, sticks, apart, acc = 0, drag = -1, mouse = [0, 0];
   const dist = (a, b) => Math.hypot(P[a][0] - P[b][0], P[a][1] - P[b][1]);
@@ -86,6 +86,7 @@ export default function mount(el) {
     while (acc >= SUB) { acc -= SUB; substep(); n++; }
     draw();
     out.innerHTML = tr(`16 dots, ${sticks.length} sticks (white: bones, blue: stiff body parts), ${apart.length} keep-apart sticks (violet) \u00B7 <b>${n}</b> small steps this frame`,
-      `16 Punkte, ${sticks.length} Stäbe (weiß: Knochen, blau: steife Körperteile), ${apart.length} Abstandsstäbe (violett) \u00B7 <b>${n}</b> kleine Schritte in diesem Bild`);
+      `16 Punkte, ${sticks.length} Stäbe (weiß: Knochen, blau: steife Körperteile), ${apart.length} Abstandsstäbe (violett) \u00B7 <b>${n}</b> kleine Schritte in diesem Bild`,
+      `16 個點、${sticks.length} 根連桿（白色是骨頭，藍色是較硬的身體部位）、${apart.length} 根保持間距的連桿（紫色）\u00B7 這一格畫面走了 <b>${n}</b> 個小步`);
   });
 }
